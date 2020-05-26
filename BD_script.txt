@@ -1,0 +1,278 @@
+-- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
+--
+-- Host: 127.0.0.1    Database: Quai des savoir-faire
+
+-- Xuan WEI & Huijun DING
+-- ------------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Besoins`
+--
+
+DROP TABLE IF EXISTS `Besoins`;
+
+CREATE TABLE `Besoins` (
+  `CodeB` int(10) NOT NULL AUTO_INCREMENT,
+  `TitreB` text(150) NOT NULL,
+  `DescriptionB` text(500) NOT NULL,
+  `DateButoireB` date NOT NULL,
+  `SatisfisantB` Boolean,
+  `DatePublicationB` date,
+  `TypeB` enum('Pro','Perso','Pro et Perso'),
+  `CodeC` int(10) NOT NULL,
+  PRIMARY KEY (`CodeB`),
+  CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Besoins`
+--
+
+LOCK TABLES `Besoins` WRITE;
+INSERT INTO `Besoins` VALUES (1,'Pro : Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2022-03-25',false, NOW(),'Pro', 7);
+INSERT INTO `Besoins` VALUES (2, 'Perso : Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25',false, NOW(), 'Perso', 1);
+INSERT INTO `Besoins` VALUES (3, 'Perso : Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25', false, NOW(), 'Perso', 9); 
+INSERT INTO `Besoins` VALUES (4, 'Pro : Excel : faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25', false, NOW(), 'Perso', 7);
+UNLOCK TABLES;
+
+-- -----------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Talents`
+--
+
+DROP TABLE IF EXISTS `Talents`;
+
+CREATE TABLE `Talents` (
+  `CodeT` int(10) NOT NULL AUTO_INCREMENT,
+  `TitreT` text(150) NOT NULL,
+  `DescriptionT` text(500) NOT NULL,
+  `DatePublicationT` date,
+  `TypeT` enum('Pro','Perso','Pro et Perso'),
+  `CodeC` int(10) NOT NULL,
+  PRIMARY KEY (`CodeT`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Talents`
+--
+
+LOCK TABLES `Talents` WRITE;
+INSERT INTO `Talents` VALUES (1,'Pitcher','Je propose un talent de pitcher', NOW(),'Pro', 2);
+INSERT INTO `Talents` VALUES (2,'Pro : Animation réunion créative',"Je suis l’expert d’animer la réunion créative", NOW(),'Pro', 2);
+INSERT INTO `Talents` VALUES (3,'Perso : généalogie débutant (comment commencer)',"Je propose un cours de généalogie", NOW(),'Perso', 9);
+INSERT INTO `Talents` VALUES (4, 'Pro : Excel TCD',"Je peux vous montrer comment faire un TCD sous Excel, contacter moi au cas de besoin", NOW(),'Pro', 7);
+UNLOCK TABLES;
+
+-- ---------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Categories`
+--
+
+DROP TABLE IF EXISTS `Categories`;
+
+CREATE TABLE `Categories` (
+  `CodeC` int(10) NOT NULL AUTO_INCREMENT,
+  `NomC` text(150) NOT NULL,
+  `DescriptionC` text(500) NULL,
+  `PhotoC` text(50) NULL,
+  PRIMARY KEY (`CodeC`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Catégories`
+--
+
+LOCK TABLES `Categories` WRITE;
+INSERT INTO `Categories` VALUES (1,'Sport','Basketball, Football...', 'https://www.saintcyr78.fr/wp-content/uploads/2018/12/Sports-e1544731833709.png');                 -- Nous n'avons pas ajouté la photo de chaque catégorie
+INSERT INTO `Categories` VALUES (2,'Animation','Réunions créatives, Pitcher...', 'https://www.maxicasting.com/sites/default/files/styles/medium_article/public/field/image/Virginie_Guilhaume.jpg?itok=9llLIC0Q');
+INSERT INTO `Categories` VALUES (3,'Outils métiers','', 'https://previews.123rf.com/images/ylivdesign/ylivdesign1708/ylivdesign170817224/84072414-outil-pour-jeu-d-ic%C3%B4nes-de-m%C3%A9tier-style-de-bande-dessin%C3%A9e-de-36-outil-pour-les-ic%C3%B4nes-vectorielles-de-m%C3%A9tier-.jpg');
+INSERT INTO `Categories` VALUES (4,'Développement personnel','Yoga, méditation', 'https://surfexpedition.com/fr/wp-content/uploads/2014/04/yoga-pose-for-surfer.jpeg');
+INSERT INTO `Categories` VALUES (5,'Associatif','', 'https://www.parlons-en-ensemble.com/wp-content/uploads/2017/06/VIVE-LES-ASSOS.jpg');
+INSERT INTO `Categories` VALUES (6,'Covoiturage','', 'https://www.ecoco2.com/images/blog/covoiturage.png');
+INSERT INTO `Categories` VALUES (7,'Bureautique','Word, Excel, Outlook, PowerPoint...', 'https://image.jimcdn.com/app/cms/image/transf/none/path/seb1cf7d479aba92e/image/ibb7b96a2a538f1c6/version/1557242754/image.png');
+INSERT INTO `Categories` VALUES (8,'Informatique','Réseaux, Site Web, Réparation PC...', 'https://www.nbs-system.com/wp-content/uploads/2018/03/180403_NBS_Attaque_protection_siteWeb-788x433.jpg');
+INSERT INTO `Categories` VALUES (9,'Loisir','Cuisine, Bricolage, Musique, Théâtre, Cinéma, Cilture, Philatélie, généalogie...', 'https://www.lepointdufle.net/ia/sportsloisirs1.jpg');
+INSERT INTO `Categories` VALUES (10,'Autres','', 'https://www.solidaire.org/sites/default/files/images/2014/12/10/toutautrechoselogo.jpg');
+UNLOCK TABLES;
+
+-- ------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Utilisateurs`
+--
+
+DROP TABLE IF EXISTS `Utilisateurs`;
+
+CREATE TABLE `Utilisateurs` (
+  `CodeU` int(10) NOT NULL AUTO_INCREMENT,
+  `NomU` text(150) NOT NULL,
+  `PrenomU` text(150) NOT NULL,
+  `Email` text(150) NOT NULL,
+  `MotDePasse` text(150) NOT NULL,
+  `Anonyme` Boolean,
+  PRIMARY KEY (`CodeU`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Utilisateurs`
+--
+
+LOCK TABLES `Utilisateurs` WRITE;
+INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','123456', false);
+INSERT INTO `Utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','123456', true);
+INSERT INTO `Utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','123456', false);
+UNLOCK TABLES;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Saisir`
+--
+
+DROP TABLE IF EXISTS `Saisir`;
+
+CREATE TABLE `Saisir` (
+  `CodeU` int(10) NOT NULL,
+  `CodeB` int(10) NOT NULL,
+  PRIMARY KEY (`CodeU`,`CodeB`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Saisir`
+--
+
+LOCK TABLES `Saisir` WRITE;
+INSERT INTO `Saisir` VALUES (1,1);
+INSERT INTO `Saisir` VALUES (1,3);
+INSERT INTO `Saisir` VALUES (2,2);
+INSERT INTO `Saisir` VALUES (3,4);
+UNLOCK TABLES;
+
+-- ---------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Proposer`
+--
+
+DROP TABLE IF EXISTS `Proposer`;
+
+CREATE TABLE `Proposer` (
+  `CodeU` int(10) NOT NULL,
+  `CodeT` int(10) NOT NULL, 
+  PRIMARY KEY (`CodeU`,`CodeT`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Proposer`
+--
+
+LOCK TABLES `Proposer` WRITE;
+INSERT INTO `Proposer` VALUES (1,1);
+INSERT INTO `Proposer` VALUES (1,3);
+INSERT INTO `Proposer` VALUES (2,4);
+INSERT INTO `Proposer` VALUES (3,2);
+UNLOCK TABLES;
+
+-- ---------------------------------------------------------------------------------------------
+--
+-- Table structure for table `Abonner`
+--
+
+DROP TABLE IF EXISTS `Abonner`;
+
+CREATE TABLE `Abonner` (
+  `CodeU` int(10) NOT NULL,
+  `CodeC` int(10) NOT NULL, 
+  PRIMARY KEY (`CodeU`,`CodeC`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Abonner`
+--
+
+LOCK TABLES `Abonner` WRITE;
+INSERT INTO `Abonner` VALUES (1,10);
+INSERT INTO `Abonner` VALUES (1,1);
+INSERT INTO `Abonner` VALUES (1,8);
+INSERT INTO `Abonner` VALUES (1,7);
+INSERT INTO `Abonner` VALUES (2,7);
+INSERT INTO `Abonner` VALUES (2,2);
+INSERT INTO `Abonner` VALUES (2,3);
+INSERT INTO `Abonner` VALUES (2,4);
+INSERT INTO `Abonner` VALUES (2,9);
+INSERT INTO `Abonner` VALUES (3,4);
+INSERT INTO `Abonner` VALUES (3,5);
+INSERT INTO `Abonner` VALUES (3,6);
+INSERT INTO `Abonner` VALUES (3,7);
+UNLOCK TABLES;
+
+-- ------------------------------------------------------------------------------------------------
+
+--
+-- Table structure for table `Projet`
+--
+
+DROP TABLE IF EXISTS `Projet`;
+
+CREATE TABLE `Projet` (
+  `CodeP` int(10) NOT NULL AUTO_INCREMENT,
+  `TitreP` text(150) NOT NULL,
+  `DescriptionP` text(500) NOT NULL,
+  `DateButoireP` date NOT NULL,
+  `DatePublicationP` date,
+  `TypeP` enum('Pro','Perso','Pro et Perso'),
+  `CodeC` int(10) NOT NULL,
+  PRIMARY KEY (`CodeP`),
+  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Projet`
+--
+
+INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('1', 'Perso : Aide d\'organisation de course longue distance', '2 personnes pour faire l\'inventaire', '2020-12-12', '2020-05-25', 'Perso', '1');
+INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('2', 'Pro : Aide pour le projet Resto du coeur chemin du Raisin à Toulouse', "3 personnes pour faire l'inventaire de 9H à 12H", '2022-03-25', NOW(), 'Pro', 5);
+INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('3', 'Perso : Volontairiat pour des personnes handicapées', '4 personnes durée 2 mois', '2022-03-25', NOW(), 'Perso', 5);
+INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('4', "Pro : Aide pour l\'organisation de la conférence', 'Toulouse 2 journées','2022-03-25', NOW(), 'Pro', 5 );
+INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('5', 'Perso : Apéro ', 'Vendredi soir à 20H\r\n', '2020-05-29', '2020-05-25', 'Perso', '9');
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `ParticiperP`
+--
+
+DROP TABLE IF EXISTS `ParticiperP`;
+
+CREATE TABLE `ParticiperP` (
+  `CodeU` int(10) NOT NULL,
+  `CodeP` int(10) NOT NULL,
+  `RoleP` enum('créateur','participant') NOT NULL,
+  PRIMARY KEY (`CodeU`,`CodeP`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `ParticiperP`
+--
+
+LOCK TABLES `ParticiperP` WRITE;
+INSERT INTO `ParticiperP` VALUES (1,1);
+INSERT INTO `ParticiperP` VALUES (3,3);
+INSERT INTO `ParticiperP` VALUES (2,2);
+INSERT INTO `ParticiperP` VALUES (2,4);
+UNLOCK TABLES;
+
+-- ----------------------------------------------------------------------------------------------
+-- Ajouter des clés étrangères
+-- ----------------------------------------------------------------------------------------------
+
+ALTER TABLE `Besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `Categories`(`CodeC`);
+
+ALTER TABLE `Talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `Categories`(`CodeC`);
+
+ALTER TABLE `Saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `Utilisateurs`(`CodeU`);
+ALTER TABLE `Saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `Besoins`(`CodeB`);
+
+ALTER TABLE `Proposer` ADD FOREIGN KEY (`CodeU`) REFERENCES `Utilisateurs`(`CodeU`);   
+ALTER TABLE `Proposer` ADD FOREIGN KEY (`CodeT`) REFERENCES `Talents`(`CodeT`);  
+
+ALTER TABLE `Abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `Utilisateurs`(`CodeU`); 
+ALTER TABLE `Abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `Categories`(`CodeC`);
+-- -----------------------------------------------------------------------------
+ALTER TABLE `Projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `Categories`(`CodeC`);
+
+ALTER TABLE `ParticiperP` ADD FOREIGN KEY (`CodeU`) REFERENCES `Utilisateurs`(`CodeU`);
+ALTER TABLE `ParticiperP` ADD FOREIGN KEY (`CodeP`) REFERENCES `Projet`(`CodeP`);
+
+-- ----------------------------------------------------------------------------------------------
+-- fin de script
+-- ----------------------------------------------------------------------------------------------
