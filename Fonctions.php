@@ -4,11 +4,11 @@
         
         $nomlogin = 'root';                    // Ici, nous connectons avec le serveur local, si vous voulez le tester sur d'autre serveur, vous pouvez changer ces 3 variables
         $nompasswd = '';
-        $nombase = 'talentland';
+        $nombase = 'cpam';
 
         $session = mysqli_connect('localhost', $nomlogin, $nompasswd ); 
 
-        if ($session == NULL) // Test de connexion n'est pas réussié
+        if ($session == NULL) // Test de connexiuvon n'est pas réussié
           {
                   echo ("<p>Echec de connection</p>");
           } 
