@@ -104,7 +104,7 @@
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
                             echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                            echo ('<a href="BesoinX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
+                            echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                             echo ('</div>');  
                             echo ('</div>');         
                             }
@@ -158,7 +158,7 @@
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                            echo ('<a href="TalentX.php" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('</div>');  
                             echo ('</div>');             
                             }
