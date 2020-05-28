@@ -85,20 +85,13 @@
                         
 			  <div class="form-group">
 				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" id="gridCheck" checked>
+				  <input class="form-check-input" type="checkbox" id="gridCheck">
 				  <label class="form-check-label" for="gridCheck">
 					Je m'engage à respecter la charte.
 				  </label>
 				</div>
 			  </div>
-			  <div class="form-group">
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" name="anonyme" id="gridCheck" >
-				  <label class="form-check-label" for="gridCheck">
-					Apparaître anonymement.
-				  </label>
-				</div>
-			  </div>
+                            
 			  <div class="form-row">
 				<div class="form-group col-md-6">
 				  <label for="inputPassword1">Mot de Passe</label>

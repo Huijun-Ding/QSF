@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/Creer1Projet.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/Saisir1Projet.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/AjouterUtilisateurs.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/Accueil.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/TEST2.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/AbonnerCategorie.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/BesoinC.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/Inscription.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/MonProjet/Fonctions.php</file>
         </group>
     </open-files>
 </project-private>

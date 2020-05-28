@@ -4,7 +4,6 @@
 if(isset($_POST['email'])){                                 //Ajouter le nouveau utilisateur dans la base de donnée
     
        $Email = $_POST['email'];
-       $Anonyme = $_POST['anonyme'];
        
        if(is_unique_login($session, $Email)){
            $Password = password_hash($_POST["password"],PASSWORD_DEFAULT);
@@ -13,15 +12,14 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
            $Prenom = $_POST['prenom'];
            
         
-           $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU, Email,MotDePasse,Anonyme) VALUES(?,?,?,?,?)");   
+           $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse) VALUES(?,?,?,?)");   
            
-           mysqli_stmt_bind_param($stmt, 'ssssi', $Nom,$Prenom,$Email,$Password, $Anonyme);
+           mysqli_stmt_bind_param($stmt, 'ssss', $Nom,$Prenom,$Email,$Password);
            mysqli_stmt_execute($stmt);
            
            session_start();                                 //Après l'inscription, l'utilisateur se connecter automatiquement
            
            $_SESSION['email'] = $Email;
-           $_SESSION['anonyme'] = $Anonyme;
            $_SESSION['password'] = $Password;
 
            header("Location: Accueil.php");                 // Vers la page Accueil

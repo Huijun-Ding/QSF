@@ -4,7 +4,6 @@ require_once('Fonctions.php');
 
 if(isset($_POST['email'])){
 	$Email = $_POST['email'];
-        $Anonyme = $_POST['anonyme'];
 	$Password = $_POST["password"];
 		
 	$stmt = mysqli_prepare($session, "SELECT MotDePasse FROM utilisateurs WHERE Email=?");   // Connecter et vérification de mot de passe
@@ -23,7 +22,6 @@ if(isset($_POST['email'])){
             session_start();
             
             $_SESSION['email'] = $Email;
-            $_SESSION['anonyme'] = $Anonyme;
             $_SESSION['password'] = $Password;
             
             header("Location: Accueil.php");

@@ -42,15 +42,9 @@
             session_start();
             
             if(isset($_SESSION['email'])){
-                if(isset($_SESSION['anonyme'])){
-                    echo('<a href=\"Deconnecter.php\"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>');
-                    echo "Utilisateur Anonyme";    // quand l'utiliateur a croché le case Anonyme au moment de l'inscription, on va afficher Utilisateur Anonyme
-                    echo('</button>');
-                } else {
                     echo('<a href=\"Deconnecter.php\"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
                     echo('</button>');
-                }
             } else {
                 echo('<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                 echo "Visiteur ";                   //Utilisateur qui n'a pas conncté

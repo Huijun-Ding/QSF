@@ -66,7 +66,7 @@
           <div class="container">
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <h1>LES PROJETS ASSOCIATIFS </h1>         
+              <h1>LES PROJETS</h1>         
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
             </div>
             <hr>

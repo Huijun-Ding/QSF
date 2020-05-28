@@ -21,15 +21,16 @@
           <?php
             require_once('Fonctions.php');
           ?>
-             
           
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-          <!--  <a class="dropdown-item" href="#">Mes demandes</a>
-            <a class="dropdown-item" href="#">Mes offres</a>  -->
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
-          </div>
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="MonProfil.php">Mon profil</a>
+                <a class="dropdown-item" href="MesCategories.php">Mes catégories</a>
+            </div>
         </div>
 
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,8 +85,8 @@
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form> 
               <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
-            </div>
-            <div id="Cartes" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
+            </div> 
+                <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
             		require_once('Fonctions.php');
                         $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC Limit 5";
@@ -106,14 +107,13 @@
                             echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
                             echo ('<a href="BesoinX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
                             echo ('</div>');  
-                            echo ('</div>');         
+                            echo ('</div>');   
                             }
                         } else {
                           echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
                         } 
-           	 ?>
-            </div>
-              
+           	?>
+                </div>
             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -246,7 +246,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="projets">
 
-            <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet associatif</a></h1><br>
+            <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
               <form class="form-inline my-2 my-lg-0" class="recherche">
