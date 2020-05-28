@@ -78,17 +78,17 @@
           <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-
               <form method="GET" class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search"  name="motB" placeholder="Fitness/Excel/..." aria-label="Search">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form> 
               <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
             </div>
-            <div id="Cartes" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
+            
+            <div id="cartes" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC Limit 5";
+                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
@@ -113,7 +113,7 @@
                         } 
            	 ?>
             </div>
-              
+            <!--  
             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -127,6 +127,57 @@
                 </li>
               </ul>
             </nav>
+            -->
+            <div id="page_navigation"> </div>
+            
+            <script src="jquery.js"></script>
+                <script>
+
+                    var show_per_page = 5;
+                    var current_page = 0;
+
+                    function set_display(first, last) {
+                        $('#cartes').children().css('display', 'none');
+                        $('#cartes').children().slice(first, last).css('display', 'block');
+                    }
+
+                    function previous(){
+                        if($('.active').prev('.page_link').length) go_to_page(current_page - 1);
+                    }
+
+                    function next(){
+                        if($('.active').next('.page_link').length) go_to_page(current_page + 1);
+                    }
+
+                    function go_to_page(page_num){
+                        current_page = page_num;
+                        start_from = current_page * show_per_page;
+                        end_on = start_from + show_per_page;
+                        set_display(start_from, end_on);
+                        $('.active').removeClass('active');
+                        $('#id' + page_num).addClass('active');
+                    }
+
+                    $(document).ready(function() {
+
+                        var number_of_pages = Math.ceil($('#cartes').children().length / show_per_page);
+                        var nav = '<ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous();">&laquo;</a>';
+
+                        var i = -1;
+                        while(number_of_pages > ++i){
+                            nav += '<li class="page-item'
+                            if(!i) nav += ' active';
+                            nav += '" id="id' + i +'">';
+                            nav += '<a class="page-link" href="javascript:go_to_page(' + i +')">'+ (i + 1) +'</a>';
+                        }
+                        nav += '<li class="page-item"><a class="page-link" href="javascript:next();">&raquo;</a></ul>';
+
+                        $('#page_navigation').html(nav);
+                        set_display(0, show_per_page);
+
+                    });
+
+                </script>
           </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="talents">
