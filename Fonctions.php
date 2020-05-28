@@ -47,7 +47,7 @@
                     echo('</button>');
             } else {
                 echo('<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                echo "Visiteur ";                   //Utilisateur qui n'a pas conncté
+                echo "Visiteur";                   //Utilisateur qui n'a pas conncté
                 echo('</button>');
             }
          

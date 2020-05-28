@@ -88,13 +88,13 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputAddress">Email (Pro/Perso)</label>
+				<label for="inputAddress">Email (Perso)</label>
 				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
 			  </div>
                         
 			  <div class="form-group">
 				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" id="gridCheck">
+                                  <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
 					Je m'engage à respecter la charte.
 				  </label>
@@ -108,7 +108,7 @@
 				</div>                       
 				<div class="form-group col-md-6">
 				  <label for="inputPassword4">Confirmation de Mot de Passe </label>
-				  <input type="password" class="form-control" name="password" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
+				  <input type="password" class="form-control" name="passwordcf" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
 				</div>
 			  </div>
 			  <div class="form-group">
