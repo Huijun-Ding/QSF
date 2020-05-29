@@ -7,11 +7,12 @@
 ​
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​
+​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Quai des savoir-faire</title>
 
+    <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <script src="jquery.js"></script>
   </head>
   <body>
         <nav class="navbar sticky-top navbar-dark bg-dark">
@@ -22,7 +23,6 @@
             require_once('Fonctions.php');
           ?>
              
-          
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
@@ -65,6 +65,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
+			
             <h1 class="display-4">Bienvenue au Quai des savoir-faire !</h1>
             <p class="lead">Quai des savoir-faire est une plateforme qui permet de partager les compétences entre collaborateurs.</p>
             <hr class="my-4">
@@ -72,9 +73,9 @@
             <p class="lead">
                 <a href="https://notmoebius.github.io/quaidessavoirfaire/" target="_blank"><button type="button" class="btn btn-outline-dark">En savoir plus</button></a>
             </p>
-          </div>
+            </div>
         </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
+            <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -113,73 +114,60 @@
                         } 
            	 ?>
             </div>
-            <!--  
-            <nav aria-label="Page navigation example" class="page">
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Suivant</a>
-                </li>
-              </ul>
-            </nav>
-            -->
+           
             <div id="page_navigation"> </div>
-            
-            <script src="jquery.js"></script>
-                <script>
+         </div>
+           
+            <script>
 
-                    var show_per_page = 5;
-                    var current_page = 0;
+                var show_per_page = 5;
+                var current_page = 0;
 
-                    function set_display(first, last) {
-                        $('#cartes').children().css('display', 'none');
-                        $('#cartes').children().slice(first, last).css('display', 'block');
+                function set_display(first, last) {
+                    $('#cartes').children().css('display', 'none');
+                    $('#cartes').children().slice(first, last).css('display', 'block');
+                    
+                }
+
+                function previous(){
+                    if($('.active').prev('.page_link').length) go_to_page(current_page - 1);
+                }
+
+                function next(){
+                    if($('.active').next('.page_link').length) go_to_page(current_page + 1);
+                }
+
+                function go_to_page(page_num){
+                    current_page = page_num;
+                    start_from = current_page * show_per_page;
+                    end_on = start_from + show_per_page;
+                    set_display(start_from, end_on);
+                    $('.active').removeClass('active');
+                    $('#id' + page_num).addClass('active');
+                }
+
+                $(document).ready(function() {
+
+                    var number_of_pages = Math.ceil($('#cartes').children().length / show_per_page);
+
+                    var nav = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous();">Précédent</a>';
+
+                    var i = -1;
+                    while(number_of_pages > ++i){
+                        nav += '<li class="page_link'
+                        if(!i) nav += ' active';
+                        nav += '" id="id' + i +'">';
+                        nav += '<a class="page-link" href="javascript:go_to_page(' + i +')">'+ (i + 1) +'</a>';
                     }
+                    nav += '<li class="page-item"><a class="page-link" href="javascript:next();">Suivant</a></ul></nav>';
 
-                    function previous(){
-                        if($('.active').prev('.page_link').length) go_to_page(current_page - 1);
-                    }
+                    $('#page_navigation').html(nav);
+                    set_display(0, show_per_page);
 
-                    function next(){
-                        if($('.active').next('.page_link').length) go_to_page(current_page + 1);
-                    }
+                });
 
-                    function go_to_page(page_num){
-                        current_page = page_num;
-                        start_from = current_page * show_per_page;
-                        end_on = start_from + show_per_page;
-                        set_display(start_from, end_on);
-                        $('.active').removeClass('active');
-                        $('#id' + page_num).addClass('active');
-                    }
-
-                    $(document).ready(function() {
-
-                        var number_of_pages = Math.ceil($('#cartes').children().length / show_per_page);
-                        var nav = '<ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous();">&laquo;</a>';
-
-                        var i = -1;
-                        while(number_of_pages > ++i){
-                            nav += '<li class="page-item'
-                            if(!i) nav += ' active';
-                            nav += '" id="id' + i +'">';
-                            nav += '<a class="page-link" href="javascript:go_to_page(' + i +')">'+ (i + 1) +'</a>';
-                        }
-                        nav += '<li class="page-item"><a class="page-link" href="javascript:next();">&raquo;</a></ul>';
-
-                        $('#page_navigation').html(nav);
-                        set_display(0, show_per_page);
-
-                    });
-
-                </script>
-          </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
+            </script>
+            <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="talents">
               <h1 id="titre2"><a href="Talent.php" class="badge badge-light">Talents</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -191,7 +179,7 @@
               <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>
             </div>
 
-            <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+            <div id="cartest" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
             		require_once('Fonctions.php');
                         $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC limit 5";
@@ -218,7 +206,6 @@
                         }  
             	?>
             </div>            
-
             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -232,8 +219,9 @@
                 </li>
               </ul>
             </nav>
-
+           
           </div>
+           
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
      <!--    <div class="container" id="cours">
             <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
@@ -412,16 +400,18 @@
               </div>
             </div>
 ------------------------------------------------------------------------------------------------------------------------------------------->
-            <hr/>
-            <footer>
-              <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-            </footer>
+           <hr/>
+            
+                
+        <footer>
+          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+        </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
   </body>
 </html>
 

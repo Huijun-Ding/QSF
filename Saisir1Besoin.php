@@ -14,7 +14,7 @@ mysqli_stmt_bind_param($stmt, 'sssissi', $Titre, $Description, $DateButoire, $Sa
 
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre besoin a bien été enregistré";
-        header("Location: BesoinX.php");
+        header("Location: Besoin.php");
 } else {
         echo "Erreur: Votre besoin n'a pas été enregistré";
 }
