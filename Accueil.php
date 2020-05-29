@@ -65,14 +65,16 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-			
             <h1 class="display-4">Bienvenue au Quai des savoir-faire !</h1>
             <p class="lead">Quai des savoir-faire est une plateforme qui permet de partager les compétences entre collaborateurs.</p>
             <hr class="my-4">
             <p>Partageons nos talents, la solitarité c'est aussi entre nous.</p>
-            <p class="lead">
-                <a href="https://notmoebius.github.io/quaidessavoirfaire/" target="_blank"><button type="button" class="btn btn-outline-dark">En savoir plus</button></a>
-            </p>
+             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">  
+                <p class="lead">
+                    <a href="https://notmoebius.github.io/quaidessavoirfaire/" target="_blank"><button type="button" class="btn btn-outline-dark">En savoir plus</button></a>
+                </p>
+                <a href="https://eva.beta.gouv.fr/"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>
+             </div>
             </div>
         </div>
             <!--------------------------------------------------------------------------------------------------------------------------------------------->
@@ -206,7 +208,7 @@
                         }  
             	?>
             </div>            
-            <nav aria-label="Page navigation example" class="page">
+             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                   <a class="page-link" href="#" tabindex="-1">Précédent</a>
@@ -219,6 +221,8 @@
                 </li>
               </ul>
             </nav>
+          
+           
            
           </div>
            
@@ -283,7 +287,7 @@
 
           </div>  -->
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-          <div class="container" id="projets">
+        <!--  <div class="container" id="projets">
 
             <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet associatif</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -295,7 +299,7 @@
             </div>
            
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
-            <?php
+            <?php /*
             require_once('Fonctions.php');
 
             $query = "select p.TitreP, c.PhotoC from projet p, categories c where p.CodeC = c.CodeC order by CodeP DESC limit 5";
@@ -305,6 +309,7 @@
                 die("ereur requête : ". mysqli_error($session) );
             }
             while ($ligne = mysqli_fetch_array($result)) {                        /* Afficher les 5 talents les plus récents */
+            /*
                 echo ('<div class="card" style="width: 12rem;">');
                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                 echo ('<div class="card-body card text-center">');
@@ -312,7 +317,7 @@
                 echo ('<a href="" class="btn btn-outline-dark">Je participe</a>'); 
                 echo ('</div>');  
                 echo ('</div>');               
-            }                
+            }                */
             ?>
             </div>
               
@@ -330,7 +335,7 @@
               </ul>
             </nav>
 
-            </div> 
+            </div>  ---->
 <!--------------------------------------------------------------------------------------------------------------------------------------------
             <div class="container">
               <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
