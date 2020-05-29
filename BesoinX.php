@@ -75,21 +75,21 @@
             <div class="container">
                <?php
                  require_once('Fonctions.php');
-               
-                $query = "select b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC limit 1";
+                $T = $_GET['t'];
+                $query = "select b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
                 $result = mysqli_query ($session, $query);
-
+                
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
-                    echo ('<h1>'.$ligne["TitreB"]. '<div class="spinner-border text-danger" role="status">
-                                   <span class="sr-only">Loading...</span></div></h1>');
+                    echo ('<h1>'.$ligne["TitreB"]. '</h1>');
                     echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
                     echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');                    
                 }
+                
                  ?>
               
                 <hr>

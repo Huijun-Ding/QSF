@@ -24,7 +24,7 @@ $checkbox9 = $_POST['inlineCheckbox9'];
 $checkbox10 = $_POST['inlineCheckbox10'];
 
 if (isset($_POST['inlineCheckbox1'])) {
-    $stmt1 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // Puis les insérer dans le table  abonner
+    $stmt1 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
     mysqli_stmt_bind_param($stmt1, 'ii', $usercode, $checkbox1);
     mysqli_stmt_execute($stmt1); 
 }

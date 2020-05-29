@@ -75,16 +75,15 @@
             <div class="container">
                <?php
                 require_once('Fonctions.php');
-              
-                $query = "select t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC limit 1";
+                $T = $_GET['t'];
+                $query = "select t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détaille de chaque talent */
-                    echo ('<h1>'.$ligne["TitreT"]. '<div class="spinner-border text-danger" role="status">
-                                   <span class="sr-only">Loading...</span></div></h1><br>');
+                    echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
                     //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');                    
