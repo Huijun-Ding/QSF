@@ -21,13 +21,22 @@
           <?php
             require_once('Fonctions.php');
           ?>
-             
+          
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-          <!--  <a class="dropdown-item" href="#">Mes demandes</a>
-            <a class="dropdown-item" href="#">Mes offres</a>  -->
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('</div>');
+            }
+            ?>
           </div>
         </div>
 
@@ -66,7 +75,7 @@
           <div class="container">
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <h1>LES PROJETS ASSOCIATIFS </h1>         
+              <h1>LES PROJETS</h1>         
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
             </div>
             <hr>

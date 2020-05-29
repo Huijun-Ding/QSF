@@ -21,13 +21,22 @@
           <?php
             require_once('Fonctions.php');
           ?>
-             
+          
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-          <!--  <a class="dropdown-item" href="#">Mes demandes</a>
-            <a class="dropdown-item" href="#">Mes offres</a>  -->
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('</div>');
+            }
+            ?>
           </div>
         </div>
 
@@ -86,7 +95,7 @@
             </form> 
             </div>
             <div class="col-10">
-              <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+              <ul class="list-inline">
               <?php
               require_once('Fonctions.php');
               if (isset($_POST['categorie'])) {
@@ -98,18 +107,18 @@
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique */
-                    echo ('<div class="card" style="width: 12rem;">');
+                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                     echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                     echo ('<div class="card-body card text-center">');
                     echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
                     echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
                     echo ('<a href="BesoinX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
                     echo ('</div>');  
-                    echo ('</div>');               
+                    echo ('</div></li>');               
                 } 
               }
               ?>            
-              </div>
+              </ul>
             </div>
             </div>
           </div>

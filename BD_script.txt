@@ -106,7 +106,6 @@ CREATE TABLE `Utilisateurs` (
   `PrenomU` text(150) NOT NULL,
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
-  `Anonyme` Boolean,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 --
@@ -114,9 +113,9 @@ CREATE TABLE `Utilisateurs` (
 --
 
 LOCK TABLES `Utilisateurs` WRITE;
-INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','123456', false);
-INSERT INTO `Utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','123456', true);
-INSERT INTO `Utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','123456', false);
+INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','123456');
+INSERT INTO `Utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','123456');
+INSERT INTO `Utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','123456');
 UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
