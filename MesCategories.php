@@ -94,7 +94,7 @@
  
             <form  action="ReabonnerCategories.php" method="post">			  
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox1" value="1">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="1">
               <label class="form-check-label" for="inlineCheckbox1">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -118,7 +118,7 @@
             </div>                                                      
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox2" value="2">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="2">
               <label class="form-check-label" for="inlineCheckbox2">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -142,7 +142,7 @@
             </div>                              
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox3" value="3">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="3">
               <label class="form-check-label" for="inlineCheckbox3">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -166,7 +166,7 @@
             </div>                               
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox4" value="4">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="4">
               <label class="form-check-label" for="inlineCheckbox4">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -190,7 +190,7 @@
             </div> 
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="inlineCheckbox5" value="5">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="5">
               <label class="form-check-label" for="inlineCheckbox5">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -214,7 +214,7 @@
             </div>                             
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="inlineCheckbox6" value="6">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="6">
               <label class="form-check-label" for="inlineCheckbox6">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -238,7 +238,7 @@
             </div>                                    
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option1" name="7">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" value="inlineCheckbox" name="7">
               <label class="form-check-label" for="inlineCheckbox7">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -262,7 +262,7 @@
             </div>  
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="inlineCheckbox8" value="8">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="8">
               <label class="form-check-label" for="inlineCheckbox8">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -286,7 +286,7 @@
             </div>    
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="inlineCheckbox9" value="9">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="9">
               <label class="form-check-label" for="inlineCheckbox9">
                 <div class="card" style="width: 11rem;">
                     <?php
@@ -310,7 +310,7 @@
             </div>   
 
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox10" name="inlineCheckbox10" value="10">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox" name="inlineCheckbox" value="10">
               <label class="form-check-label" for="inlineCheckbox10">
                 <div class="card" style="width: 11rem;">
                     <?php
