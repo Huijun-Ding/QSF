@@ -112,7 +112,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-                              <button type="submit" class="btn btn-dark">S'inscrir</button>
+                              <button type="submit" class="btn btn-dark">S'inscrire</button>
 			  </div>
             </form>
 

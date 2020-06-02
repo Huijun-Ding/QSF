@@ -77,17 +77,21 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = 1 ";
-            $result = mysqli_query ($session, $query);
+            $usercode = 1;
 
-            if ($result == false) {
-                die("ereur requête : ". mysqli_error($session) );
-            }
-            while ($info = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
+            $query = mysqli_prepare($session, "select NomU, PrenomU, Email from utilisateurs where CodeU = ? ");
+            mysqli_stmt_bind_param($query, 'i', $usercode);
+           
+
+            if (mysqli_stmt_execute($query) == false) {
+                  die("ereur requête : ". mysqli_error($session) );
+            } else {
+                 while ($info = mysqli_fetch_array(mysqli_stmt_execute($query))) {                      /* Afficher l'image de chaque categorie */
                 echo ('<p>Nom : '.$info["NomU"].'</p>');          
                 echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                 echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-            }   
+            }
+            }
             ?>
             
             <hr>
