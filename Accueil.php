@@ -247,7 +247,6 @@
                     <button type="button" class="btn btn-outline-dark">Recherche</button>
               </form>
             </div>
-
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
               <div class="card" style="width: 12rem;">
                 <img src="https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2015/03/Logiciel-pour-la-gestion-de-projet.png" class="card-img-top" alt="...">
@@ -282,7 +281,6 @@
                 </div>
               </div>
             </div>
-
             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -296,11 +294,9 @@
                 </li>
               </ul>
             </nav>
-
           </div>  -->
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <!--  <div class="container" id="projets">
-
             <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
@@ -313,10 +309,8 @@
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php /*
             require_once('Fonctions.php');
-
             $query = "select p.TitreP, c.PhotoC from projet p, categories c where p.CodeC = c.CodeC order by CodeP DESC limit 5";
             $result = mysqli_query ($session, $query);
-
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
@@ -356,7 +350,6 @@
                   <button type="button" class="btn btn-outline-dark">Recherche</button>
                 </form>
               </div>
-
             	<div id="accordion">
               <div class="card">
                 <div class="card-header" id="headingOne">
@@ -366,7 +359,6 @@
                     </button>
                   </h5>
                 </div>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
                     Date : 23/02/2020 <br><br>
@@ -428,4 +420,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
   </body>
 </html>
-
