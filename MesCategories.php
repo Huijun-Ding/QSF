@@ -72,7 +72,7 @@
         <div class="jumbotron">
           <div class="container">
             <hr>
-            <h1>Mes catégories abonnées</h1>
+            <h1>Mes Abonnements</h1>   
             <hr>
             <?php
             require_once('Fonctions.php');
@@ -89,7 +89,7 @@
             ?>
             
             <hr>
-            <h1> Réabonner des catégories </h1>
+            <h1> Abonnements Disponibles </h1>  <!--Tous les catégories qui restent-->
             <hr>
  
             <form  action="ReabonnerCategories.php" method="post">			  

@@ -235,7 +235,7 @@
                     set_display(0, show_per_page);
 
                     var i = -1;
-                    while(number_of_pages2 > ++i){
+//                    while(number_of_pages2 > ++i){
                         nav2 += '<li class="page_link'
                         if(!i) nav2 += ' active';
                         nav2 += '" id="sid' + i +'">';

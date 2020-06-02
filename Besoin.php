@@ -101,14 +101,16 @@
 
 			    if (mysqli_num_rows($result)>0) {
 				while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-				echo ('<div class="card" style="width: 12rem;">');
-				echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-				echo ('<div class="card-body card text-center">');
-				echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-				echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-				echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-				echo ('</div>');  
-				echo ('</div>');         
+                                     if ($ligne["DateButoireB"]<date("yy/m/d")) {
+                                            echo ('<div class="card" style="width: 12rem;">');
+                                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                            echo ('<div class="card-body card text-center">');
+                                            echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
+                                            echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                                            echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                                            echo ('</div>');  
+                                            echo ('</div>');   
+                                }                 
 				}
 			    } else {
 			      echo('<h5> Aucun résultat pour : '.$mot.'</h5>');

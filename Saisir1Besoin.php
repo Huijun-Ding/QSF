@@ -16,7 +16,8 @@ if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre besoin a bien été enregistré";
         header("Location: Besoin.php");
 } else {
-        echo "Erreur: Votre besoin n'a pas été enregistré";
+        echo ("<h5> Erreur: Votre besoin n'a pas été enregistré, veuillez vérifier votre saisie ! </h5>");
+        header("Location: Creer1Besoin.php");
 }
 //ajouter codeb et codeu
 

@@ -27,7 +27,7 @@
         // 2. Fonction vérification l'existnce d'email
         
             
-            function is_unique_login($session,$Email){
+            function is_unique_login($session, $Email){
                 $stmt = mysqli_prepare($session, "SELECT Email from utilisateurs where Email = ?");
                 mysqli_stmt_bind_param($stmt, "s", $Email);
                 mysqli_stmt_execute($stmt);
@@ -50,5 +50,8 @@
                 echo "Visiteur";                   //Utilisateur qui n'a pas conncté
                 echo('</button>');
             }
-         
+            
+         // 4. Désactiver cartes
+            
+          
 ?>
