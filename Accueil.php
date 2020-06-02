@@ -26,12 +26,20 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-          <!--  <a class="dropdown-item" href="#">Mes demandes</a>
-            <a class="dropdown-item" href="#">Mes offres</a>  -->
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('</div>');
+            }
+            ?>
           </div>
         </div>
-
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
 	      </button>
@@ -87,7 +95,7 @@
               </form> 
               <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
             </div>
-            
+   
             <div id="cartes" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
@@ -109,7 +117,7 @@
                             echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
                             echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                             echo ('</div>');  
-                            echo ('</div>');         
+                            echo ('</div>');   
                             }
                         } else {
                           echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
@@ -243,6 +251,7 @@
             </script>
             
            
+
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
      <!--    <div class="container" id="cours">
             <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
@@ -306,7 +315,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <!--  <div class="container" id="projets">
 
-            <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet associatif</a></h1><br>
+            <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
               <form class="form-inline my-2 my-lg-0" class="recherche">
@@ -351,7 +360,6 @@
                 </li>
               </ul>
             </nav>
-
             </div>  ---->
 <!--------------------------------------------------------------------------------------------------------------------------------------------
             <div class="container">
@@ -422,9 +430,7 @@
               </div>
             </div>
 ------------------------------------------------------------------------------------------------------------------------------------------->
-           <hr/>
-            
-                
+        <hr/>    
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

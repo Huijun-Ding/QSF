@@ -1,16 +1,11 @@
 <?php 
 require_once('Fonctions.php');
-/*session_start();
-$useremail = $_SESSION['email'];
-
-if (isset($useremail)){                    //récupérer la CodeU de la session actuelle
-    $sql = "select CodeU from utilisateurs WHERE Email = '"."$useremail"."'";
-    $usercode = mysqli_query($session, $sql);
-    return $usercode;
-    echo $sql;
-}*/
 
 $usercode = 1;
+
+$query = mysqli_prepare($session, "DELETE FROM `abonner` WHERE `CodeU` = ? ");
+mysqli_stmt_bind_param($query, 'i', $usercode);
+mysqli_stmt_execute($query);
 
 $checkbox1 = $_POST['inlineCheckbox1'];            //récupérer les codes catégories sélectionnés
 $checkbox2 = $_POST['inlineCheckbox2'];
@@ -83,5 +78,5 @@ if (isset($_POST['inlineCheckbox10'])) {
     mysqli_stmt_execute($stmt10); 
 }
 
-header("Location: Accueil.php");
+header("Location: MesCategories.php");
 ?>

@@ -21,13 +21,22 @@
           <?php
             require_once('Fonctions.php');
           ?>
-             
+          
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-          <!--  <a class="dropdown-item" href="#">Mes demandes</a>
-            <a class="dropdown-item" href="#">Mes offres</a>  -->
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('</div>');
+            }
+            ?>
           </div>
         </div>
 
@@ -79,26 +88,19 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputAddress">Email (Pro/Perso)</label>
+				<label for="inputAddress">Email (Perso)</label>
 				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
 			  </div>
                         
 			  <div class="form-group">
 				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" id="gridCheck" checked>
+                                  <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
 					Je m'engage à respecter la charte.
 				  </label>
 				</div>
 			  </div>
-			  <div class="form-group">
-				<div class="form-check">
-				  <input class="form-check-input" type="checkbox" name="anonyme" id="gridCheck" >
-				  <label class="form-check-label" for="gridCheck">
-					Apparaître anonymement.
-				  </label>
-				</div>
-			  </div>
+                            
 			  <div class="form-row">
 				<div class="form-group col-md-6">
 				  <label for="inputPassword1">Mot de Passe</label>
@@ -106,7 +108,7 @@
 				</div>                       
 				<div class="form-group col-md-6">
 				  <label for="inputPassword4">Confirmation de Mot de Passe </label>
-				  <input type="password" class="form-control" name="password" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
+				  <input type="password" class="form-control" name="passwordcf" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
 				</div>
 			  </div>
 			  <div class="form-group">
