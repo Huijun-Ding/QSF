@@ -1,17 +1,6 @@
 <?php 
 require_once('Fonctions.php');
-/*session_start();
-$useremail = $_SESSION['email'];
-
-if (isset($useremail)){                    //récupérer la CodeU de la session actuelle
-    $sql = "select CodeU from utilisateurs WHERE Email = '"."$useremail"."'";
-    $usercode = mysqli_query($session, $sql);
-    return $usercode;
-    echo $sql;
-}*/
-
-$usercode = 1;
-
+       
 $checkbox1 = $_POST['inlineCheckbox1'];            //récupérer les codes catégories sélectionnés
 $checkbox2 = $_POST['inlineCheckbox2'];
 $checkbox3 = $_POST['inlineCheckbox3'];

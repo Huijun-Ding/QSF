@@ -1,8 +1,6 @@
 <?php 
 require_once('Fonctions.php');
 
-$usercode = 1;
-
 $query = mysqli_prepare($session, "DELETE FROM `abonner` WHERE `CodeU` = ? ");
 mysqli_stmt_bind_param($query, 'i', $usercode);
 mysqli_stmt_execute($query);

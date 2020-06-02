@@ -71,13 +71,13 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-            <hr>
+            
             <h1>Mes catégories abonnées</h1>
             <hr>
             <?php
             require_once('Fonctions.php');
-
-            $query = " select c.NomC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = 1 ";
+            
+            $query = " select c.NomC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
@@ -87,8 +87,7 @@
                 echo ('<p>'.$c["NomC"].'</p>');                        
             }   
             ?>
-            
-            <hr>
+
             <h1> Réabonner des catégories </h1>
             <hr>
  

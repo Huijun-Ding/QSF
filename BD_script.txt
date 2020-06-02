@@ -15,7 +15,7 @@ CREATE TABLE `Besoins` (
   `TitreB` text(150) NOT NULL,
   `DescriptionB` text(500) NOT NULL,
   `DateButoireB` date NOT NULL,
-  `SatisfisantB` Boolean,
+  `SatisfaisantB` enum('1','2','3','4','5'),
   `DatePublicationB` date,
   `TypeB` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
