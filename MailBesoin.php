@@ -73,55 +73,12 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-			
-            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <h1>LES BESOINS </h1>         
-              <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
-            </div>
-            <hr>
-            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <a href="BesoinC.php"><div class="alert alert-light" role="alert">Filtrer les besoins par catégorie</div></a>
-              <form class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Entrez un mot clé" aria-label="Recherche">
-                    <button type="button" class="btn btn-outline-dark">Recherche</button>
-              </form>
-            </div>
-            
-            <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
-		    <?php
-			    require_once('Fonctions.php');
-			    $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+              <h1>Répondre à un besoin</h1>         
 
-			    if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
-				$mot = htmlspecialchars($_GET['mot']);
-				$query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
-			    }
-
-			    $result = mysqli_query ($session, $query);
-
-                            
-			    if (mysqli_num_rows($result)>0) {
-				while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique en format carte */
-                                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
-                                            echo ('<div class="card" style="width: 12rem;">');
-                                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                                            echo ('<div class="card-body card text-center">');
-                                            echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                                            echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                                            echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                                            echo ('</div>');  
-                                            echo ('</div>');   
-                                }                 
-				}
-			    } else {
-			      echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
-			    }        
-			?>
-            </div>
+                
           </div>
         </div>
-                
-                
+
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

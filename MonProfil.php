@@ -20,12 +20,13 @@
             require_once('Fonctions.php');
           ?>
           
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="Login.php">Se connecter</a>
-            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="Login.php">Se connecter</a>  
+            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>  
+            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>  
+          
             <?php
-            require_once('Fonctions.php');
+            // require_once('Fonctions.php');
             
             if(isset($_SESSION['email'])){
                 echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
@@ -35,8 +36,9 @@
                 echo ('</div>');
             }
             ?>
+           
           </div>
-        </div>
+         </div>
 
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="navbar-toggler-icon"></span>
@@ -71,13 +73,13 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-            <hr>
+           
             <h1>Mes informations personnelles</h1>
             <hr>
             <?php
             require_once('Fonctions.php');
-
-            $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = 1 ";
+            
+            $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
@@ -89,104 +91,121 @@
                 echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
             }   
             ?>
-            
-            <hr>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->           
+           
             <h1> Mes besoins </h1>
             <hr>
             <ul class="list-inline">
             <?php
             require_once('Fonctions.php');
 
-            $query = " select b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = 1 ";
+            $query = " select b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
-            while ($besoin = mysqli_fetch_array($result)) {                    
-                echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
-                echo ('<div class="card-body card text-center">');
-                echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
-                echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
-                echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
+            
+            if (mysqli_num_rows($result)>0) {
+                    while ($besoin = mysqli_fetch_array($result)) {                    
+                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                    echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
+                    echo ('<div class="card-body card text-center">');
+                    echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
+                    echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
+                    echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
 
-                echo ('<form method="POST" action="DesactiverCarte.php">');
-                /* Button trigger modal */
-                echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
-                /* Modal */
-                echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                  echo ('<div class="modal-dialog">');  
-                    echo ('<div class="modal-content">');  
-                      echo ('<div class="modal-header">');  
-                        echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
-                        echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                          echo ('<span aria-hidden="true">&times;</span>');  
-                        echo ('</button>');  
-                      echo ('</div>');  
-                      echo ('<div class="modal-body">');  
-                        echo ('<p>Votre carte a été désactivée</p>');  
-                      echo ('</div>');  
-                      echo ('<div class="modal-footer">');  
-                        echo ('<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
+                    echo ('<form method="POST" action="DesactiverCarte.php">');
+                    /* Button trigger modal */
+                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
+                    /* Modal */
+                    echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
+                      echo ('<div class="modal-dialog">');  
+                        echo ('<div class="modal-content">');  
+                          echo ('<div class="modal-header">');  
+                            echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
+                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
+                              echo ('<span aria-hidden="true">&times;</span>');  
+                            echo ('</button>');  
+                          echo ('</div>');  
+                          echo ('<div class="modal-body">');  
+                            echo ('<p>Votre carte a été désactivée</p>');  
+                          echo ('</div>');  
+                          echo ('<div class="modal-footer">');  
+                            echo ('<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
+                          echo ('</div>');  
+                        echo ('</div>');  
                       echo ('</div>');  
                     echo ('</div>');  
-                  echo ('</div>');  
-                echo ('</div>');  
-                echo ('</form>');   
-                
-                echo ('</div>');  
-                echo ('</div></li>'); 
-            }   
+                    echo ('</form>');   
+
+                    echo ('</div>');  
+                    echo ('</div></li>'); 
+                }   
+            } else {
+                    echo ("Vous n'avez pas encore enregistré un besoin");
+                    echo('<br><br>');
+                    echo ('<a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>');
+            } 
+                        
             ?>
             </ul>
-            <hr>
+           
+<!--------------------------------------------------------------------------------------------------------------------------------------------->           
             <h1> Mes talents </h1>
             <hr>
             <ul class="list-inline">
             <?php
             require_once('Fonctions.php');
 
-            $query = " select t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = 1 ";
+            $query = " select t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
-            while ($talent = mysqli_fetch_array($result)) {                     
-                echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
-                echo ('<div class="card-body card text-center">');
-                echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');
-                
-                echo ('<form method="POST" action="DesactiverCarte.php">');
-                /* Button trigger modal */
-                echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
-                /* Modal */
-                echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                  echo ('<div class="modal-dialog">');  
-                    echo ('<div class="modal-content">');  
-                      echo ('<div class="modal-header">');  
-                        echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
-                        echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                          echo ('<span aria-hidden="true">&times;</span>');  
-                        echo ('</button>');  
-                      echo ('</div>');  
-                      echo ('<div class="modal-body">');  
-                        echo ('<p>Votre carte a été désactivée</p>');  
-                      echo ('</div>');  
-                      echo ('<div class="modal-footer">');  
-                        echo ('<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
+            
+            if (mysqli_num_rows($result)>0) {
+                    while ($talent = mysqli_fetch_array($result)) {                     
+                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                    echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
+                    echo ('<div class="card-body card text-center">');
+                    echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
+                    echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');
+
+                    echo ('<form method="POST" action="DesactiverCarte.php">');
+                    /* Button trigger modal */
+                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
+                    /* Modal */
+                    echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
+                      echo ('<div class="modal-dialog">');  
+                        echo ('<div class="modal-content">');  
+                          echo ('<div class="modal-header">');  
+                            echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
+                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
+                              echo ('<span aria-hidden="true">&times;</span>');  
+                            echo ('</button>');  
+                          echo ('</div>');  
+                          echo ('<div class="modal-body">');  
+                            echo ('<p>Votre carte a été désactivée</p>');  
+                          echo ('</div>');  
+                          echo ('<div class="modal-footer">');  
+                            echo ('<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
+                          echo ('</div>');  
+                        echo ('</div>');  
                       echo ('</div>');  
                     echo ('</div>');  
-                  echo ('</div>');  
-                echo ('</div>');  
-                echo ('</form>');  
-                
-                echo ('</div>');  
-                echo ('</div></li>');                
-            }   
+                    echo ('</form>');  
+
+                    echo ('</div>');  
+                    echo ('</div></li>');                
+                } 
+            } else {
+                    echo ("Vous n'avez pas encore saisi un talent");
+                    echo('<br><br>');
+                    echo ('<a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>');
+            }             
+  
             ?>
             </ul>
           </div>

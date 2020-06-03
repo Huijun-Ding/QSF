@@ -35,9 +35,12 @@
       text-align: center;
     }
 
-    .dropdown, .dropdown-menu {
-      margin-left: 52%;
+    .dropdown, dropdown-menu{    
+       margin-left: 52%;  
+       position: relative;
     }
+
+ 
 
     hr {
       -moz-border-bottom-colors: none;

@@ -81,7 +81,15 @@
                 <p class="lead">
                     <a href="https://notmoebius.github.io/quaidessavoirfaire/" target="_blank"><button type="button" class="btn btn-outline-dark">En savoir plus</button></a>
                 </p>
-                <a href="https://eva.beta.gouv.fr/"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>
+             <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo('<a href="https://eva.beta.gouv.fr/"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>');
+            } else {
+                echo ('<a href="Login.php"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>');
+            }
+            ?>
              </div>
             </div>
         </div>
@@ -96,7 +104,7 @@
               <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
             </div>
    
-            <div id="cartes" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
+            <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
                         $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
@@ -110,25 +118,26 @@
 
                         if (mysqli_num_rows($result)>0) {
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                            echo ('<div class="card" style="width: 12rem;">');
-                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                            echo ('<div class="card-body card text-center">');
-                            echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                            echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                            echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                            echo ('</div>');  
-                            echo ('</div>');   
+                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                                    echo ('<div class="card" style="width: 12rem;">');
+                                    echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                    echo ('<div class="card-body card text-center">');
+                                    echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
+                                    echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                                    echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                                    echo ('</div>');  
+                                    echo ('</div>');   
+                                    } 
                             }
-                        } else {
-                          echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
-                        } 
+                            } else {
+                                echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                            } 
            	 ?>
             </div>
            
             <div id="page_navigation"> </div>
          </div>
            
-
             <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="talents">
               <h1 id="titre2"><a href="Talent.php" class="badge badge-light">Talents</a></h1><br>
@@ -141,7 +150,7 @@
               <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>
             </div>
 
-            <div id="cartest" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+            <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
             		require_once('Fonctions.php');
                         $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC limit 5";
@@ -154,7 +163,7 @@
                         $result = mysqli_query ($session, $query);
 
                         if (mysqli_num_rows($result)>0) {
-                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
+                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique en format carte */
                             echo ('<div class="card" style="width: 12rem;">');
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
@@ -168,20 +177,21 @@
                         }  
             	?>
             </div>            
-             <div id="page_navigation2"> </div>     
-          </div>
+            <div id="page_navigation2"> </div>
+          </div>      
+            
             <script>
 
                 var show_per_page = 5;
                 var current_page = 0;
 
                 function set_display(first, last) {
-                    $('#cartes').children().css('display', 'none');
-                    $('#cartes').children().slice(first, last).css('display', 'block');
+                    $('#cartesB').children().css('display', 'none');
+                    $('#cartesB').children().slice(first, last).css('display', 'block');
                 }
                 function set_display2(first, last) {
-                    $('#cartest').children().css('display', 'none');
-                    $('#cartest').children().slice(first, last).css('display', 'block');
+                    $('#cartesT').children().css('display', 'none');
+                    $('#cartesT').children().slice(first, last).css('display', 'block');
                 }
 
                 function previous(){
@@ -216,12 +226,10 @@
                 }
                 $(document).ready(function() {
 
-                    var number_of_pages = Math.ceil($('#cartes').children().length / show_per_page);
-                    var number_of_pages2 = Math.ceil($('#cartest').children().length / show_per_page);
-                    
+                    var number_of_pages = Math.ceil($('#cartesB').children().length / show_per_page);
+                    var number_of_pages2 = Math.ceil($('#cartesT').children().length / show_per_page);
                     var nav = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous();">Précédent</a>';
                     var nav2 = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous2();">Précédent</a>';
-                    
                     var i = -1;
                     while(number_of_pages > ++i){
                         nav += '<li class="page_link'
@@ -235,7 +243,7 @@
                     set_display(0, show_per_page);
 
                     var i = -1;
-//                    while(number_of_pages2 > ++i){
+                    while(number_of_pages2 > ++i){
                         nav2 += '<li class="page_link'
                         if(!i) nav2 += ' active';
                         nav2 += '" id="sid' + i +'">';
@@ -249,9 +257,6 @@
                 });
 
             </script>
-            
-           
-
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
      <!--    <div class="container" id="cours">
             <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
@@ -261,7 +266,6 @@
                     <button type="button" class="btn btn-outline-dark">Recherche</button>
               </form>
             </div>
-
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
               <div class="card" style="width: 12rem;">
                 <img src="https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2015/03/Logiciel-pour-la-gestion-de-projet.png" class="card-img-top" alt="...">
@@ -296,7 +300,6 @@
                 </div>
               </div>
             </div>
-
             <nav aria-label="Page navigation example" class="page">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
@@ -310,11 +313,9 @@
                 </li>
               </ul>
             </nav>
-
           </div>  -->
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <!--  <div class="container" id="projets">
-
             <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
@@ -327,10 +328,8 @@
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php /*
             require_once('Fonctions.php');
-
             $query = "select p.TitreP, c.PhotoC from projet p, categories c where p.CodeC = c.CodeC order by CodeP DESC limit 5";
             $result = mysqli_query ($session, $query);
-
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
@@ -370,7 +369,6 @@
                   <button type="button" class="btn btn-outline-dark">Recherche</button>
                 </form>
               </div>
-
             	<div id="accordion">
               <div class="card">
                 <div class="card-header" id="headingOne">
@@ -380,7 +378,6 @@
                     </button>
                   </h5>
                 </div>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
                     Date : 23/02/2020 <br><br>
@@ -442,4 +439,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
   </body>
 </html>
-

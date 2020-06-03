@@ -4,7 +4,7 @@
         
         $nomlogin = 'root';                    // Ici, nous connectons avec le serveur local, si vous voulez le tester sur d'autre serveur, vous pouvez changer ces 3 variables
         $nompasswd = '';
-        $nombase = 'cpam';
+        $nombase = 'talentland';
 
         $session = mysqli_connect('localhost', $nomlogin, $nompasswd ); 
 
@@ -49,9 +49,13 @@
                 echo('<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                 echo "Visiteur";                   //Utilisateur qui n'a pas conncté
                 echo('</button>');
+            }       
+            
+        // 4.session actuelle : récuperer le code utilisateur   
+            if (isset($_SESSION['email'])) {
+                $sqlr = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                $result = mysqli_query ($session, $sqlr);
+                if ($code = mysqli_fetch_array($result)) {   
+                    $usercode = $code['CodeU'];
+                }   
             }
-            
-         // 4. Désactiver cartes
-            
-          
-?>

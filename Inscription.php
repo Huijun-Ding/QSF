@@ -96,7 +96,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-					Je m'engage à respecter la charte.
+                                      Je m'engage à respecter <a href="ConditionGeneraleUtilisation.php">la charte. </a>
 				  </label>
 				</div>
 			  </div>
@@ -112,7 +112,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-                              <button type="submit" class="btn btn-dark">S'inscrir</button>
+                              <button type="submit" class="btn btn-dark">S'inscrire</button>
 			  </div>
             </form>
 

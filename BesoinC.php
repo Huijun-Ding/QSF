@@ -106,15 +106,17 @@
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique */
-                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                    echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                    echo ('<div class="card-body card text-center">');
-                    echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                    echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                    echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                    echo ('</div>');  
-                    echo ('</div></li>');               
+                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique */
+                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                        echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                        echo ('<div class="card-body card text-center">');
+                        echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
+                        echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                        echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('</div>');  
+                        echo ('</div></li>');   
+                    }
                 } 
               }
               ?>            

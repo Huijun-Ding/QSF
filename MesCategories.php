@@ -71,25 +71,41 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
+
             <hr>
             <h1>Mes Abonnements</h1>   
+
             <hr>
             <?php
             require_once('Fonctions.php');
-
-            $query = " select c.NomC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = 1 ";
+            
+            $query = " select c.NomC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
-            while ($c = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
+            while ($c = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie 
+                
+                html pour les cases à cocher
+             * <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox2" value="2">
+              <label class="form-check-label" for="inlineCheckbox2">
+             * <div class="card-body">
+             * 
+                 <p class="card-text">Animation</p>
+               </div>
+             * 
+             * 
+           
+                */
+                
                 echo ('<p>'.$c["NomC"].'</p>');                        
             }   
             ?>
             
             <hr>
             <h1> Abonnements Disponibles </h1>  <!--Tous les catégories qui restent-->
+
             <hr>
  
             <form  action="ReabonnerCategories.php" method="post">			  
