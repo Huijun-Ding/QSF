@@ -1,11 +1,12 @@
 <?php 
 require_once('Fonctions.php');
 
-$query = mysqli_prepare($session, "DELETE FROM `abonner` WHERE `CodeU` = ? ");
+/*$query = mysqli_prepare($session, "DELETE FROM `abonner` WHERE `CodeU` = ? ");
 mysqli_stmt_bind_param($query, 'i', $usercode);
 mysqli_stmt_execute($query);
+*/
 
-$checkbox1 = $_POST['inlineCheckbox1'];            //récupérer les codes catégories sélectionnés
+$checkbox1 = $_POST['$ligne["CodeC"]'];            //récupérer les codes catégories sélectionnés
 $checkbox2 = $_POST['inlineCheckbox2'];
 $checkbox3 = $_POST['inlineCheckbox3'];
 $checkbox4 = $_POST['inlineCheckbox4'];
@@ -15,6 +16,13 @@ $checkbox7 = $_POST['inlineCheckbox7'];
 $checkbox8 = $_POST['inlineCheckbox8'];
 $checkbox9 = $_POST['inlineCheckbox9'];
 $checkbox10 = $_POST['inlineCheckbox10'];
+
+$query = mysqli_prepare($session, "DELETE FROM `abonner` WHERE `CodeC` = ? ");
+mysqli_stmt_bind_param($query, 'i', $checkbox);
+mysqli_stmt_execute($query);
+
+
+
 
 if (isset($_POST['inlineCheckbox1'])) {
     $stmt1 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans la table abonner
