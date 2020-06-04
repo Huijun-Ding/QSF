@@ -73,8 +73,22 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-              <h1>Répondre à un besoin</h1>         
-
+              <h1>Rédiger un mail </h1>         
+                <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">De</label>
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Sujet</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Quai des savoir-faire : Répondre à votre besoin">
+                </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Contenue</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Bonjour, "></textarea>
+                  </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
                 
           </div>
         </div>
