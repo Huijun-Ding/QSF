@@ -138,6 +138,10 @@
             <div id="page_navigation"> </div>
          </div>
            
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 16e8859fe5ef5b62b7d5c83615bad9dbc5be4753
             <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="talents">
               <h1 id="titre2"><a href="Talent.php" class="badge badge-light">Talents</a></h1><br>
@@ -162,25 +166,31 @@
 
                         $result = mysqli_query ($session, $query);
 
-                        if (mysqli_num_rows($result)>0) {
-                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique en format carte */
-                            echo ('<div class="card" style="width: 12rem;">');
-                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                            echo ('<div class="card-body card text-center">');
-                            echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                            echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                            echo ('</div>');  
-                            echo ('</div>');             
+                        if (mysqli_num_rows($result)>0) {       
+                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                echo ('<div class="card-body card text-center">');
+                                echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
+                                echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                                echo ('</div>');  
+                                echo ('</div>');             
                             }
                         } else {
                           echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
                         }  
             	?>
             </div>            
+<<<<<<< HEAD
             <div id="page_navigation2"> </div>
           </div>      
             
             <script>
+=======
+             <div id="page_navigation2"> </div>
+          </div>      
+	       <script>
+>>>>>>> 16e8859fe5ef5b62b7d5c83615bad9dbc5be4753
 
                 var show_per_page = 5;
                 var current_page = 0;
