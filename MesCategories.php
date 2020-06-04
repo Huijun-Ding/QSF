@@ -74,7 +74,7 @@
             <hr>
             <center><h1>Mes Abonnements</h1></center>
             <hr>
-            <form  action="DésabonnerCategories.php" method="post">
+            <form  action="DesabonnerCategories.php" method="post">
             <div class="row">
                 <div class="col-10">
                     <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">

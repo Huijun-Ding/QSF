@@ -76,6 +76,9 @@
            
             <h1>Mes informations personnelles</h1>
             <hr>
+            <form method="POST" action="SupprimerCompte.php">
+            <div class="row">
+                <div class="col-8">
             <?php
             require_once('Fonctions.php');
             
@@ -90,7 +93,42 @@
                 echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                 echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
             }   
-            ?>
+            
+                 echo ('</div>');
+                 echo ('<div class="col-4">');     
+                         echo ('<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#Supprimer">Supprimer mon compte</button>');
+                         /* Modal */
+                         echo ('<div class="modal fade" id="Supprimer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');
+                             echo ('<div class="modal-dialog">');
+                               echo ('<div class="modal-content">');
+                                 echo ('<div class="modal-header">');
+                                   echo ('<h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>');
+                                   echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                     echo ('<span aria-hidden="true">&times;</span>');
+                                   echo ('</button>');
+                                 echo ('</div>');
+                                 
+                                 $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
+                                 $result = mysqli_query ($session, $query);
+                                          
+                                   while ($info = mysqli_fetch_array($result)) {    
+                                echo('<div class="modal-body">');
+                                   echo ('<p>Vous êtes sûr de supprimer votre compte ? '.$info["Email"].'</p>');
+                                   echo('<p><input checked class="form-check-input" type="checkbox" id="inlineCheckbox" name="CodeUS" value="'.$info["CodeU"].'"></p>');
+                                echo('</div>');
+                                   }
+                                echo('<div class="modal-footer">');
+                                  echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>');
+                                  echo('<button type="submit" class="btn btn-primary">Oui</button>');
+                                echo('</div>');
+                              echo('</div>');
+                            echo('</div>');
+                          echo('</div>');         
+                                ?>        
+                </div>
+            </div>
+            </form>
+
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            
             <h1> Mes besoins </h1>
