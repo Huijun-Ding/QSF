@@ -146,6 +146,8 @@
             <?php
             require_once('Fonctions.php');
 
+            echo ('<form method="POST" action="Desactiver1Carte.php">');
+            
             $query = " select b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
@@ -162,7 +164,7 @@
                     echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                     echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
 
-                    echo ('<form method="POST" action="DesactiverCarte.php">');
+                    
                     /* Button trigger modal */
                     echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
                     /* Modal */
@@ -176,10 +178,10 @@
                             echo ('</button>');  
                           echo ('</div>');  
                           echo ('<div class="modal-body">');  
-                            echo ('<p>Votre carte a été désactivée</p>');  
+                            echo ('<p>Votre carte a été désactivée <input type="checkbox" checked name="code" value="'.$besoin["CodeB"].'"/></p>');  
                           echo ('</div>');  
                           echo ('<div class="modal-footer">');  
-                            echo ('<button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
+                            echo ('<button type="submit" class="btn btn-primary" data-dismiss="modal">Fermer</button>');  
                           echo ('</div>');  
                         echo ('</div>');  
                       echo ('</div>');  
