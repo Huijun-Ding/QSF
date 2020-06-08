@@ -177,7 +177,6 @@
                         }  
             	?>
             </div>            
-<<<<<<< HEAD
             <div id="page_navigation2"> </div>
           </div>      
             
