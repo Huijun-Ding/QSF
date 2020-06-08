@@ -76,21 +76,29 @@
            
             <h1>Mes informations personnelles</h1>
             <hr>
-            <?php
-            require_once('Fonctions.php');
-            
-            $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
-            $result = mysqli_query ($session, $query);
+            <div class="row">
+                 <div class="col-8">   
+                    <?php
+                    require_once('Fonctions.php');
 
-            if ($result == false) {
-                die("ereur requête : ". mysqli_error($session) );
-            }
-            while ($info = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                echo ('<p>Nom : '.$info["NomU"].'</p>');          
-                echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
-                echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-            }   
-            ?>
+                    $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    while ($info = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
+                        echo ('<p>Nom : '.$info["NomU"].'</p>');          
+                        echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
+                        echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
+                    }   
+                    ?>
+                 </div>
+                <div class="col-4">
+                    
+                </div>
+            </div>
+
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            
             <h1> Mes besoins </h1>
