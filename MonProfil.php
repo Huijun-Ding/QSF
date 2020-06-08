@@ -77,7 +77,7 @@
             <h1>Mes informations personnelles</h1>
             <hr>
             <div class="row">
-                 <div class="col-8">   
+                <div class="col-8">   
                     <?php
                     require_once('Fonctions.php');
 
@@ -87,15 +87,54 @@
                     if ($result == false) {
                         die("ereur requête : ". mysqli_error($session) );
                     }
-                    while ($info = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
+                    while ($info = mysqli_fetch_array($result)) {                     
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
                     }   
                     ?>
-                 </div>
+                </div>
                 <div class="col-4">
+                    <form name="Supprimer" action="Supprimer1Compte.php" method="post">
+                    <?php
+
+                    /*
+                    $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    while ($info = mysqli_fetch_array($result)) {                     
+                        echo ('<p>Nom : '.$info["NomU"].'</p>');          
+                        echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
+                        echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
+                    }   
+                   */
                     
+                    echo('<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
+                    
+                    echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
+                        echo('<div class="modal-dialog" role="document">');
+                          echo('<div class="modal-content">');
+                            echo('<div class="modal-header">');
+                              echo('<h5 class="modal-title">Vérification</h5>');
+                              echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                echo('<span aria-hidden="true">&times;</span>');
+                              echo('</button>');
+                            echo('</div>');
+                            echo('<div class="modal-body">');
+                              echo('<p>Êtes-Vous sûr de supprimer votre compte ? </p>');
+                            echo('</div>');
+                            echo('<div class="modal-footer">');
+                              echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
+                              echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                            echo('</div>');
+                          echo('</div>');
+                        echo('</div>');
+                      echo('</div>');                
+                    ?>         
+                    </form>
                 </div>
             </div>
 
