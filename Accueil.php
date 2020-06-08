@@ -138,10 +138,6 @@
             <div id="page_navigation"> </div>
          </div>
            
-<<<<<<< HEAD
-=======
-    
->>>>>>> 16e8859fe5ef5b62b7d5c83615bad9dbc5be4753
             <!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="talents">
               <h1 id="titre2"><a href="Talent.php" class="badge badge-light">Talents</a></h1><br>
@@ -181,16 +177,10 @@
                         }  
             	?>
             </div>            
-<<<<<<< HEAD
             <div id="page_navigation2"> </div>
           </div>      
             
             <script>
-=======
-             <div id="page_navigation2"> </div>
-          </div>      
-	       <script>
->>>>>>> 16e8859fe5ef5b62b7d5c83615bad9dbc5be4753
 
                 var show_per_page = 5;
                 var current_page = 0;
