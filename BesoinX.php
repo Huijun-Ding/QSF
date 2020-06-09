@@ -87,14 +87,15 @@
                     echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
                     echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
-                    echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');                    
+                    echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');           
+                    echo ('<hr>');
+                    echo ('<a href="MailBesoin.php?t='.$ligne["TitreB"].'"><button type="button" class="btn btn-dark btn-lg">Je peux les aider</button></a>');
+                    echo ('       ');
+                    echo ('<button type="button" class="btn btn-dark btn-lg">J\'ai le même besoin</button>');
                 }
                 
                  ?>
               
-                <hr>
-                <a href="mailto:"><button type="button" class="btn btn-dark btn-lg">Je peux les aider</button></a>
-                <button type="button" class="btn btn-dark btn-lg">J'ai le même besoin</button>
             </div>
         </div>
         <footer>

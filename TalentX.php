@@ -86,12 +86,11 @@
                     echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
                     //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
-                    echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');                    
+                    echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  
+                    echo ('<hr>');
+                    echo ('<a href="MailTalent.php?t='.$ligne["TitreT"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                 }   
-                ?>
-              
-                <hr>
-                <a href="mailto:"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>
+                ?>     
             </div>
         </div>
         <footer>

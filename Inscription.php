@@ -96,11 +96,11 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      Je m'engage à respecter <a href="ConditionGeneraleUtilisation.php">la charte. </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter la charte.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>
-                            
+                          
 			  <div class="form-row">
 				<div class="form-group col-md-6">
 				  <label for="inputPassword1">Mot de Passe</label>

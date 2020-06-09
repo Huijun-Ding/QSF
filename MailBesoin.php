@@ -27,7 +27,6 @@
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
             <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
             <?php
-            require_once('Fonctions.php');
             
             if(isset($_SESSION['email'])){
                 echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
@@ -73,23 +72,37 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-              <h1>Rédiger un mail </h1>         
-                <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">De</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <div class="form-group">
-                  <label for="formGroupExampleInput">Sujet</label>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Quai des savoir-faire : Répondre à votre besoin">
-                </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Contenue</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Bonjour, "></textarea>
+              <h1>Rédiger votre e-mail</h1>      
+              <hr>
+              <form action="" method="POST">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>De</strong></label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION['email']; ?>">
                   </div>
+                </div>
+                 
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php 
+                        $T = $_GET['t'];
+                        echo '[Quai des savoir-faire] Répondre à votre besoin '.$T.''; 
+                        ?>">
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label for="inputEmail4"><strong>Contenue de mail</strong></label><br/>
+                    <textarea rows="13" cols="80" name="contenue" required><?php  
+                        echo 'Bonjour,';
+                        echo '                                                                                                                                                        ';
+                        echo 'Je vous contacte pour répondre à votre besoin ... ';
+                        ?>
+                    </textarea>
+                </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
-                
           </div>
         </div>
 
