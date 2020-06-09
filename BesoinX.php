@@ -89,9 +89,11 @@
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');           
                     echo ('<hr>');
-                    echo ('<a href="MailBesoin.php?t='.$ligne["TitreB"].'"><button type="button" class="btn btn-dark btn-lg">Je peux les aider</button></a>');
-                    echo ('       ');
-                    echo ('<button type="button" class="btn btn-dark btn-lg">J\'ai le même besoin</button>');
+                    if(isset($_SESSION['email'])){
+                       echo ('<a href="MailBesoin.php?t='.$ligne["TitreB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                    } else {
+                       echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                    }   
                 }
                 
                  ?>

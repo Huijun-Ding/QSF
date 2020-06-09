@@ -95,6 +95,7 @@
                 <div class="form-group">
                     <label for="inputEmail4"><strong>Contenue de mail</strong></label><br/>
                     <textarea rows="13" cols="80" name="contenue" required><?php  
+                    echo $_SESSION['email'];
                         echo 'Bonjour,';
                         echo '                                                                                                                                                        ';
                         echo 'Je vous contacte pour vous demander ... ';
