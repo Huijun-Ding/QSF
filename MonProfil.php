@@ -76,8 +76,10 @@
            
             <h1>Mes informations personnelles</h1>
             <hr>
+
             <div class="row">
-                <div class="col-8">   
+                <div class="col-8">
+
                     <?php
                     require_once('Fonctions.php');
 
@@ -98,20 +100,6 @@
                     <form name="Supprimer" action="Supprimer1Compte.php" method="post">
                     <?php
 
-                    /*
-                    $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($info = mysqli_fetch_array($result)) {                     
-                        echo ('<p>Nom : '.$info["NomU"].'</p>');          
-                        echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
-                        echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                    }   
-                   */
-                    
                     echo('<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
                     echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
