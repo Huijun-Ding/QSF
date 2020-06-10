@@ -131,6 +131,8 @@
             <h1> Mes besoins </h1>
             <hr>
          <ul class="list-inline">
+             
+             
                 <form method="POST" action="Desactiver1CarteB.php">
             <?php
             require_once('Fonctions.php');
@@ -141,8 +143,7 @@
             if ($result == false) {
                 die("ereur requête : ". mysqli_error($session) );
             }
-        
-            
+         
             if (mysqli_num_rows($result)>0) {
                     while ($besoin = mysqli_fetch_array($result)) {                     
                     echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
@@ -152,13 +153,14 @@
                     echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                     echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
                     echo ('<input type="checkbox" name="codeB" checked value="'.$besoin["CodeB"].'"/>');
+                    echo $besoin["CodeB"];
      
 
                     
                     /* Button trigger modal */
-                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#exampleModal">Désactiver la carte</button>');
+                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>');
                     /* Modal */
-                    echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
+                    echo ('<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
                       echo ('<div class="modal-dialog">');  
                         echo ('<div class="modal-content">');  
                           echo ('<div class="modal-header">');  
@@ -168,10 +170,10 @@
                             echo ('</button>');  
                           echo ('</div>');  
                           echo ('<div class="modal-body">');  
-                            echo ('<p>Êtes-Vous sûr de supprimer cette carte ?</p>');  
+                            echo ('<p>Êtes-Vous sûr de désactiver cette carte '.$besoin["CodeB"].' ?</p>');  
                           echo ('</div>');  
                           echo ('<div class="modal-footer">');  
-                            echo ('<button type="submit" class="btn btn-primary">Supprimer</button>');  
+                            echo ('<button type="Supprimer" class="btn btn-primary">Désactiver</button>');  
                           echo ('</div>');  
                         echo ('</div>');  
                       echo ('</div>');  
@@ -189,6 +191,7 @@
   
             ?>
                 </form>
+                 
             </ul>
            
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
@@ -218,9 +221,9 @@
 
                    
                     /* Button trigger modal */
-                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#carteT">Désactiver la carte</button>');
+                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#'.$talent["CodeT"].'">Désactiver la carte</button>');
                     /* Modal */
-                    echo ('<div class="modal fade" id="carteT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
+                    echo ('<div class="modal fade" id="'.$talent["CodeT"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
                       echo ('<div class="modal-dialog">');  
                         echo ('<div class="modal-content">');  
                           echo ('<div class="modal-header">');  
@@ -238,7 +241,6 @@
                         echo ('</div>');  
                       echo ('</div>');  
                     echo ('</div>');  
-                   
 
                     echo ('</div>');  
                     echo ('</div></li>');                
