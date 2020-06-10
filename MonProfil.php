@@ -72,7 +72,7 @@
         </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
-          <div class="container">
+          <div class="container" >
            
             <h1>Mes informations personnelles</h1>
             <hr>
@@ -125,15 +125,14 @@
                     </form>
                 </div>
             </div>
-
+            
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            
             <h1> Mes besoins </h1>
             <hr>
-         <ul class="list-inline">
-             
-             
-                <form method="POST" action="Desactiver1CarteB.php">
+        
+             <ul class="list-inline">
+            <form method="POST" action="Desactiver1CarteB.php">
             <?php
             require_once('Fonctions.php');
 
@@ -145,7 +144,8 @@
             }
          
             if (mysqli_num_rows($result)>0) {
-                    while ($besoin = mysqli_fetch_array($result)) {                     
+                 while ($besoin = mysqli_fetch_array($result)) {            
+                   if (strtotime($besoin["DateButoireB"]) >= strtotime(date("yy/m/d")) AND $besoin["VisibiliteB"] = 1) {  
                     echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                     echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                     echo ('<div class="card-body card text-center">');
@@ -154,8 +154,8 @@
                     echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
                     echo ('<input type="checkbox" name="codeB" checked value="'.$besoin["CodeB"].'"/>');
                     echo $besoin["CodeB"];
-     
-
+                      }
+                   
                     
                     /* Button trigger modal */
                     echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>');
@@ -173,7 +173,7 @@
                             echo ('<p>Êtes-Vous sûr de désactiver cette carte '.$besoin["CodeB"].' ?</p>');  
                           echo ('</div>');  
                           echo ('<div class="modal-footer">');  
-                            echo ('<button type="Supprimer" class="btn btn-primary">Désactiver</button>');  
+                            echo ('<button type="submit" class="btn btn-primary">Désactiver</button>');  
                           echo ('</div>');  
                         echo ('</div>');  
                       echo ('</div>');  
@@ -181,7 +181,8 @@
                    
 
                     echo ('</div>');  
-                    echo ('</div></li>');                
+                    echo ('</div></li>');       
+                       
                 } 
             } else {
                     echo ("Vous n'avez pas encore saisi un besoin");
@@ -191,10 +192,11 @@
   
             ?>
                 </form>
-                 
-            </ul>
-           
-<!--------------------------------------------------------------------------------------------------------------------------------------------->           
+                 </ul>
+            
+            
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        
             <h1> Mes talents </h1>
             <hr>
             <ul class="list-inline">
@@ -221,9 +223,9 @@
 
                    
                     /* Button trigger modal */
-                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#'.$talent["CodeT"].'">Désactiver la carte</button>');
+                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#ModalTalent">Désactiver la carte</button>');
                     /* Modal */
-                    echo ('<div class="modal fade" id="'.$talent["CodeT"].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
+                    echo ('<div class="modal fade" id="ModalTalent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
                       echo ('<div class="modal-dialog">');  
                         echo ('<div class="modal-content">');  
                           echo ('<div class="modal-header">');  
@@ -255,7 +257,8 @@
                     </form>
             </ul>
           </div>
-        </div>
+            </div>
+        
   <hr> 
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
