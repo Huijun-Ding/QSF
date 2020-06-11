@@ -3,13 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Supprimer1Compte.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Desactiver1CarteT.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Desactiver1CarteB.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Accueil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailTalent.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/BD_script.txt</file>
+=======
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MonProfil.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Besoin.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Accueil.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/BD_script.txt</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Talent.php</file>
+<<<<<<< HEAD
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Desactiver1CarteB.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Desactiver1CarteT.php</file>
+=======
+>>>>>>> a340c0c79cfd9b219ae8533385c46ff3e06cedab
+>>>>>>> 1e969c86eab7ccde6d2a8d369b210389f03b5e25
         </group>
     </open-files>
 </project-private>
