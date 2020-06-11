@@ -36,7 +36,8 @@ footer {
 }
 
 .dropdown, dropdown-menu{    
-        margin-left: 52%;  
+        margin-left: 5%;
+        margin-right: 5%;
         position: relative;
 }
 
@@ -110,9 +111,10 @@ a.bulle:hover span {
 }
     
 .switch-field {
-	display: flex;
-	margin-bottom: 36px;
-	overflow: hidden;
+        display: flex;
+        overflow: hidden;
+        margin-left: auto;
+        margin-top: .5em;
 }
 
 .switch-field input {

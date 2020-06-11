@@ -11,65 +11,7 @@
 </head>
 
 <body>
-   
-        <nav class="navbar sticky-top navbar-dark bg-dark">
-          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
-
-        <div class="dropdown">
-          <?php
-            require_once('Fonctions.php');
-          ?>
-          
-         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="Login.php">Se connecter</a>  
-            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>  
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>  
-          
-            <?php
-            // require_once('Fonctions.php');
-            
-            if(isset($_SESSION['email'])){
-                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
-                echo ('<div class="dropdown-menu">');
-                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                echo ('</div>');
-            }
-            ?>
-           
-          </div>
-         </div>
-
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	        <ul class="navbar-nav mr-auto">
-	          <li class="nav-item">
-	            <a class="nav-link" href="Besoin.php">Besoins</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="Talent.php">Talents</a>
-	          </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-	          </li>
-	          <!--<li class="nav-item">
-	            <a class="nav-link" href="#">Cours et Forum</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Projet Associatif</a>
-	          </li
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Contacts</a>
-	          </li>-->
-                  <li class="nav-item">
-                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
-	          </li>
-	        </ul>
-	      </div>
-        </nav>
+        <?php require 'BarreNav.php';?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container" >
@@ -134,8 +76,6 @@
              <ul class="list-inline">
             <form method="POST" action="Desactiver1CarteB.php">
             <?php
-            require_once('Fonctions.php');
-
             $query = " select b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 
@@ -202,8 +142,6 @@
             <ul class="list-inline">
                 <form method="POST" action="Desactiver1CarteT.php">
             <?php
-            require_once('Fonctions.php');
-
             $query = " select t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
             $result = mysqli_query ($session, $query);
 

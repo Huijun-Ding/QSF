@@ -15,61 +15,7 @@
     <script src="jquery.js"></script>
   </head>
   <body>
-        <nav class="navbar sticky-top navbar-dark bg-dark">
-          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
-
-        <div class="dropdown">
-          <?php
-            require_once('Fonctions.php');
-          ?>
-             
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="Login.php">Se connecter</a>
-            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
-            <?php
-            require_once('Fonctions.php');
-            
-            if(isset($_SESSION['email'])){
-                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
-                echo ('<div class="dropdown-menu">');
-                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                echo ('</div>');
-            }
-            ?>
-          </div>
-        </div>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	        <ul class="navbar-nav mr-auto">
-	          <li class="nav-item">
-	            <a class="nav-link" href="Besoin.php">Besoins</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="Talent.php">Talents</a>
-	          </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-	          </li>
-	          <!--<li class="nav-item">
-	            <a class="nav-link" href="#">Cours et Forum</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Projet Associatif</a>
-	          </li
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Contacts</a>
-	          </li>-->
-                  <li class="nav-item">
-                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
-	          </li>
-	        </ul>
-	      </div>
-        </nav>
+        <?php require 'BarreNav.php';?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -93,7 +39,7 @@
              </div>
             </div>
         </div>
-            <!--------------------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -152,7 +98,6 @@
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
-            		require_once('Fonctions.php');
                         $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC limit 5";
 
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/

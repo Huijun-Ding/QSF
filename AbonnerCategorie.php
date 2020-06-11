@@ -14,62 +14,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-        <nav class="navbar sticky-top navbar-dark bg-dark">
-          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
-
-        <div class="dropdown">
-          <?php
-            require_once('Fonctions.php');
-          ?>
-          
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="Login.php">Se connecter</a>
-            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
-            <?php
-            require_once('Fonctions.php');
-            
-            if(isset($_SESSION['email'])){
-                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
-                echo ('<div class="dropdown-menu">');
-                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                echo ('</div>');
-            }
-            ?>
-          </div>
-        </div>
-
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="navbar-toggler-icon"></span>
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	        <ul class="navbar-nav mr-auto">
-	          <li class="nav-item">
-	            <a class="nav-link" href="Besoin.php">Besoins</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="Talent.php">Talents</a>
-	          </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-	          </li>
-	          <!--<li class="nav-item">
-	            <a class="nav-link" href="#">Cours et Forum</a>
-	          </li>
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Projet Associatif</a>
-	          </li
-	          <li class="nav-item">
-	            <a class="nav-link" href="#">Contacts</a>
-	          </li>-->
-                  <li class="nav-item">
-                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
-	          </li>
-	        </ul>
-	      </div>
-        </nav>
+        <?php require 'BarreNav.php';?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -107,8 +52,6 @@
               <label class="form-check-label" for="inlineCheckbox2">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 2 ";
                     $result = mysqli_query ($session, $query);
 
@@ -131,8 +74,6 @@
               <label class="form-check-label" for="inlineCheckbox3">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 3 ";
                     $result = mysqli_query ($session, $query);
 
@@ -155,8 +96,6 @@
               <label class="form-check-label" for="inlineCheckbox4">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 4 ";
                     $result = mysqli_query ($session, $query);
 
@@ -179,8 +118,6 @@
               <label class="form-check-label" for="inlineCheckbox5">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 5 ";
                     $result = mysqli_query ($session, $query);
 
@@ -203,8 +140,6 @@
               <label class="form-check-label" for="inlineCheckbox6">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 6 ";
                     $result = mysqli_query ($session, $query);
 
@@ -227,8 +162,6 @@
               <label class="form-check-label" for="inlineCheckbox7">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 7 ";
                     $result = mysqli_query ($session, $query);
 
@@ -251,8 +184,6 @@
               <label class="form-check-label" for="inlineCheckbox8">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 8 ";
                     $result = mysqli_query ($session, $query);
 
@@ -275,8 +206,6 @@
               <label class="form-check-label" for="inlineCheckbox9">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 9 ";
                     $result = mysqli_query ($session, $query);
 
@@ -299,8 +228,6 @@
               <label class="form-check-label" for="inlineCheckbox10">
                 <div class="card" style="width: 11rem;">
                     <?php
-                    require_once('Fonctions.php');
-
                     $query = " select PhotoC from categories where CodeC = 10 ";
                     $result = mysqli_query ($session, $query);
 

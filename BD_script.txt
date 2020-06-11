@@ -20,7 +20,7 @@ CREATE TABLE `besoins` (
   `DatePublicationB` date,
   `TypeB` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
-  `VisibiliteB` tinyint(1) default 1 NOT NULL,
+  `VisibiliteB` tinyint(1) default 1,
   PRIMARY KEY (`CodeB`),
   CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -50,7 +50,7 @@ CREATE TABLE `talents` (
   `DatePublicationT` date,
   `TypeT` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
-  `VisibiliteT` tinyint(1) default 1 NOT NULL,
+  `VisibiliteT` tinyint(1) default 1,
   PRIMARY KEY (`CodeT`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -112,9 +112,18 @@ CREATE TABLE `utilisateurs` (
   `PrenomU` text(150) NOT NULL,
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
-  `Anonyme` tinyint(1) default 1 NOT NULL,
+  `Anonyme` tinyint(1) default 1,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `Utilisateurs`
+--
+
+LOCK TABLES `Utilisateurs` WRITE;
+INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1);
+INSERT INTO `Utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1);
+INSERT INTO `Utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1);
+UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
 --
@@ -210,7 +219,7 @@ CREATE TABLE `projet` (
   `DatePublicationP` date,
   `TypeP` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
-  `VisibiliteP` tinyint(1) default 1 NOT NULL,
+  `VisibiliteP` tinyint(1) default 1,
   PRIMARY KEY (`CodeP`),
   CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -252,10 +261,9 @@ UNLOCK TABLES;
 -- ----------------------------------------------------------------------------------------------
 -- Ajouter des clés étrangères
 -- ----------------------------------------------------------------------------------------------
-
 ALTER TABLE `besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
-
 ALTER TABLE `talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`);
@@ -265,8 +273,6 @@ ALTER TABLE `proposer` ADD FOREIGN KEY (`CodeT`) REFERENCES `talents`(`CodeT`);
 
 ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`); 
 ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
-
-ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
 ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projet`(`CodeP`);
