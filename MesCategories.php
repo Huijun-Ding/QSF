@@ -77,7 +77,7 @@
             <form  action="DesabonnerCategories.php" method="post">
             <div class="row">
                 <div class="col-10">
-                    <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+                    <div id="carteb" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
                   <?php
                     require_once('Fonctions.php');
 
@@ -103,14 +103,13 @@
                             } 
                           ?>      
                     </div>
-            
                 </div>
                 <div class="col-2">
                    <button type="submit" class="btn btn-dark">Désabonner</button> 
                 </div>
                 
             </div>
-               </form>
+            </form>
           </div>
               
             

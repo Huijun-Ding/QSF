@@ -177,9 +177,11 @@
                         }  
             	?>
             </div>            
-             <div id="page_navigation2"> </div>
+
+            <div id="page_navigation2"> </div>
           </div>      
-	       <script>
+            
+            <script>
 
                 var show_per_page = 5;
                 var current_page = 0;

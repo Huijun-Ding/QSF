@@ -21,7 +21,6 @@
           <?php
             require_once('Fonctions.php');
           ?>
-          
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
@@ -93,11 +92,11 @@
                 </div>
                     
                 <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenue de mail</strong></label><br/>
+                    <label for="inputEmail4"><strong>Contenu du message</strong></label><br/>
                     <textarea rows="13" cols="80" name="contenue" required><?php  
                         echo 'Bonjour,';
                         echo '                                                                                                                                                        ';
-                        echo 'Je vous contacte pour répondre à votre besoin ... ';
+                        echo 'Je vous contacte pour répondre à votre besoin '.$T.'. ';
                         ?>
                     </textarea>
                 </div>

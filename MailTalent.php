@@ -93,14 +93,14 @@
                 </div>
                     
                 <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenue de mail</strong></label><br/>
-                    <textarea rows="13" cols="80" name="contenue" required><?php  
-                    echo $_SESSION['email'];
+                    <label for="inputEmail4"><strong>Contenu du message</strong></label><br/>
+                    <?php 
+                    echo '<textarea rows="13" cols="80" name="contenue" required>';  
                         echo 'Bonjour,';
                         echo '                                                                                                                                                        ';
-                        echo 'Je vous contacte pour vous demander ... ';
-                        ?>
-                    </textarea>
+                        echo 'Je vous contacte pour vous demander est-ce que vous avez le temps de partager votre talent '.$T.' ? ';     
+                    echo '</textarea>'; 
+                    ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
