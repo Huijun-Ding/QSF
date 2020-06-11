@@ -150,7 +150,7 @@
                     if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
                         echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
-                        echo ('<input type="checkbox" name="codeB" value="'.$besoin["CodeB"].'"/>');
+                        echo ('<input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/>');
                         echo ('</div>');
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
@@ -172,7 +172,7 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver </button>
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>
                      <!-- Modal -->
                     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
                       <div class="modal-dialog">
@@ -223,7 +223,7 @@
                          if ($talent["VisibiliteT"] == 1) {  
                             echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('<input type="checkbox" name="codeT" value="'.$talent["CodeT"].'"/>');
+                            echo ('<input type="radio" name="codeT" value="'.$talent["CodeT"].'"/>');
                             echo ('</div>');
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
@@ -244,7 +244,7 @@
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver </button>
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver la carte</button>
                      <!-- Modal -->
                     <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
                       <div class="modal-dialog">
