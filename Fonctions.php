@@ -51,7 +51,7 @@
                 echo('</button>');
             }       
             
-        // 4.session actuelle : récuperer le code utilisateur   
+        // 4. Session actuelle : récuperer le code utilisateur   
             if (isset($_SESSION['email'])) {
                 $sqlr = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
                 $result = mysqli_query ($session, $sqlr);
@@ -59,3 +59,14 @@
                     $usercode = $code['CodeU'];
                 }   
             }
+            
+        // 4. Cacher les cartes :
+            /*
+             function cacher_carteB_périmée($session, $CodeB){
+                if (strtotime($besoin["DateButoireB"]) < strtotime(date("yy/m/d"))) {
+                    $stmt = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
+                    mysqli_stmt_bind_param($stmt, "s", $CodeB);
+                    mysqli_stmt_execute($stmt);        
+                }
+             }
+            */
