@@ -1,8 +1,9 @@
 -- MySQL dump 10.13  Distrib 5.7.9, for Win32 (AMD64)
 --
--- Host: 127.0.0.1    Database: Quai des savoir-faire
-
--- Xuan WEI & Huijun DING
+-- Host: 127.0.0.1    Database: QSF
+-- 
+-- Projet : Quai des savoir-faire
+-- 
 -- ------------------------------------------------------------------------------------------------
 --
 -- Table structure for table `besoins`
@@ -19,8 +20,9 @@ CREATE TABLE `besoins` (
   `DatePublicationB` date,
   `TypeB` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
+  `VisibiliteB` tinyint(1) default 1 NOT NULL,
   PRIMARY KEY (`CodeB`),
-  CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
+  CONSTRAINT `date_besoin` check ((`DateButoireB`>=`DatePublicationB`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -28,10 +30,10 @@ CREATE TABLE `besoins` (
 --
 
 LOCK TABLES `besoins` WRITE;
-INSERT INTO `besoins` VALUES (1,'Pro : Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2022-03-25',false, NOW(),'Pro', 7);
-INSERT INTO `besoins` VALUES (2, 'Perso : Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25',false, NOW(), 'Perso', 1);
-INSERT INTO `besoins` VALUES (3, 'Perso : Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25', false, NOW(), 'Perso', 9); 
-INSERT INTO `besoins` VALUES (4, 'Pro : Excel : faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2022-03-25', false, NOW(), 'Perso', 7);
+INSERT INTO `besoins` VALUES (1, 'Pro : Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2020-06-12',false, NOW(),'Pro', 7, 1);
+INSERT INTO `besoins` VALUES (2, 'Perso : Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2020-06-11',false, NOW(), 'Perso', 1, 1);
+INSERT INTO `besoins` VALUES (3, 'Perso : Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', false, NOW(), 'Perso', 9, 1); 
+INSERT INTO `besoins` VALUES (4, 'Pro : Excel : faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2020-06-19', false, NOW(), 'Perso', 7, 1);
 UNLOCK TABLES;
 
 -- -----------------------------------------------------------------------------------------------
@@ -48,18 +50,22 @@ CREATE TABLE `talents` (
   `DatePublicationT` date,
   `TypeT` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
+  `VisibiliteT` tinyint(1) default 1 NOT NULL,
   PRIMARY KEY (`CodeT`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+/* Alter table talents add VisibiliteT tinyint(1) default 1; */
 
 --
 -- Dumping data for table `talents`
 --
 
 LOCK TABLES `talents` WRITE;
-INSERT INTO `talents` VALUES (1,'Pitcher','Je propose un talent de pitcher', NOW(),'Pro', 2);
-INSERT INTO `talents` VALUES (2,'Pro : Animation réunion créative',"Je suis l’expert d’animer la réunion créative", NOW(),'Pro', 2);
-INSERT INTO `talents` VALUES (3,'Perso : généalogie débutant (comment commencer)',"Je propose un cours de généalogie", NOW(),'Perso', 9);
-INSERT INTO `talents` VALUES (4, 'Pro : Excel TCD',"Je peux vous montrer comment faire un TCD sous Excel, contacter moi au cas de besoin", NOW(),'Pro', 7);
+INSERT INTO `talents` VALUES (1,'Pitcher','Je propose un talent de pitcher', NOW(),'Pro', 2, 1);
+INSERT INTO `talents` VALUES (2,'Pro : Animation réunion créative',"Je suis l’expert d’animer la réunion créative", NOW(),'Pro', 2, 1);
+INSERT INTO `talents` VALUES (3,'Perso : généalogie débutant (comment commencer)',"Je propose un cours de généalogie", NOW(),'Perso', 9, 1);
+INSERT INTO `talents` VALUES (4, 'Pro : Excel TCD',"Je peux vous montrer comment faire un TCD sous Excel, contacter moi au cas de besoin", NOW(),'Pro', 7, 1);
 UNLOCK TABLES;
 
 -- ---------------------------------------------------------------------------------------------
@@ -106,17 +112,9 @@ CREATE TABLE `utilisateurs` (
   `PrenomU` text(150) NOT NULL,
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
+  `Anonyme` tinyint(1) default 1 NOT NULL,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
---
--- Dumping data for table `Utilisateurs`
---
-
-LOCK TABLES `utilisateurs` WRITE;
-INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','123456');
-INSERT INTO `utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','123456');
-INSERT INTO `utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','123456');
-UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
 --
@@ -212,19 +210,20 @@ CREATE TABLE `projet` (
   `DatePublicationP` date,
   `TypeP` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
+  `VisibiliteP` tinyint(1) default 1 NOT NULL,
   PRIMARY KEY (`CodeP`),
-  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+  CONSTRAINT `date_projet` check ((`DateButoireP`>=`DatePublicationP`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `projet`
 --
 
-INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('1', 'Perso : Aide d\'organisation de course longue distance', '2 personnes pour faire l\'inventaire', '2020-12-12', '2020-05-25', 'Perso', '1');
-INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('2', 'Pro : Aide pour le projet Resto du coeur chemin du Raisin à Toulouse', "3 personnes pour faire l'inventaire de 9H à 12H", '2022-03-25', NOW(), 'Pro', 5);
-INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('3', 'Perso : Volontairiat pour des personnes handicapées', '4 personnes durée 2 mois', '2022-03-25', NOW(), 'Perso', 5);
-INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('4', "Pro : Aide pour l\'organisation de la conférence', 'Toulouse 2 journées','2022-03-25', NOW(), 'Pro', 5 );
-INSERT INTO `projet` (`CodeP`, `TitreP`, `DescriptionP`, `DateButoireP`, `DatePublicationP`, `TypeP`, `CodeC`) VALUES ('5', 'Perso : Apéro ', 'Vendredi soir à 20H\r\n', '2020-05-29', '2020-05-25', 'Perso', '9');
+INSERT INTO `projet` VALUES ('1', 'Perso : Aide d\'organisation de course longue distance', '2 personnes pour faire l\'inventaire', '2020-06-12', NOW(), 'Perso', '1', 1);
+INSERT INTO `projet` VALUES ('2', 'Pro : Aide pour le projet Resto du coeur chemin du Raisin à Toulouse', "3 personnes pour faire l'inventaire de 9H à 12H", '2020-06-11', NOW(), 'Pro', 5, 1);
+INSERT INTO `projet` VALUES ('3', 'Perso : Volontairiat pour des personnes handicapées', '4 personnes durée 2 mois', '2020-07-12', NOW(), 'Perso', 5, 1);
+INSERT INTO `projet` VALUES ('4', 'Pro : Aide pour l\'organisation de la conférence', 'Toulouse 2 journées','2020-08-12', NOW(), 'Pro', 5, 1 );
+INSERT INTO `projet` VALUES ('5', 'Perso : Apéro ', 'Vendredi soir à 20H\r\n', '2020-06-19', NOW(), 'Perso', '9', 1);
 
 -- --------------------------------------------------------------------------------------------
 --
@@ -236,7 +235,7 @@ DROP TABLE IF EXISTS `participerp`;
 CREATE TABLE `participerp` (
   `CodeU` int(10) NOT NULL,
   `CodeP` int(10) NOT NULL,
-  `RoleP` enum('créateur','participant') NOT NULL,
+  `RoleP` enum('createur','participant') NOT NULL,
   PRIMARY KEY (`CodeU`,`CodeP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
@@ -244,33 +243,33 @@ CREATE TABLE `participerp` (
 --
 
 LOCK TABLES `participerp` WRITE;
-INSERT INTO `participerp` VALUES (1,1);
-INSERT INTO `participerp` VALUES (3,3);
-INSERT INTO `participerp` VALUES (2,2);
-INSERT INTO `participerp` VALUES (2,4);
+INSERT INTO `participerp` VALUES (1,1, 'createur');
+INSERT INTO `participerp` VALUES (3,3, 'createur');
+INSERT INTO `participerp` VALUES (2,2, 'createur');
+INSERT INTO `participerp` VALUES (2,4, 'createur');
 UNLOCK TABLES;
 
 -- ----------------------------------------------------------------------------------------------
 -- Ajouter des clés étrangères
 -- ----------------------------------------------------------------------------------------------
 
-ALTER TABLE `besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
-ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`);
+ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `proposer` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);   
-ALTER TABLE `proposer` ADD FOREIGN KEY (`CodeT`) REFERENCES `talents`(`CodeT`);  
+ALTER TABLE `proposer` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`) ON DELETE CASCADE ON UPDATE CASCADE;   
+ALTER TABLE `proposer` ADD FOREIGN KEY (`CodeT`) REFERENCES `talents`(`CodeT`) ON DELETE CASCADE ON UPDATE CASCADE;  
 
-ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`); 
-ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
--- -----------------------------------------------------------------------------
-ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`) ON DELETE CASCADE ON UPDATE CASCADE; 
+ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
-ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projet`(`CodeP`);
+ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projet`(`CodeP`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------------------------------------------------------------------------
 -- fin de script

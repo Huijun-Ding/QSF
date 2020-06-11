@@ -5,12 +5,12 @@ require_once('Fonctions.php');
     mysqli_stmt_execute($S1);*/
 
 
-    $S1 = mysqli_prepare($session, "DELETE FROM `saisir` WHERE `CodeU` = ? ");
+    $S1 = mysqli_prepare($session, "DELETE FROM saisir s, besoins b WHERE `CodeU` = ? and s.CodeB = b.CodeB");
     mysqli_stmt_bind_param($S1, 'i', $usercode);
     mysqli_stmt_execute($S1);
 
 
-    $S2 = mysqli_prepare($session, "DELETE FROM `proposer` WHERE `CodeU` = ? ");
+    $S2 = mysqli_prepare($session, "DELETE FROM proposer p, talents t WHERE `CodeU` = ? and s.CodeT = b.CodeT");
     mysqli_stmt_bind_param($S2, 'i', $usercode);
     mysqli_stmt_execute($S2);
 
@@ -23,7 +23,7 @@ require_once('Fonctions.php');
     $S4 = mysqli_prepare($session, "DELETE FROM `utilisateurs` WHERE `CodeU` = ? ");
     mysqli_stmt_bind_param($S4, 'i', $usercode);
     mysqli_stmt_execute($S4);
-
+    
 
 session_destroy();
 header("Location: Accueil.php");

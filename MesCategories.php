@@ -88,13 +88,14 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
-                      
+                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */       
                         echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('</div>');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                         echo ('<div class="card-body text-center">');
                         echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
-                        echo ('<input class="form-check-input" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
                         echo ('</div>');
                         echo ('</div>'); 
                     }          
@@ -136,10 +137,12 @@
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
                       
                         echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('</div>');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                         echo ('<div class="card-body text-center">');
                         echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
-                        echo ('<input class="form-check-input" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
                         echo ('</div>');
                         echo ('</div>'); 
                     }          
@@ -148,7 +151,6 @@
                             } 
                           ?>      
                     </div>
- 
                 </div>
                 <div class="col-2">
             <div>           
