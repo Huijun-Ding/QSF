@@ -112,7 +112,7 @@
                 
             <div class="form-group">
                     <label for="inputEmail4">Déscription</label><br/>
-                    <textarea rows="4" cols="50" name="description" required> </textarea>
+                    <textarea rows="4" cols="50" name="description" placeholder="Veuillez préciser votre projet" required></textarea>
             </div>
                 
             <div class="form-group">

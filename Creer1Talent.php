@@ -104,7 +104,7 @@
             </div>
             <div class="form-group">
                     <label for="inputEmail4">Déscription du talent</label><br/>
-                    <textarea rows="4" cols="50" name="descriptionT" required> Veuillez préciser votre besoin</textarea>
+                    <textarea rows="4" cols="50" name="descriptionT" placeholder="Veuillez préciser votre talent" required></textarea>
             </div>
             <div class="form-group">
                     <label for="inputAddress">Type de talent</label>				

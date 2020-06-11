@@ -103,7 +103,7 @@
             </div>
             <div class="form-group">
                     <label for="inputEmail4">Déscription du besoin</label><br/>
-                    <textarea rows="4" cols="50" name="description" required> Veuillez préciser votre besoin</textarea>
+                    <textarea rows="4" cols="50" name="description" placeholder="Veuillez préciser votre besoin" required></textarea>
             </div>
             <div class="form-group">
               <label for="inputEmail4">Date butoire</label>
