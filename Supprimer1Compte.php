@@ -4,12 +4,12 @@ require_once('Fonctions.php');
   /* Rendre l'utilisateur et tous ses cartes, catégories en anonyme */
   /* tous ses cartes */
  
-    $S2 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
-    mysqli_stmt_bind_param($S2, 'i', $CodeB);
-    mysqli_stmt_execute($S2);
+    $S1 = mysqli_prepare($session, "UPDATE besoins INNER JOIN saisir ON besoins.CodeB = saisir.CodeB SET besoins.VisibiliteB = 0 WHERE saisir.CodeU = ?");
+    mysqli_stmt_bind_param($S1, 'i', $usercode);
+    mysqli_stmt_execute($S1);
     
-    $S2 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
-    mysqli_stmt_bind_param($S2, 'i', $CodeB);
+    $S2 = mysqli_prepare($session, "UPDATE talents INNER JOIN proposer ON talents.CodeT = proposer.CodeT SET talents.VisibiliteT = 0 WHERE proposer.CodeU = ?");
+    mysqli_stmt_bind_param($S2, 'i', $usercode);
     mysqli_stmt_execute($S2);
 
     /* tous ses categories */
@@ -24,17 +24,17 @@ require_once('Fonctions.php');
     mysqli_stmt_bind_param($S4, 'i', $usercode);
     mysqli_stmt_execute($S4);
     
-    $S2 = mysqli_prepare($session, "UPDATE utilisateurs SET Email = 'XXXXX' WHERE CodeU = ?");
-    mysqli_stmt_bind_param($S2, 'i', $usercode);
-    mysqli_stmt_execute($S2);
+    $S5 = mysqli_prepare($session, "UPDATE utilisateurs SET Email = 'XXXXX' WHERE CodeU = ?");
+    mysqli_stmt_bind_param($S5, 'i', $usercode);
+    mysqli_stmt_execute($S5);
     
-    $S2 = mysqli_prepare($session, "UPDATE utilisateurs SET NomU = 'XXXXX' WHERE CodeU = ?");
-    mysqli_stmt_bind_param($S2, 'i', $usercode);
-    mysqli_stmt_execute($S2);
+    $S6 = mysqli_prepare($session, "UPDATE utilisateurs SET NomU = 'XXXXX' WHERE CodeU = ?");
+    mysqli_stmt_bind_param($S6, 'i', $usercode);
+    mysqli_stmt_execute($S6);
     
-    $S2 = mysqli_prepare($session, "UPDATE utilisateurs SET PrenomU = 'XXXXX' WHERE CodeU = ?");
-    mysqli_stmt_bind_param($S2, 'i', $usercode);
-    mysqli_stmt_execute($S2);
+    $S7 = mysqli_prepare($session, "UPDATE utilisateurs SET PrenomU = 'XXXXX' WHERE CodeU = ?");
+    mysqli_stmt_bind_param($S7, 'i', $usercode);
+    mysqli_stmt_execute($S7);
     
 
 session_destroy();
