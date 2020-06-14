@@ -132,6 +132,8 @@
             <hr>
   
             <form method="POST" action="Desactiver1CarteB.php">
+                <div class="row">
+                <div class="col-10">
                 <ul class="list-inline">
             <?php
             require_once('Fonctions.php');
@@ -145,43 +147,19 @@
          
             if (mysqli_num_rows($result)>0) {
                  while ($besoin = mysqli_fetch_array($result)) {            
-                    if (strtotime($besoin["DateButoireB"]) >= strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
+                    if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
                         echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('<input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/>');
+                        echo ('</div>');
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                        echo ('<input type="checkbox" name="codeB" checked value="'.$besoin["CodeB"].'"/>');
-                        echo $besoin["CodeB"];
-   
-                    /* Button trigger modal */
-                        echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte </button>');
-                     }
-                    /* Modal */
-                    echo ('<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                      echo ('<div class="modal-dialog">');  
-                        echo ('<div class="modal-content">');  
-                          echo ('<div class="modal-header">');  
-                            echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
-                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                              echo ('<span aria-hidden="true">&times;</span>');  
-                            echo ('</button>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-body">');  
-                            echo ('<p> Êtes-Vous sûr de désactiver cette carte '.$besoin["CodeB"].' ?</p>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-footer">');  
-                            echo ('<button type="submit" class="btn btn-primary">Désactiver</button>');  
-                          echo ('</div>');  
                         echo ('</div>');  
-                      echo ('</div>');  
-                    echo ('</div>');  
-                   
-
-                    echo ('</div>');  
-                    echo ('</div></li>');       
-                       
+                        echo ('</div></li>');       
+                       }
                 } 
             } else {
                     echo ("Vous n'avez pas encore saisi un besoin");
@@ -191,6 +169,32 @@
   
             ?>
                 </ul>
+                     </div>
+                <div class="col-2">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>
+                     <!-- Modal -->
+                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p> Êtes-Vous sûr de désactiver cette carte ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>          
+            </div>
             </form>   
           </div>  
             
@@ -200,6 +204,8 @@
             <hr>
            
             <form method="POST" action="Desactiver1CarteT.php">
+              <div class="row">
+              <div class="col-10">
               <ul class="list-inline">
             <?php
             require_once('Fonctions.php');
@@ -216,49 +222,51 @@
                     while ($talent = mysqli_fetch_array($result)) {                     
                          if ($talent["VisibiliteT"] == 1) {  
                             echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('<input type="radio" name="codeT" value="'.$talent["CodeT"].'"/>');
+                            echo ('</div>');
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');
-                            echo ('<input type="checkbox" name="codeT" checked value="'.$talent["CodeT"].'"/>');
-                            echo $talent["CodeT"];
-    
-                    /* Button trigger modal */
-                            echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#ModalTalent">Désactiver la carte</button>');
-                         }
-                    /* Modal */
-                    echo ('<div class="modal fade" id="ModalTalent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                      echo ('<div class="modal-dialog">');  
-                        echo ('<div class="modal-content">');  
-                          echo ('<div class="modal-header">');  
-                            echo ('<h5 class="modal-title" id="LabelT">Vérification</h5>');  
-                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                              echo ('<span aria-hidden="true">&times;</span>');  
-                            echo ('</button>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-body">');  
-                            echo ('<p> Êtes-Vous sûr de désactiver cette carte '.$talent["CodeT"].' ? </p>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-footer">');  
-                            echo ('<button type="submit" class="btn btn-primary">Désactiver</button>');  
-                          echo ('</div>');  
-                        echo ('</div>');  
-                      echo ('</div>');  
-                    echo ('</div>');  
-
-                    echo ('</div>');  
-                    echo ('</div></li>');                
-                } 
+                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
+                            echo ('</div>');  
+                            echo ('</div></li>');                
+                          } 
+                    }
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
                     echo('<br><br>');
                     echo ('<a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>');
             }             
-  
+ 
             ?>
-             </ul>
-            </form>
-           
+             </ul>     
+                   </div>
+                   <div class="col-2">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver la carte</button>
+                     <!-- Modal -->
+                    <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p> Êtes-Vous sûr de désactiver cette carte ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>          
+            </div>           
+            </form>        
           </div>
        </div>
         
