@@ -101,20 +101,22 @@
                 
               if (isset($_POST['categorie'])) {
                 $categorie = $_POST['categorie'];   // récupérer la valeur de la catégorie choisi CodeC
-                $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = '".$categorie."' order by CodeT DESC";
+                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = '".$categorie."' order by CodeT DESC";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher les talents par catégorie*/
+                   if ($ligne["VisibiliteT"] == 1) {
                     echo ('<div class="card" style="width: 12rem;">');
                     echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                     echo ('<div class="card-body card text-center">');
                     echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
                     echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                     echo ('</div>');  
-                    echo ('</div>');                       
+                    echo ('</div>');      
+                    }
                 } 
               }
               ?>             

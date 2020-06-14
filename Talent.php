@@ -91,24 +91,26 @@
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php
 		    require_once('Fonctions.php');
-            	    $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+            	    $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['mot']);
-                            $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                     }
 
                     $result = mysqli_query ($session, $query);   /*Si le mot clé existe, il va exécute la deuxième requête, sinon la première*/
 
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les talents par l'ordre chronologique en format carte */
-                        echo ('<div class="card" style="width: 12rem;">');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                        echo ('<div class="card-body card text-center">');
-                        echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                        echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                        echo ('</div>');  
-                        echo ('</div>');             
+                            if ($ligne["VisibiliteT"] == 1) {
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                echo ('<div class="card-body card text-center">');
+                                echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
+                                echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                                echo ('</div>');  
+                                echo ('</div>');             
+                            }
                         }
                      } else {
                         echo('<h5> Aucun résultat pour : '.$mot.'</h5>');

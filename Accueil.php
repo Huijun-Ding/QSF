@@ -107,18 +107,18 @@
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
-                            $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC limit 5";
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
 
                         if (mysqli_num_rows($result)>0) {
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                                     echo ('<div class="card" style="width: 12rem;">');
                                     echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                     echo ('<div class="card-body card text-center">');
@@ -153,18 +153,18 @@
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC limit 5";
+                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
 
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motT']);
-                            $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC limit 5";
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
 
                         if (mysqli_num_rows($result)>0) {       
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-         
+                              if ($ligne["VisibiliteT"] == 1){
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                 echo ('<div class="card-body card text-center">');
@@ -172,7 +172,7 @@
                                 echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                                 echo ('</div>');  
                                 echo ('</div>');             
-                            
+                              }
                             }
                         } else {
                           echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
