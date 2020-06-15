@@ -68,3 +68,4 @@
                     $_SESSION['type'] = $type['TypeU'];
                 }  
             }    
+            ?>

@@ -19,18 +19,17 @@
           <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
           
         <?php
-        if(isset($_SESSION['email'])){
+        /*if(empty($_SESSION['email'])){
             echo ('<div class="switch-field">');
-            echo ('<input type="radio" id="radio-three" name="switch-two" value="yes" checked/>');
+            echo ('<input type="radio" id="radio" name="switch-two" value="yes" checked/>');
             echo ('<label for="radio-three">Pro et Perso</label>');
-            echo ('<input type="radio" id="radio-four" name="switch-two" value="maybe" />');
+            echo ('<input type="radio" id="radio" name="switch-two" value="maybe" />');
             echo ('<label for="radio-four">Pro</label>');
-            echo ('<input type="radio" id="radio-five" name="switch-two" value="no" />');
+            echo ('<input type="radio" id="radio" name="switch-two" value="no" />');
             echo ('<label for="radio-five">Perso</label>');
             echo ('</div>');
-        }
+        }*/
         ?>
-
 
         <div class="dropdown">
           <?php
