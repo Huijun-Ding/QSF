@@ -1,7 +1,7 @@
 <?php
 require_once('Fonctions.php');
        
-if(isset($_POST['email'])){                                 //Ajouter le nouveau utilisateur dans la base de donnée
+    if(isset($_POST['email'])){                                 //Ajouter le nouveau utilisateur dans la base de donnée
     
        $Email = $_POST['email'];
        
@@ -34,18 +34,23 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                  $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
                  mail ($destinataire, $sujet, $message, $header); // on envois le mail
             }  else {
-                echo "Veuillez entrez le même mot de passe dans les deux champs";
+                ?>
+            <script type="text/javascript">
+                alert("Veuillez saisir deux fois le même mot de passe !");
+                document.location.href = 'Inscription.php';
+            </script>
+            <?php     
             }
-             
+            
         } else {
-               echo ("<h2> L'email $Email est déjà utilisé </h2>"); 
-               echo "<a href=\"Inscription.php\">Essayer avec un autre mail</a>";
+            ?>
+            <script type="text/javascript">
+                alert("Cet Email est déjà utilisé. \n Veuillez réessayer avec un autre email !");
+                document.location.href = 'Inscription.php';
+            </script>
+            <?php        
         }
-       
- } else {     
-     echo "<b>Veuillez réessayer ! Cette adresse mail a été utilisée </b></br>";
     }
-
 ?>
 
 

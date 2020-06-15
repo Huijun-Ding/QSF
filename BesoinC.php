@@ -14,7 +14,70 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-        <?php require 'BarreNav.php';?>
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
+
+        <div class="dropdown">
+          <?php
+            require_once('Fonctions.php');
+          ?>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="Login.php">Se connecter</a>
+            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
+      
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
+                echo ('</div>');
+            }
+            ?>
+          </div>
+        </div>
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	            <a class="nav-link" href="Besoin.php">Besoins</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="Talent.php">Talents</a>
+	          </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+	          </li>
+	          <!--<li class="nav-item">
+	            <a class="nav-link" href="#">Cours et Forum</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Projet Associatif</a>
+	          </li
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Contacts</a>
+	          </li>-->
+                  <li class="nav-item">
+                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
+	          </li>
+	        </ul>
+	      </div>
+        </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -25,7 +88,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="col">
+                <div class="col-2">
             <form action="BesoinC.php" method="post">
               <button type="radio" class="list-group-item list-group-item-action" name="categorie" value="1">Sport</button>
               <button type="radio" class="list-group-item list-group-item-action" name="categorie" value="2">Animation</button>
@@ -45,14 +108,14 @@
               require_once('Fonctions.php');
               if (isset($_POST['categorie'])) {
                 $cate = $_POST['categorie'];
-                $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$cate} order by b.CodeB DESC";
+                $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$cate} order by b.CodeB DESC";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique */
-                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');

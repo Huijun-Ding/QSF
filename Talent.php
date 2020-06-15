@@ -14,7 +14,70 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-        <?php require 'BarreNav.php';?>
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
+
+        <div class="dropdown">
+          <?php
+            require_once('Fonctions.php');
+          ?>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="Login.php">Se connecter</a>
+            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
+
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                 ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
+                echo ('</div>');
+            }
+            ?>
+          </div>
+        </div>
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	            <a class="nav-link" href="Besoin.php">Besoins</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="Talent.php">Talents</a>
+	          </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+	          </li>
+	          <!--<li class="nav-item">
+	            <a class="nav-link" href="#">Cours et Forum</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Projet Associatif</a>
+	          </li
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Contacts</a>
+	          </li>-->
+                  <li class="nav-item">
+                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
+	          </li>
+	        </ul>
+	      </div>
+        </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -36,28 +99,31 @@
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php
 		    require_once('Fonctions.php');
-            	    $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+
+            	    $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                     
                     if(isset($_SESSION['email'])) {
-                        $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
                     }
-                        
+
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['mot']);
-                            $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                     }
 
                     $result = mysqli_query ($session, $query);   /*Si le mot clé existe, il va exécute la deuxième requête, sinon la première*/
 
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les talents par l'ordre chronologique en format carte */
-                        echo ('<div class="card" style="width: 12rem;">');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                        echo ('<div class="card-body card text-center">');
-                        echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                        echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                        echo ('</div>');  
-                        echo ('</div>');             
+                            if ($ligne["VisibiliteT"] == 1) {
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                echo ('<div class="card-body card text-center">');
+                                echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
+                                echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                                echo ('</div>');  
+                                echo ('</div>');             
+                            }
                         }
                      } else {
                         echo('<h5> Aucun résultat pour : '.$mot.'</h5>');

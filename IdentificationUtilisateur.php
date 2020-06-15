@@ -35,10 +35,12 @@ if(isset($_POST['email'])){
             mail ($destinataire, $sujet, $message, $header); // on envois le mail
             
         } else {
-            echo ("<h2> Mauvais login / password. Merci de <a href=\"Inscription.php\"> créer un compte </a></h2>"); 
-           
+              ?>
+            <script type="text/javascript">
+                alert("Mauvais Email / mot de passe ! \n Veuillez réessayer. ");
+                document.location.href = 'Login.php';
+            </script>
+            <?php
+        }       
         }
-//}else{
-	//echo "<b>Erreur</b></br>";
-}
-        ?>
+          ?>

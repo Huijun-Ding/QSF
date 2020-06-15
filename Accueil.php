@@ -15,7 +15,69 @@
     <script src="jquery.js"></script>
   </head>
   <body>
-        <?php include ('BarreNav.php');?>
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
+
+        <div class="dropdown">
+          <?php
+            require_once('Fonctions.php');
+          ?>
+             
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="Login.php">Se connecter</a>
+            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
+
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
+                echo ('</div>');
+            }
+            ?>
+          </div>
+        </div>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	            <a class="nav-link" href="Besoin.php">Besoins</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="Talent.php">Talents</a>
+	          </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+	          </li>
+	          <!--<li class="nav-item">
+	            <a class="nav-link" href="#">Cours et Forum</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Projet Associatif</a>
+	          </li
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Contacts</a>
+	          </li>-->
+                  <li class="nav-item">
+                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
+	          </li>
+	        </ul>
+	      </div>
+        </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -53,22 +115,24 @@
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                         
-                        if(isset($_SESSION['email'])) {
-                            $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TypeB = '{$_SESSION['type']}' order by CodeB DESC";
+                        if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        } else {
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                         }
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
-                            $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
 
                         if (mysqli_num_rows($result)>0) {
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                                     echo ('<div class="card" style="width: 12rem;">');
                                     echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                     echo ('<div class="card-body card text-center">');
@@ -102,22 +166,24 @@
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
-                        $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
-                        
-                        if(isset($_SESSION['email'])) {
-                            $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+
+                        if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                        } else {
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                         }
                         
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motT']);
-                            $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
 
                         if (mysqli_num_rows($result)>0) {       
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-         
+                              if ($ligne["VisibiliteT"] == 1){
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                 echo ('<div class="card-body card text-center">');
@@ -125,7 +191,7 @@
                                 echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                                 echo ('</div>');  
                                 echo ('</div>');             
-                            
+                              }
                             }
                         } else {
                           echo('<h5> Aucun résultat pour : '.$mot.'</h5>');

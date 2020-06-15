@@ -14,7 +14,70 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-        <?php require 'BarreNav.php';?>
+        <nav class="navbar sticky-top navbar-dark bg-dark">
+          <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
+
+        <div class="dropdown">
+          <?php
+            require_once('Fonctions.php');
+          ?>
+          
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="Login.php">Se connecter</a>
+            <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
+         
+            <?php
+            require_once('Fonctions.php');
+            
+            if(isset($_SESSION['email'])){
+                echo ('<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Mon espace</a>');
+                echo ('<div class="dropdown-menu">');
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                 echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
+                echo ('</div>');
+            }
+            ?>
+          </div>
+        </div>
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="navbar-toggler-icon"></span>
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	        <ul class="navbar-nav mr-auto">
+	          <li class="nav-item">
+	            <a class="nav-link" href="Besoin.php">Besoins</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="Talent.php">Talents</a>
+	          </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+	          </li>
+	          <!--<li class="nav-item">
+	            <a class="nav-link" href="#">Cours et Forum</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Projet Associatif</a>
+	          </li
+	          <li class="nav-item">
+	            <a class="nav-link" href="#">Contacts</a>
+	          </li>-->
+                  <li class="nav-item">
+                      <a class="nav-link" href="ConditionGeneraleUtilisation.php">Mentions Légales</a>
+	          </li>
+	        </ul>
+	      </div>
+        </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -41,7 +104,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter la charte.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>
@@ -60,7 +123,7 @@
                         <div id="radiotypeu">
                           <p>Sélectionner le type d'information affichée</p> 
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" value="Pro et Perso" checked>
+                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" checked>
                             <label class="form-check-label" for="exampleRadios1">
                               Pro et Perso
                             </label>
