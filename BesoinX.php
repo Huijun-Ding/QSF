@@ -81,21 +81,26 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
             <div class="container">
+                <div class="row">
+                    <div class="col-8">
+
                <?php
                  require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
+                $query = "select  b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
-                    echo ('<h1>'.$ligne["TitreB"]. '</h1>');
-                    echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
-                    echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
-                    echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
-                    echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');           
+                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
+                        echo ('<h1>'.$ligne["TitreB"]. '</h1>');
+                        echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
+                        echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
+                        echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
+                        echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>');   
+                    
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
                        echo ('<a href="MailBesoin.php?t='.$ligne["TitreB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
@@ -103,11 +108,17 @@
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
                 }
-                
+                }
                  ?>
-              
+                    </div>    
+                    <div class="col-4">
+                    <h2 id="titre1"><a href="Besoin.php" class="badge badge-dark">Tous les besoins</a></h2><br/>
+                    <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un autre besoin</button></a>
+                    </div>
+                     
             </div>
         </div>
+             </div>
         <footer>
             <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

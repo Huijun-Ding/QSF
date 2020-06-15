@@ -81,7 +81,7 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> CREER UN BESOIN </h1>
+            <h1> Creer un besoin </h1>
             <form action="Saisir1Besoin.php" method="post">
             <?php
             date_default_timezone_set('Europe/Paris');
@@ -91,7 +91,7 @@
                     <div class="col-auto my-1">
                       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                       <select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>
-                            <option selected>Choisir une catégorie </option>
+                            <option selected>Choisir une catégorie(*) </option>
                             <option value="1" name="categorie" title="...">Sport</option>
                             <option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>
                             <option value="3" name="categorie"title="...">Outils métiers</option>
@@ -106,19 +106,19 @@
                     </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Titre</label>
-              <input type="text" name="titre" class="form-control" id="inputEmail4" maxlength="40" required>
+              <label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>
+              <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" maxlength="20" required>
             </div>
             <div class="form-group">
-                    <label for="inputEmail4">Déscription du besoin</label><br/>
+                    <label for="inputEmail4">Déscription du besoin(<span style="color:red">*</span>)</label><br/>
                     <textarea rows="4" cols="50" name="description" required> Veuillez préciser votre besoin</textarea>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Date butoire</label>
-              <input type="date" name="datebutoire" class="form-control" id="inputEmail4" maxlength="10" required>
+              <label for="inputEmail4">Date butoire(<span style="color:red">*</span>)</label>
+              <input type="date" name="datebutoire" class="form-control col-md-4" id="inputEmail4" maxlength="10" required>
             </div>
             <div class="form-group">
-                  <label for="inputAddress">Type de besoin</label>				
+                  <label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>				
             </div>
             <div class="form-group">
               <div class="form-check form-check-inline">

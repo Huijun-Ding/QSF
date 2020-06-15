@@ -92,7 +92,7 @@
                     <div class="col-auto my-1">
                       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                       <select class="custom-select mr-sm-2" name="categorieT" id="inlineFormCustomSelect" required>
-                            <option selected>Choisir une catégorie </option>
+                            <option selected>Choisir une catégorie(*)</option>
                             <option value="1" name="categorieT" title="...">Sport</option>
                             <option value="2" name="categorieT" title="Réunions créatives/Pitcher .....">Animation</option>
                             <option value="3" name="categorieT" title="...">Outils métiers</option>
@@ -107,15 +107,15 @@
                     </div>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Titre</label>
-              <input type="text" name="titreT" class="form-control" id="inputEmail4" maxlength="40" required>
+              <label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>
+              <input type="text" name="titreT" class="form-control col-md-4" id="inputEmail4" maxlength="20" required>
             </div>
             <div class="form-group">
-                    <label for="inputEmail4">Déscription du talent</label><br/>
+                    <label for="inputEmail4">Déscription du talent(<span style="color:red">*</span>)</label><br/>
                     <textarea rows="4" cols="50" name="descriptionT" required> Veuillez préciser votre besoin</textarea>
             </div>
             <div class="form-group">
-                    <label for="inputAddress">Type de talent</label>				
+                    <label for="inputAddress">Type de talent(<span style="color:red">*</span>)</label>				
             </div>
                 
             <div class="form-group">
