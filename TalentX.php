@@ -81,16 +81,19 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
             <div class="container">
+                <div class="row">
+                    <div class="col-8">
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
+                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détaille de chaque talent */
+                     if ($ligne["VisibiliteT"] == 1){
                     echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
                     //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
@@ -102,7 +105,14 @@
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
                 }   
+                }  
                 ?>     
+                        </div>    
+                    <div class="col-4">
+                        <h2 id="titre1"><a href="Talent.php" class="badge badge-dark">Tous les talents</a></h2><br/>
+                    <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux créer un autre talent</button></a>
+                    </div>
+                    </div>
             </div>
         </div>
         <footer>
