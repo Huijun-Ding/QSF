@@ -51,7 +51,7 @@
                 echo('</button>');
             }       
             
-        // 4.session actuelle : récuperer le code utilisateur   
+        // 4. Session actuelle : récuperer le code utilisateur   
             if (isset($_SESSION['email'])) {
                 $sqlr = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
                 $result = mysqli_query ($session, $sqlr);
@@ -59,3 +59,12 @@
                     $usercode = $code['CodeU'];
                 }   
             }
+            
+        // 5. récupérer le type d'info d'un utilisateur
+            if (isset($_SESSION['email'])) {
+                $query = "select TypeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                $result = mysqli_query ($session, $query);
+                if ($type = mysqli_fetch_array($result)) {   
+                    $_SESSION['type'] = $type['TypeU'];
+                }  
+            }    

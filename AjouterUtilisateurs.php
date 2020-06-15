@@ -10,11 +10,11 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                 $Password = password_hash($_POST["password"],PASSWORD_DEFAULT);
                 $Nom = $_POST['nom'];
                 $Prenom = $_POST['prenom'];
+                $Type = $_POST['typeu'];
 
+                $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
 
-                $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse) VALUES(?,?,?,?)");   
-
-                mysqli_stmt_bind_param($stmt, 'ssss', $Nom,$Prenom,$Email,$Password);
+                mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
                 mysqli_stmt_execute($stmt);
 
                 session_start();                                 //Après l'inscription, l'utilisateur se connecter automatiquement

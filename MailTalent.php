@@ -24,7 +24,7 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>De</strong></label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION['email']; ?>">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php echo $_SESSION['email']; ?>" disabled >
                   </div>
                 </div>
                  
@@ -34,7 +34,7 @@
                         <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php 
                         $T = $_GET['t'];
                         echo '[Quai des savoir-faire] Demander de partager votre talent '.$T.''; 
-                        ?>">
+                        ?>" disabled >
                     </div>
                 </div>
                     

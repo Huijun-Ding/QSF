@@ -46,13 +46,12 @@
                     } else {
                                 echo("<h5> Vous n'avez pas encore abonné des catégories </h5>");
                             } 
-                          ?>      
+                  ?>      
                     </div>
                 </div>
                 <div class="col-2">
                    <button type="submit" class="btn btn-dark">Désabonner</button> 
-                </div>
-                
+                </div>          
             </div>
             </form>
           </div>             

@@ -14,7 +14,7 @@
         <?php require 'BarreNav.php';?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
-          <div class="container" >
+          <div class="container" id="MesInfos">
            
             <h1>Mes informations personnelles</h1>
             <hr>
@@ -25,7 +25,7 @@
                     <?php
                     require_once('Fonctions.php');
 
-                    $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
+                    $query = " select NomU, PrenomU, Email, TypeU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
@@ -35,14 +35,13 @@
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                    }   
-                    ?>
+                    } ?>
                 </div>
                 <div class="col-4">
-                    <form name="Supprimer" action="Supprimer1Compte.php" method="post">
+                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
+                        
                     <?php
-
-                    echo('<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
+                    echo('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
                     echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
                         echo('<div class="modal-dialog" role="document">');
@@ -67,16 +66,58 @@
                     </form>
                 </div>
             </div>
-            
+
+                <form method="POST" action="monespace.fonction.php">
+                   <?php 
+                    echo ('<p>Type d\'information affichée : </p>'); 
+                    if ($_SESSION['type'] == 'Pro et Perso'){
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" checked/>');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');
+                    } elseif ($_SESSION['type'] == 'Pro') {
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" checked />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');
+                    } elseif ($_SESSION['type'] == 'Perso') {
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" checked />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');                 
+                    }
+                    ?>
+                    <br>
+                    <button type="submit" class="btn btn-outline-dark">Modifier le type d'information affichée</button>
+                </form>
+            </div>
+          </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
-           
+           <div class="container" id="MesBesoins">
             <h1> Mes besoins </h1>
             <hr>
-        
-             <ul class="list-inline">
+  
             <form method="POST" action="Desactiver1CarteB.php">
+                <div class="row">
+                <div class="col-10">
+                <ul class="list-inline">
             <?php
-            $query = " select b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
+            require_once('Fonctions.php');
+
+            $query = " select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
+
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
@@ -85,44 +126,19 @@
          
             if (mysqli_num_rows($result)>0) {
                  while ($besoin = mysqli_fetch_array($result)) {            
-                   if (strtotime($besoin["DateButoireB"]) >= strtotime(date("yy/m/d")) AND $besoin["VisibiliteB"] = 1) {  
-                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                    echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
-                    echo ('<div class="card-body card text-center">');
-                    echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
-                    echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
-                    echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                    echo ('<input type="checkbox" name="codeB" checked value="'.$besoin["CodeB"].'"/>');
-                    echo $besoin["CodeB"];
-                      }
-                   
-                    
-                    /* Button trigger modal */
-                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>');
-                    /* Modal */
-                    echo ('<div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                      echo ('<div class="modal-dialog">');  
-                        echo ('<div class="modal-content">');  
-                          echo ('<div class="modal-header">');  
-                            echo ('<h5 class="modal-title" id="exampleModalLabel">Vérification</h5>');  
-                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                              echo ('<span aria-hidden="true">&times;</span>');  
-                            echo ('</button>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-body">');  
-                            echo ('<p>Êtes-Vous sûr de désactiver cette carte '.$besoin["CodeB"].' ?</p>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-footer">');  
-                            echo ('<button type="submit" class="btn btn-primary">Désactiver</button>');  
-                          echo ('</div>');  
+                    if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
+                        echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('<input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/>');
+                        echo ('</div>');
+                        echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
+                        echo ('<div class="card-body card text-center">');
+                        echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
+                        echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
+                        echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
                         echo ('</div>');  
-                      echo ('</div>');  
-                    echo ('</div>');  
-                   
-
-                    echo ('</div>');  
-                    echo ('</div></li>');       
-                       
+                        echo ('</div></li>');       
+                       }
                 } 
             } else {
                     echo ("Vous n'avez pas encore saisi un besoin");
@@ -131,18 +147,50 @@
             }             
   
             ?>
-                </form>
-                 </ul>
-            
+                </ul>
+                     </div>
+                <div class="col-2">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>
+                     <!-- Modal -->
+                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p> Êtes-Vous sûr de désactiver cette carte ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>          
+            </div>
+            </form>   
+          </div>  
             
 <!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        
+        <div class="container" id="MesTalents">
             <h1> Mes talents </h1>
             <hr>
-            <ul class="list-inline">
-                <form method="POST" action="Desactiver1CarteT.php">
+           
+            <form method="POST" action="Desactiver1CarteT.php">
+              <div class="row">
+              <div class="col-10">
+              <ul class="list-inline">
             <?php
-            $query = " select t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
+            require_once('Fonctions.php');
+
+            $query = " select t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
+
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
@@ -152,50 +200,55 @@
             
             if (mysqli_num_rows($result)>0) {
                     while ($talent = mysqli_fetch_array($result)) {                     
-                    echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                    echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
-                    echo ('<div class="card-body card text-center">');
-                    echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                    echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');
-                    echo ('<input type="checkbox" name="codeT" checked value="'.$talent["CodeT"].'"/>');
-
-                   
-                    /* Button trigger modal */
-                    echo ('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#ModalTalent">Désactiver la carte</button>');
-                    /* Modal */
-                    echo ('<div class="modal fade" id="ModalTalent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');  
-                      echo ('<div class="modal-dialog">');  
-                        echo ('<div class="modal-content">');  
-                          echo ('<div class="modal-header">');  
-                            echo ('<h5 class="modal-title" id="LabelT">Vérification</h5>');  
-                            echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');  
-                              echo ('<span aria-hidden="true">&times;</span>');  
-                            echo ('</button>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-body">');  
-                            echo ('<p> Êtes-Vous sûr de supprimer cette carte ? </p>');  
-                          echo ('</div>');  
-                          echo ('<div class="modal-footer">');  
-                            echo ('<button type="submit" class="btn btn-primary">Supprimer</button>');  
-                          echo ('</div>');  
-                        echo ('</div>');  
-                      echo ('</div>');  
-                    echo ('</div>');  
-
-                    echo ('</div>');  
-                    echo ('</div></li>');                
-                } 
+                         if ($talent["VisibiliteT"] == 1) {  
+                            echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('<input type="radio" name="codeT" value="'.$talent["CodeT"].'"/>');
+                            echo ('</div>');
+                            echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
+                            echo ('<div class="card-body card text-center">');
+                            echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
+                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
+                            echo ('</div>');  
+                            echo ('</div></li>');                
+                          } 
+                    }
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
                     echo('<br><br>');
                     echo ('<a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>');
             }             
-  
+ 
             ?>
-                    </form>
-            </ul>
+             </ul>     
+                   </div>
+                   <div class="col-2">
+                     <!-- Button trigger modal -->
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver la carte</button>
+                     <!-- Modal -->
+                    <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p> Êtes-Vous sûr de désactiver cette carte ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    </div>          
+            </div>           
+            </form>        
           </div>
-            </div>
+       </div>
         
   <hr> 
   <footer>

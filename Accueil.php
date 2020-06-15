@@ -15,7 +15,7 @@
     <script src="jquery.js"></script>
   </head>
   <body>
-        <?php require 'BarreNav.php';?>
+        <?php include ('BarreNav.php');?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
@@ -53,7 +53,7 @@
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TypeB = '{$_SESSION['type']}' order by CodeB DESC";
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
@@ -98,7 +98,7 @@
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
-                        $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC limit 5";
+                        $query = "select t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
 
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motT']);

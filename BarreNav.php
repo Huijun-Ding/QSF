@@ -18,14 +18,19 @@
         <nav class="navbar sticky-top navbar-dark bg-dark">
           <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
           
-        <div class="switch-field">
-            <input type="radio" id="radio-three" name="switch-two" value="yes" checked/>
-            <label for="radio-three">Pro&Perso</label>
-            <input type="radio" id="radio-four" name="switch-two" value="maybe" />
-            <label for="radio-four">Pro</label>
-            <input type="radio" id="radio-five" name="switch-two" value="no" />
-            <label for="radio-five">Perso</label>
-        </div>
+        <?php
+        if(isset($_SESSION['email'])){
+            echo ('<div class="switch-field">');
+            echo ('<input type="radio" id="radio-three" name="switch-two" value="yes" checked/>');
+            echo ('<label for="radio-three">Pro et Perso</label>');
+            echo ('<input type="radio" id="radio-four" name="switch-two" value="maybe" />');
+            echo ('<label for="radio-four">Pro</label>');
+            echo ('<input type="radio" id="radio-five" name="switch-two" value="no" />');
+            echo ('<label for="radio-five">Perso</label>');
+            echo ('</div>');
+        }
+        ?>
+
 
         <div class="dropdown">
           <?php
