@@ -25,7 +25,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+         
             <?php
             require_once('Fonctions.php');
             
@@ -34,6 +34,14 @@
                 echo ('<div class="dropdown-menu">');
                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                 echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                 echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
                 echo ('</div>');
             }
             ?>
@@ -96,7 +104,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter la charte.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>

@@ -25,7 +25,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+
             <?php
             require_once('Fonctions.php');
             
@@ -34,6 +34,14 @@
                 echo ('<div class="dropdown-menu">');
                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                 echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
                 echo ('</div>');
             }
             ?>
@@ -77,247 +85,35 @@
             <h1> ABONNER DES CATEGORIES </h1>
             <hr>
  
-            <form  action="SaisirCategorie.php" method="post">			  
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="inlineCheckbox1" value="1">
-              <label class="form-check-label" for="inlineCheckbox1">
-                <div class="card" style="width: 11rem;">
-                    <?php
+            <form  action="ReabonnerCategories.php" method="post">			  
+                <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+                  <?php
                     require_once('Fonctions.php');
 
-                    $query = " select PhotoC from categories where CodeC = 1 ";
+                    $query = "select NomC, PhotoC, CodeC from categories c ";
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
                         die("ereur requête : ". mysqli_error($session) );
                     }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Sport : Football, Course à pied, Baseketball...</p>
-                  </div>
-                </div>
-              </label>
-            </div>                                                      
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="inlineCheckbox2" value="2">
-              <label class="form-check-label" for="inlineCheckbox2">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 2 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Animation</p>
-                  </div>
-                </div>
-              </label>
-            </div>                              
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="inlineCheckbox3" value="3">
-              <label class="form-check-label" for="inlineCheckbox3">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 3 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Outils métiers</p>
-                  </div>
-                </div>
-              </label>
-            </div>                               
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="inlineCheckbox4" value="4">
-              <label class="form-check-label" for="inlineCheckbox4">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 4 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Développement personnel</p>
-                  </div>
-                </div>
-              </label>
-            </div> 
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="inlineCheckbox5" value="5">
-              <label class="form-check-label" for="inlineCheckbox5">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 5 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Associatif</p>
-                  </div>
-                </div>
-              </label>
-            </div>                             
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name="inlineCheckbox6" value="6">
-              <label class="form-check-label" for="inlineCheckbox6">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 6 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Covoiturage</p>
-                  </div>
-                </div>
-              </label>
-            </div>                                    
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option1" name="7">
-              <label class="form-check-label" for="inlineCheckbox7">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 7 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Bureautique</p>
-                  </div>
-                </div>
-              </label>
-            </div>  
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="inlineCheckbox8" value="8">
-              <label class="form-check-label" for="inlineCheckbox8">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 8 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Informatique</p>
-                  </div>
-                </div>
-              </label>
-            </div>    
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name="inlineCheckbox9" value="9">
-              <label class="form-check-label" for="inlineCheckbox9">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 9 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Loisir</p>
-                  </div>
-                </div>
-              </label>
-            </div>   
-
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox10" name="inlineCheckbox10" value="10">
-              <label class="form-check-label" for="inlineCheckbox10">
-                <div class="card" style="width: 11rem;">
-                    <?php
-                    require_once('Fonctions.php');
-
-                    $query = " select PhotoC from categories where CodeC = 10 ";
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher l'image de chaque categorie */
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');                        
-                    }                
-                    ?>
-                  <div class="card-body">
-                    <p class="card-text">Autres (notifier à l'administrateur)</p>
-                  </div>
-                </div>
-              </label>
-            </div><hr>   
-                
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
+                      
+                        echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('</div>');
+                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                        echo ('<div class="card-body text-center">');
+                        echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                        echo ('</div>');
+                        echo ('</div>'); 
+                    }          
+                    } 
+                            
+                          ?>      
+                    </div>
+            <hr>       
             <div>           
                 <button type="submit" class="btn btn-dark">Abonner</button>
             </div>

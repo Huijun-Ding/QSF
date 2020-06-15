@@ -26,7 +26,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+
             <?php
             require_once('Fonctions.php');
             
@@ -35,6 +35,14 @@
                 echo ('<div class="dropdown-menu">');
                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                 echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
                 echo ('</div>');
             }
             ?>

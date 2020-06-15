@@ -5,9 +5,11 @@
         <group>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MonProfil.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Fonctions.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Accueil.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Supprimer1Compte.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/AjouterUtilisateurs.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Talent.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Desactiver1CarteB.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Desactiver1CarteT.php</file>
         </group>
     </open-files>
 </project-private>

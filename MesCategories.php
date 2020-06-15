@@ -23,7 +23,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+          
             <?php
             require_once('Fonctions.php');
             
@@ -32,6 +32,14 @@
                 echo ('<div class="dropdown-menu">');
                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                 echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
                 echo ('</div>');
             }
             ?>
@@ -126,7 +134,7 @@
                   <?php
                     require_once('Fonctions.php');
 
-                    $query = "select NomC, PhotoC, CodeC from categories c where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
+                    $query = "select NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
