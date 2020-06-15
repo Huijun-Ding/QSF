@@ -84,6 +84,7 @@
             <h1> CREER UN BESOIN </h1>
             <form action="Saisir1Besoin.php" method="post">
             <?php
+            require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
             echo "Date de création :   " . date("yy/m/d"); 
             ?>

@@ -60,13 +60,12 @@
                 }   
             }
             
-        // 4. Cacher les cartes :
-            /*
-             function cacher_carteB_périmée($session, $CodeB){
-                if (strtotime($besoin["DateButoireB"]) < strtotime(date("yy/m/d"))) {
-                    $stmt = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
-                    mysqli_stmt_bind_param($stmt, "s", $CodeB);
-                    mysqli_stmt_execute($stmt);        
-                }
-             }
-            */
+        // 5. récupérer le type d'info d'un utilisateur
+            if (isset($_SESSION['email'])) {
+                $query = "select TypeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                $result = mysqli_query ($session, $query);
+                if ($type = mysqli_fetch_array($result)) {   
+                    $_SESSION['type'] = $type['TypeU'];
+                }  
+            }    
+            ?>

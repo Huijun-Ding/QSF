@@ -9,20 +9,18 @@ if(isset($_POST['email'])){
 	$stmt = mysqli_prepare($session, "SELECT MotDePasse FROM utilisateurs WHERE Email=?");   // Connecter et vérification de mot de passe
 	mysqli_stmt_bind_param($stmt, "s", $Email);
 	mysqli_stmt_execute($stmt);
-        
 
 	mysqli_stmt_bind_result($stmt, $good_password);
 	mysqli_stmt_fetch($stmt);
 	
-        echo $Password;
-        echo $good_password;
-        
-        
+        //echo $Password;
+        //echo $good_password;
+
 	if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session
             session_start();
             
-            $_SESSION['email'] = $Email;
-            $_SESSION['password'] = $Password;
+                $_SESSION['email'] = $Email;
+                $_SESSION['password'] = $Password;
             
             header("Location: Accueil.php");
                

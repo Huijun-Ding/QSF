@@ -85,6 +85,7 @@
             <h1> Ajouter un talent </h1>
             <form action="Saisir1Talent.php" method="post">
             <?php
+            require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
             echo "Date de création : " . date("yy/m/d"); 
             ?>

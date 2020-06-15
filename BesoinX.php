@@ -82,7 +82,7 @@
         <div class="jumbotron">
             <div class="container">
                <?php
-                 require_once('Fonctions.php');
+                require_once('Fonctions.php');
                 $T = $_GET['t'];
                 $query = "select b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
                 $result = mysqli_query ($session, $query);

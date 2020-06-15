@@ -78,19 +78,19 @@
 	        </ul>
 	      </div>
         </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
+      
         <div class="jumbotron">
           <div class="container">
 			
             <h1> ABONNER DES CATEGORIES </h1>
             <hr>
- 
             <form  action="ReabonnerCategories.php" method="post">			  
                 <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
                   <?php
                     require_once('Fonctions.php');
 
                     $query = "select NomC, PhotoC, CodeC from categories c ";
+
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
@@ -110,8 +110,7 @@
                         echo ('</div>'); 
                     }          
                     } 
-                            
-                          ?>      
+                    ?>      
                     </div>
             <hr>       
             <div>           

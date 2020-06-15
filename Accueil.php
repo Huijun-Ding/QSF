@@ -101,7 +101,7 @@
              </div>
             </div>
         </div>
-            <!--------------------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
           <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -116,6 +116,12 @@
             	<?php
             		require_once('Fonctions.php');
                         $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        
+                        if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        } else {
+                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        }
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
@@ -160,9 +166,14 @@
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             	<?php
-            		require_once('Fonctions.php');
                         $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
 
+                        if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                        } else {
+                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+                        }
+                        
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motT']);
                             $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";

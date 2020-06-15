@@ -119,9 +119,33 @@
 				  <input type="password" class="form-control" name="passwordcf" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
 				</div>
 			  </div>
-			  <div class="form-group">
+                            
+                        <div id="radiotypeu">
+                          <p>Sélectionner le type d'information affichée</p> 
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                              Pro et Perso
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios2" value="Pro">
+                            <label class="form-check-label" for="exampleRadios2">
+                              Pro
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios3" value="Perso">
+                            <label class="form-check-label" for="exampleRadios3">
+                              Perso
+                            </label>
+                          </div>
+                            <br>
+                        </div>
+                            
+                        <div class="form-group">
                               <button type="submit" class="btn btn-dark">S'inscrire</button>
-			  </div>
+                        </div>
             </form>
 
           </div>
