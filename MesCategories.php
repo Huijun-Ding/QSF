@@ -118,9 +118,7 @@
                 </div>          
             </div>
             </form>
-          </div>
-              
-            
+          </div>             
 
           <div class="container">
             <hr>
@@ -135,6 +133,7 @@
                     require_once('Fonctions.php');
 
                     $query = "select NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
+
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
@@ -166,11 +165,8 @@
                     </div>
                     </div>
                         </form>
-
           </div>
         </div>
-    
-    
     
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>

@@ -11,7 +11,6 @@
 </head>
 
 <body>
-   
         <nav class="navbar sticky-top navbar-dark bg-dark">
           <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
 
@@ -91,7 +90,7 @@
                     <?php
                     require_once('Fonctions.php');
 
-                    $query = " select NomU, PrenomU, Email from utilisateurs where CodeU = {$usercode} ";
+                    $query = " select NomU, PrenomU, Email, TypeU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
@@ -101,14 +100,13 @@
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                    }   
-                    ?>
+                    } ?>
                 </div>
                 <div class="col-4">
-                    <form name="Supprimer" action="Supprimer1Compte.php" method="post">
+                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
+                        
                     <?php
-
-                    echo('<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
+                    echo('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
                     echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
                         echo('<div class="modal-dialog" role="document">');
@@ -133,6 +131,43 @@
                     </form>
                 </div>
             </div>
+
+                <form method="POST" action="monespace.fonction.php">
+                   <?php 
+                    echo ('<p>Type d\'information affichée : </p>'); 
+                    if ($_SESSION['type'] == NULL){
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" checked/>');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');
+                    } elseif ($_SESSION['type'] == 'Pro') {
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" checked />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');
+                    } elseif ($_SESSION['type'] == 'Perso') {
+                        echo ('<div class="switch-field">');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
+                        echo ('<label for="radio-four">Pro</label>');
+                        echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" checked />');
+                        echo ('<label for="radio-five">Perso</label>');
+                        echo ('</div>');                 
+                    }
+                    ?>
+                    <br>
+                    <button type="submit" class="btn btn-outline-dark">Modifier le type d'information affichée</button>
+                </form>
+            </div>
           </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
@@ -147,6 +182,7 @@
             require_once('Fonctions.php');
 
             $query = " select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
+
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {
@@ -219,6 +255,7 @@
             require_once('Fonctions.php');
 
             $query = " select t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
+
             $result = mysqli_query ($session, $query);
 
             if ($result == false) {

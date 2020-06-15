@@ -84,6 +84,7 @@
             <h1> Creer un besoin </h1>
             <form action="Saisir1Besoin.php" method="post">
             <?php
+            require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
             echo "Date de création :   " . date("yy/m/d"); 
             ?>
@@ -112,6 +113,7 @@
             <div class="form-group">
                     <label for="inputEmail4">Déscription du besoin(<span style="color:red">*</span>)</label><br/>
                     <textarea rows="4" cols="50" name="description" required> Veuillez préciser votre besoin</textarea>
+
             </div>
             <div class="form-group">
               <label for="inputEmail4">Date butoire(<span style="color:red">*</span>)</label>

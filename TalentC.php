@@ -88,7 +88,7 @@
             <hr>
             
             <div class="row">
-                <div class="col">
+                <div class="col-2">
                 <form action="TalentC.php" method="post">
               <button type="radio" class="list-group-item list-group-item-action" name="categorie" value="1">Sport</button>
               <button type="radio" class="list-group-item list-group-item-action" name="categorie" value="2">Animation</button>
