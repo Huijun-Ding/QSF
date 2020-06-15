@@ -25,7 +25,7 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="Login.php">Se connecter</a>
             <a class="dropdown-item" href="Inscription.php">S'inscrire</a>
-            <a class="dropdown-item" href="Deconnecter.php">Déconnecter</a>
+      
             <?php
             require_once('Fonctions.php');
             
@@ -34,6 +34,14 @@
                 echo ('<div class="dropdown-menu">');
                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                 echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+                 <?php
                 echo ('</div>');
             }
             ?>
@@ -100,14 +108,14 @@
               require_once('Fonctions.php');
               if (isset($_POST['categorie'])) {
                 $cate = $_POST['categorie'];
-                $query = "select b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$cate} order by b.CodeB DESC";
+                $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$cate} order by b.CodeB DESC";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique */
-                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d"))) {   
+                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
