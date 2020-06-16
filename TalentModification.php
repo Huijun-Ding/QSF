@@ -102,7 +102,7 @@
                <?php
 
                 $T = $_GET['t'];
-                $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
+                $query = "select t.TypeT, t.CodeT, t.VisibiliteT, t.TitreT, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -126,12 +126,11 @@
                             echo('<option value="7" name="categorie" title="Word, Excel, PowerPoint, Outlook...">Bureautique</option>');
                             echo('<option value="8" name="categorie" title="Internet, site Web, réparation PC...">Informatique</option>');
                             echo('<option value="9" name="categorie" title="Cuisine, bricolage, musique, théâtre, ciné, culture, philatélie, généalogie...">Loisir </option>');
-                            echo ('<option value="10" name="categorie" title="Demande de créér une catégorie à administrateur" >Autres </option>');
+                            echo ('<option value="10" name="categorie" title="Demande de créér une catégorie à l\'administrateur" >Autres </option>');
                       echo('</select>');
                     echo('</div>');
                     echo('</div>');
-                        
-                   
+               
                         echo ('<div class="form-group">');
                         echo ('<label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>');
                         echo ('<input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" maxlength="20" value="'.$ligne["TitreT"].'" required>');
@@ -141,8 +140,50 @@
                         echo('<label for="inputEmail4">Déscription du besoin(<span style="color:red">*</span>)</label><br/>') ;
                         echo('<textarea rows="4" cols="50" name="description" required>'.$ligne["DescriptionT"].'</textarea>') ;
                         echo('</div>') ;
+            
+                          if ($ligne["TypeT"] == "Pro") {
+                            echo('<div class="form-group">');
+                                echo('<label for="inputAddress">Type de talent(<span style="color:red">*</span>)</label>');			
+                          echo('</div>');
+                          echo('<div class="form-group">');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input" checked type="radio" name="type" id="inlineRadio1" value="Pro">');
+                              echo('<label class="form-check-label" for="inlineRadio1">Pro</label>');
+                            echo('</div>');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="Perso">');
+                              echo('<label class="form-check-label" for="inlineRadio2">Perso</label>');
+                            echo('</div>');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">');
+                              echo('<label class="form-check-label" for="inlineRadio3">Pro&Perso</label>');
+                            echo('</div>');
+                          echo('</div>');
+                        }
                         
-                        echo('<div class="form-group">');
+                         if ($ligne["TypeT"] == "Perso") {
+                            echo('<div class="form-group">');
+                                echo('<label for="inputAddress">Type de talent(<span style="color:red">*</span>)</label>');			
+                          echo('</div>');
+                          echo('<div class="form-group">');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input" type="radio" name="type" id="inlineRadio1" value="Pro">');
+                              echo('<label class="form-check-label" for="inlineRadio1">Pro</label>');
+                            echo('</div>');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input"  checked type="radio" name="type" id="inlineRadio2" value="Perso">');
+                              echo('<label class="form-check-label" for="inlineRadio2">Perso</label>');
+                            echo('</div>');
+                            echo('<div class="form-check form-check-inline">');
+                              echo('<input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">');
+                              echo('<label class="form-check-label" for="inlineRadio3">Pro&Perso</label>');
+                            echo('</div>');
+                          echo('</div>');
+                        }
+ 
+                        
+                        if ($ligne["TypeT"] == "Pro et Perso") {
+                          echo('<div class="form-group">');
                                 echo('<label for="inputAddress">Type de talent(<span style="color:red">*</span>)</label>');			
                           echo('</div>');
                           echo('<div class="form-group">');
@@ -155,10 +196,11 @@
                               echo('<label class="form-check-label" for="inlineRadio2">Perso</label>');
                             echo('</div>');
                             echo('<div class="form-check form-check-inline">');
-                              echo('<input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">');
+                              echo('<input class="form-check-input" type="radio" checked name="type" id="inlineRadio3" value="Pro et Perso">');
                               echo('<label class="form-check-label" for="inlineRadio3">Pro&Perso</label>');
                             echo('</div>');
                           echo('</div>');
+                           }
                         
 
                      echo('<hr>');
