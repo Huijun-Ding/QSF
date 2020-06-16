@@ -103,7 +103,7 @@
                     <div class="col-auto my-1">
                       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                       <select class="custom-select mr-sm-2" name="categorieT" id="inlineFormCustomSelect" required>
-                            <option selected>Choisir une catégorie(*)</option>
+                            <option value="" selected>Choisir une catégorie(*)</option>
                             <option value="1" name="categorieT" title="...">Sport</option>
                             <option value="2" name="categorieT" title="Réunions créatives/Pitcher .....">Animation</option>
                             <option value="3" name="categorieT" title="...">Outils métiers</option>
@@ -131,7 +131,7 @@
                 
             <div class="form-group">
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="typeT" id="inlineRadio1" value="Pro">
+                  <input class="form-check-input" type="radio" name="typeT" id="inlineRadio1" required value="Pro">
                 <label class="form-check-label" for="inlineRadio1">Pro</label>
               </div>
               <div class="form-check form-check-inline">

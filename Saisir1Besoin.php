@@ -15,8 +15,13 @@ if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre besoin a bien été enregistré";
         header("Location: MonProfil.php");
 } else {
-        echo ("<h5> Erreur: Votre besoin n'a pas été enregistré, la date butoire doit être supérieur qu'aujoud'hui ! Veuillez vérifier votre saisie ! </h5>");
-       // header("Location: Creer1Besoin.php");
+    ?>
+       <script>
+           alert("Désolé, votre besoin n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(La date butoire d'un besoin doit être supérieure à aujourd'hui)");
+           document.location.href = 'Creer1Besoin.php';
+        </script>
+        <?php 
+        
 }
 //ajouter codeb et codeu dans le table saisir
     $sql = "select CodeB from besoins order by CodeB DESC limit 1";
