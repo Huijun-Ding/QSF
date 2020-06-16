@@ -112,8 +112,7 @@
                  ?>
                     </div>    
                     <div class="col-4">
-                    <h2 id="titre1"><a href="Besoin.php" class="badge badge-dark">Tous les besoins</a></h2><br/>
-                    <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un autre besoin</button></a>
+                        <h3><a href="Besoin.php" class="badge badge-dark">Tous les besoins</a></h3>
                     </div>
                      
             </div>

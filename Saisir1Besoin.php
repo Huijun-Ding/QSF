@@ -13,7 +13,7 @@ mysqli_stmt_bind_param($stmt, 'sssssi', $Titre, $Description, $DateButoire, $Dat
 
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre besoin a bien été enregistré";
-        header("Location: Besoin.php");
+        header("Location: MonProfil.php");
 } else {
         echo ("<h5> Erreur: Votre besoin n'a pas été enregistré, la date butoire doit être supérieur qu'aujoud'hui ! Veuillez vérifier votre saisie ! </h5>");
        // header("Location: Creer1Besoin.php");

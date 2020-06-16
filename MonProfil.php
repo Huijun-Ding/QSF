@@ -171,7 +171,11 @@
           </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
-            <h1> Mes besoins </h1>
+           
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+              <h1> Mes besoins </h1>
+              <a href="Creer1Besoin.php"><button type="button" class="btn btn-dark">Je veux créer un nouveau besoin</button></a>
+            </div>
             <hr>
   
             <form method="POST" action="Desactiver1CarteB.php">
@@ -201,14 +205,15 @@
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
+                        echo ('<a href="BesoinX.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<br>');
+                        echo ('<a href="BesoinModification.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }
                 } 
             } else {
                     echo ("Vous n'avez pas encore saisi un besoin");
-                    echo('<br><br>');
-                    echo ('<a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux saisir un nouveau besoin</button></a>');
             }             
   
             ?>
@@ -216,7 +221,8 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver la carte</button>
+                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver 1 carte</button>
+
                      <!-- Modal -->
                     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
                       <div class="modal-dialog">
@@ -231,7 +237,7 @@
                             <p> Êtes-Vous sûr de désactiver cette carte ?</p>
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                            <button name="desactiverB" type="submit" class="btn btn-primary">Désactiver</button>  
                           </div>
                         </div>
                       </div>
@@ -241,10 +247,15 @@
             </div>
             </form>   
           </div>  
-            
+       
+        <br><br>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->     
         <div class="container" id="MesTalents">
-            <h1> Mes talents </h1>
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                <h1> Mes talents </h1>
+                <a href="Creer1Talent.php"><button type="button" class="btn btn-dark">Je veux proposer un nouveau talent</button></a>
+            </div>
+            
             <hr>
            
             <form method="POST" action="Desactiver1CarteT.php">
@@ -274,14 +285,15 @@
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
                             echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
+                            echo ('<a href="TalentX.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<br>');
+                            echo ('<a href="TalentModification.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
                             echo ('</div>');  
                             echo ('</div></li>');                
                           } 
                     }
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
-                    echo('<br><br>');
-                    echo ('<a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>');
             }             
  
             ?>
@@ -289,7 +301,8 @@
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver la carte</button>
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver 1 carte</button>
+                    
                      <!-- Modal -->
                     <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
                       <div class="modal-dialog">
@@ -304,7 +317,7 @@
                             <p> Êtes-Vous sûr de désactiver cette carte ?</p>
                           </div>
                           <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Désactiver</button>  
+                            <button name="desactiverT" type="submit" class="btn btn-primary">Désactiver</button>  
                           </div>
                         </div>
                       </div>

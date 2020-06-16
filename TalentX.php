@@ -109,8 +109,7 @@
                 ?>     
                         </div>    
                     <div class="col-4">
-                        <h2 id="titre1"><a href="Talent.php" class="badge badge-dark">Tous les talents</a></h2><br/>
-                    <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux créer un autre talent</button></a>
+                        <h3 id="titre1"><a href="Talent.php" class="badge badge-dark">Tous les talents</a></h3><br/>
                     </div>
                     </div>
             </div>

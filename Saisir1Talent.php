@@ -12,7 +12,7 @@ mysqli_stmt_bind_param($stmt, 'ssssi', $TitreT, $DescriptionT, $DatePublicationT
 
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre talent a bien été enregistré";
-        header("Location: Talent.php");
+        header("Location: MonProfil.php");
 } else {
         echo "Erreur: Votre talent n'a pas été enregistré";
 }
