@@ -14,7 +14,12 @@ if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre talent a bien été enregistré";
         header("Location: MonProfil.php");
 } else {
-        echo "Erreur: Votre talent n'a pas été enregistré";
+        ?>
+       <script>
+           alert("Désolé, votre talent n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement !");
+           document.location.href = 'Creer1Talent.php';
+        </script>
+        <?php 
 }
 //ajouter codeT et CodeU dans le table proposer
     $sql = "select CodeT from talents order by CodeT DESC limit 1";
