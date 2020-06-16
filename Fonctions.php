@@ -39,7 +39,7 @@
             }
         
         // 3. Session utilisateur
-            session_start();
+          /*  session_start();
             
             if(isset($_SESSION['email'])){
                     echo('<a href=\"Deconnecter.php\"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>');
@@ -49,8 +49,9 @@
                 echo('<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                 echo "Visiteur";                   //Utilisateur qui n'a pas conncté
                 echo('</button>');
-            }       
-            
+            }       */
+            session_start();
+         
         // 4. Session actuelle : récuperer le code utilisateur   
             if (isset($_SESSION['email'])) {
                 $sqlr = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
