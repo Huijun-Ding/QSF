@@ -69,4 +69,22 @@
                     $_SESSION['type'] = $type['TypeU'];
                 }  
             }    
+
+         // 6. Tester si l'utilisateur est connecté avant saisir un nouveau besoin/talent
+            function is_login_new_besoin() {
+                if (isset($_SESSION['email'])) {
+                    echo ('<a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Créer un nouveau besoin</button></a>');
+                } else {
+                    echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau besoin</button></a>');
+                }
+            }
+            
+         // 6. Tester si l'utilisateur est connecté avant saisir un nouveau besoin/talent
+            function is_login_new_talent() {
+                if (isset($_SESSION['email'])) {
+                    echo ('<a href="Creer1Talent.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
+                } else {
+                    echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
+                }
+            }
             ?>

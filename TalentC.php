@@ -93,7 +93,7 @@
           <div class="container">
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1>LES TALENTS PAR CATEGORIE </h1>
-              <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Proposer un nouveau talent</button></a>
+              <?php is_login_new_talent(); ?>
             </div>
             <hr>
             

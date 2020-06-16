@@ -94,7 +94,7 @@
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1>LES TALENTS </h1>
-              <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>
+              <?php is_login_new_talent(); ?>
             </div>
             <hr>
             

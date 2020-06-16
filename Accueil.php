@@ -120,7 +120,7 @@
                     <input class="form-control mr-sm-2" type="search"  name="motB" placeholder="Fitness/Excel/..." aria-label="Search">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form> 
-              <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
+              <?php is_login_new_besoin(); ?>
             </div>
    
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
@@ -171,7 +171,7 @@
                     <input class="form-control mr-sm-2" type="search"  name="motT" placeholder="Animation/BI/..." aria-label="Search">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form> 
-              <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>
+              <?php is_login_new_talent(); ?>
             </div>
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">

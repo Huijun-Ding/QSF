@@ -94,7 +94,7 @@
           
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1>LES BESOINS PAR CATEGORIE </h1>
-              <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Créer un nouveau besoin</button></a>
+              <?php is_login_new_besoin(); ?>
             </div>
             <hr>
             <div class="row">
