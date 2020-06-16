@@ -94,7 +94,7 @@
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1>LES BESOINS </h1>         
-              <a href="Creer1Besoin.php"><button type="button" class="btn btn-light">Je veux créer un nouveau besoin</button></a>
+              <?php is_login_new_besoin(); ?>
             </div>
             <hr>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
@@ -111,8 +111,10 @@
                     require_once('Fonctions.php');
                     $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
 
-                    if(isset($_SESSION['email'])) {
-                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TypeB = '{$_SESSION['type']}' order by CodeB DESC";
+                    if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    } else {
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                     }
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/

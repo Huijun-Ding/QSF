@@ -181,7 +181,7 @@
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes besoins </h1>
-              <a href="Creer1Besoin.php"><button type="button" class="btn btn-dark">Je veux créer un nouveau besoin</button></a>
+              <?php is_login_new_besoin(); ?>
             </div>
             <hr>
   
@@ -260,7 +260,7 @@
         <div class="container" id="MesTalents">
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                 <h1> Mes talents </h1>
-                <a href="Creer1Talent.php"><button type="button" class="btn btn-dark">Je veux proposer un nouveau talent</button></a>
+                <?php is_login_new_talent(); ?>
             </div>
             
             <hr>

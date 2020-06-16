@@ -94,7 +94,7 @@
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1>LES TALENTS </h1>
-              <a href="Creer1Talent.php"><button type="button" class="btn btn-light">Je veux proposer un nouveau talent</button></a>
+              <?php is_login_new_talent(); ?>
             </div>
             <hr>
             
@@ -112,8 +112,10 @@
 
             	    $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                     
-                    if(isset($_SESSION['email'])) {
-                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                    if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                    } else {
+                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                     }
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
