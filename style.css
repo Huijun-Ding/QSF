@@ -114,7 +114,6 @@ a.bulle:hover span {
         display: flex;
         overflow: hidden;
         margin-left: auto;
-        margin-top: .5em;
 }
 
 .switch-field input {
