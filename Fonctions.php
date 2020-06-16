@@ -68,5 +68,21 @@
                 if ($type = mysqli_fetch_array($result)) {   
                     $_SESSION['type'] = $type['TypeU'];
                 }  
-            }    
+            } 
+            
+        // 6. cacher les cartes
+               
+            //function card_hidden($XXX){
+                //$stmt = mysqli_prepare($session, "SELECT VisibiliteB from besoins where  = ?");
+                //mysqli_stmt_bind_param($stmt, "i", $Email);
+                //mysqli_stmt_execute($stmt);
+                //if(mysqli_stmt_fetch($stmt)==TRUE){
+                    //return False;
+                //} else {
+                   //return True;
+                //}
+            //}
+            
+            
+            
             ?>
