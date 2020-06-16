@@ -87,4 +87,5 @@
                     echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
                 }
             }
+
             ?>
