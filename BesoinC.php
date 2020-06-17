@@ -35,20 +35,24 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-          
+       <form action="BesoinC.php" method="post">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-three">Pro et Perso</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-four">Pro</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-five">Perso</label>');
+                echo ('<div class="btn-group btn-group-toggle" data-toggle="buttons">');
+                echo ('<label class="btn btn-sm active">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typepartout" value="">Pro et Perso</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Pro">Pro</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Perso">Perso</button>');
+                echo ('</label>');
                 echo ('</div>');
             } 
           ?>
+         </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">   
@@ -116,9 +120,19 @@
               <ul class="list-inline">
               <?php
               require_once('Fonctions.php');
+              
+                    
+
               if (isset($_POST['categorie'])) {
-                $cate = $_POST['categorie'];
-                $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$cate} order by b.CodeB DESC";
+                   if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                        $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    } elseif (isset($_POST['typeV'])) {
+                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    } else {
+                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by b.CodeB DESC";
+                    }
+              
+                
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
@@ -131,7 +145,7 @@
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
                         echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('</div>');  
                         echo ('</div></li>');   
                     }

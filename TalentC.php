@@ -36,19 +36,24 @@
           </li>  
         </ul>
           
+          <form action="TalentC.php" method="post">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-three">Pro et Perso</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-four">Pro</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-five">Perso</label>');
+                echo ('<div class="btn-group btn-group-toggle" data-toggle="buttons">');
+                echo ('<label class="btn btn-sm active">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typepartout" value="">Pro et Perso</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Pro">Pro</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Perso">Perso</button>');
+                echo ('</label>');
                 echo ('</div>');
             } 
           ?>
+         </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">   

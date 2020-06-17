@@ -91,13 +91,11 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
             <div class="container">
-                <div class="row">
-                    <div class="col-8">
-
+                
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select  b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
+                $query = "select  b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -120,14 +118,11 @@
                 }
                 }
                  ?>
-                    </div>    
-                    <div class="col-4">
-                        <h3><a href="Besoin.php" class="badge badge-dark">Tous les besoins</a></h3>
-                    </div>
+                    
                      
             </div>
         </div>
-             </div>
+         
         <footer>
             <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

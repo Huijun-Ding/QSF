@@ -36,19 +36,24 @@
           </li>  
         </ul>
           
+         <form action="Talent.php" method="post">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-three">Pro et Perso</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-four">Pro</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-five">Perso</label>');
+                echo ('<div class="btn-group btn-group-toggle" data-toggle="buttons">');
+                echo ('<label class="btn btn-sm active">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typepartout" value="">Pro et Perso</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Pro">Pro</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Perso">Perso</button>');
+                echo ('</label>');
                 echo ('</div>');
             } 
           ?>
+         </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">   
@@ -110,17 +115,17 @@
             <?php
 		    require_once('Fonctions.php');
 
-            	    $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
-                    
-                    if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
-                    } else {
-                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
-                    }
+            	     if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                        } elseif (isset($_POST['typeV'])) {
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                        } else {
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+                        }
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['mot']);
-                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                     }
 
                     $result = mysqli_query ($session, $query);   /*Si le mot clé existe, il va exécute la deuxième requête, sinon la première*/
@@ -132,7 +137,7 @@
                                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                 echo ('<div class="card-body card text-center">');
                                 echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                                echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                                echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                                 echo ('</div>');  
                                 echo ('</div>');             
                             }
