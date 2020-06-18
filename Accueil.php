@@ -37,7 +37,7 @@
           </li>  
         </ul>
           
-          <form action="Accueil.php" method="post">
+          <form  method="get">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
@@ -134,8 +134,8 @@
 
                         if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                             $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
-                        } elseif (isset($_POST['typeV'])){    
-                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        } elseif (isset($_GET['typeV'])){    
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_GET['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                         } else {
                             $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                         }
@@ -191,8 +191,8 @@
             	<?php                      
                         if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                             $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
-                        } elseif (isset($_POST['typeV'])) {
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                        } elseif (isset($_GET['typeV'])) {
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_GET['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
                         } else {
                             $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                         }

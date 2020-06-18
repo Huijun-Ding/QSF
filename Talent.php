@@ -36,7 +36,7 @@
           </li>  
         </ul>
           
-         <form action="Talent.php" method="post">
+         <form method="get">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
@@ -106,8 +106,8 @@
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="TalentC.php"><div class="alert alert-light" role="alert">Filtrer les talents par catégorie</div></a>
               <form class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Entrez un mot clé" aria-label="Recherche">
-                    <button type="button" class="btn btn-outline-dark">Recherche</button>
+                    <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
+                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form>
             </div> 
             
@@ -115,8 +115,8 @@
             <?php
             	     if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                             $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
-                        } elseif (isset($_POST['typeV'])) {
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                        } elseif (isset($_GET['typeV'])) {
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_GET['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
                         } else {
                             $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                         }
