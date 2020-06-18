@@ -123,8 +123,17 @@
               require_once('Fonctions.php');
                 
               if (isset($_POST['categorie'])) {
-                $categorie = $_POST['categorie'];   // récupérer la valeur de la catégorie choisi CodeC
-                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = '".$categorie."' order by CodeT DESC";
+               
+                
+                   if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                        $query = " select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    } elseif (isset($_POST['typeV'])) {
+                         $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = {$_POST['categorie']} and (t.TypeT = '{$_POST['typeV']}' OR b.TypeT ='Pro et Perso') order by CodeT DESC";
+                    } else {
+                         $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.CodeC = {$_POST['categorie']} order by CodeT DESC";
+                    }
+               
+                
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
@@ -136,7 +145,7 @@
                     echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                     echo ('<div class="card-body card text-center">');
                     echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                    echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                    echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                     echo ('</div>');  
                     echo ('</div>');      
                     }

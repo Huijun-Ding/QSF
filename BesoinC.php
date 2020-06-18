@@ -121,9 +121,7 @@
               <?php
               require_once('Fonctions.php');
               
-                    
-
-              if (isset($_POST['categorie'])) {
+                if (isset($_POST['categorie'])) {
                    if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                         $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                     } elseif (isset($_POST['typeV'])) {
@@ -131,10 +129,10 @@
                     } else {
                         $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by b.CodeB DESC";
                     }
-              
+               
                 
                 $result = mysqli_query ($session, $query);
-
+                
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
@@ -150,7 +148,7 @@
                         echo ('</div></li>');   
                     }
                 } 
-              }
+                }
               ?>            
               </ul>
             </div>

@@ -92,15 +92,9 @@
                       
         // 7. cacher les cartes
                
-            //function card_hidden($XXX){
-                //$stmt = mysqli_prepare($session, "SELECT VisibiliteB from besoins where  = ?");
-                //mysqli_stmt_bind_param($stmt, "i", $Email);
-                //mysqli_stmt_execute($stmt);
-                //if(mysqli_stmt_fetch($stmt)==TRUE){
-                    //return False;
-                //} else {
-                   //return True;
-                //}
-            //}
+            function card_hidden(){
+                $query = "UPDATE besoins SET VisibiliteB = 0 WHERE DatePublicationB > DateButoire ";
+                mysqli_query ($session, $query);
+            }
 
             ?>
