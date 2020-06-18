@@ -138,7 +138,7 @@
                                     echo ('<div class="card-body card text-center">');
                                     echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
                                     echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                                    echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                                    echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                                     echo ('</div>');  
                                     echo ('</div></div>');   
                                     } 
