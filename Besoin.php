@@ -109,37 +109,44 @@
                 
 		<?php
                     require_once('Fonctions.php');
-                    $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                    $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
 
                     if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                     } else {
-                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                     }
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                         $mot = htmlspecialchars($_GET['mot']);
-                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
+                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
                     }
 
                     $result = mysqli_query ($session, $query);
-                            
+
                         if (mysqli_num_rows($result)>0) {
-                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique en format carte */
+                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
                                  if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-                                        echo ('<div class="card" style="width: 12rem;">');
-                                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                                        echo ('<div class="card-body card text-center">');
-                                        echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                                        echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                                        echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                                        echo ('</div>');  
-                                        echo ('</div>');   
-                            }                 
+                                    if ($ligne["TypeB"] == 'Pro et Perso') {
+                                        echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeB"].'</span></h5>');
+                                    } elseif ($ligne["TypeB"] == 'Pro') {
+                                        echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeB"].'</span></h5>');
+                                    } elseif ($ligne["TypeB"] == 'Perso') {
+                                        echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeB"].'</span></h5>');
+                                    }                                     
+                                    echo ('<div class="card" style="width: 12rem;">');                                 
+                                    echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                                    echo ('<div class="card-body card text-center">');
+                                    echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
+                                    echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                                    echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                                    echo ('</div>');  
+                                    echo ('</div></div>');   
+                                    } 
                             }
-                        } else {
-                          echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
-                        }        
+                            } else {
+                                echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                            }                     
 			?>
 
             </div>

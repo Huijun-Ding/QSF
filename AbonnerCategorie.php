@@ -111,7 +111,7 @@
                       
                         echo ('<div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
-                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
                         echo ('</div>');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                         echo ('<div class="card-body text-center">');

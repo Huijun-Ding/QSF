@@ -87,5 +87,8 @@
                     echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
                 }
             }
+            
+          //7. couleur de badge selon les types
 
+            
             ?>

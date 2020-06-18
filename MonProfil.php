@@ -144,7 +144,7 @@
                     echo ('<p>Type d\'information affichée : </p>'); 
                     if ($_SESSION['type'] == NULL){
                         echo ('<div class="switch-field">');
-                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" checked/>');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="" checked/>');
                         echo ('<label for="radio-three">Pro et Perso</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
                         echo ('<label for="radio-four">Pro</label>');
@@ -153,7 +153,7 @@
                         echo ('</div>');
                     } elseif ($_SESSION['type'] == 'Pro') {
                         echo ('<div class="switch-field">');
-                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="" />');
                         echo ('<label for="radio-three">Pro et Perso</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" checked />');
                         echo ('<label for="radio-four">Pro</label>');
@@ -162,7 +162,7 @@
                         echo ('</div>');
                     } elseif ($_SESSION['type'] == 'Perso') {
                         echo ('<div class="switch-field">');
-                        echo ('<input type="radio" id="radio-three" name="switch-two" value="Pro et Perso" />');
+                        echo ('<input type="radio" id="radio-three" name="switch-two" value="" />');
                         echo ('<label for="radio-three">Pro et Perso</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
                         echo ('<label for="radio-four">Pro</label>');
@@ -192,7 +192,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = " select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} ";
+            $query = " select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
 
             $result = mysqli_query ($session, $query);
 
@@ -205,7 +205,7 @@
                     if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
                         echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
-                        echo ('<input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/>');
+                        echo ('<center><input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/><center>');
                         echo ('</div>');
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
@@ -228,7 +228,7 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver 1 carte</button>
+                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
 
                      <!-- Modal -->
                     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -272,7 +272,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = " select t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} ";
+            $query = " select t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} order by t.CodeT DESC";
 
             $result = mysqli_query ($session, $query);
 
@@ -286,7 +286,7 @@
                          if ($talent["VisibiliteT"] == 1) {  
                             echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('<input type="radio" name="codeT" value="'.$talent["CodeT"].'"/>');
+                            echo ('center><input type="radio" name="codeT" value="'.$talent["CodeT"].'"/><center>');
                             echo ('</div>');
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
@@ -308,7 +308,7 @@
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver 1 carte</button>
+                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver carte</button>
                     
                      <!-- Modal -->
                     <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
