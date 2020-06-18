@@ -35,7 +35,7 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-          <form action="Besoin.php" method="post">
+          <form method="get">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
@@ -98,8 +98,8 @@
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <a href="BesoinC.php"><div class="alert alert-light" role="alert">Filtrer les besoins par catégorie</div></a>
               <form class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Entrez un mot clé" aria-label="Recherche">
-                    <button type="button" class="btn btn-outline-dark">Recherche</button>
+                    <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
+                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form>
             </div>
             
@@ -110,8 +110,8 @@
                     
                     if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                         $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
-                    } elseif (isset($_POST['typeV'])) {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    } elseif (isset($_GET['typeV'])) {
+                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_GET['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                     } else {
                         $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                     }
