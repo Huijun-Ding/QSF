@@ -89,7 +89,7 @@
           <div class="container">
             <hr>
             <center><h1>Mes Abonnements</h1></center>
-            <hr>
+            <hr> <input class="card-text" type="checkbox" onclick="ToutDesabonner()" id="parent1" name="selectall" value="">  <strong> <span id="label1">Tout désabonner </span></strong>
             <form  action="DesabonnerCategories.php" method="post">
             <div class="row">
                 <div class="col-10">
@@ -107,7 +107,7 @@
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */       
                         echo ('<div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
-                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('<input class="card-text" type="checkbox" id="Child_Checkbox1" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
                         echo ('</div>');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                         echo ('<div class="card-body text-center">');
@@ -121,6 +121,30 @@
                   ?>      
                     </div>
                 </div>
+                <script>
+                    function ToutDesabonner() {
+                        var parent = document.getElementById("parent1");
+                        var label = document.getElementById("label1");
+                        var input = document.getElementsByTagName("input");
+
+                        if (parent.checked === true) {
+                           for (var i = 0; i < input.length ; i ++) {
+                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox1" && input[i].checked == false) {
+                                   input[i].checked = true ;
+                                   label.innerHTML = "Tout désabonnées";
+                               }
+                           }
+                        }
+                        else if (parent.checked === false) {
+                           for (var i = 0; i < input.length ; i ++) {
+                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == true) {
+                                   input[i].checked = false ;
+                                   label.innerHTML = "Désabonner tout";
+                               }
+                           }
+                        }
+                    }
+                </script>
                 <div class="col-2">
                    <button type="submit" class="btn btn-dark">Désabonner</button> 
                 </div>          
@@ -130,8 +154,10 @@
 
           <div class="container">
             <hr>
-            <center><h1> Abonnements Disponibles </h1> </center> <!--Tous les catégories qui restent-->
-            <hr>
+            <center><h1> Abonnements Disponibles </h1> </center>  <!--Tous les catégories qui restent-->
+                <hr>  <input class="card-text" type="checkbox" onclick="ToutAbonner()" id="parent" name="selectall" value="">  <strong> <span id="label">Tout abonner </span></strong>
+           
+            
             <form  action="ReabonnerCategories.php" method="post">	
             <div class="row">
                 <div class="col-10">
@@ -152,7 +178,7 @@
                       
                         echo ('<div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
-                        echo ('<input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
+                        echo ('<input class="card-text" type="checkbox" id="Child_Checkbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
                         echo ('</div>');
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                         echo ('<div class="card-body text-center">');
@@ -166,6 +192,30 @@
                           ?>      
                     </div>
                 </div>
+                <script>
+                    function ToutAbonner() {
+                        var parent = document.getElementById("parent");
+                        var label = document.getElementById("label");
+                        var input = document.getElementsByTagName("input");
+
+                        if (parent.checked === true) {
+                           for (var i = 0; i < input.length ; i ++) {
+                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == false) {
+                                   input[i].checked = true ;
+                                   label.innerHTML = "Tout abonnées";
+                               }
+                           }
+                        }
+                        else if (parent.checked === false) {
+                           for (var i = 0; i < input.length ; i ++) {
+                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == true) {
+                                   input[i].checked = false ;
+                                   label.innerHTML = "Abonner tout";
+                               }
+                           }
+                        }
+                    }
+                </script>
                 <div class="col-2">
             <div>           
                 <button type="submit" class="btn btn-dark">Abonner</button>
