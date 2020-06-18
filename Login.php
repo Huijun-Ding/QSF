@@ -35,23 +35,8 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-          
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-three">Pro et Perso</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-four">Pro</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-five">Perso</label>');
-                echo ('</div>');
-            } 
-          ?>
-
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             

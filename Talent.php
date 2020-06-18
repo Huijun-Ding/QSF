@@ -41,16 +41,16 @@
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');
             } 
           ?>
          </form>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             

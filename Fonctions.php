@@ -88,12 +88,5 @@
                     echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
                 }
             }
-                    
-        // 7. cacher les cartes
-               
-            function card_hidden(){
-                $query = "UPDATE besoins SET VisibiliteB = 0 WHERE DatePublicationB > DateButoire ";
-                mysqli_query ($session, $query);
-            }
-      
+
 ?>

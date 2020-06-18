@@ -35,21 +35,9 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-       <form action="BesoinC.php" method="post">
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
-                echo ('</div>');
-            } 
-          ?>
-         </form>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             
@@ -131,7 +119,7 @@
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique */
-                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
+                    if ($ligne["VisibiliteB"] == 1) {   
                         if ($ligne["TypeB"] == 'Pro et Perso') {
                             echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeB"].'</span></h5>');
                         } elseif ($ligne["TypeB"] == 'Pro') {

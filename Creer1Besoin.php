@@ -51,7 +51,7 @@
           ?>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             

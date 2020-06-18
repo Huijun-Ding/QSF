@@ -42,16 +42,16 @@
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');
-            } 
+            }  
           ?>
-            </form>
+          </form>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             
@@ -119,7 +119,10 @@
                     <input class="form-control mr-sm-2" type="search"  name="motB" placeholder="Fitness/Excel/..." aria-label="Search">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form> 
-              <?php is_login_new_besoin(); ?>
+              <?php is_login_new_besoin(); 
+                    $query = "UPDATE besoins SET VisibiliteB = 0 WHERE CURDATE() > DateButoireB";
+                    mysqli_query ($session, $query);
+                ?>
             </div>
    
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
@@ -143,7 +146,7 @@
 
                         if (mysqli_num_rows($result)>0) {
                             while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                                 if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
+                                 if ($ligne["VisibiliteB"] == 1) {   
                                     if ($ligne["TypeB"] == 'Pro et Perso') {
                                         echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeB"].'</span></h5>');
                                     } elseif ($ligne["TypeB"] == 'Pro') {
