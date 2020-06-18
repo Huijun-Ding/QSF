@@ -95,6 +95,5 @@
                 $query = "UPDATE besoins SET VisibiliteB = 0 WHERE DatePublicationB > DateButoire ";
                 mysqli_query ($session, $query);
             }
-            
-            
+      
 ?>

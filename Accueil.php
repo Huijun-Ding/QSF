@@ -41,16 +41,10 @@
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group btn-group-toggle" data-toggle="buttons">');
-                echo ('<label class="btn btn-sm active">');
-                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typepartout" value="">Pro et Perso</button>');
-                echo ('</label>');
-                echo ('<label class="btn btn-sm">');
-                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Pro">Pro</button>');
-                echo ('</label>');
-                echo ('<label class="btn btn-sm">');
-                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Perso">Perso</button>');
-                echo ('</label>');
+                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
+                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
+                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
+                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');
             } 
           ?>
