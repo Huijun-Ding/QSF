@@ -24,15 +24,17 @@ if(isset($_POST['email'])){
             
             header("Location: Accueil.php");
                
-            // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local, on va aussi essayer avec "SendGrid"
+            // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
            
             $destinataire = "$Email"; // adresse mail du destinataire
             $sujet = "Confirmation de la création de compte"; // sujet du mail
             $message = "Vous venez de créer un compte"; // message qui dira que le destinataire a bien lu votre mail
             // maintenant, l'en-tête du mail
-            $header = "From: l'email d'un administrateur\r\n"; 
+            $header = "From: [Quai des savoir-faire]\r\n"; 
+            $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
             $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
             mail ($destinataire, $sujet, $message, $header); // on envois le mail
+            
             
         } else {
               ?>

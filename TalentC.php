@@ -146,7 +146,7 @@
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                            echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('</div>');  
                             echo ('</div></div>');       
                     }

@@ -286,7 +286,7 @@
                          if ($talent["VisibiliteT"] == 1) {  
                             echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('center><input type="radio" name="codeT" value="'.$talent["CodeT"].'"/><center>');
+                            echo ('<center><input type="radio" name="codeT" value="'.$talent["CodeT"].'"/><center>');
                             echo ('</div>');
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
