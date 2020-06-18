@@ -96,5 +96,5 @@
                 mysqli_query ($session, $query);
             }
             
-            
+
 ?>

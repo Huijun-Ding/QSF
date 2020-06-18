@@ -137,9 +137,9 @@
                         }
                         else if (parent.checked === false) {
                            for (var i = 0; i < input.length ; i ++) {
-                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == true) {
+                               if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox1" && input[i].checked == true) {
                                    input[i].checked = false ;
-                                   label.innerHTML = "Désabonner tout";
+                                   label.innerHTML = "Tout désabonner";
                                }
                            }
                         }
@@ -210,7 +210,7 @@
                            for (var i = 0; i < input.length ; i ++) {
                                if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == true) {
                                    input[i].checked = false ;
-                                   label.innerHTML = "Abonner tout";
+                                   label.innerHTML = "Tout abonner";
                                }
                            }
                         }

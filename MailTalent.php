@@ -12,6 +12,7 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
+     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
        <nav class="navbar sticky-top navbar-dark bg-dark">
@@ -104,15 +105,21 @@
                 </div>
                     
                 <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenu du message</strong></label><br/>
-                    <?php 
-                    require_once('Fonctions.php');
-                    echo '<textarea rows="13" cols="80" name="contenue" required>';  
+                    <label for="inputEmail4"><strong>Contenu du message</strong></label>
+                    
+                    <textarea name="email">
+                        <?php  
+                        echo '<pre>';
                         echo 'Bonjour,';
-                        echo '                                                                                                                                                        ';
-                        echo 'Je vous contacte pour vous demander est-ce que vous avez le temps de partager votre talent '.$T.' ? ';     
-                    echo '</textarea>'; 
-                    ?>
+                        echo '                                                                                                                                                       ';
+                        echo 'Je vous contacte pour vous demander est-ce que vous avez le temps de partager votre talent '.$T.' ? ';
+                        echo '</pre>';
+                        ?>     
+                    </textarea>
+                <script>
+                        CKEDITOR.replace( 'email' );
+                </script>
+                           
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
