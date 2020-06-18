@@ -68,8 +68,9 @@
                 if ($type = mysqli_fetch_array($result)) {   
                     $_SESSION['type'] = $type['TypeU'];
                 }  
-            }    
-
+            } 
+  
+      
          // 6. Tester si l'utilisateur est connecté avant saisir un nouveau besoin/talent
             function is_login_new_besoin() {
                 if (isset($_SESSION['email'])) {
@@ -87,8 +88,13 @@
                     echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau talent</button></a>');
                 }
             }
+                    
+        // 7. cacher les cartes
+               
+            function card_hidden(){
+                $query = "UPDATE besoins SET VisibiliteB = 0 WHERE DatePublicationB > DateButoire ";
+                mysqli_query ($session, $query);
+            }
             
-          //7. couleur de badge selon les types
-
             
-            ?>
+?>

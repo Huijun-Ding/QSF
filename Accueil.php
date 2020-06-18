@@ -37,19 +37,24 @@
           </li>  
         </ul>
           
+          <form action="Accueil.php" method="post">
           <?php
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="radio-one" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-one">Pro et Perso</label>');
-                echo ('<input type="radio" id="radio-two" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-two">Pro</label>');
-                echo ('<input type="radio" id="radio-three" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-three">Perso</label>');
+                echo ('<div class="btn-group btn-group-toggle" data-toggle="buttons">');
+                echo ('<label class="btn btn-sm active">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typepartout" value="">Pro et Perso</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Pro">Pro</button>');
+                echo ('</label>');
+                echo ('<label class="btn btn-sm">');
+                echo ('<button type="radio" class="list-group-item list-group-item-action" name="typeV" value="Perso">Perso</button>');
+                echo ('</label>');
                 echo ('</div>');
             } 
           ?>
+            </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">   
@@ -126,17 +131,18 @@
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             	<?php
             		require_once('Fonctions.php');
-                        $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
-                        
+
                         if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        } elseif (isset($_POST['typeV'])){    
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                         } else {
-                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                         }
 
                         if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motB']);
-                            $query = "select b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
+                            $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
@@ -156,7 +162,7 @@
                                     echo ('<div class="card-body card text-center">');
                                     echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
                                     echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                                    echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                                    echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                                     echo ('</div>');  
                                     echo ('</div></div>');   
                                     } 
@@ -182,18 +188,19 @@
             </div>
 
             <div id="cartesT" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
-            	<?php
-                        $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
-
+            	<?php                      
                         if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                        } elseif (isset($_POST['typeV'])) {
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
                         } else {
-                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                         }
+                        
                         
                         if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['motT']);
-                            $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                         }
 
                         $result = mysqli_query ($session, $query);
@@ -212,7 +219,7 @@
                                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                 echo ('<div class="card-body card text-center">');
                                 echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                                echo ('<a href="TalentX.php?t='.$ligne["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                                echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                                 echo ('</div>');  
                                 echo ('</div></div>');             
                               }

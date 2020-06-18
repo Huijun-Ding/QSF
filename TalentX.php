@@ -22,14 +22,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Accueil.php">Accueil<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="Accueil.php">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Talent.php">Talents</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="Talent.php">Talents<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
@@ -92,12 +92,11 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
             <div class="container">
-                <div class="row">
-                    <div class="col-8">
+              
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
+                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = '$T' ";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
@@ -118,11 +117,7 @@
                 }   
                 }  
                 ?>     
-                        </div>    
-                    <div class="col-4">
-                        <h3 id="titre1"><a href="Talent.php" class="badge badge-dark">Tous les talents</a></h3><br/>
-                    </div>
-                    </div>
+                        
             </div>
         </div>
         <footer>
