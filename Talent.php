@@ -22,14 +22,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Accueil.php">Accueil<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="Accueil.php">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Talent.php">Talents</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="Talent.php">Talents<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
@@ -113,38 +113,43 @@
             
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php
-		    require_once('Fonctions.php');
-
             	     if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
                         } elseif (isset($_POST['typeV'])) {
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['typeV']}' or t.TypeT = 'Pro et Perso') order by t.CodeT DESC";
                         } else {
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by t.CodeT DESC";
                         }
 
                     if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                             $mot = htmlspecialchars($_GET['mot']);
-                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                            $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
                     }
 
-                    $result = mysqli_query ($session, $query);   /*Si le mot clé existe, il va exécute la deuxième requête, sinon la première*/
+                        $result = mysqli_query ($session, $query);
 
-                    if (mysqli_num_rows($result)>0) {
-                        while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les talents par l'ordre chronologique en format carte */
-                            if ($ligne["VisibiliteT"] == 1) {
-                                echo ('<div class="card" style="width: 12rem;">');
+                        if (mysqli_num_rows($result)>0) {       
+                            while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
+                              if ($ligne["VisibiliteT"] == 1){
+                                    if ($ligne["TypeT"] == 'Pro et Perso') {
+                                        echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeT"].'</span></h5>');
+                                    } elseif ($ligne["TypeT"] == 'Pro') {
+                                        echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeT"].'</span></h5>');
+                                    } elseif ($ligne["TypeT"] == 'Perso') {
+                                        echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeT"].'</span></h5>');
+                                    }                                  
+                                echo ('<div class="card" style="width: 12rem;">');                              
                                 echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                                 echo ('<div class="card-body card text-center">');
                                 echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
                                 echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                                 echo ('</div>');  
-                                echo ('</div>');             
+                                echo ('</div></div>');             
+                              }
                             }
-                        }
-                     } else {
-                        echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
-                     }                                         
+                        } else {
+                          echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                        }                                          
             ?>
             </div>
           </div>

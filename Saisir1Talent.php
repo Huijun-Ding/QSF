@@ -1,7 +1,7 @@
 <?php 
 require_once('Fonctions.php');
 
-$TitreT = $_POST['typeT'].": ".$_POST['titreT'];
+$TitreT = $_POST['titreT'];
 $DescriptionT = $_POST['descriptionT'];
 $TypeT = $_POST['typeT']; 
 $DatePublicationT = date("yy/m/d");

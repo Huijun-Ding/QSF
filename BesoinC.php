@@ -22,11 +22,11 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Accueil.php">Accueil<span class="sr-only">(current)</span></a>
-          </li>
           <li class="nav-item">
-            <a class="nav-link" href="Besoin.php">Besoins</a>
+            <a class="nav-link" href="Accueil.php">Accueil</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="Besoin.php">Besoins<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
@@ -117,20 +117,20 @@
             </form> 
             </div>
             <div class="col-10">
-              <ul class="list-inline">
+              <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
               <?php
               require_once('Fonctions.php');
-              
+    
                 if (isset($_POST['categorie'])) {
-                   if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
-                        $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                    $categorie = $_POST['categorie'];
+                    if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
+                        $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$categorie} and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                     } elseif (isset($_POST['typeV'])) {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$categorie} and (b.TypeB = '{$_POST['typeV']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                     } else {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by b.CodeB DESC";
+                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$categorie} order by b.CodeB DESC";
                     }
-               
-                
+
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -138,19 +138,26 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins qui n'atteignent pas sa date butoire par l'ordre chronologique */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-                        echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                        echo ('<div class="card-body card text-center">');
-                        echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                        echo ('</div>');  
-                        echo ('</div></li>');   
+                        if ($ligne["TypeB"] == 'Pro et Perso') {
+                            echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeB"].'</span></h5>');
+                        } elseif ($ligne["TypeB"] == 'Pro') {
+                            echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeB"].'</span></h5>');
+                        } elseif ($ligne["TypeB"] == 'Perso') {
+                            echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeB"].'</span></h5>');
+                        }                                     
+                            echo ('<div class="card" style="width: 12rem;">');                                 
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                            echo ('<div class="card-body card text-center">');
+                            echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
+                            echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                            echo ('<a href="BesoinX.php?t='.$ligne["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                            echo ('</div>');  
+                            echo ('</div></div>');   
                     }
                 } 
                 }
               ?>            
-              </ul>
+              </div>
             </div>
             </div>
           </div>
