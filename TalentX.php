@@ -82,7 +82,7 @@
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = '$T' ";
+                $query = "select t.TypeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = '$T' ";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
@@ -93,6 +93,7 @@
                     echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
                     //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
+                    echo ('<p><strong>Type: </strong>'.$ligne["TypeT"].'</p>');                    
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
