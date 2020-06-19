@@ -99,7 +99,7 @@
 
                     $query = " select c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
-
+                        
                     if ($result == false) {
                         die("ereur requête : ". mysqli_error($session) );
                     }
@@ -116,7 +116,7 @@
                         echo ('</div>'); 
                     }          
                     } else {
-                                echo("<h5> Vous n'avez pas encore abonné des catégories </h5>");
+                                echo("<h5> Vous n'avez pas encore s'abonné à des catégories </h5>");
                             } 
                   ?>      
                     </div>
@@ -167,9 +167,8 @@
                     require_once('Fonctions.php');
 
                     $query = "select NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
-
-                    $result = mysqli_query ($session, $query);
-
+                    $result = mysqli_query ($session, $query);      
+                        
                     if ($result == false) {
                         die("ereur requête : ". mysqli_error($session) );
                     }

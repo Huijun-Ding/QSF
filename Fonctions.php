@@ -4,7 +4,7 @@
         
         $nomlogin = 'root';                    // Ici, nous connectons avec le serveur local, si vous voulez le tester sur d'autre serveur, vous pouvez changer ces 3 variables
         $nompasswd = '';
-        $nombase = 'talentland';
+        $nombase = 'qdsf';
 
         $session = mysqli_connect('localhost', $nomlogin, $nompasswd ); 
 
@@ -39,17 +39,6 @@
             }
         
         // 3. Session utilisateur
-          /*  session_start();
-            
-            if(isset($_SESSION['email'])){
-                    echo('<a href=\"Deconnecter.php\"><button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
-                    echo('</button>');
-            } else {
-                echo('<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                echo "Visiteur";                   //Utilisateur qui n'a pas conncté
-                echo('</button>');
-            }       */
             session_start();
          
         // 4. Session actuelle : récuperer le code utilisateur   

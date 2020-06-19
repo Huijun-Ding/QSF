@@ -30,10 +30,10 @@ CREATE TABLE `besoins` (
 --
 
 LOCK TABLES `besoins` WRITE;
-INSERT INTO `besoins` VALUES (1, 'Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2020-06-12',false, NOW(),'Pro', 7, 1);
-INSERT INTO `besoins` VALUES (2, 'Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2020-06-13',false, NOW(), 'Perso', 1, 1);
+INSERT INTO `besoins` VALUES (1, 'Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2020-06-28',false, NOW(),'Pro', 7, 1);
+INSERT INTO `besoins` VALUES (2, 'Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2020-06-27',false, NOW(), 'Perso', 1, 1);
 INSERT INTO `besoins` VALUES (3, 'Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', false, NOW(), 'Perso', 9, 1); 
-INSERT INTO `besoins` VALUES (4, 'Excel: faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2020-06-19', false, NOW(), 'Perso', 7, 1);
+INSERT INTO `besoins` VALUES (4, 'Excel: faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', false, NOW(), 'Perso', 7, 1);
 UNLOCK TABLES;
 
 -- -----------------------------------------------------------------------------------------------
@@ -87,16 +87,16 @@ CREATE TABLE `categories` (
 --
 
 LOCK TABLES `categories` WRITE;
-INSERT INTO `categories` VALUES (1,'Sport','Basketball, Football...', 'https://www.saintcyr78.fr/wp-content/uploads/2018/12/Sports-e1544731833709.png');                 -- Nous n'avons pas ajouté la photo de chaque catégorie
+INSERT INTO `categories` VALUES (1,'Sport','Basketball, Football...', 'https://www.bls.gov/spotlight/2017/sports-and-exercise/images/cover_image.jpg');               
 INSERT INTO `categories` VALUES (2,'Animation','Réunions créatives, Pitcher...', 'https://www.maxicasting.com/sites/default/files/styles/medium_article/public/field/image/Virginie_Guilhaume.jpg?itok=9llLIC0Q');
-INSERT INTO `categories` VALUES (3,'Outils métiers','', 'https://previews.123rf.com/images/ylivdesign/ylivdesign1708/ylivdesign170817224/84072414-outil-pour-jeu-d-ic%C3%B4nes-de-m%C3%A9tier-style-de-bande-dessin%C3%A9e-de-36-outil-pour-les-ic%C3%B4nes-vectorielles-de-m%C3%A9tier-.jpg');
-INSERT INTO `categories` VALUES (4,'Développement personnel','Yoga, méditation', 'https://surfexpedition.com/fr/wp-content/uploads/2014/04/yoga-pose-for-surfer.jpeg');
-INSERT INTO `categories` VALUES (5,'Associatif','', 'https://www.parlons-en-ensemble.com/wp-content/uploads/2017/06/VIVE-LES-ASSOS.jpg');
-INSERT INTO `categories` VALUES (6,'Covoiturage','', 'https://www.ecoco2.com/images/blog/covoiturage.png');
-INSERT INTO `categories` VALUES (7,'Bureautique','Word, Excel, Outlook, PowerPoint...', 'https://image.jimcdn.com/app/cms/image/transf/none/path/seb1cf7d479aba92e/image/ibb7b96a2a538f1c6/version/1557242754/image.png');
+INSERT INTO `categories` VALUES (3,'Outils métiers','', 'https://www.cm-alsace.fr/sites/default/files/styles/header_banner/public/image/201405/page_tic.jpg?itok=mvNBiA_w');
+INSERT INTO `categories` VALUES (4,'Développement personnel','Yoga, méditation', 'http://mylenebeaudoin.com/wp-content/uploads/2019/04/Capture-d%C3%A9cran-2019-03-03-21.39.08-1080x675.png');
+INSERT INTO `categories` VALUES (5,'Associatif','', 'https://i2.wp.com/www.maxmanroe.com/wp-content/uploads/2017/09/Pengertian-Struktur-Organisasi.png?w=600&ssl=1');
+INSERT INTO `categories` VALUES (6,'Covoiturage','', 'http://www.ipj.news/enquetes/wp-content/uploads/sites/26/2019/06/illustration-covoiturage-20170827.jpg');
+INSERT INTO `categories` VALUES (7,'Bureautique','Word, Excel, Outlook, PowerPoint...', 'http://romualdtechnology.asso-web.com/uploaded/image/image-bureautique2-480x290.jpg');
 INSERT INTO `categories` VALUES (8,'Informatique','Réseaux, Site Web, Réparation PC...', 'https://www.nbs-system.com/wp-content/uploads/2018/03/180403_NBS_Attaque_protection_siteWeb-788x433.jpg');
 INSERT INTO `categories` VALUES (9,'Loisir','Cuisine, Bricolage, Musique, Théâtre, Cinéma, Cilture, Philatélie, généalogie...', 'https://www.lepointdufle.net/ia/sportsloisirs1.jpg');
-INSERT INTO `categories` VALUES (10,'Autres','', 'https://www.solidaire.org/sites/default/files/images/2014/12/10/toutautrechoselogo.jpg');
+INSERT INTO `categories` VALUES (10,'Autres','', 'https://www.ccilaval.qc.ca/wp-content/uploads/2017/02/Icone_Autre.jpg');
 UNLOCK TABLES;
 
 -- ------------------------------------------------------------------------------------------
@@ -229,11 +229,11 @@ CREATE TABLE `projet` (
 -- Dumping data for table `projet`
 --
 
-INSERT INTO `projet` VALUES ('1', 'Perso : Aide d\'organisation de course longue distance', '2 personnes pour faire l\'inventaire', '2020-06-12', NOW(), 'Perso', '1', 1);
+INSERT INTO `projet` VALUES ('1', 'Perso : Aide d\'organisation de course longue distance', '2 personnes pour faire l\'inventaire', '2020-06-23', NOW(), 'Perso', '1', 1);
 INSERT INTO `projet` VALUES ('2', 'Pro : Aide pour le projet Resto du coeur chemin du Raisin à Toulouse', "3 personnes pour faire l'inventaire de 9H à 12H", '2020-09-11', NOW(), 'Pro', 5, 1);
 INSERT INTO `projet` VALUES ('3', 'Perso : Volontairiat pour des personnes handicapées', '4 personnes durée 2 mois', '2020-07-12', NOW(), 'Perso', 5, 1);
 INSERT INTO `projet` VALUES ('4', 'Pro : Aide pour l\'organisation de la conférence', 'Toulouse 2 journées','2020-08-12', NOW(), 'Pro', 5, 1 );
-INSERT INTO `projet` VALUES ('5', 'Perso : Apéro ', 'Vendredi soir à 20H\r\n', '2020-06-19', NOW(), 'Perso', '9', 1);
+INSERT INTO `projet` VALUES ('5', 'Perso : Apéro ', 'Vendredi soir à 20H\r\n', '2020-06-24', NOW(), 'Perso', '9', 1);
 
 -- --------------------------------------------------------------------------------------------
 --
