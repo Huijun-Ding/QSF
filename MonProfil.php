@@ -32,19 +32,6 @@
           </li>  
         </ul>
           
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="switch-field">');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
-                echo ('<label for="radio-three">Pro et Perso</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
-                echo ('<label for="radio-four">Pro</label>');
-                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
-                echo ('<label for="radio-five">Perso</label>');
-                echo ('</div>');
-            } 
-          ?>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
@@ -172,7 +159,12 @@
                     }
                     ?>
                     <br>
-                    <button type="submit" class="btn btn-outline-dark">Modifier le type d'information affichée</button>
+                    <button type="submit" onclick="Modifier()" class="btn btn-outline-dark">Modifier le type d'information affichée</button>
+                    <script>
+                        function Modifier() {
+                            alert("Modification réussite !");
+                            }
+                    </script>                  
                 </form>
             </div>
           </div>
@@ -212,7 +204,7 @@
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('<br>');
                         echo ('<a href="BesoinModification.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
                         echo ('</div>');  
@@ -292,7 +284,7 @@
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
                             echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
-                            echo ('<a href="TalentX.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
                             echo ('<a href="TalentModification.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
                             echo ('</div>');  
