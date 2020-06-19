@@ -212,7 +212,7 @@
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('<br>');
                         echo ('<a href="BesoinModification.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
                         echo ('</div>');  
@@ -292,7 +292,7 @@
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
                             echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
-                            echo ('<a href="TalentX.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
                             echo ('<a href="TalentModification.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
                             echo ('</div>');  
