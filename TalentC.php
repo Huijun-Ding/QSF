@@ -67,7 +67,7 @@
                 } else {
                     echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');
                     echo ('<a class="dropdown-item" href="Inscription.php">S\'inscrire</a>');
-                }
+                } 
                 ?>
             </div>
           </li>

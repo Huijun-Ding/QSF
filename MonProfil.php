@@ -18,8 +18,8 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Accueil.php">Accueil<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="Accueil.php">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -32,7 +32,6 @@
           </li>  
         </ul>
           
-
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
             <?php
@@ -325,8 +324,7 @@
             </div>           
             </form>        
           </div>
-       </div>
-        
+       </div> 
   <hr> 
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>

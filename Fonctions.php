@@ -4,7 +4,7 @@
         
         $nomlogin = 'root';                    // Ici, nous connectons avec le serveur local, si vous voulez le tester sur d'autre serveur, vous pouvez changer ces 3 variables
         $nompasswd = '';
-        $nombase = 'qdsf';
+        $nombase = 'qsf';
 
         $session = mysqli_connect('localhost', $nomlogin, $nompasswd ); 
 

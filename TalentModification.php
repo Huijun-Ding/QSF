@@ -201,12 +201,11 @@
                             echo('</div>');
                           echo('</div>');
                            }
-                        
 
-                     echo('<hr>');
-            echo('<div class="form-group">');
-                echo('<button name="codeT" type="submit" value="'.$ligne["CodeT"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
-           echo('</div>');
+                        echo('<hr>');
+                        echo('<div class="form-group">');
+                        echo('<button name="codeT" type="submit" value="'.$ligne["CodeT"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
+                        echo('</div>');
                               }
                 }
                  ?> 

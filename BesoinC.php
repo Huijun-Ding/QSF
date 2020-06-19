@@ -30,7 +30,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
-          </li>
+          </li>  
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
