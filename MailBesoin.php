@@ -107,44 +107,60 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php 
-                        $T = $_GET['t'];
-                        echo '[Quai des savoir-faire] Répondre à votre besoin '.$T.''; 
-                        ?>" disabled >
-                    </div>
-                </div>
+                        <?php 
+                        //requête prendre titre de besoin
+                         $query1 = "select TitreB from besoins where CodeB = {$_GET['c']} ";
+                         $result = mysqli_query ($session, $query1);
+                         
+                         if (mysqli_num_rows($result)>0) {       
+                              while ($besoin = mysqli_fetch_array($result)) {         
+                                  echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Répondre à votre besoin « '.$besoin["TitreB"].' »" disabled >');                         
+                    echo('</div>');
+                 echo('</div>');
                     
-                <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenu du message</strong></label>
-                   
-                    <textarea name="email">
-                        <?php  
+                 echo('<div class="form-group">');
+                    echo('<label for="inputEmail4"><strong>Contenu du message</strong></label>');
+          
+                    echo('<textarea name="contenu">');
                         echo '<pre>';
                         echo 'Bonjour,';
                         echo '                                                                                                                                                       ';
-                        echo 'Je vous contacte pour répondre à votre besoin '.$T.'. ';
+                        echo 'Je vous contacte pour répondre à votre besoin « '.$besoin["TitreB"].' ».';  
                         echo '</pre>';
-                        ?>                 
-                    </textarea>
-                    
-                <script>
-                        CKEDITOR.replace( 'email' );
-                </script>
+                    echo('</textarea>');     
                 
-                <?php 
-                    //$destinataire = ""; // adresse mail du destinataire
-                    //$sujet = "Réponse à votre besoin"; // sujet du mail
-                    //$message = "?"; // message qui dira que le destinataire a bien lu votre mail
-                    // maintenant, l'en-tête du mail
-                    //$header = "From: [Quai des savoir-faire]\r\n"; 
-                    //$header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
-                    //mail ($destinataire, $sujet, $message, $header); // on envois le mail    
-                ?>
+                        }
+                         }
+                    ?>
+
+                <script>
+                        CKEDITOR.replace( 'contenu' );
+                </script>
                 
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
-                </form>
-          </div>
+
+                <?php 
+                        //requête prendre l'email destinataire
+                        $query2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_GET['c']}";
+                        $result = mysqli_query ($session, $query2);
+                
+                //if (mysqli_num_rows($result)>0) {       
+                    //while ($mail = mysqli_fetch_array($result)) {
+                        //$destinataire = $mail["Email"]; // adresse mail du destinataire
+                        //$sujet = "Réponse à votre besoin"; // sujet du mail
+                        //$message = $_POST['contenu']; // message qui dira que le destinataire a bien lu votre mail
+                        // maintenant, l'en-tête du mail
+                        //$header = "From: [Quai des savoir-faire]\r\n"; 
+                        //$headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
+                        //$header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
+                        //mail ($destinataire, $sujet, $message, $header); // on envois le mail 
+                    //}
+                //}
+                ?>
+               </div>
+            </form>     
+            </div>
         </div>
 
         <footer>
