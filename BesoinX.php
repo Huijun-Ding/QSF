@@ -80,7 +80,7 @@
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select  b.TypeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = '$T' ";
+                $query = "select b.CodeB, b.TypeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -97,7 +97,7 @@
                     
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="MailBesoin.php?t='.$ligne["TitreB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="MailBesoin.php?c='.$ligne["CodeB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
