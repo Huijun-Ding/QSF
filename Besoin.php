@@ -96,7 +96,12 @@
             </div>
             <hr>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <a href="BesoinC.php"><div class="alert alert-light" role="alert">Filtrer les besoins par catégorie</div></a>
+            <?php if (isset($_SESSION['email'])) {
+                echo ('<a href="BesoinC.php"><div class="alert alert-light" role="alert">Filtrer les besoins par catégorie</div></a>');
+            } else {
+                echo ('<a href="BesoinFiltre.php"><div class="alert alert-light" role="alert">Filtrer les besoins par catégorie</div></a>');
+            }
+            ?> 
               <form class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>

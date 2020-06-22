@@ -12,11 +12,10 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    
-    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,19 +36,6 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-          
-          <form  method="get">
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
-                echo ('</div>');
-            } 
-          ?>
-            </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropdown">   
@@ -89,78 +75,39 @@
         </ul>
       </div>
     </nav>
-       
-      
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-              <h1>Rédiger votre e-mail</h1>      
-              <hr>
-              <form action="" method="POST">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>De</strong></label>
-                  <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php require_once('Fonctions.php'); echo $_SESSION['email']; ?>" disabled >
-                  </div>
-                </div>
-                 
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
-                    <div class="col-sm-10">
-                        <?php 
-                        //requête prendre titre de besoin
-                         $query1 = "select TitreB from besoins where CodeB = {$_GET['c']} ";
-                         $result = mysqli_query ($session, $query1);
-                         
-                         if (mysqli_num_rows($result)>0) {       
-                              while ($besoin = mysqli_fetch_array($result)) {         
-                                  echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Répondre à votre besoin « '.$besoin["TitreB"].' »" disabled >');                         
-                    echo('</div>');
-                 echo('</div>');
-
-                 echo('<div class="form-group">');
-                    echo('<label for="inputEmail4"><strong>Contenu du message</strong></label>');
-          
-                    echo('<textarea name="contenu">');
-                        echo 'Bonjour,';
-                        echo '                                                                                                                                                       ';
-                        echo 'Je vous contacte pour répondre à votre besoin « '.$besoin["TitreB"].' ».';  
-                    echo('</textarea>');     
-                
-                        }
-                         }
-                    ?>
-
-                <script>
-                        CKEDITOR.replace( 'contenu' );
-                </script>
-                
-                </div>
+              <h1>Pourquoi ?</h1><hr>
+              <p>Veuillez sélectionner une raison de refuse : </p><br>
+              <form action="besoinnon.fonction.php" method="GET">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Mon besoin a été résolu" checked>
+                  <label class="form-check-label" for="besoin_raison1">
+                    Mon besoin a été répondu
+                  </label>
+                </div><br>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison2" value="Je ne suis pas libre">
+                  <label class="form-check-label" for="besoin_raison2">
+                    Je ne suis pas libre
+                  </label>
+                </div><br>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison3" value="Son réponse ne correspond pas mes attentes">
+                  <label class="form-check-label" for="besoin_raison3">
+                    Sa réponse ne correspond pas à mes attentes
+                  </label>
+                </div><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison4" value="">
+                  <label class="form-check-label" for="besoin_raison4">
+                    Autres <input type="text" class="form" name="raison_non_besoin">
+                  </label>
+                </div><br>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
-
-                <?php 
-                        //requête prendre l'email destinataire
-                        $query2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_GET['c']}";
-                        $result = mysqli_query ($session, $query2);
-                
-                //if (mysqli_num_rows($result)>0) {       
-                    //while ($mail = mysqli_fetch_array($result)) {
-                        //$destinataire = $mail["Email"]; // adresse mail du destinataire
-                        //$sujet = "Réponse à votre besoin"; // sujet du mail
-                        //$message = $_POST['contenu']; // message qui dira que le destinataire a bien lu votre mail
-                        // maintenant, l'en-tête du mail
-                        //$header = "From: [Quai des savoir-faire]\r\n"; 
-                        //$headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
-                        //$header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
-                        //mail ($destinataire, $sujet, $message, $header); // on envois le mail 
-                    //}
-                //}
-                ?>
-               </div>
-            </form>     
-            </div>
-        </div>
-
+              </form>
+              <hr>      
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

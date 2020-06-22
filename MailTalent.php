@@ -116,11 +116,9 @@
                     
                     <textarea name="email">
                         <?php  
-                        echo '<pre>';
                         echo 'Bonjour,';
                         echo '                                                                                                                                                       ';
                         echo 'Je vous contacte pour vous demander est-ce que vous avez le temps de partager votre talent '.$T.' ? ';
-                        echo '</pre>';
                         ?>     
                     </textarea>
                 <script>
