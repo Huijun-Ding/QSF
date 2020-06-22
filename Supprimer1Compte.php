@@ -1,6 +1,5 @@
 <?php 
 require_once('Fonctions.php');
-
   /* Rendre l'utilisateur et tous ses cartes, catégories en anonyme */
   /* tous ses cartes */
  
@@ -36,8 +35,6 @@ require_once('Fonctions.php');
     mysqli_stmt_bind_param($S7, 'i', $usercode);
     mysqli_stmt_execute($S7);
     
-
 session_destroy();
-header("Location: Accueil.php");
-
+header("Location: Accueil.php")
 ?>

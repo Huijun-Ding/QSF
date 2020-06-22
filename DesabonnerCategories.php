@@ -72,6 +72,5 @@ if (isset($_POST['10'])) {
     mysqli_stmt_execute($S10);
 }
 
-
 header("Location: MesCategories.php");
 ?>

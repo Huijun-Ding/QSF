@@ -52,23 +52,23 @@
             } 
             ?>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php
-                if(isset($_SESSION['email'])){
-                    echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                    echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                    echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
-                ?>
-                    <script>
-                        function Deconnexion() {
-                            alert("Déconnexion réussite !");
-                            }
-                    </script>
-                <?php
-                } else {
-                    echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');
-                    echo ('<a class="dropdown-item" href="Inscription.php">S\'inscrire</a>');
-                }
-                ?>
+            <?php
+            if(isset($_SESSION['email'])){
+                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+            ?>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+                </script>
+            <?php
+            } else {
+                echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');
+                echo ('<a class="dropdown-item" href="Inscription.php">S\'inscrire</a>');
+            }
+            ?>
             </div>
           </li>
         </ul>

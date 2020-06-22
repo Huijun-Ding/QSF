@@ -31,7 +31,5 @@ require_once('Fonctions.php');
     mysqli_stmt_bind_param($S6, 'si',$Categorie ,$CodeT);
     mysqli_stmt_execute($S6);
     
-    
     header("Location: MonProfil.php");
-
 ?>

@@ -8,10 +8,4 @@ require_once('Fonctions.php');
         mysqli_stmt_execute($S4);
 
         header("Location: MonProfil.php");
-      
-
-
-
- 
-
 ?>

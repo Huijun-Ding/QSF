@@ -16,12 +16,13 @@ if (mysqli_stmt_execute($stmt) === true) {
         header("Location: MonProfil.php");
 } else {
     ?>
+
        <script>
            alert("Désolé, votre besoin n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(La date butoire d'un besoin doit être supérieure à aujourd'hui)");
            document.location.href = 'Creer1Besoin.php';
         </script>
-        <?php 
         
+        <?php     
 }
 //ajouter codeb et codeu dans le table saisir
     $sql = "select CodeB from besoins order by CodeB DESC limit 1";

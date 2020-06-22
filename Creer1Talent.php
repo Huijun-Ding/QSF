@@ -22,8 +22,8 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="Accueil.php">Accueil<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="Accueil.php">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -90,8 +90,7 @@
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
-          <div class="container">
-			
+          <div class="container">	
             <h1> Ajouter un talent </h1>
             <form action="Saisir1Talent.php" method="post">
             <?php
