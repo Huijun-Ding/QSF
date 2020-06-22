@@ -259,6 +259,36 @@ INSERT INTO `participerp` VALUES (2,2, 'createur');
 INSERT INTO `participerp` VALUES (2,4, 'createur');
 UNLOCK TABLES;
 
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `compteurb`
+--
+
+DROP TABLE IF EXISTS `compteurb`;
+
+CREATE TABLE `compteurb` (
+  `CodeCB` INT(11) AUTO_INCREMENT, 
+  `NumOuiB` TINYINT(1), 
+  `NumNonB` TINYINT(1),
+  `RaisonB` TEXT(30),
+   PRIMARY KEY (`CodeCB`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `compteurt`
+--
+
+DROP TABLE IF EXISTS `compteurt`;
+
+CREATE TABLE `compteurt` (
+  `CodeCT` INT(11) AUTO_INCREMENT, 
+  `NumOuiT` TINYINT(1), 
+  `NumNonT` TINYINT(1),
+  `RaisonT` TEXT(30),
+   PRIMARY KEY (`CodeCT`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 -- ----------------------------------------------------------------------------------------------
 -- Ajouter des clés étrangères
 -- ----------------------------------------------------------------------------------------------

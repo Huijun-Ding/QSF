@@ -24,8 +24,7 @@
                     }  
          }
 
-        // 2. Fonction vérification l'existnce d'email
-        
+        // 2. Fonction vérification l'existnce d'email       
             
             function is_unique_login($session, $Email){
                 $stmt = mysqli_prepare($session, "SELECT Email from utilisateurs where Email = ?");

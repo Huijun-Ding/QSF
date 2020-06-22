@@ -12,11 +12,10 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    
-    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
-      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -89,59 +88,35 @@
         </ul>
       </div>
     </nav>
-       
-      
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
-              <form action="" method="POST">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>De</strong></label>
-                  <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php require_once('Fonctions.php'); echo $_SESSION['email']; ?>" disabled >
-                  </div>
-                </div>
-                 
+              <form action="besoinoui.fonction.php" method="GET">
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php 
-                        $T = $_GET['t'];
-                        echo '[Quai des savoir-faire] Répondre à votre besoin '.$T.''; 
-                        ?>" disabled >
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="" disabled >
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="inputEmail4"><strong>Contenu du message</strong></label>
-                   
+                    
                     <textarea name="email">
                         <?php  
                         echo 'Bonjour,';
-                        echo '                                                                                                                                                                        ';
-                        echo 'Je vous contacte pour répondre à votre besoin '.$T.'. ';
-                        ?>                 
+                        ?>     
                     </textarea>
-                    
                 <script>
                         CKEDITOR.replace( 'email' );
                 </script>
-                
-                <?php 
-                    //$destinataire = ""; // adresse mail du destinataire
-                    //$sujet = "Réponse à votre besoin"; // sujet du mail
-                    //$message = "?"; // message qui dira que le destinataire a bien lu votre mail
-                    // maintenant, l'en-tête du mail
-                    //$header = "From: [Quai des savoir-faire]\r\n"; 
-                    //$header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
-                    //mail ($destinataire, $sujet, $message, $header); // on envois le mail    
-                ?>
-                
+                           
                 </div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 </form>
+                
           </div>
         </div>
 
