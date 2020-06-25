@@ -3,10 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Besoin.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MailBesoin.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MailTalent.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Fonctions.php</file>
+=======
+<<<<<<< HEAD
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinnon.html.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoin.email.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinoui.html.php</file>
+=======
+            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/besoinoui.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MailBesoin.php</file>
+>>>>>>> 6f33d4a7aaa0f9f167b2f724da1855c8f7725a25
+>>>>>>> 0c9e7653709b32966e6ba483a4b55173c0ee5aaa
         </group>
     </open-files>
 </project-private>
