@@ -11,8 +11,7 @@
     <title>Quai des savoir-faire</title>
 
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
+    <link rel="stylesheet" type="text/css" href="style.css">  
     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
