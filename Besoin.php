@@ -160,7 +160,7 @@
                 require_once('Fonctions.php');
 
 
-                if (isset($_POST['categorie'])) {
+                /*if (isset($_POST['categorie'])) {
                     $categorie = $_POST['categorie'];
                     $nb = count($categorie);
                 }
@@ -168,7 +168,7 @@
                 for ($i=0; $i<$nb ; $i++) {
                     $liste .= 'b.CodeC = '.$categorie[$i].' OR ';
                     // comment on enlève le dernier OR ?
-                }
+                }*/
                     
                 if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL && empty($_POST['categorie'])) {   // U-Après connecté et choisi le type
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
@@ -179,7 +179,7 @@
                 } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
                 } elseif (isset($_SESSION['email']) && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and $liste order by CodeB DESC";
+                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
                 }  else {  // V-si un visiteur rien choisit 
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                 }
