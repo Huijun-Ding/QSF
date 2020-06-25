@@ -84,7 +84,7 @@
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Mon besoin a été résolu" checked>
                   <label class="form-check-label" for="besoin_raison1">
-                    Mon besoin a été résolu
+                    Mon besoin a été répondu
                   </label>
                 </div><br>
                 <div class="form-check">
@@ -96,7 +96,7 @@
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison4" value="">
                   <label class="form-check-label" for="besoin_raison4">
-                    Autres <input type="text" class="form-control" name="raison_non_besoin">
+                    Autres <input type="text" class="form" name="raison_non_besoin">
                   </label>
                 </div><br>
                 <button type="submit" class="btn btn-primary">Envoyer</button>

@@ -97,7 +97,7 @@
                         ?>     
                     </textarea>
                 <script>
-                        CKEDITOR.replace( 'email' );
+                        CKEDITOR.replace('email');
                 </script>
                            
                 </div>
