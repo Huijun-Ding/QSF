@@ -12,6 +12,20 @@ mysqli_stmt_bind_param($stmt, 'ssssi', $TitreT, $DescriptionT, $DatePublicationT
 
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre talent a bien été enregistré";
+        
+        $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
+        mysqli_stmt_bind_param($Email, 'i', $usercode);
+        mysqli_stmt_execute($Email); 
+        
+        $destinataire = "$Email"; // adresse mail du destinataire
+        $sujet = "Enregistement de votre talent"; // sujet du mail
+        $message = "Votre offre a bien été enregistrée et publiée. Vous recevrez une notification dès qu’une personne se sera positionnée sur votre proposition. Vous pourrez alors vous mettre en relation."; // message qui dira que le destinataire a bien lu votre mail
+        // maintenant, l'en-tête du mail
+        $header = "From: [Quai des savoir-faire]\r\n"; 
+        $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
+        $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
+        mail ($destinataire, $sujet, $message, $header); // on envois le mail 
+        
         header("Location: MonProfil.php");
 } else {
         ?>

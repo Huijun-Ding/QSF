@@ -202,8 +202,8 @@ overflow:hidden;
 <td valign="top" style="padding-top:35px;padding-bottom:35px">
 <table cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#e6eae2" style="background-color:#e6eae2">
 <tr>
-<td valign="top" style="padding-top:17px;padding-right:21px;padding-bottom:15px;padding-left:21px"><div style="font-family:Bitter, Georgia, Times, Times New Roman, serif;font-size:30px;color:#4f772d;line-height:33px;text-align:left"><p style="padding: 0; margin: 0;"><span style="font-size:36px;">Quai des savoir-faire:</span></p><span class="mso-font-fix-georgia">
-</span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">R&eacute;pondre &agrave; votre&nbsp;besoin « '.$besoin["TitreB"].' »</span></p><span class="mso-font-fix-georgia">
+<td valign="top" style="padding-top:17px;padding-right:21px;padding-bottom:15px;padding-left:21px"><div style="font-family:Bitter, Georgia, Times, Times New Roman, serif;font-size:30px;color:#4f772d;line-height:33px;text-align:left"><p style="padding: 0; margin: 0;"><span style="font-size:36px;">Quai des savoir-faire</span></p><span class="mso-font-fix-georgia">
+</span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">vous informer</span></p><span class="mso-font-fix-georgia">
 </span></div>
 </td>
 </tr>
@@ -229,50 +229,10 @@ overflow:hidden;
 </table>
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
-<td valign="top" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px"><div style="font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;color:#131313;line-height:26px;text-align:left"><p style="padding: 0; margin: 0;">Je vous contacte pour répondre à votre besoin " '.$besoin["TitreB"].' "<br><br><br><br><br><br></p><p>Cordialement,<br>Quai des savoir-faire</p><span class="mso-font-fix-arial">
+<td valign="top" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px"><div style="font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;color:#131313;line-height:26px;text-align:left"><p style="padding: 0; margin: 0;">Bienvenue dans la communauté du « Quai des Savoirs Faires », vous pouvez dès à présent accéder à toutes les offres (services) aussi bien professionnelles que personnelles.
+Merci de respecter la charte d’utilisation, bon partage d’expérience à vous.
+<br><br><br><br><br><br></p><p>Cordialement,<br>Quai des savoir-faire</p><span class="mso-font-fix-arial">
 </span></div>
-</td>
-</tr>
-</table>
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td valign="top" align="center" style="padding-top:20px;padding-right:20px;padding-left:20px">
-<a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
-<span>
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#4f772d" style="border-radius:3px;border-collapse:separate !important;background-color:#4f772d" class="fluid-on-mobile">
-<tr>
-<td align="center" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px">
-<span style="color:#ffffff !important;font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;">
-<font style="color:#ffffff;" class="button">
-<span>Possible</span>
-</font>
-</span>
-</td>
-</tr>
-</table>
-</span>
-</a>
-</td>
-</tr>
-</table>
-<table cellpadding="0" cellspacing="0" border="0" width="100%">
-<tr>
-<td valign="top" align="center" style="padding-top:20px;padding-right:20px;padding-left:20px">
-<a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
-<span>
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#4f772d" style="border-radius:3px;border-collapse:separate !important;background-color:#4f772d" class="fluid-on-mobile">
-<tr>
-<td align="center" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px">
-<span style="color:#ffffff !important;font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;mso-line-height:exactly;line-height:25px;mso-text-raise:4px;">
-<font style="color:#ffffff;" class="button">
-<span>Pas possible</span>
-</font>
-</span>
-</td>
-</tr>
-</table>
-</span>
-</a>
 </td>
 </tr>
 </table>
