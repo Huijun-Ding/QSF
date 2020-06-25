@@ -25,7 +25,7 @@ if (isset($_POST['2'])) {
 }
 
 if (isset($_POST['3'])) {
-    $stmt3 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // Pourquoi ça marche pas pour les deux mots ?????
+    $stmt3 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   
     mysqli_stmt_bind_param($stmt3, 'ii', $usercode, $checkbox3);
     mysqli_stmt_execute($stmt3); 
 }
@@ -71,6 +71,21 @@ if (isset($_POST['10'])) {
     mysqli_stmt_bind_param($stmt10, 'ii', $usercode, $checkbox10);
     mysqli_stmt_execute($stmt10); 
 }
+
+    $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
+    mysqli_stmt_bind_param($Email, 'i', $usercode);
+    mysqli_stmt_execute($Email); 
+
+
+        $destinataire = "$Email"; // adresse mail du destinataire
+        $sujet = "Désabonnement des catégories"; // sujet du mail
+        $message = "Vous avez abonné de nouvelles catégories.\n 
+                    N.B : Pour vous désabonner, aller dans votre profil, mes catégories et décocher la catégorie. "; // message qui dira que le destinataire a bien lu votre mail
+        // maintenant, l'en-tête du mail
+        $header = "From: [Quai des savoir-faire]\r\n"; 
+        $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
+        $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
+        mail ($destinataire, $sujet, $message, $header); // on envois le mail  
 
 header("Location: MesCategories.php");
 ?>

@@ -72,5 +72,21 @@ if (isset($_POST['10'])) {
     mysqli_stmt_execute($S10);
 }
 
+   $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
+    mysqli_stmt_bind_param($Email, 'i', $usercode);
+    mysqli_stmt_execute($Email); 
+
+
+        $destinataire = "$Email"; // adresse mail du destinataire
+        $sujet = "Désabonnement des catégories"; // sujet du mail
+        $message = "Vous avez désabonné de nouvelles catégories.\n 
+                    N.B : Pour vous réabonner, aller dans votre profil, mes catégories et cocher la catégorie. "; // message qui dira que le destinataire a bien lu votre mail
+        // maintenant, l'en-tête du mail
+        $header = "From: [Quai des savoir-faire]\r\n"; 
+        $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
+        $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
+        mail ($destinataire, $sujet, $message, $header); // on envois le mail  
+
+
 header("Location: MesCategories.php");
 ?>

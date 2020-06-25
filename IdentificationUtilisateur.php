@@ -28,7 +28,8 @@ if(isset($_POST['email'])){
 
         $destinataire = "$Email"; // adresse mail du destinataire
         $sujet = "Confirmation de la création de compte"; // sujet du mail
-        $message = "Vous venez de créer un compte"; // message qui dira que le destinataire a bien lu votre mail
+        $message = "Bienvenue dans la communauté du « Quai des Savoirs Faires », vous pouvez dès à présent accéder à toutes les offres (services) aussi bien professionnelles que personnelles.\n 
+                    Merci de respecter la charte d’utilisation, bon partage d’expérience à vous."; // message qui dira que le destinataire a bien lu votre mail
         // maintenant, l'en-tête du mail
         $header = "From: [Quai des savoir-faire]\r\n"; 
         $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
