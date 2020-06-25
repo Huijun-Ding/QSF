@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
-=======
-<<<<<<< HEAD
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/MonProfil.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Fonctions.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Besoin.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/Accueil.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/X/htdocs/QSF/BD_script.txt</file>
-=======
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/TalentX.php</file>
->>>>>>> 4c109aab849bf0e68b7a12b2b6b27b7823633e18
->>>>>>> 899615ffc5e44354781a1715ab6a39645598fe3d
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinnon.html.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoin.email.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinoui.html.php</file>
         </group>
     </open-files>
 </project-private>
