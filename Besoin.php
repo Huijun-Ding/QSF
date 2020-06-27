@@ -139,7 +139,7 @@
                       </div>
                         
                       <div class="modal-footer">
-                        <button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">Tout afficher</button>
+                        <button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                         <button type="submit" class="btn btn-primary">Filtrer</button>
                       </div>
                     </div>
@@ -158,38 +158,32 @@
        
             <?php
                 require_once('Fonctions.php');
-
-
-                /*if (isset($_POST['categorie'])) {
-                    $categorie = $_POST['categorie'];
-                    $nb = count($categorie);
+                
+                if (isset($_POST['categorie'])) {
+                    $st = "(";
+                    foreach ($_POST["categorie"] as $categories) {                        
+                        $st = $st.$categories;
+                        $st = $st.",";
+                    }
+                    $st = rtrim($st, ',');
+                    $st = $st.")";
                 }
-                $liste = null;
-                for ($i=0; $i<$nb ; $i++) {
-                    $liste .= 'b.CodeC = '.$categorie[$i].' OR ';
-                    // comment on enlève le dernier OR ?
-                }*/
-                    
+                
+
                 if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL && empty($_POST['categorie'])) {   // U-Après connecté et choisi le type
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                 } elseif (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
+                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
                 } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                 } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
-                } elseif (isset($_SESSION['email']) && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
+                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC in $st order by CodeB DESC";
+                } elseif (isset($_SESSION['email']) && ($_SESSION['type']) != NULL && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie                 
+                    $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
                 }  else {  // V-si un visiteur rien choisit 
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                 }
-                
-                /*if(isset($_SESSION['email'])) {
-                    if($_SESSION['type']) != NULL) {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
-                    } elseif  {
-                 
-                }*/
+               
                 
                 if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                     $mot = htmlspecialchars($_GET['mot']);
