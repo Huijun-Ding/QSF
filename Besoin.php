@@ -159,6 +159,7 @@
             <?php
                 require_once('Fonctions.php');
                 
+
                 if (isset($_POST['categorie'])) {
                     $st = "(";
                     foreach ($_POST["categorie"] as $categories) {                        
