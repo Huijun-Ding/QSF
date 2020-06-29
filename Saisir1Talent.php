@@ -12,7 +12,20 @@ mysqli_stmt_bind_param($stmt, 'ssssi', $TitreT, $DescriptionT, $DatePublicationT
 
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre talent a bien été enregistré";
+  
         
+        //ajouter codeT et CodeU dans le table proposer
+    $sql = "select CodeT from talents order by CodeT DESC limit 1";
+    $result = mysqli_query ($session, $sql);
+    if ($code = mysqli_fetch_array($result)) {   
+        $codet = $code['CodeT'];
+        $stmt2 = mysqli_prepare($session, "INSERT INTO proposer(CodeU,CodeT) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
+        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codet);
+        mysqli_stmt_execute($stmt2); 
+    }  
+        
+        header("Location: MonProfil.php");
+ 
         $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
         mysqli_stmt_bind_param($Email, 'i', $usercode);
         mysqli_stmt_execute($Email); 
@@ -26,7 +39,7 @@ if (mysqli_stmt_execute($stmt) === true) {
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
         mail ($destinataire, $sujet, $message, $header); // on envois le mail 
         
-        header("Location: MonProfil.php");
+      
 } else {
         ?>
 
@@ -37,13 +50,5 @@ if (mysqli_stmt_execute($stmt) === true) {
         
         <?php 
 }
-//ajouter codeT et CodeU dans le table proposer
-    $sql = "select CodeT from talents order by CodeT DESC limit 1";
-    $result = mysqli_query ($session, $sql);
-    if ($code = mysqli_fetch_array($result)) {   
-        $codet = $code['CodeT'];
-        $stmt2 = mysqli_prepare($session, "INSERT INTO proposer(CodeU,CodeT) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
-        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codet);
-        mysqli_stmt_execute($stmt2); 
-    }  
+
 ?>

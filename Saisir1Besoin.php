@@ -11,12 +11,25 @@ require_once('Fonctions.php');
 $stmt = mysqli_prepare($session, "INSERT INTO besoins(TitreB,DescriptionB,DateButoireB,DatePublicationB,TypeB,CodeC) VALUES(?,?,?,?,?,?)");  //insérer un nouveau besoin dans le table besoins
 mysqli_stmt_bind_param($stmt, 'sssssi', $Titre, $Description, $DateButoire, $DatePublicationB, $Type, $Categorie);
 
+
 if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre besoin a bien été enregistré";
         
-        $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
+    //ajouter codeb et codeu dans le table saisir
+    $sql = "select CodeB from besoins order by CodeB DESC limit 1";
+    $result = mysqli_query ($session, $sql);
+    if ($code = mysqli_fetch_array($result)) {   
+        $codeb = $code['CodeB'];
+        $stmt2 = mysqli_prepare($session, "INSERT INTO saisir(CodeU,CodeB) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
+        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codeb);
+        mysqli_stmt_execute($stmt2); 
+         }  
+     
+        header("Location: MonProfil.php");
+  
+        $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = ?");   
         mysqli_stmt_bind_param($Email, 'i', $usercode);
-        mysqli_stmt_execute($Email); 
+        mysqli_stmt_execute($Email);  
         
         $destinataire = "$Email"; // adresse mail du destinataire
         $sujet = "Enregistement de votre besoin"; // sujet du mail
@@ -27,7 +40,7 @@ if (mysqli_stmt_execute($stmt) === true) {
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
         mail ($destinataire, $sujet, $message, $header); // on envois le mail    
         
-        header("Location: MonProfil.php");
+     
 } else {
     ?>
 
@@ -38,13 +51,6 @@ if (mysqli_stmt_execute($stmt) === true) {
         
         <?php     
 }
-//ajouter codeb et codeu dans le table saisir
-    $sql = "select CodeB from besoins order by CodeB DESC limit 1";
-    $result = mysqli_query ($session, $sql);
-    if ($code = mysqli_fetch_array($result)) {   
-        $codeb = $code['CodeB'];
-        $stmt2 = mysqli_prepare($session, "INSERT INTO saisir(CodeU,CodeB) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
-        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codeb);
-        mysqli_stmt_execute($stmt2); 
-    }  
+
+   
 ?>
