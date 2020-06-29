@@ -590,8 +590,11 @@
                         }
                     ?>
 
-                <script>
-                    CKEDITOR.replace( 'contenu' );
+                <script>                  
+                var editor1 = CKEDITOR.replace('contenu', {
+                  extraAllowedContent: 'div',
+                  height: 460
+                });
                 </script>
                 
                 </div>

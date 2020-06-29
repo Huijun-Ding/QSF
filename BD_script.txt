@@ -117,13 +117,13 @@ CREATE TABLE `utilisateurs` (
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 --
--- Dumping data for table `Utilisateurs`
+-- Dumping data for table `utilisateurs`
 --
 
-LOCK TABLES `Utilisateurs` WRITE;
-INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
-INSERT INTO `Utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
-INSERT INTO `Utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, 'Pro');
+LOCK TABLES `utilisateurs` WRITE;
+INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
+INSERT INTO `utilisateurs` VALUES (2,'Bouchard','Antoine','AntoineBouchard@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
+INSERT INTO `utilisateurs` VALUES (3,'Gagnon','Julien','JulienGagnon@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, 'Pro');
 UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------

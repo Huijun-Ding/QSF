@@ -94,11 +94,12 @@
                   </label>
                 </div><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison4" value="">
-                  <label class="form-check-label" for="besoin_raison4">
-                    Autres <input type="text" class="form" name="raison_non_besoin">
+                    <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison3" value="Autre: ">
+                  <label class="form-check-label" for="besoin_raison3">
+                    Autre
                   </label>
-                </div><br>
+                </div>
+                <textarea id="w3review" name="autre" rows="4" cols="50"></textarea><br>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
               </form>
               <hr>      
