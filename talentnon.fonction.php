@@ -1,13 +1,10 @@
 <?php
 require_once 'Fonctions.php';
-$raisonT = $_GET['raison_non_talent'].$_GET['datedispo'].$_GET['autre'];
+$raisonT = $_GET['raison_non_talent'];
 
-if (isset($raisonT)) {
+if (isset($raisonB)) {
     $sql = "insert into compteurt (NumOuiT, NumNonT, RaisonT) VALUES(0, 1, '{$raisonT}')";
     $result = mysqli_query ($session, $sql);  
-    echo $raisonT;
-    //header("Location: Accueil.php");
-} else {
-    echo 'erreur';
+    header("Location: Accueil.php");
 }
 ?>

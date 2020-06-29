@@ -78,29 +78,26 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-              <h1>Répondre à la demande</h1>      
+              <h1>Rédiger votre e-mail</h1>      
               <hr>
               <form action="besoinoui.fonction.php" method="GET">
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" name="sujet" value="" disabled >
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="" disabled >
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label for="inputEmail4"><strong>Contenu du message</strong></label>
                     
-                    <textarea name="email_oui_besoin">
+                    <textarea name="email">
                         <?php  
                         echo 'Bonjour,';
                         ?>     
                     </textarea>
                 <script>
-                    var editor1 = CKEDITOR.replace('email_oui_besoin', {
-                      extraAllowedContent: 'div',
-                      height: 180
-                    });
+                        CKEDITOR.replace('email');
                 </script>
                            
                 </div>
