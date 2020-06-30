@@ -124,23 +124,23 @@
                       <div class="modal-body">
                          <h3> Par catégorie </h3>
                       
-                            <input type="checkbox" name="categorie[]" value="1"><label class="radio-inline" for="categorie1"><strong>Sport</strong></label>
-                            <input type="checkbox" name="categorie[]" value="2"><label class="radio-inline" for="categorie2"><strong>Animation</strong></label>
-                            <input type="checkbox" name="categorie[]" value="3"><label class="radio-inline" for="categorie3"><strong>Outil métiers</strong></label>
-                            <input type="checkbox" name="categorie[]" value="4"><label class="radio-inline" for="categorie4"><strong>Développement personnel</strong></label>
-                            <input type="checkbox" name="categorie[]" value="5"><label class="radio-inline" for="categorie5"><strong>Associatif</strong></label>
-                            <input type="checkbox" name="categorie[]" value="6"><label class="radio-inline" for="categorie6"><strong>Covoiturage</strong></label>
-                            <input type="checkbox" name="categorie[]" value="7"><label class="radio-inline" for="categorie7"><strong>Bureautique</strong></label>
-                            <input type="checkbox" name="categorie[]" value="8"><label class="radio-inline" for="categorie8"><strong>Informatique</strong></label>
-                            <input type="checkbox" name="categorie[]" value="9"><label class="radio-inline" for="categorie9"><strong>Loisir</strong></label>
-                            <input type="checkbox" name="categorie[]" value="10"><label class="radio-inline" for="categorie10"><strong>Autres</strong></label>
+                            <input type="checkbox" name="categorie[]" value="1"><label class="radio-inline" for="categorie1"><strong> Sport</strong></label>
+                            <input type="checkbox" name="categorie[]" value="2"><label class="radio-inline" for="categorie2"><strong> Animation</strong></label>
+                            <input type="checkbox" name="categorie[]" value="3"><label class="radio-inline" for="categorie3"><strong> Outil métiers</strong></label>
+                            <input type="checkbox" name="categorie[]" value="4"><label class="radio-inline" for="categorie4"><strong> Développement personnel</strong></label>
+                            <input type="checkbox" name="categorie[]" value="5"><label class="radio-inline" for="categorie5"><strong> Associatif</strong></label>
+                            <input type="checkbox" name="categorie[]" value="6"><label class="radio-inline" for="categorie6"><strong> Covoiturage</strong></label>
+                            <input type="checkbox" name="categorie[]" value="7"><label class="radio-inline" for="categorie7"><strong> Bureautique</strong></label>
+                            <input type="checkbox" name="categorie[]" value="8"><label class="radio-inline" for="categorie8"><strong> Informatique</strong></label>
+                            <input type="checkbox" name="categorie[]" value="9"><label class="radio-inline" for="categorie9"><strong> Loisir</strong></label>
+                            <input type="checkbox" name="categorie[]" value="10"><label class="radio-inline" for="categorie10"><strong> Autres</strong></label>
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
                             echo ('<h3> Par type </h3>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
-                            /*echo ('<label class="radio-inline"><input type="radio" ><em><strong>Pro & Perso</strong></em></label>');*/
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong> Pro </strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong> Perso </strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" ><em><strong> Pro & Perso </strong></em></label>');
                         }
                            
                       ?>
