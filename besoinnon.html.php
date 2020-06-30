@@ -12,7 +12,7 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -94,14 +94,18 @@
                   </label>
                 </div><br>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison4" value="">
-                  <label class="form-check-label" for="besoin_raison4">
-                    Autres <input type="text" class="form" name="raison_non_besoin">
-                  </label>
+                    <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison3" value="">
+                  <label class="form-check-label" for="besoin_raison3">
+                    Autre raison (veuillez préciser)  
+                  </label><br>
+                  <textarea name="autre_raison" rows="4" cols="50"></textarea>
                 </div><br>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
               </form>
               <hr>      
+          </div>
+        </div>
+
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

@@ -119,7 +119,7 @@
                                 echo('</div>');
                                 echo('<div class="form-group">');
                                 echo('<label for="inputEmail4"><strong>Contenu du message</strong></label>');
-                                echo('<textarea name="contenu">');
+                                echo('<textarea name="contenu_besoin">');
                                 echo '<!DOCTYPE html>
                                 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -590,11 +590,14 @@
                     ?>
 
                 <script>
-                    CKEDITOR.replace( 'contenu' );
+                    var editor1 = CKEDITOR.replace('contenu_besoin', {
+                        extraAllowedContent: 'div',
+                        height: 460
+                      });
                 </script>
                 
                 </div>
-                    <a href="MailBesoin.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
+                    <a href="besoin.email.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
                 </div>
             </form>     
             </div>
