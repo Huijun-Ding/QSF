@@ -7,16 +7,16 @@
 ​
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​	<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Quai des savoir-faire</title>
+​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Plateforme</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-     <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <script src="jquery.js"></script>
   </head>
   <body>
-       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="Accueil.php">Plateforme</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Accueil.php">Accueil</a>
+            <a class="nav-link" href="Accueil.php">Accueil <span class="sr-only">(current)</span> </a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -42,16 +42,16 @@
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-info">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-success" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-warning" name="typeV" value="Perso">Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');
-            } 
+            }  
           ?>
-            </form>
+          </form>
 
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown">   
+          <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             
@@ -76,6 +76,12 @@
                         function Deconnexion() {
                             alert("Déconnexion réussite !");
                             }
+                            
+                         $('.navbar-nav mr-auto').find('a').each(function () {
+                            if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
+                                $(this).parent().addClass('active'); // this.className = 'active';
+                            }
+                        });
                     </script>
                 <?php
                 } else {
@@ -88,7 +94,7 @@
         </ul>
       </div>
     </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
