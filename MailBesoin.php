@@ -556,7 +556,7 @@
                                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                 <tr>
 
-                                <td valign="top" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px"><div style="font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:13px;color:#5c5b5b;line-height:21px;text-align:left"><p href="" style="padding: 0; margin: 0;text-align: center;">Contact</p><span class="mso-font-fix-arial">
+                                <td valign="top" style="padding-top:5px;padding-right:20px;padding-bottom:5px;padding-left:20px"><div style="font-family:Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:13px;color:#5c5b5b;line-height:21px;text-align:left"><p href="" style="padding: 0; margin: 0;text-align: center;"><a href="contact.html.php">Contact</a></p></p><span class="mso-font-fix-arial">
                                 </span></div>
                                 </td>
                                 </tr>

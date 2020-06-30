@@ -133,7 +133,7 @@
                             echo ('<h3> Par type </h3>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" ><em><strong>Pro & Perso</strong></em></label>');
+                            /*echo ('<label class="radio-inline"><input type="radio" ><em><strong>Pro & Perso</strong></em></label>');*/
                         }
                            
                       ?>
@@ -158,34 +158,40 @@
             <?php
             
              if (isset($_POST['categorie'])) {
-                    $st = "(";
-                    foreach ($_POST["categorie"] as $categories) {                        
-                        $st = $st.$categories;
-                        $st = $st.",";
-                    }
-                    $st = rtrim($st, ',');
-                    $st = $st.")";
+                $st = "(";
+                foreach ($_POST["categorie"] as $categories) {                        
+                    $st = $st.$categories;
+                    $st = $st.",";
                 }
-                
-    
-                if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL && empty($_POST['categorie'])) {   // U-Après connecté et choisi le type
+                $st = rtrim($st, ',');
+                $st = $st.")";
+            }
+
+            if(isset($_SESSION['email'])) {
+                if(isset($_POST['categorie'])) {
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
+                } else {
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                } elseif (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
+                }
+            } else {
+                if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
                 } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
                 } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and b.CodeC in $st order by CodeT DESC";
-                } elseif (isset($_SESSION['email']) && ($_SESSION['type']) != NULL && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie                 
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
                 }  else {  // V-si un visiteur rien choisit 
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
                 }
-               
+            }                
                
             if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
-                    $mot = htmlspecialchars($_GET['mot']);
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                $mot = htmlspecialchars($_GET['mot']);
+                if(isset($_SESSION['email'])) {
+                   $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+                } else {
+                   $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
+                }                   
             }
 
                $result = mysqli_query ($session, $query);
