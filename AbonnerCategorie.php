@@ -24,7 +24,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Accueil.php">Accueil <span class="sr-only">(current)</span> </a> 
+            <a class="nav-link" href="Accueil.php">Accueil  </a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -32,23 +32,10 @@
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="AbonnerCategorie.php">Catégories <span class="sr-only">(current)</span></a>
           </li>  
         </ul>
-          
-          <form  method="get">
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
-                echo ('</div>');
-            }  
-          ?>
-          </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
