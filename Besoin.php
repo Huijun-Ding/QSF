@@ -111,16 +111,16 @@
                       <div class="modal-body">
                          <h3> Par catégorie </h3>
                       
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="1"><strong>Sport</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="2"><strong>Animation</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="3"><strong>Outil métiers</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="4"><strong>Développement personnel</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="5"><strong>Associatif</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="6"><strong>Covoiturage</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="7"><strong>Bureautique</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="8"><strong>Informatique</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="9"><strong>Loisir</strong></label>
-                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="10"><strong>Autres</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="1"><strong> Sport</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="2"><strong> Animation</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="3"><strong> Outil métiers</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="4"><strong> Développement personnel</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="5"><strong> Associatif</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="6"><strong> Covoiturage</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="7"><strong> Bureautique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="8"><strong> Informatique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="9"><strong> Loisir</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="10"><strong> Autres</strong></label>
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
