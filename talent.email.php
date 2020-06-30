@@ -1,5 +1,5 @@
 <script>
-contenu_besoin.on('instanceReady', function() {
+contenu_talent.on('instanceReady', function() {
       // Output self-closing tags the HTML4 way, like <br>.
       this.dataProcessor.writer.selfClosingEnd = '>';
 

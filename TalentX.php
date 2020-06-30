@@ -95,7 +95,7 @@
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="MailTalent.php?t='.$ligne["TitreT"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="MailTalent.php?c='.$ligne["TitreT"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
