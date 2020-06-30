@@ -101,46 +101,33 @@
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 三 Filtre
                 </button>
-                 <?php  
-            echo ('<form action="Besoin.php" method="post">');
-                // <!-- Modal -->
-                echo ('<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">');
-                  echo ('<div class="modal-dialog modal-xl">');
-                    echo ('<div class="modal-content">');
-                      echo ('<div class="modal-header">');
-                        echo ('<h5 class="modal-title" id="exampleModalLabel">Filter les besoins</h5>');
-                        echo ('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-                          echo ('<span aria-hidden="true">&times;</span>');
-                        echo ('</button>');
-                      echo ('</div>');
-                      echo ('<div class="modal-body">');
-                         echo ('<h3> Par catégorie </h3> ');
+                
+            <form action="Besoin.php" method="post">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Filter les besoins</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                         <h3> Par catégorie </h3>
                       
-                    
-                        if (isset($_SESSION['email'])) {
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="1"><strong>Sport</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="2"><strong>Animation</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="3"><strong>Outil métiers</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="4"><strong>Développement personnel</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="5"><strong>Associatif</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="6"><strong>Covoiturage</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="7"><strong>Bureautique</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="8"><strong>Informatique</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="9"><strong>Loisir</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="10"><strong>Autres</strong></label>');
-                        } else {
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="1"><strong>Sport</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="2"><strong>Animation</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="3"><strong>Outil métiers</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="4"><strong>Développement personnel</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="5"><strong>Associatif</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="6"><strong>Covoiturage</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="7"><strong>Bureautique</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="8"><strong>Informatique</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="9"><strong>Loisir</strong></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="categorie" value="10"><strong>Autres</strong></label>');
-                        }
-                          
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="1"><strong>Sport</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="2"><strong>Animation</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="3"><strong>Outil métiers</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="4"><strong>Développement personnel</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="5"><strong>Associatif</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="6"><strong>Covoiturage</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="7"><strong>Bureautique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="8"><strong>Informatique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="9"><strong>Loisir</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="10"><strong>Autres</strong></label>
+                        
+                        <?php     
                         if (empty($_SESSION['email'])) {
                             echo ('<h3> Par type </h3>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
@@ -148,18 +135,18 @@
                             echo ('<label class="radio-inline"><input type="radio" ><em><strong>Pro & Perso</strong></em></label>');
                         }
                            
-                     
-                      echo ('</div>');
+                      ?>
+                      </div>
                         
-                      echo ('<div class="modal-footer">');
-                        echo ('<button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">Tout afficher</button>');
-                        echo ('<button type="submit" class="btn btn-primary">Filtrer</button>');
-                      echo ('</div>');
-                    echo ('</div>');
-                  echo ('</div>');
-                echo ('</div>');
-              echo ('</form>');
-                                 ?>
+                      <div class="modal-footer">
+                        <button type="reset" value="reset" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-primary">Filtrer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+                                
               <form class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
@@ -167,29 +154,37 @@
             </div>
             
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+                
+       
             <?php
                 require_once('Fonctions.php');
+                
 
-                if(isset($_SESSION['email']) and empty($_POST['categorie']) and ($_SESSION['type']) != NULL) {   // U-Après connecté et choisi le type
+                if (isset($_POST['categorie'])) {
+                    $st = "(";
+                    foreach ($_POST["categorie"] as $categories) {                        
+                        $st = $st.$categories;
+                        $st = $st.",";
+                    }
+                    $st = rtrim($st, ',');
+                    $st = $st.")";
+                }
+                
+
+                if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL && empty($_POST['categorie'])) {   // U-Après connecté et choisi le type
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                 } elseif (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
+                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
                 } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
                 } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
-                } elseif (isset($_SESSION['email']) && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie
-                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC = {$_POST['categorie']} order by CodeB DESC";
-                }  else  {  // V-si un visiteur rien choisit 
+                    $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC in $st order by CodeB DESC";
+                } elseif (isset($_SESSION['email']) && ($_SESSION['type']) != NULL && isset($_POST['categorie'])) { // U-si un utilisateur choisit filtre categorie                 
+                    $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
+                }  else {  // V-si un visiteur rien choisit 
                     $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
                 }
-                
-                /*if(isset($_SESSION['email'])) {
-                    if($_SESSION['type']) != NULL) {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
-                    } elseif  {
-                 
-                }*/
+               
                 
                 if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                     $mot = htmlspecialchars($_GET['mot']);
