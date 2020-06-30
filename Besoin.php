@@ -137,10 +137,9 @@
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
-                            echo ('<h3> Par type </h3>');
+                            echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affiché)</p>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
-                            /*echo ('<label class="radio-inline"><input type="radio" ><em><strong>Pro & Perso</strong></em></label>');*/
                         }
                            
                       ?>
