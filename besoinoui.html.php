@@ -84,7 +84,7 @@
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="" disabled >
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Re: " disabled >
                     </div>
                 </div>
                     
@@ -403,7 +403,7 @@
 
                         <td valign="top" style="padding-top:17px;padding-right:21px;padding-bottom:15px;padding-left:21px"><div style="font-family:Bitter, Georgia, Times, Times New Roman, serif;font-size:30px;color:#4f772d;line-height:33px;text-align:left"><p style="padding: 0; margin: 0;"><span style="font-size:36px;">Quai des savoir-faire:</span></p><span class="mso-font-fix-georgia">
 
-                        </span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">R&eacute;pondre &agrave; votre&nbsp;besoin</span></p><span class="mso-font-fix-georgia">
+                        </span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">Re: R&eacute;pondre &agrave; votre&nbsp;besoin</span></p><span class="mso-font-fix-georgia">
                         </span></div>
                         </td>
                         </tr>
