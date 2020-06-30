@@ -36,19 +36,6 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
-          
-          <form  method="get">
-          <?php
-            require_once 'Fonctions.php';
-            if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
-                echo ('</div>');
-            }  
-          ?>
-          </form>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
@@ -176,13 +163,21 @@
                     $st = rtrim($st, ',');
                     $st = $st.")";
                 }
-                
+              
                 if(isset($_SESSION['email'])) {
-                    if(isset($_POST['categorie'])) {
-                        $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
-                    } else {
-                        $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
-                    }
+                    if(isset($st)) {                                            // Utilisateur connecté, sélectionné les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, sélectionné les catégories, son type est Pro ou Perso
+                            $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
+                        } else {                                                // Utilisateur connecté, sélectionné les catégories, son type est Pro et Perso
+                            $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeC in $st order by CodeB DESC";
+                        }
+                    } else {                                                    // Utilisateur connecté, n'a pas sélectionner les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro ou Perso
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
+                        } else {                                                // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro et Perso
+                            $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC order by CodeB DESC";
+                        }
+                    } 
                 } else {
                     if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
                         $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_POST['type']}' OR b.TypeB ='Pro et Perso') and b.CodeC in $st order by CodeB DESC";
