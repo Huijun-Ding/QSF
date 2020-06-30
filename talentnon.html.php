@@ -93,9 +93,9 @@
                     Je ne suis pas disponible jusqu'au 
                   </label>
                 </div><br>
-                <input type="date" name="datedispo">
+                <input type="date" name="datedispo" >
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="" id="talent_raison3" value="">
+                    <input class="form-check-input" type="radio" name="raison_non_talent" id="talent_raison3" value="">
                   <label class="form-check-label" for="talent_raison3">
                     Autre raison (veuillez préciser) 
                   </label><br>
