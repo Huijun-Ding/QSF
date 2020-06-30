@@ -523,7 +523,10 @@ href="https://www.twitter.com/" target="_blank"><img width="32" border="0" heigh
 </html>
                     </textarea>
                 <script>
-                        CKEDITOR.replace('contenu_besoin_oui');
+                    var editor1 = CKEDITOR.replace('contenu_besoin_oui', {
+                        extraAllowedContent: 'div',
+                        height: 460
+                      });
                 </script>
                            
                 </div>

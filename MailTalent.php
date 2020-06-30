@@ -103,24 +103,15 @@
                  
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?php 
-                        $T = $_GET['c'];
-                        echo '[Quai des savoir-faire] Demander de partager votre talent '.$T.''; 
-                        ?>" disabled >
-                    </div>
-                </div>
-                    
-                <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenu du message</strong></label>
+
                     <div class="col-sm-10">
                         <?php 
                         //requête prendre titre de besoin
-                         $query = "select TitreT from talents where CodeT = {$_GET['c']} ";
+                         $query = "select TitreT from talents where CodeT = {$_GET['t']} ";
                          $result = mysqli_query ($session, $query);
                          
                          if (mysqli_num_rows($result)>0) {       
-                              while ($besoin = mysqli_fetch_array($result)) {         
+                              while ($talent = mysqli_fetch_array($result)) {         
                                 echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Répondre à votre talent '.$talent["TitreT"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
@@ -605,7 +596,7 @@
                 </script>
                            
                 </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
+                    <a href="talent.email.php?t='.$GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
                 </form>
                 
           </div>

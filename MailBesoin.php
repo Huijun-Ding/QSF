@@ -597,7 +597,7 @@
                 </script>
                 
                 </div>
-                    <a href="MailBesoin.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
+                    <a href="besoin.email.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
                 </div>
             </form>     
             </div>

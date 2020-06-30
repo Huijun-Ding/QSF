@@ -80,7 +80,7 @@
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select t.TypeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = '$T' ";
+                $query = "select t.CodeT, t.TypeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = '$T' ";
                 $result = mysqli_query ($session, $query);
 
                 if ($result == false) {
@@ -95,7 +95,7 @@
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="MailTalent.php?c='.$ligne["TitreT"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="MailTalent.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   

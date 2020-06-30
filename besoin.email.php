@@ -15,7 +15,7 @@ contenu_besoin.on('instanceReady', function() {
         });
       }
       // Start in source mode.
-      this.setMode('source');
+      Var mailbesoin = this.setMode('source');
     });
 </script>
 
@@ -28,7 +28,7 @@ if (mysqli_num_rows($result)>0) {
     while ($mail = mysqli_fetch_array($result)) {
         $destinataire = $mail["Email"]; // adresse mail du destinataire
         $sujet = "[Quai des savoir-faire] Répondre à votre besoin {$besoin["TitreB"]} "; // sujet du mail
-        $message = ''; // message qui dira que le destinataire a bien lu votre mail
+        $message="<script>document.write(mailbesoin);</script>"; // message qui dira que le destinataire a bien lu votre mail
         //l'en-tête du mail
         $header = "From: [Quai des savoir-faire]\r\n"; 
         $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
