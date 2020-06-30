@@ -81,19 +81,22 @@
               <h1>Pourquoi ?</h1><hr>
               <p>Veuillez sélectionner une raison de refuse : </p><br>
               <form action="talentnon.fonction.php" method="GET">
+                  
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_talent" id="talent_raison1" value="Je ne suis pas libre" checked>
                   <label class="form-check-label" for="talent_raison1">
                     Je ne suis pas libre
                   </label>
                 </div><br>
+                
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_talent" id="talent_raison2" value="Je ne suis pas disponible jusqu'au ">
                   <label class="form-check-label" for="talent_raison2">
                     Je ne suis pas disponible jusqu'au 
                   </label>
-                </div><br>
-                <input type="date" name="datedispo" >
+                  <input type="date" name="datedispo">
+                </div><br>  
+
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="raison_non_talent" id="talent_raison3" value="">
                   <label class="form-check-label" for="talent_raison3">
@@ -101,7 +104,9 @@
                   </label><br>
                   <textarea name="autre_raison" rows="4" cols="50"></textarea>
                 </div><br>
+                
                 <button type="submit" class="btn btn-primary">Envoyer</button>
+                
               </form>
               <hr>      
           </div>
