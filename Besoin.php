@@ -24,10 +24,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Accueil.php">Accueil <span class="sr-only">(current)</span> </a> 
+            <a class="nav-link" href="Accueil.php">Accueil </span> </a> 
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Besoin.php">Besoins</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="Besoin.php">Besoins <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
@@ -124,6 +124,7 @@
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
+                            echo ('<br><br>');
                             echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affiché)</p>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');

@@ -24,13 +24,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Accueil.php">Accueil <span class="sr-only">(current)</span> </a> 
+            <a class="nav-link" href="Accueil.php">Accueil </a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Talent.php">Talents</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="Talent.php">Talents <span class="sr-only">(current)</span> </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
@@ -124,9 +124,13 @@
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
-                            echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affiché)</p>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
+
+                            echo ('<br><br>');
+                            echo ('<h3> Par type </h3>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong> Pro </strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong> Perso </strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" ><em><strong> Pro & Perso </strong></em></label>');
+
                         }
                       ?>
                       </div>
@@ -148,7 +152,8 @@
             
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
             <?php
-            
+             require_once('Fonctions.php');
+             
              if (isset($_POST['categorie'])) {
                 $st = "(";
                 foreach ($_POST["categorie"] as $categories) {                        
@@ -174,11 +179,12 @@
                     }
                 }   
             } else {
-                if (isset($_POST['type']) && isset($_POST['categorie'])) {  // V-si un visiteur choisit les deux filtres
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
+
+                if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
                 } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                } elseif (isset($st)) { // V-si un visiteur choisit filtre categorie
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
+                } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and b.CodeC in $st order by CodeT DESC";
                 }  else {  // V-si un visiteur rien choisit 
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
@@ -216,7 +222,7 @@
                      }
                    }
                } else {
-                 echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                 echo('<h5> Aucun résultat</h5>');
                }                                          
             ?>
             </div>
