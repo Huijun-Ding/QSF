@@ -90,12 +90,12 @@
                <?php
                 require_once('Fonctions.php');
                 date_default_timezone_set('Europe/Paris');
-                echo "Date de modification :   " . date("yy/m/d"); 
+                echo "Date de modification :   " . date("d/m/yy"); 
                ?>         
                <?php
 
                 $T = $_GET['t'];
-                $query = "select t.TypeT, t.CodeT, t.VisibiliteT, t.TitreT, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
+                $query = "select t.TypeT, t.CodeT, t.VisibiliteT, t.TitreT, c.CodeC, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -109,7 +109,7 @@
                     echo('<div class="col-auto my-1">');
                       echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
                       echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
-                            echo('<option selected>'.$ligne["NomC"].'</option>');
+                            echo('<option value="'.$ligne["CodeC"].'" name="categorie" selected>'.$ligne["NomC"].'</option>');
                             echo('<option value="1" name="categorie" title="...">Sport</option>');
                             echo('<option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>');
                             echo('<option value="3" name="categorie"title="...">Outils métiers</option>');

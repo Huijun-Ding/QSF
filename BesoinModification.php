@@ -98,12 +98,11 @@
                <?php
                 require_once('Fonctions.php');
                 date_default_timezone_set('Europe/Paris');
-                echo "Date de modification :   " . date("yy/m/d"); 
+                echo "Date de modification :   " . date("d/m/yy"); 
                ?>         
                <?php
-
                 $T = $_GET['t'];
-                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
+                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -111,13 +110,11 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-       
-                        
-                        echo('<div class="form-row align-items-center">');
-                    echo('<div class="col-auto my-1">');
-                      echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
-                      echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
-                            echo('<option selected>'.$ligne["NomC"].'</option>');
+                            echo('<div class="form-row align-items-center">');
+                            echo('<div class="col-auto my-1">');
+                            echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
+                            echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
+                            echo('<option name="categorie" value="'.$ligne["CodeC"].'" selected>'.$ligne["NomC"].'</option>');
                             echo('<option value="1" name="categorie" title="...">Sport</option>');
                             echo('<option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>');
                             echo('<option value="3" name="categorie"title="...">Outils métiers</option>');
@@ -128,9 +125,9 @@
                             echo('<option value="8" name="categorie" title="Internet, site Web, réparation PC...">Informatique</option>');
                             echo('<option value="9" name="categorie" title="Cuisine, bricolage, musique, théâtre, ciné, culture, philatélie, généalogie...">Loisir </option>');
                             echo ('<option value="10" name="categorie" title="Demande de créér une catégorie à l\'administrateur" >Autres </option>');
-                      echo('</select>');
-                    echo('</div>');
-                    echo('</div>');
+                            echo('</select>');
+                            echo('</div>');
+                            echo('</div>');
                         
                    
                         echo ('<div class="form-group">');
