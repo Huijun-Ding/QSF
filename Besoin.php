@@ -142,7 +142,7 @@
                 </div>
               </form>
                                 
-              <form class="form-inline my-2 my-lg-0" class="recherche">
+              <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form>
