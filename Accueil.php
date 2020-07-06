@@ -42,7 +42,7 @@
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm">Tout</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
                 echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
                 echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');
@@ -130,7 +130,7 @@
                     mysqli_query ($session, $query);
                 ?>
             </div>
-   
+                       
             <div id="cartesB" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
             <?php
             require_once('Fonctions.php');
@@ -145,7 +145,7 @@
 
             if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
                 $mot = htmlspecialchars($_GET['motB']);
-                if(isset($_SESSION['email'])) {
+                if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
                     $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' and b.TypeB = '{$_SESSION['type']}' order by b.CodeB DESC";
                 } else {
                    $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
@@ -207,7 +207,7 @@
 
             if(isset($_GET['motT']) AND !empty($_GET['motT'])) {     /*Recherche par mot clé*/
                 $mot = htmlspecialchars($_GET['motT']);
-                if(isset($_SESSION['email'])) {
+                if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
                 } else {
                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
