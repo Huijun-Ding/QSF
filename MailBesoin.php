@@ -13,6 +13,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
