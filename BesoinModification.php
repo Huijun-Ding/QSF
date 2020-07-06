@@ -110,6 +110,7 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
+
                             echo('<div class="form-row align-items-center">');
                             echo('<div class="col-auto my-1">');
                             echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');

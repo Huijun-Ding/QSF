@@ -125,9 +125,9 @@
                         <?php     
                         if (empty($_SESSION['email'])) {
                             echo ('<br><br>');
-                            echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affiché)</p>');
+                            echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affichés)</p>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
+                            echo ('    <label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
                         }
                            
                       ?>
@@ -193,7 +193,7 @@
                         
                 if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
                     $mot = htmlspecialchars($_GET['mot']);
-                    if(isset($_SESSION['email'])) {
+                    if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
                         $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' and b.TypeB = '{$_SESSION['type']}' order by b.CodeB DESC";
                     } else {
                        $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
