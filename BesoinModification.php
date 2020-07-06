@@ -7,16 +7,15 @@
 ​
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Plateforme</title>
+​	<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Quai des savoir-faire</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="jquery.js"></script>
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="Accueil.php">Plateforme</a>
+       <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="Accueil.php">Quai des savoir-faire</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,10 +23,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="Accueil.php">Accueil <span class="sr-only">(current)</span> </a> 
+            <a class="nav-link" href="Accueil.php">Accueil</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Besoin.php">Besoins</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="Besoin.php">Besoins<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
@@ -36,6 +35,20 @@
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
         </ul>
+          
+          <?php
+            require_once 'Fonctions.php';
+            if (empty($_SESSION['email'])){
+                echo ('<div class="switch-field">');
+                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro et Perso" checked/>');
+                echo ('<label for="radio-three">Pro et Perso</label>');
+                echo ('<input type="radio" id="" name="affichagevisiteur" value="Pro" />');
+                echo ('<label for="radio-four">Pro</label>');
+                echo ('<input type="radio" id="" name="affichagevisiteur" value="Perso" />');
+                echo ('<label for="radio-five">Perso</label>');
+                echo ('</div>');
+            } 
+          ?>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
@@ -63,12 +76,6 @@
                         function Deconnexion() {
                             alert("Déconnexion réussite !");
                             }
-                            
-                         $('.navbar-nav mr-auto').find('a').each(function () {
-                            if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
-                                $(this).parent().addClass('active'); // this.className = 'active';
-                            }
-                        });
                     </script>
                 <?php
                 } else {
@@ -81,7 +88,8 @@
         </ul>
       </div>
     </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->  
+      
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
               <h1>Modifiez votre besoin</h1>      
@@ -90,12 +98,11 @@
                <?php
                 require_once('Fonctions.php');
                 date_default_timezone_set('Europe/Paris');
-                echo "Date de modification :   " . date("yy/m/d"); 
+                echo "Date de modification :   " . date("d/m/yy"); 
                ?>         
                <?php
-
                 $T = $_GET['t'];
-                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
+                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = $T ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -103,12 +110,12 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-                        
-                        echo('<div class="form-row align-items-center">');
-                    echo('<div class="col-auto my-1">');
-                      echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
-                      echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
-                            echo('<option selected>'.$ligne["NomC"].'</option>');
+
+                            echo('<div class="form-row align-items-center">');
+                            echo('<div class="col-auto my-1">');
+                            echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
+                            echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
+                            echo('<option name="categorie" value="'.$ligne["CodeC"].'" selected>'.$ligne["NomC"].'</option>');
                             echo('<option value="1" name="categorie" title="...">Sport</option>');
                             echo('<option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>');
                             echo('<option value="3" name="categorie"title="...">Outils métiers</option>');
@@ -119,9 +126,9 @@
                             echo('<option value="8" name="categorie" title="Internet, site Web, réparation PC...">Informatique</option>');
                             echo('<option value="9" name="categorie" title="Cuisine, bricolage, musique, théâtre, ciné, culture, philatélie, généalogie...">Loisir </option>');
                             echo ('<option value="10" name="categorie" title="Demande de créér une catégorie à l\'administrateur" >Autres </option>');
-                      echo('</select>');
-                    echo('</div>');
-                    echo('</div>');
+                            echo('</select>');
+                            echo('</div>');
+                            echo('</div>');
                         
                    
                         echo ('<div class="form-group">');

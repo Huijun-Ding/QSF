@@ -17,19 +17,19 @@ require_once('Fonctions.php');
     mysqli_stmt_bind_param($S2, 'si',$Description ,$CodeB);
     mysqli_stmt_execute($S2);
     
-     $S3 = mysqli_prepare($session, "UPDATE besoins SET DateButoireB = ? WHERE CodeB = ?");
+    $S3 = mysqli_prepare($session, "UPDATE besoins SET DateButoireB = ? WHERE CodeB = ?");
     mysqli_stmt_bind_param($S3, 'si',$DateButoire ,$CodeB);
     mysqli_stmt_execute($S3);
     
-     $S4 = mysqli_prepare($session, "UPDATE besoins SET DatePublicationB = ? WHERE CodeB = ?");
+    $S4 = mysqli_prepare($session, "UPDATE besoins SET DatePublicationB = ? WHERE CodeB = ?");
     mysqli_stmt_bind_param($S4, 'si',$DatePublicationB ,$CodeB);
     mysqli_stmt_execute($S4);
     
-   $S5 = mysqli_prepare($session, "UPDATE besoins SET TypeB = ? WHERE CodeB = ?");
+    $S5 = mysqli_prepare($session, "UPDATE besoins SET TypeB = ? WHERE CodeB = ?");
     mysqli_stmt_bind_param($S5, 'si',$Type ,$CodeB);
     mysqli_stmt_execute($S5);
     
-      $S6 = mysqli_prepare($session, "UPDATE besoins SET CodeC = ? WHERE CodeB = ?");
+    $S6 = mysqli_prepare($session, "UPDATE besoins SET CodeC = ? WHERE CodeB = ?");
     mysqli_stmt_bind_param($S6, 'si',$Categorie ,$CodeB);
     mysqli_stmt_execute($S6);
     
