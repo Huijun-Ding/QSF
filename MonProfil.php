@@ -194,7 +194,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = " select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
+            $query = "select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
 
             $result = mysqli_query ($session, $query);
 
@@ -216,7 +216,7 @@
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
                         echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('<br>');
-                        echo ('<a href="BesoinModification.php?t='.$besoin["TitreB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
+                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }
@@ -296,7 +296,7 @@
                             echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
-                            echo ('<a href="TalentModification.php?t='.$talent["TitreT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
+                            echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
                             echo ('</div>');  
                             echo ('</div></li>');                
                           } 

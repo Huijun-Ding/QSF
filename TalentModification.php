@@ -95,7 +95,7 @@
                <?php
 
                 $T = $_GET['t'];
-                $query = "select t.TypeT, t.CodeT, t.VisibiliteT, t.TitreT, c.CodeC, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT = '$T' ";
+                $query = "select t.TypeT, t.CodeT, t.VisibiliteT, t.TitreT, c.CodeC, c.NomC, t.DatePublicationT, t.DescriptionT from talents t, categories c where t.CodeC = c.CodeC and t.CodeT = $T ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {

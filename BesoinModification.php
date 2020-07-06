@@ -102,7 +102,7 @@
                ?>         
                <?php
                 $T = $_GET['t'];
-                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB = '$T' ";
+                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = $T ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
