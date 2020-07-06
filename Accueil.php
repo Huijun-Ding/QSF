@@ -42,7 +42,7 @@
             require_once 'Fonctions.php';
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" class="btn btn-secondary btn-sm">Pro et Perso</button>');
+                echo ('<button type="radio" class="btn btn-secondary btn-sm">Tout</button>');
                 echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Pro">Pro</button>');
                 echo ('<button type="radio" class="btn btn-secondary btn-sm" name="typeV" value="Perso">Perso</button>');
                 echo ('</div>');

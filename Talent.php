@@ -124,13 +124,10 @@
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
-
                             echo ('<br><br>');
-                            echo ('<h3> Par type </h3>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong> Pro </strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong> Perso </strong></em></label>');
-                            echo ('<label class="radio-inline"><input type="radio" ><em><strong> Pro & Perso </strong></em></label>');
-
+                            echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affichés)</p>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
+                            echo ('    <label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
                         }
                       ?>
                       </div>

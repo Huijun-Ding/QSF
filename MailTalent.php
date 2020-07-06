@@ -106,7 +106,7 @@
                          
                          if (mysqli_num_rows($result)>0) {       
                               while ($talent = mysqli_fetch_array($result)) {         
-                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Répondre à votre talent '.$talent["TitreT"].' " disabled >');                         
+                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Demande de partager votre talent '.$talent["TitreT"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
                                 echo('<div class="form-group">');
@@ -374,7 +374,7 @@
 
                                 <td valign="top" style="padding-top:17px;padding-right:21px;padding-bottom:15px;padding-left:21px"><div style="font-family:Bitter, Georgia, Times, Times New Roman, serif;font-size:30px;color:#4f772d;line-height:33px;text-align:left"><p style="padding: 0; margin: 0;"><span style="font-size:36px;">Quai des savoir-faire:</span></p><span class="mso-font-fix-georgia">
 
-                                </span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">R&eacute;pondre &agrave; votre&nbsp;talent « '.$talent["TitreT"].' »</span></p><span class="mso-font-fix-georgia">
+                                </span><p style="padding: 0; margin: 0;text-align: center;"><span style="font-size:24px;">Demande de partager votre&nbsp;talent « '.$talent["TitreT"].' »</span></p><span class="mso-font-fix-georgia">
                                 </span></div>
                                 </td>
                                 </tr>

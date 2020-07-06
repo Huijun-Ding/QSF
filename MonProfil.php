@@ -142,7 +142,7 @@
                     if ($_SESSION['type'] == NULL){
                         echo ('<div class="switch-field">');
                         echo ('<input type="radio" id="radio-three" name="switch-two" value="" checked/>');
-                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<label for="radio-three">Tout</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
                         echo ('<label for="radio-four">Pro</label>');
                         echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
@@ -151,7 +151,7 @@
                     } elseif ($_SESSION['type'] == 'Pro') {
                         echo ('<div class="switch-field">');
                         echo ('<input type="radio" id="radio-three" name="switch-two" value="" />');
-                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<label for="radio-three">Tout</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" checked />');
                         echo ('<label for="radio-four">Pro</label>');
                         echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" />');
@@ -160,7 +160,7 @@
                     } elseif ($_SESSION['type'] == 'Perso') {
                         echo ('<div class="switch-field">');
                         echo ('<input type="radio" id="radio-three" name="switch-two" value="" />');
-                        echo ('<label for="radio-three">Pro et Perso</label>');
+                        echo ('<label for="radio-three">Tout</label>');
                         echo ('<input type="radio" id="radio-four" name="switch-two" value="Pro" />');
                         echo ('<label for="radio-four">Pro</label>');
                         echo ('<input type="radio" id="radio-five" name="switch-two" value="Perso" checked />');
