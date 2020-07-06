@@ -88,5 +88,4 @@ header("Location: MesCategories.php");
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
         mail ($destinataire, $sujet, $message, $header); // on envois le mail  
 
-
 ?>

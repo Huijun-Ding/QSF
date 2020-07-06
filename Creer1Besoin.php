@@ -112,7 +112,7 @@
             </div>
             <div class="form-group">
               <label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>
-              <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" maxlength="20" required>
+              <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" required>
             </div>
             <div class="form-group">
                     <label for="inputEmail4">Déscription du besoin(<span style="color:red">*</span>)</label><br/>

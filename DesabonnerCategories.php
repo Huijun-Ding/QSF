@@ -75,7 +75,8 @@ if (isset($_POST['10'])) {
    $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
     mysqli_stmt_bind_param($Email, 'i', $usercode);
     mysqli_stmt_execute($Email); 
-
+    
+header("Location: MesCategories.php");
 
         $destinataire = "$Email"; // adresse mail du destinataire
         $sujet = "Désabonnement des catégories"; // sujet du mail
@@ -87,6 +88,4 @@ if (isset($_POST['10'])) {
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
         mail ($destinataire, $sujet, $message, $header); // on envois le mail  
 
-
-header("Location: MesCategories.php");
 ?>

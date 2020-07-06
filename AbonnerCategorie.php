@@ -85,7 +85,7 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> ABONNER DES CATEGORIES </h1>
+            <h1> S'ABONNER A DES CATEGORIES </h1>
             <hr>
             <form  action="ReabonnerCategories.php" method="post">			  
                 <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
