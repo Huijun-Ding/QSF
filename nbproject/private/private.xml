@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>Accueil.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>175</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Talent.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MesCategories.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Accueil.php</file>
+=======
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Accueil.php</file>
+>>>>>>> c8681e5a6f6f44762d890dc6d1144e3d47f03c24
         </group>
     </open-files>
 </project-private>

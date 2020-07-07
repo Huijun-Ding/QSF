@@ -103,7 +103,7 @@
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Filter les besoins</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Filter les talents</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
@@ -127,7 +127,7 @@
                             echo ('<br><br>');
                             echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affichés)</p>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
-                            echo ('    <label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
                         }
                       ?>
                       </div>
@@ -177,13 +177,13 @@
                 }   
             } else {
 
-                if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
-                } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
+                if (isset($_POST['type']) && isset($_POST['categorie'])) {      // V-si un visiteur choisit les deux filtres
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
+                } elseif (isset($_POST['type'])) {                              // V-si un visiteur choisit filtre type
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
+                } elseif (isset($_POST['categorie'])) {                         // V-si un visiteur choisit filtre categorie
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and b.CodeC in $st order by CodeT DESC";
-                }  else {  // V-si un visiteur rien choisit 
+                }  else {                                                       // V-si un visiteur rien choisit 
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
                 }
             }                
