@@ -177,13 +177,13 @@
                 }   
             } else {
 
-                if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
+                if (isset($_POST['type']) && isset($_POST['categorie'])) {      // V-si un visiteur choisit les deux filtres
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
-                } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
+                } elseif (isset($_POST['type'])) {                              // V-si un visiteur choisit filtre type
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT in '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
+                } elseif (isset($_POST['categorie'])) {                         // V-si un visiteur choisit filtre categorie
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and b.CodeC in $st order by CodeT DESC";
-                }  else {  // V-si un visiteur rien choisit 
+                }  else {                                                       // V-si un visiteur rien choisit 
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
                 }
             }                

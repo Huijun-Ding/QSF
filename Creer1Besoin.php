@@ -120,7 +120,7 @@
             </div>
             <div class="form-group">
               <label for="inputEmail4">Date butoire(<span style="color:red">*</span>)</label>
-              <input type="datetime-local" name="datebutoire" class="form-control col-md-4" id="inputEmail4" maxlength="10" required>
+              <input type="date" name="datebutoire" class="form-control col-md-4" id="inputEmail4" required />
             </div>
             <div class="form-group">
                   <label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>				
