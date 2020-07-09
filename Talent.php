@@ -111,16 +111,16 @@
                       <div class="modal-body">
                          <h3> Par catégorie </h3>
                       
-                            <input type="checkbox" name="categorie[]" value="1"><label class="radio-inline" for="categorie1"><strong> Sport</strong></label>
-                            <input type="checkbox" name="categorie[]" value="2"><label class="radio-inline" for="categorie2"><strong> Animation</strong></label>
-                            <input type="checkbox" name="categorie[]" value="3"><label class="radio-inline" for="categorie3"><strong> Outil métiers</strong></label>
-                            <input type="checkbox" name="categorie[]" value="4"><label class="radio-inline" for="categorie4"><strong> Développement personnel</strong></label>
-                            <input type="checkbox" name="categorie[]" value="5"><label class="radio-inline" for="categorie5"><strong> Associatif</strong></label>
-                            <input type="checkbox" name="categorie[]" value="6"><label class="radio-inline" for="categorie6"><strong> Covoiturage</strong></label>
-                            <input type="checkbox" name="categorie[]" value="7"><label class="radio-inline" for="categorie7"><strong> Bureautique</strong></label>
-                            <input type="checkbox" name="categorie[]" value="8"><label class="radio-inline" for="categorie8"><strong> Informatique</strong></label>
-                            <input type="checkbox" name="categorie[]" value="9"><label class="radio-inline" for="categorie9"><strong> Loisir</strong></label>
-                            <input type="checkbox" name="categorie[]" value="10"><label class="radio-inline" for="categorie10"><strong> Autres</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="1"><strong> Sport</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="2"><strong> Animation</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="3"><strong> Outil métiers</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="4"><strong> Développement personnel</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="5"><strong> Associatif</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="6"><strong> Covoiturage</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="7"><strong> Bureautique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="8"><strong> Informatique</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="9"><strong> Loisir</strong></label>
+                            <label class="radio-inline"><input type="checkbox" name="categorie[]" value="10"><strong> Autres</strong></label>
                         
                         <?php     
                         if (empty($_SESSION['email'])) {
@@ -182,7 +182,7 @@
                 } elseif (isset($_POST['type'])) {                              // V-si un visiteur choisit filtre type
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
                 } elseif (isset($_POST['categorie'])) {                         // V-si un visiteur choisit filtre categorie
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and b.CodeC in $st order by CodeT DESC";
+                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.CodeC in $st order by CodeT DESC";
                 }  else {                                                       // V-si un visiteur rien choisit 
                     $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
                 }
