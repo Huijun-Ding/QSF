@@ -127,7 +127,7 @@
                             echo ('<br><br>');
                             echo ('<h3> Par type </h3><p>(Ne pas choisir si vous voulez tous affichés)</p>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
-                            echo ('    <label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
+                            echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
                         }
                            
                       ?>
@@ -142,7 +142,7 @@
                 </div>
               </form>
                                 
-              <form class="form-inline my-2 my-lg-0" class="recherche">
+              <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form>
