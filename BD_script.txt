@@ -30,10 +30,10 @@ CREATE TABLE `besoins` (
 --
 
 LOCK TABLES `besoins` WRITE;
-INSERT INTO `besoins` VALUES (1, 'Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2020-06-28',false, NOW(),'Pro', 7, 1);
-INSERT INTO `besoins` VALUES (2, 'Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2020-06-27',false, NOW(), 'Perso', 1, 1);
-INSERT INTO `besoins` VALUES (3, 'Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', false, NOW(), 'Perso', 9, 1); 
-INSERT INTO `besoins` VALUES (4, 'Excel: faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', false, NOW(), 'Perso', 7, 1);
+INSERT INTO `besoins` VALUES (1, 'Transformer PDF en WORD',"Je cherche qqn qui peut m'aider à transformer PDF en WORD",'2020-06-28', NULL, NOW(),'Pro', 7, 1);
+INSERT INTO `besoins` VALUES (2, 'Conseil course à pied', 'Je cherche qqn qui peut me donner des conseils', '2020-06-27', NULL, NOW(), 'Perso', 1, 1);
+INSERT INTO `besoins` VALUES (3, 'Conseil Recettes apéritif dînatoire', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', NULL, NOW(), 'Perso', 9, 1); 
+INSERT INTO `besoins` VALUES (4, 'Excel: faire un Tab Croisé Dynamique', 'Je cherche qqn qui peut me donner des conseils', '2020-06-22', NULL, NOW(), 'Perso', 7, 1);
 UNLOCK TABLES;
 
 -- -----------------------------------------------------------------------------------------------

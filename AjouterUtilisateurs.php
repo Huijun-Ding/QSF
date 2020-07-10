@@ -11,16 +11,17 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
             $Type = $_POST['typeu'];
 
             $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
-
             mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
-            mysqli_stmt_execute($stmt);
-
-            session_start();                                 //Après l'inscription, l'utilisateur se connecter automatiquement
+            if (mysqli_stmt_execute($stmt) === true) {
+                 session_start(); 
+            } else {
+                echo erreur;
+            }
 
             $_SESSION['email'] = $Email;
             $_SESSION['password'] = $Password;
 
-            header("Location: Accueil.php");                 // Vers la page Accueil
+            //header("Location: Accueil.php");                 // Vers la page Accueil
 
             // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local, on va aussi essayer avec "SendGrid"
 
