@@ -21,6 +21,7 @@ CREATE TABLE `besoins` (
   `TypeB` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
   `VisibiliteB` tinyint(1) default 1,
+  `ReponseB` tinyint(1) default 0,
   PRIMARY KEY (`CodeB`),
   CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -51,6 +52,7 @@ CREATE TABLE `talents` (
   `TypeT` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
   `VisibiliteT` tinyint(1) default 1,
+  `ReponseT` tinyint(1) default 0,
   PRIMARY KEY (`CodeT`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 

@@ -9,7 +9,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
             $Nom = $_POST['nom'];
             $Prenom = $_POST['prenom'];
             $Type = $_POST['typeu'];
-
+            
             $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
 
             mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
