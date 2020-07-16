@@ -194,7 +194,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = "select b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
+            $query = "select b.ReponseB, b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
 
             $result = mysqli_query ($session, $query);
 
@@ -216,7 +216,11 @@
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
                         echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('<br>');
-                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier mon besoin</a>'); 
+                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
+                        if ($besoin["ReponseB"] == 1) {
+                            echo ('<br>');
+                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["TitreB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                        }
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }
@@ -274,7 +278,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = " select t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} order by t.CodeT DESC";
+            $query = " select t.ReponseT, t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} order by t.CodeT DESC";
 
             $result = mysqli_query ($session, $query);
 
@@ -296,7 +300,11 @@
                             echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
-                            echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier mon talent</a>'); 
+                            echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
+                            if ($talent["ReponseT"] == 1) {
+                                echo ('<br>');
+                                echo ('<a href="ReponseTalent.php?titre='.$talent["TitreT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                            }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
                           } 
@@ -304,7 +312,6 @@
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
             }             
- 
             ?>
              </ul>     
                    </div>
