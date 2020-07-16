@@ -37,6 +37,7 @@ if(isset($_POST['email'])){
         mail($destinataire, $sujet, $message, $header); // on envois le mail  
         
         header("Location: Accueil.php");
+        
         } else {
               ?>
         <script type="text/javascript">
