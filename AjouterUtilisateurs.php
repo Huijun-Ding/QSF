@@ -10,16 +10,21 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
             $Prenom = $_POST['prenom'];
             $Type = $_POST['typeu'];
 
-            $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
+          /*  $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
             mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
             if (mysqli_stmt_execute($stmt) === true) {
                  session_start(); 
             } else {
                 echo erreur;
             }
-
-            $_SESSION['email'] = $Email;
-            $_SESSION['password'] = $Password;
+          */
+            
+            $query = "INSERT INTO utilisateurs (NomU,PrenomU,Email,MotDePasse,TypeU) VALUES($Nom,$Prenom,$Email,$Password,$Type)";
+            if (mysqli_query ($session, $query) == TRUE) {
+                session_start();
+                $_SESSION['email'] = $Email;
+                $_SESSION['password'] = $Password;
+            }
 
             //header("Location: Accueil.php");                 // Vers la page Accueil
 
