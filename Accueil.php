@@ -46,16 +46,17 @@
                 echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
                 echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
                 echo ('</div>');
-            }  
+            } 
           ?>
-          </form>
-
+          </form>      
+                   
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
             
-            if(isset($_SESSION['email'])){
+            if(isset($_SESSION['email'])){    
+                    echo ('<span class="badge badge-danger">Nouveau message</span>');                
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
                     echo('</a>');
@@ -118,7 +119,7 @@
             </div>
         </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-          <div class="container" id="besoins">
+        <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <form method="GET" class="form-inline my-2 my-lg-0">

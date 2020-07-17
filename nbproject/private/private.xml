@@ -1,10 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>Accueil.php</url>
+            <bookmark id="1">
+                <name/>
+                <line>176</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Creer1Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/AjouterUtilisateurs.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Inscription.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Accueil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Saisir1Besoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailTalent.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinoui.html.php</file>
+=======
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MonProfil.php</file>
+<<<<<<< HEAD
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Admin.php</file>
+=======
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReponseBesoin.php</file>
+>>>>>>> 955155169062c2ba2d2f11ba353a164bb943d961
+>>>>>>> fd9e81326fa0554ef40c12fc6383306844ae0ccc
         </group>
     </open-files>
 </project-private>
