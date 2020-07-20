@@ -379,7 +379,31 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+                             
+                             //echo ('<form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>');
+                             echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+                             
+                             echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
+                                echo('<div class="modal-dialog" role="document">');
+                                  echo('<div class="modal-content">');
+                                    echo('<div class="modal-header">');
+                                      echo('<h5 class="modal-title">Vérification</h5>');
+                                      echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                        echo('<span aria-hidden="true">&times;</span>');
+                                      echo('</button>');
+                                    echo('</div>');
+                                    echo('<div class="modal-body">');
+                                      echo('<p>Êtes-Vous sûr de supprimer votre compte ? </p>');
+                                    echo('</div>');
+                                    echo('<div class="modal-footer">');
+                                      echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
+                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                    echo('</div>');
+                                  echo('</div>');
+                                echo('</div>');
+                              echo('</div>');                
+                              //echo('</form>');
+                              
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
