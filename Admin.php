@@ -143,21 +143,20 @@
                 <div id="Cartes" class="tabcontent">          
                   <h3>Cartes</h3>
                   <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
-                  
-                <div class="tab">
-                  <button class="tablinksc" onclick="openCity(event, 'besoins')" id="defaultOpen">Besoins</button>
-                  <button class="tablinksc" onclick="openCity(event, 'talents')">Talents</button>
-                </div>
-
-                <div id="besoins" class="tabcontentc">
-      
-                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Besoins</h3>
-                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                      <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
-                      <button type="submit" class="btn btn-outline-dark">Recherche</button>
-                    </form>
+            
+                  <div class="tab">
+                    <button class="tablinksc" onclick="openCity(event, 'London')">Besoins</button>
+                    <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
                   </div>
+
+                <div id="London" class="tabcontentc">
+                    <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                        <h3>Besoins</h3>
+                        <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                            <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
+                            <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                        </form>
+                    </div>
                   <?php
                     require_once('Fonctions.php');
 
@@ -204,16 +203,16 @@
                     echo ('</table>');
                     ?>        
 
-                </div>
+               </div>
 
-                <div id="talents" class="tabcontentc">
-                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+            <div id="Paris" class="tabcontentc">
+                <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Talents</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                      <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
-                      <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                        <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
+                        <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
-                  </div>
+                </div>
                   <?php
                     require_once('Fonctions.php');
 
@@ -259,78 +258,78 @@
                      echo ('</tbody>');
                     echo ('</table>');
                     ?>        
-                </div>
-                  
-                  <style>
+
+        </div>
+  
+                  <style> 
                   * {box-sizing: border-box}
 
-                    /* Style the tab */
-                    .tab {
-                      float: left;
-                      border: 1px solid #ccc;
-                      background-color: #f1f1f1;
-                      width: 10%;
-                      height: 300px;
-                    }
+                /* Style the tab */
+                .tab {
+                  float: left;
+                  border: 1px solid #ccc;
+                  background-color: #f1f1f1;
+                  width: 10%;
+                  height: 100%;
+                }
 
-                    /* Style the buttons that are used to open the tab content */
-                    .tab button {
-                      display: block;
-                      background-color: inherit;
-                      color: black;
-                      padding: 22px 16px;
-                      width: 100%;
-                      border: none;
-                      outline: none;
-                      text-align: left;
-                      cursor: pointer;
-                      transition: 0.3s;
-                    }
+                /* Style the buttons that are used to open the tab content */
+                .tab button {
+                  display: block;
+                  background-color: inherit;
+                  color: black;
+                  padding: 22px 16px;
+                  width: 100%;
+                  border: none;
+                  outline: none;
+                  text-align: left;
+                  cursor: pointer;
+                  transition: 0.3s;
+                }
 
-                    /* Change background color of buttons on hover */
-                    .tab button:hover {
-                      background-color: #ddd;
-                    }
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                  background-color: #ddd;
+                }
 
-                    /* Create an active/current "tab button" class */
-                    .tab button.active {
-                      background-color: #ccc;
-                    }
+                /* Create an active/current "tab button" class */
+                .tab button.active {
+                  background-color: #ccc;
+                }
 
-                    /* Style the tab content */
-                    .tabcontentc {
-                      float: left;
-                      padding: 0px 12px;
-                      border: 1px solid #ccc;
-                      width: 80%;
-                      border-left: none;
-                      height: 300px;
-                    }
-                    </style>
-                  
-                  <script>
-                    function openCity(evt, cityName) {
-                    // Declare all variables
-                    var i, tabcontentc, tablinksc;
+                /* Style the tab content */
+                .tabcontentc {
+                  float: left;
+                  padding: 0px 12px;
+                  border: 1px solid #ccc;
+                  width: 80%;
+                  border-left: none;
+                  height: 100%;
+                }
+                </style>       
+                
+                <script> 
+                function openCity(evt, cityName) {
+                // Declare all variables
+                var i, tabcontentc, tablinksc;
 
-                    // Get all elements with class="tabcontentc" and hide them
-                    tabcontentc = document.getElementsByClassName("tabcontentc");
-                    for (i = 0; i < tabcontentc.length; i++) {
-                      tabcontentc[i].style.display = "none";
-                    }
+                // Get all elements with class="tabcontent" and hide them
+                tabcontentc = document.getElementsByClassName("tabcontentc");
+                for (i = 0; i < tabcontentc.length; i++) {
+                  tabcontentc[i].style.display = "none";
+                }
 
-                    // Get all elements with class="tablinks" and remove the class "active"
-                    tablinksc = document.getElementsByClassName("tablinksc");
-                    for (i = 0; i < tablinksc.length; i++) {
-                      tablinksc[i].className = tablinksc[i].className.replace(" active", "");
-                    }
+                // Get all elements with class="tablinks" and remove the class "active"
+                tablinksc = document.getElementsByClassName("tablinksc");
+                for (i = 0; i < tablinksc.length; i++) {
+                  tablinksc[i].className = tablinksc[i].className.replace(" active", "");
+                }
 
-                    // Show the current tab, and add an "active" class to the link that opened the tab
-                    document.getElementById(cityName).style.display = "block";
-                    evt.currentTarget.className += " active";
-                  }
-                  
-                  </script>
+                // Show the current tab, and add an "active" class to the link that opened the tab
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " active";
+              }
+                </script> 
   
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
