@@ -13,6 +13,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
+    
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -85,7 +86,7 @@
         <div class="jumbotron">
           <div class="container">
                <h1>Admin</h1>
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page-->   
                 <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
@@ -139,27 +140,34 @@
                     ?>                        
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Cartes" class="tabcontent">
+                <div id="Cartes" class="tabcontent">          
+                  <h3>Cartes</h3>
+                  <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
+                  
+                <div class="tab">
+                  <button class="tablinksc" onclick="openCity(event, 'besoins')" id="defaultOpen">Besoins</button>
+                  <button class="tablinksc" onclick="openCity(event, 'talents')">Talents</button>
+                </div>
+
+                <div id="besoins" class="tabcontentc">
+      
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Cartes</h3>
+                    <h3>Besoins</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                      <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Titre/Description" aria-label="Recherche">
+                      <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                       <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                   </div>
-                  <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
                   <?php
                     require_once('Fonctions.php');
 
                     $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
-                    if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
-                        $mot = htmlspecialchars($_GET['mot']);
-                        //$query = "select CodeB, TitreB, DescriptionB from besoins where  VisibiliteB = 1 and ( b.TitreB LIKE '%$mot%' or b.DescriptionB LIKE '%$mot%' ) order by b.CodeB DESC";
+                    if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $carteb = htmlspecialchars($_GET['carteb']);
+                        $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
                     }
-                    
-                    
-                    
+                                      
                     $result = mysqli_query ($session, $query);
 
                     if ($result == false) {
@@ -195,13 +203,142 @@
                      echo ('</tbody>');
                     echo ('</table>');
                     ?>        
+
+                </div>
+
+                <div id="talents" class="tabcontentc">
+                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                    <h3>Talents</h3>
+                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                      <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
+                      <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                    </form>
+                  </div>
+                  <?php
+                    require_once('Fonctions.php');
+
+                    $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
+
+                    if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $cartet = htmlspecialchars($_GET['cartet']);
+                        $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
+                            echo ('<td>'.$ligne["TitreT"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionT"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
+                             echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+                             echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    ?>        
+                </div>
+                  
+                  <style>
+                  * {box-sizing: border-box}
+
+                    /* Style the tab */
+                    .tab {
+                      float: left;
+                      border: 1px solid #ccc;
+                      background-color: #f1f1f1;
+                      width: 10%;
+                      height: 300px;
+                    }
+
+                    /* Style the buttons that are used to open the tab content */
+                    .tab button {
+                      display: block;
+                      background-color: inherit;
+                      color: black;
+                      padding: 22px 16px;
+                      width: 100%;
+                      border: none;
+                      outline: none;
+                      text-align: left;
+                      cursor: pointer;
+                      transition: 0.3s;
+                    }
+
+                    /* Change background color of buttons on hover */
+                    .tab button:hover {
+                      background-color: #ddd;
+                    }
+
+                    /* Create an active/current "tab button" class */
+                    .tab button.active {
+                      background-color: #ccc;
+                    }
+
+                    /* Style the tab content */
+                    .tabcontentc {
+                      float: left;
+                      padding: 0px 12px;
+                      border: 1px solid #ccc;
+                      width: 80%;
+                      border-left: none;
+                      height: 300px;
+                    }
+                    </style>
+                  
+                  <script>
+                    function openCity(evt, cityName) {
+                    // Declare all variables
+                    var i, tabcontentc, tablinksc;
+
+                    // Get all elements with class="tabcontentc" and hide them
+                    tabcontentc = document.getElementsByClassName("tabcontentc");
+                    for (i = 0; i < tabcontentc.length; i++) {
+                      tabcontentc[i].style.display = "none";
+                    }
+
+                    // Get all elements with class="tablinks" and remove the class "active"
+                    tablinksc = document.getElementsByClassName("tablinksc");
+                    for (i = 0; i < tablinksc.length; i++) {
+                      tablinksc[i].className = tablinksc[i].className.replace(" active", "");
+                    }
+
+                    // Show the current tab, and add an "active" class to the link that opened the tab
+                    document.getElementById(cityName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                  }
+                  
+                  </script>
+  
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Utilisateurs" class="tabcontent">
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Utilisateurs</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                        <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Nom/Prénom/Email" aria-label="Recherche">
+                        <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                   </div>
@@ -209,7 +346,12 @@
                    <?php
                     require_once('Fonctions.php');
 
-                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX'";
+                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
+                    
+                    if(isset($_GET['user']) AND !empty($_GET['user'])) {     /*Recherche par mot clé dans prénom, nom, email des utilisateurs*/
+                        $user = htmlspecialchars($_GET['user']);
+                        $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' and ( NomU LIKE '%$user%' or PrenomU LIKE '%$user%' or Email LIKE '%$user%' ) order by CodeU DESC";
+                    }
 
                     $result = mysqli_query ($session, $query);
 
@@ -305,12 +447,6 @@
                 </div>
            
                 <style>
-                /* Set height of body and the document to 100% to enable "full page tabs" */
-                body, html {
-                  height: 100%;
-                  margin: 0;
-                  font-family: Arial;
-                }
 
                 /* Style tab links */
                 .tablink {
