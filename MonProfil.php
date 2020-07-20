@@ -205,8 +205,12 @@
             if (mysqli_num_rows($result)>0) {
                  while ($besoin = mysqli_fetch_array($result)) {            
                     if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
-                        echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
-                        echo ('<div class="card-header">');
+                        echo('<li class="list-inline-item">');
+                        if ($besoin["ReponseB"] == 1) {
+                            echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
+                        }
+                        echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');    
                         echo ('<center><input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/><center>');
                         echo ('</div>');
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
@@ -218,7 +222,7 @@
                         echo ('<br>');
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] == 1) {
-                            echo ('<br>');
+                            echo ('<br>');                     
                             echo ('<a href="ReponseBesoin.php?titre='.$besoin["TitreB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
@@ -290,7 +294,11 @@
             if (mysqli_num_rows($result)>0) {
                     while ($talent = mysqli_fetch_array($result)) {                     
                          if ($talent["VisibiliteT"] == 1) {  
-                            echo ('<li class="list-inline-item"><div class="card" style="width: 12rem;">');
+                            echo('<li class="list-inline-item">');
+                            if ($talent["ReponseT"] == 1) {
+                                echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
+                            }
+                            echo ('<div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
                             echo ('<center><input type="radio" name="codeT" value="'.$talent["CodeT"].'"/><center>');
                             echo ('</div>');

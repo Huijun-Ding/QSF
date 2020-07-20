@@ -54,9 +54,17 @@
           <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
-            
+    
             if(isset($_SESSION['email'])){    
-                    echo ('<span class="badge badge-danger">Nouveau message</span>');                
+                
+                $query = "select b.ReponseB from besoins b, saisir s where s.CodeB = b.CodeB and s.CodeU = {$usercode} ";
+                $result = mysqli_query ($session, $query);
+                
+                while ($besoin = mysqli_fetch_array($result)) { 
+                    if ($besoin["ReponseB"] == 1) {
+                        echo ('<span class="badge badge-danger">Nouveau message</span>');                           
+                    }
+                }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
                     echo('</a>');
