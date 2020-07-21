@@ -341,7 +341,7 @@
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                   </div>
-                  <p>Accéder au profil d’utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
+                  <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
                    <?php
                     require_once('Fonctions.php');
 
@@ -378,9 +378,9 @@
                             echo ('<td>'.$ligne["Email"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
+                             echo ('<button type="button" class="btn btn-secondary"><img name="codeu" value="'.$ligne["CodeU"].'"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
                              
-                             //echo ('<form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>');
+                             //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
                              echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
                              
                              echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
@@ -393,7 +393,7 @@
                                       echo('</button>');
                                     echo('</div>');
                                     echo('<div class="modal-body">');
-                                      echo('<p>Êtes-Vous sûr de supprimer votre compte ? </p>');
+                                      echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
                                     echo('</div>');
                                     echo('<div class="modal-footer">');
                                       echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
@@ -467,6 +467,7 @@
                   <h3>Paramètres</h3>
                   <p>Paramètre délais d’évaluation</p>
                   <h5>Délai pour envoyer l'email d'évaluation : <input type='text' placeholder="15"  > jours </h5>
+                  <button type="button" class="btn btn-primary"> Changer </button>
                 </div>
            
                 <style>
