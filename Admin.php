@@ -95,8 +95,42 @@
 
                 <div id="Catégories" class="tabcontent">
                   <h3>Catégories</h3>
-                  <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>
-                  <button type="button" class="btn btn-primary"> ⊕ Créer</button> <br><br>       
+                  <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
+                  
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nouvelle catégorie</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
+                              <input name="nomc" type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Description de catégorie :</label>
+                              <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
+                              <textarea name="photoc" class="form-control" id="message-text"></textarea>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Créer</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
                    <?php
                     require_once('Fonctions.php');
 
@@ -158,8 +192,7 @@
                         </form>
                     </div>
                   <?php
-                    require_once('Fonctions.php');
-
+                
                     $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
                     if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
@@ -214,7 +247,6 @@
                     </form>
                 </div>
                   <?php
-                    require_once('Fonctions.php');
 
                     $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
 
@@ -343,7 +375,6 @@
                   </div>
                   <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
                    <?php
-                    require_once('Fonctions.php');
 
                     $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
                     
