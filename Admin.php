@@ -208,6 +208,7 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     
+                    echo ('<form action="AdminCarteInapproprie.php" method="post">');
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
                     echo ('<thead>');
                           echo ('<tr>');
@@ -222,19 +223,20 @@
                     while ($ligne = mysqli_fetch_array($result)) {                                               
                           echo ('<tr>');
                             echo ('<th scope="row">'.$ligne["CodeB"].'</th>');
-                            echo ('<td>'.$ligne["TitreB"].'</td>');
+                            echo ('<td>'.$ligne["TitreB"].'</td>');                           
                             echo ('<td>'.$ligne["DescriptionB"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+                             echo ('<button name="desactiver" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
                              echo ('</div>');
-                            echo ('</td>');
+                            echo ('</td>');                         /* Problème d'affichage besoin */   
                           echo ('</tr>');                     
                     }          
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
+                    echo ('</form>');
                     
                     echo('<br><h3>Besoins Cachés</h3><br>');
 
@@ -269,7 +271,7 @@
                             echo ('<td>'.$ligne["DescriptionB"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary" name="'.$ligne["CodeB"].'"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
                              echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');
                              echo ('</div>');
                             echo ('</td>');
@@ -381,7 +383,8 @@
 
             </div>
 
-            <style>
+            <!-- CSS pour la tab des cartes-->
+            <style>     
             /* Style the tab */
             .tab {
               overflow: hidden;
@@ -419,6 +422,7 @@
             }
             </style>
 
+            <!-- JS pour la tab des cartes-->
             <script>
             function openCity(evt, cityName) {
               // Declare all variables
