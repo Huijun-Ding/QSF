@@ -1,7 +1,7 @@
 <?php 
 require_once('Fonctions.php');
 
-$CodeB = $_POST[''];
+$CodeB = $_POST['codeb'];
 
 if (isset($_POST['desactiverb'])) {
     $stmt1 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
@@ -11,17 +11,18 @@ if (isset($_POST['desactiverb'])) {
 
 //Envoyer un mail pour informer cette personne
 
+$CodeBC = $_POST['activerb'];
 
 if (isset($_POST['activerb'])) {
     $stmt2 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 1 WHERE CodeB = ?");
-    mysqli_stmt_bind_param($stmt2, 'i', $CodeB);
+    mysqli_stmt_bind_param($stmt2, 'i', $CodeBC);
     mysqli_stmt_execute($stmt2);
 }
 
 
 
 
-$CodeT = $_POST['codeT'];
+//$CodeT = $_POST['codeT'];
 
 if (isset($_POST['desactivert'])) {
     $stmt3 = mysqli_prepare($session, "UPDATE talents SET VisibiliteT = 0 WHERE CodeT = ?");
@@ -40,6 +41,6 @@ if (isset($_POST['activert'])) {
 }
 
 
-
+header("Location: Admin.php");
 
 ?>

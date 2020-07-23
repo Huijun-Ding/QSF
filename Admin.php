@@ -194,7 +194,7 @@
                         </form>
                     </div>
                   <?php
-                
+                   echo ('<form action="AdminCarteInapproprie.php" method="post">');
                     $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
                     if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
@@ -208,7 +208,7 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     
-                    echo ('<form action="AdminCarteInapproprie.php" method="post">');
+                 
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
                     echo ('<thead>');
                           echo ('<tr>');
@@ -228,7 +228,9 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button name="desactiver" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+                             echo ('<input type="image" src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30">');
+                             echo ('<input type="hidden" name="codeb" value="'.$ligne["CodeB"].'" />');
+                             echo ('<input type="submit" name="desactiverb" class="btn btn-secondary">');
                              echo ('</div>');
                             echo ('</td>');                         /* Problème d'affichage besoin */   
                           echo ('</tr>');                     
@@ -236,7 +238,7 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-                    echo ('</form>');
+                   
                     
                     echo('<br><h3>Besoins Cachés</h3><br>');
 
@@ -272,7 +274,7 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');
+                             echo ('<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"><input name="activerb" value="'.$ligne["CodeB"].'" type="submit" class="btn btn-secondary">');
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -280,7 +282,7 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-
+                    echo ('</form>');
                     ?>        
 
                 </div>
