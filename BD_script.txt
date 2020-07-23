@@ -22,6 +22,7 @@ CREATE TABLE `besoins` (
   `CodeC` int(10) NOT NULL,
   `VisibiliteB` tinyint(1) default 1,
   `ReponseB` tinyint(1) default 0,
+  `Nombre` int(10) default 0,
   PRIMARY KEY (`CodeB`),
   CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -223,6 +224,20 @@ CREATE TABLE `compteurt` (
   `NumNonT` TINYINT(1),
   `RaisonT` TEXT(30),
    PRIMARY KEY (`CodeCT`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `evaluation`
+--
+
+DROP TABLE IF EXISTS `evaluation`;
+
+CREATE TABLE `evaluation` (
+  `CodeE` INT(11) AUTO_INCREMENT, 
+  `Note` INT(11) NOT NULL, 
+  `Avis` TEXT(30),
+   PRIMARY KEY (`CodeE`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- ----------------------------------------------------------------------------------------------

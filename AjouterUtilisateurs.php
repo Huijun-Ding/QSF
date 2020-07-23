@@ -9,9 +9,22 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
             $Nom = $_POST['nom'];
             $Prenom = $_POST['prenom'];
             $Type = $_POST['typeu'];
+            
+           /* $query = "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES('$Nom','$Prenom','$Email','$Password','$Type')";
+            mysqli_query ($session, $query);
+                session_start();    // Vers la page Accueil
+                $_SESSION['email'] = $Email;
+                $_SESSION['password'] = $Password;
+                header("Location: Accueil.php");
+*/
+            if ($Type !=  Null) {
+		$stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
+            	mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
+	    } else {
+            	$stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse) VALUES(?,?,?,?)");   
+            	mysqli_stmt_bind_param($stmt, 'ssss', $Nom,$Prenom,$Email,$Password);
+	    }
 
-            $stmt = mysqli_prepare($session, "INSERT INTO utilisateurs(NomU,PrenomU,Email,MotDePasse,TypeU) VALUES(?,?,?,?,?)");   
-            mysqli_stmt_bind_param($stmt, 'sssss', $Nom,$Prenom,$Email,$Password,$Type);
             if (mysqli_stmt_execute($stmt) == true) {
                 session_start();    // Vers la page Accueil
                 $_SESSION['email'] = $Email;
