@@ -1,6 +1,6 @@
-<!doctype html>
-<html lang="fr">
-  <head>
+<!DOCTYPE html>
+<html>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,8 +13,53 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
-  </head>
-  <body>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script> 
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:500" rel="stylesheet">
+    
+<title></title>
+<style type="text/css">
+/* make the current radio visually hidden */
+input[type=radio]{ 
+  -webkit-appearance: none;
+  margin: 0;
+  box-shadow: none; /* remove shadow on invalid submit */
+}
+
+/* generated content is now supported on input. supporting older browsers? change button above to {position: absolute; opacity: 0;} and add a label, then style that, and change all selectors to reflect that change */
+input[type=radio]::after {
+  content: '\2605';
+  font-size: 32px;
+}
+
+/* by default, if no value is selected, all stars are grey */
+input[type=radio]:invalid::after {
+  color: #ddd;
+}
+
+/* if the rating has focus or is hovered, make all stars darker */
+rating:hover input[type=radio]:invalid::after,
+rating:focus-within input[type=radio]:invalid::after
+{color: #888;}
+
+/* make all the stars after the focused one back to ligh grey, until a value is selected */
+rating:hover input[type=radio]:hover ~ input[type=radio]:invalid::after,
+rating input[type=radio]:focus ~ input[type=radio]:invalid::after  {color: #ddd;}
+
+
+/* if a value is selected, make them all selected */
+rating input[type=radio]:valid {
+  color: orange;
+}
+/* then make the ones coming after the selected value look inactive */
+rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
+  color: #ccc;
+  content: '\2606'; /* optional. hollow star */
+}
+</style>
+</head>
+<body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="Accueil.php">Plateforme</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,82 +126,43 @@
         </ul>
       </div>
     </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-        <div class="jumbotron">
-          <div class="container">
-			
-			<h1> CREER UN COMPTE </h1>
-			
-                        <form method = 'POST' action="AjouterUtilisateurs.php">
-			  <div class="form-row">
-				<div class="form-group col-md-6">
-				  <label for="inputEmail4">Nom</label>
-				  <input type="text" class="form-control" name="nom" id="inputEmail4" maxlength="40" required>
-				</div>
-				<div class="form-group col-md-6">
-				  <label for="inputPassword4" >Prénom</label>
-				  <input type="text" class="form-control" name="prenom" id="inputPassword4" maxlength="25" required>
-				</div>
-			  </div>
-			  <div class="form-group">
-				<label for="inputAddress">Email (Perso)</label>
-				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
-			  </div>
-                        
-			  <div class="form-group">
-				<div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck" required="">
-				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
-				  </label>
-				</div>
-			  </div>
-                          
-			  <div class="form-row">
-				<div class="form-group col-md-6">
-				  <label for="inputPassword1">Mot de Passe</label>
-				  <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" maxlength="40" required>
-				</div>                       
-				<div class="form-group col-md-6">
-				  <label for="inputPassword4">Confirmation de Mot de Passe </label>
-				  <input type="password" class="form-control" name="passwordcf" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
-				</div>
-			  </div>
-                            
-                        <div id="radiotypeu">
-                          <p>Sélectionner le type d'information affichée</p> 
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" value="" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                              Pro et Perso
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios2" value="Pro">
-                            <label class="form-check-label" for="exampleRadios2">
-                              Pro
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios3" value="Perso">
-                            <label class="form-check-label" for="exampleRadios3">
-                              Perso
-                            </label>
-                          </div>
-                            <br>
-                        </div>
-                            
-                        <div class="form-group">
-                              <button type="submit" class="btn btn-dark">S'inscrire</button>
-                        </div>
-            </form>
-
-          </div>
-        </div>
-
-    <footer>
-      <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-    </footer>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->  
+<div class="jumbotron">
+  <div class="container">
+      <form method="POST" action="evaluation.fonction.php">
+        <h1>Evaluer votre expérience</h1><hr>
+        <fieldset>
+          <legend>Notation :</legend>
+           <rating>
+             <input type="radio" name="rating" value="1" aria-label="1 star" required/>
+             <input type="radio" name="rating" value="2" aria-label="2 stars"/>
+             <input type="radio" name="rating" value="3" aria-label="3 stars"/>
+             <input type="radio" name="rating" value="4" aria-label="4 stars"/>
+             <input type="radio" name="rating" value="5" aria-label="5 stars"/>
+           </rating>
+        </fieldset>
+          <br>
+        <fieldset>
+          <legend>Votre avis nous intéresse :</legend>
+           <rating>
+               <textarea name="avis" placeholder=""></textarea>
+                <script>
+                    var editor1 = CKEDITOR.replace('avis', {
+                        extraAllowedContent: 'div',
+                        height: 200
+                      });
+                </script>
+           </rating>
+        </fieldset>
+          <br><br>
+        <input type="reset" class="btn btn-dark">
+        <input type="submit" class="btn btn-dark">
+      </form>
+  </div>
+</div>
+        <footer>
+          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+        </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -165,5 +171,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-
-
