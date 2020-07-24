@@ -1,7 +1,7 @@
 <?php 
 require_once('Fonctions.php');
 
-$CodeB = $_POST['codeb'];
+$CodeB = $_POST['desactiverb'];
 
 if (isset($_POST['desactiverb'])) {
     $stmt1 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
@@ -22,7 +22,7 @@ if (isset($_POST['activerb'])) {
 
 
 
-//$CodeT = $_POST['codeT'];
+$CodeT = $_POST['desactivert'];
 
 if (isset($_POST['desactivert'])) {
     $stmt3 = mysqli_prepare($session, "UPDATE talents SET VisibiliteT = 0 WHERE CodeT = ?");
@@ -32,11 +32,11 @@ if (isset($_POST['desactivert'])) {
        
 //Envoyer un mail pour informer cette personne
 
-
+$CodeTC = $_POST['activert'];
 
 if (isset($_POST['activert'])) {
     $stmt4 = mysqli_prepare($session, "UPDATE talents SET VisibiliteT = 1 WHERE CodeT = ?");
-    mysqli_stmt_bind_param($stmt4, 'i', $CodeT);
+    mysqli_stmt_bind_param($stmt4, 'i', $CodeTC);
     mysqli_stmt_execute($stmt4);
 }
 
