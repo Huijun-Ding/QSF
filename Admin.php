@@ -174,10 +174,11 @@
                     ?>                        
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Cartes" class="tabcontent">          
+                <div id="Cartes" class="tabcontent">      
+                
                   <h3>Cartes</h3>
                   <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
-            
+           
                   <!-- Tab links -->
                     <div class="tab">
                       <button class="tablinksc" onclick="openCity(event, 'London')">Besoins</button>
@@ -193,8 +194,9 @@
                             <button type="submit" class="btn btn-outline-dark">Recherche</button>
                         </form>
                     </div>
+                  <form action="AdminCarteInapproprieB.php" method="post">
                   <?php
-                   echo ('<form action="AdminCarteInapproprie.php" method="post">');
+                   
                     $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
                     if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
@@ -282,7 +284,7 @@
                     echo ('</table>');
                     
                     ?>        
-
+                </form>
                 </div>
 
                 <div id="Paris" class="tabcontentc">
@@ -292,7 +294,9 @@
                         <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
-                </div>
+                  </div>
+                    
+                  <form action="AdminCarteInapproprieT.php" method="post">
                   <?php
 
                     $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
@@ -378,10 +382,11 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-                    echo ('</form>');
+                   
                     ?>        
-
+                </form>
             </div>
+     
 
             <!-- CSS pour la tab des cartes-->
             <style>     
@@ -445,6 +450,7 @@
               evt.currentTarget.className += " active";
             }
             </script>
+        
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Utilisateurs" class="tabcontent">
