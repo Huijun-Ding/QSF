@@ -97,7 +97,8 @@
                   <h3>Catégories</h3>
                   <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
-                  
+                    
+                  <form action="AdminCategorie.php" method="POST">
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -107,8 +108,7 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <div class="modal-body">
-                          <form>
+                        <div class="modal-body">            
                             <div class="form-group">
                               <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
                               <input name="nomc" type="text" class="form-control" id="recipient-name">
@@ -120,16 +120,16 @@
                             <div class="form-group">
                               <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
-                            </div>
-                          </form>
+                            </div>                        
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Créer</button>
-                        </div>
+                          <button type="submit" class="btn btn-primary">Créer</button>
+                        </div>                     
                       </div>
                     </div>
                   </div>
+                  </form>
                   
                    <?php
                     require_once('Fonctions.php');
@@ -159,7 +159,7 @@
                             echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
                             echo ('<td>'.$ligne["NomC"].'</td>');
                             echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
-                            echo ('<td><img src="'.$ligne["PhotoC"].'" alt="PhotoC" width="100" height="90"></td>');
+                            echo ('<td><img src="'.$ligne["PhotoC"].'" alt="'.$ligne["NomC"].'" width="100" height="90"></td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button>');
