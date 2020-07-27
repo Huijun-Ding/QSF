@@ -85,20 +85,20 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
           <div class="container">
-               <h1>Admin</h1>
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page-->   
+               <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
                 <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
                 <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
 
-                <div id="Catégories" class="tabcontent">
+                <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3>
                   <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
                     
-                  <form action="AdminCategorie.php" method="POST">
+                  <form action="AdminCategorieFonction.php" method="POST">
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -124,7 +124,7 @@
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Créer</button>
+                          <button name="creer" type="submit" class="btn btn-primary">Créer</button>
                         </div>                     
                       </div>
                     </div>
@@ -134,7 +134,7 @@
                    <?php
                     require_once('Fonctions.php');
 
-                    $query = "select CodeC, NomC, DescriptionC, PhotoC from categories";
+                    $query = "select CodeC, NomC, DescriptionC, PhotoC, VisibiliteC from categories";
 
                     $result = mysqli_query ($session, $query);
 
@@ -154,27 +154,31 @@
                         echo ('</thead>');
                         echo ('<tbody>');
                     if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
+                    while ($ligne = mysqli_fetch_array($result)) { 
+                        if ($ligne["VisibiliteC"] == 1){
+                            echo ('<tr>');
                             echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
                             echo ('<td>'.$ligne["NomC"].'</td>');
                             echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
                             echo ('<td><img src="'.$ligne["PhotoC"].'" alt="'.$ligne["NomC"].'" width="100" height="90"></td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button>');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
+                             echo ('<a href="AdminModifierCategorie.php?t='.$ligne["CodeC"].'"><button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
+                             echo ('<form action="AdminCategorieFonction.php" method="POST">');
+                             echo ('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
+                             echo ('</form>');
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
                     }          
+                    }
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
                     ?>                        
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Cartes" class="tabcontent">      
+                <div id="Cartes" class="tabcontent">      <!-- Onglet carte --> 
                 
                   <h3>Cartes</h3>
                   <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
@@ -287,7 +291,7 @@
                 </form>
                 </div>
 
-                <div id="Paris" class="tabcontentc">
+                <div id="Paris" class="tabcontentc">      
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Talents</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
@@ -453,7 +457,7 @@
         
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Utilisateurs" class="tabcontent">
+                <div id="Utilisateurs" class="tabcontent">      <!-- Onglet utilisateur --> 
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Utilisateurs</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
@@ -533,7 +537,7 @@
                     ?>        
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Stats" class="tabcontent">
+                <div id="Stats" class="tabcontent">   <!-- Onglet stats --> 
                   <h3>Stats</h3>
                   <p>Affichage des chiffres statistiques (le nombre de mise en relation, note(étoiles) et commentaire : lier aux cartes correspondantes)</p>
                 </div>
@@ -582,13 +586,14 @@
                   </div>     
                 </div>
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
-                <div id="Paramètres" class="tabcontent">
+                <div id="Paramètres" class="tabcontent">   <!-- Onglet paramètre --> 
                   <h3>Paramètres</h3>
                   <p>Paramètre délais d’évaluation</p>
                   <h5>Délai pour envoyer l'email d'évaluation : <input type='text' placeholder="15"  > jours </h5>
                   <button type="button" class="btn btn-primary"> Changer </button>
                 </div>
            
+                <!-- CSS pour les onglets --> 
                 <style>
 
                 /* Style tab links */
@@ -618,7 +623,8 @@
 
                 </style>
                 
-                <script>
+                <!-- JS pour les onglets --> 
+                <script>    
                 function openPage(pageName, elmnt, color) {
                 // Hide all elements with class="tabcontent" by default */
                 var i, tabcontent, tablinks;

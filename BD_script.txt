@@ -67,6 +67,7 @@ CREATE TABLE `categories` (
   `NomC` text(30) NOT NULL,
   `DescriptionC` text(200) NULL,
   `PhotoC` text(50) NULL,
+  `VisibiliteC` tinyint(1) default 1,
   PRIMARY KEY (`CodeC`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 --
