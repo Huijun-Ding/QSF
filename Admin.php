@@ -86,19 +86,19 @@
         <div class="jumbotron">
           <div class="container">
                <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" >Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
                 <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
-                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
+                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" id="defaultOpen">Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
                 <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
 
                 <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3>
-                  <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
+                    
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
                     
-                  <form action="AdminCategorieFonction.php" method="POST">
+                  <form action="AdminCategorieFonction.php" method="POST">  <!--Créer une nouvelle catégorie --> 
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
@@ -118,7 +118,7 @@
                               <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
+                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ? -->
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
                             </div>                        
                         </div>
@@ -162,9 +162,9 @@
                             echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
                             echo ('<td><img src="'.$ligne["PhotoC"].'" alt="'.$ligne["NomC"].'" width="100" height="90"></td>');
                             echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');  //Modifier une catégorie
                              echo ('<a href="AdminModifierCategorie.php?t='.$ligne["CodeC"].'"><button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
-                             echo ('<form action="AdminCategorieFonction.php" method="POST">');
+                             echo ('<form action="AdminCategorieFonction.php" method="POST">');  //Désactiver une catégorie
                              echo ('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
                              echo ('</form>');
                              echo ('</div>');
@@ -181,7 +181,7 @@
                 <div id="Cartes" class="tabcontent">      <!-- Onglet carte --> 
                 
                   <h3>Cartes</h3>
-                  <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
+                 
            
                   <!-- Tab links -->
                     <div class="tab">
@@ -193,7 +193,7 @@
                     <div id="London" class="tabcontentc">
                     <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                         <h3>Besoins</h3>
-                        <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                        <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">     <!-- Moteur de recherche dans titre & description -->
                             <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                             <button type="submit" class="btn btn-outline-dark">Recherche</button>
                         </form>
@@ -215,7 +215,7 @@
                     }
                     
                  
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les besoins existants*/       
                     echo ('<thead>');
                           echo ('<tr>');
                             echo ('<th scope="col">#</th>');
@@ -236,7 +236,7 @@
                              echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
                              echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
                              echo ('</div>');
-                            echo ('</td>');                         /* Problème d'affichage besoin */   
+                            echo ('</td>');                        
                           echo ('</tr>');                     
                     }          
                     } 
@@ -244,7 +244,7 @@
                     echo ('</table>');
                    
                     
-                    echo('<br><h3>Besoins Cachés</h3><br>');
+                    echo('<br><h3>Besoins Cachés</h3><br>');   
 
                     $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
 
@@ -259,7 +259,7 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les besoins cachés */       
                     echo ('<thead>');
                           echo ('<tr>');
                             echo ('<th scope="col">#</th>');
@@ -316,7 +316,7 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents existantes*/       
                     echo ('<thead>');
                           echo ('<tr>');
                             echo ('<th scope="col">#</th>');
@@ -359,7 +359,7 @@
                         die("ereur requête : ". mysqli_error($session) );
                     }
                     
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents cachés*/       
                     echo ('<thead>');
                           echo ('<tr>');
                             echo ('<th scope="col">#</th>');
@@ -460,7 +460,7 @@
                 <div id="Utilisateurs" class="tabcontent">      <!-- Onglet utilisateur --> 
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Utilisateurs</h3>
-                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">  <!-- Moteur de recherche --> 
                         <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
@@ -501,7 +501,7 @@
                             echo ('<td>'.$ligne["Email"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<button type="button" class="btn btn-secondary"><img name="codeu" value="'.$ligne["CodeU"].'"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
+                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
                              
                              //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
                              echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
