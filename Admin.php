@@ -86,8 +86,8 @@
         <div class="jumbotron">
           <div class="container">
                <h1>Admin</h1>
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
-                <button class="tablink" onclick="openPage('Cartes', this, 'orange')" id="defaultOpen" >Cartes</button>
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page-->   
+                <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
