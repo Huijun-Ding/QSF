@@ -22,7 +22,7 @@ CREATE TABLE `besoins` (
   `CodeC` int(10) NOT NULL,
   `VisibiliteB` tinyint(1) default 1,
   `ReponseB` tinyint(1) default 0,
-  `Nombre` int(10) default 0,
+  `Nombre` int(10) default 1,
   PRIMARY KEY (`CodeB`),
   CONSTRAINT `date_besoin` check ((`DateButoireB`>`DatePublicationB`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

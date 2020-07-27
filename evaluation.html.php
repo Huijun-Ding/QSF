@@ -154,7 +154,7 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
                 </script>
            </rating>
         </fieldset>
-          <br><br>
+          <br><p>Si votre besoin a été résolu, n'oubliez pas d'désactiver votre carte</p>
         <input type="reset" class="btn btn-dark">
         <input type="submit" class="btn btn-dark">
       </form>

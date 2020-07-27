@@ -392,8 +392,44 @@
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Stats" class="tabcontent">
-                  <h3>Stats</h3>
-                  <p>Affichage des chiffres statistiques (le nombre de mise en relation, note(étoiles) et commentaire : lier aux cartes correspondantes)</p>
+                  <h3>Mise en relation besoin</h3><hr>
+                  <?php
+                    require_once('Fonctions.php');
+                    echo ('<p>Nombre de mise en relation réussit : </p>');
+                    echo ('<p>Nombre de mise en relation échoué : </p>');
+                    echo ('<h3>Mise en relation talent</h3><hr>');
+                    echo ('<p>Nombre de mise en relation réussit : </p>');
+                    echo ('<p>Nombre de mise en relation échoué : </p>');                    
+
+                    echo ('<h3>Retour d\'expérience</h3><hr>');
+                    echo ('<p>Moyenne de notes : ');
+                    $moyenne = "select AVG(Note) as moyenne from evaluation";
+                    $$notemoyenne = mysqli_query ($session, $moyenne);
+                    if (mysqli_num_rows($notemoyenne)>0) {
+                    while ($ligne = mysqli_fetch_array($notemoyenne)) {                                               
+                        echo $ligne["moyenne"];
+                        echo ('</p>'); 
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">Note</th>');
+                            echo ('<th scope="col">Commentaire</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["Note"].'</th>');
+                            echo ('<td>'.$ligne["Avis"].'</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');                    
+                    
+                  ?>
                 </div>
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
                 <div id="Bandeau" class="tabcontent">
