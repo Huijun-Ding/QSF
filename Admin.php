@@ -85,11 +85,11 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
           <div class="container">
-               <h1>Admin</h1>
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
-                <button class="tablink" onclick="openPage('Cartes', this, 'orange')" id="defaultOpen" >Cartes</button>
+              <h1>Admin</h1><hr>
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
+                <button class="tablink" onclick="openPage('Cartes', this, 'orange')">Cartes</button>
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
-                <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
+                <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
                 <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
 
@@ -176,7 +176,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Cartes" class="tabcontent">      
                 
-                  <h3>Cartes</h3>
+                    <h3>Cartes</h3><hr>
                   <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
            
                   <!-- Tab links -->
@@ -455,7 +455,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Utilisateurs" class="tabcontent">
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Utilisateurs</h3>
+                      <h3>Utilisateurs</h3><hr>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                         <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
@@ -619,7 +619,7 @@
                 </div>
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
                 <div id="Bandeau" class="tabcontent">
-                  <h3>Bandeau</h3>
+                    <h3>Bandeau</h3><hr>
                   <p>Remplacer Jumbotron par Carrousel avec des annonces d’administrateur (1ère page : Bienvenu). Zone de modification des texts et des photos dans la page d’accueil (Carousel) sans faire du code</p>
                   
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -663,9 +663,8 @@
                 </div>
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
                 <div id="Paramètres" class="tabcontent">
-                  <h3>Paramètres</h3>
-                  <p>Paramètre délais d’évaluation</p>
-                  <h5>Délai pour envoyer l'email d'évaluation : <input type='text' placeholder="15"  > jours </h5>
+                    <h3>Paramètres</h3><hr>
+                  <p>Paramétrer le délais d'envoie de mail d’évaluation <input type='text' placeholder="15"> jours </p>
                   <button type="button" class="btn btn-primary"> Changer </button>
                 </div>
            
