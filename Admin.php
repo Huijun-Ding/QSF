@@ -534,6 +534,8 @@
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Stats" class="tabcontent">
+                  <h3>Nombre de connexion du site</h3><hr>                    
+                    
                   <h3>Mise en relation</h3><hr>
                   <?php
                     require_once('Fonctions.php');
@@ -620,7 +622,7 @@
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
                 <div id="Bandeau" class="tabcontent">
                     <h3>Bandeau</h3><hr>
-                  <p>Remplacer Jumbotron par Carrousel avec des annonces d’administrateur (1ère page : Bienvenu). Zone de modification des texts et des photos dans la page d’accueil (Carousel) sans faire du code</p>
+                  <p>modifier les texts et les photos</p>
                   
                   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">

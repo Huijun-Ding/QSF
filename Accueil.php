@@ -104,28 +104,69 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-        <div class="jumbotron">
-          <div class="container">
-            <h1 class="display-4">Bienvenue !</h1>
-            <p class="lead">Une plateforme qui permet de partager les compétences entre collaborateurs.</p>
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://r1pbk8s6fm-flywheel.netdna-ssl.com/wp-content/uploads/2018/04/map-connectivity-1200x400.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Bienvenue !</h1>
+            <h5>Une plateforme qui permet de partager les compétences entre collaborateurs.</h5>
             <hr class="my-4">
             <p>Partageons nos talents, la solitarité c'est aussi entre nous.</p>
-             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">  
-                <p class="lead">
-                    <a href="https://notmoebius.github.io/quaidessavoirfaire/" target="_blank"><button type="button" class="btn btn-outline-dark">En savoir plus</button></a>
-                </p>
-             <?php
+            <button class="btn btn-light" onclick="document.location='https://notmoebius.github.io/quaidessavoirfaire/'">En savoir plus</button>
+          </div>
+        </div>
+          
+        <div class="carousel-item">
+          <img src="https://www.bravopromo.fr/cdn/blog/1200x400/le-green-friday-par-bravopromo-201911151231-preview.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Oui, vous avez des talents !</h1>
+            <hr class="my-4">
+            <?php
             require_once('Fonctions.php');
-            
+
             if(isset($_SESSION['email'])){
-                echo('<a href="https://eva.beta.gouv.fr/"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>');
+                echo ('<button class="btn btn-light" onclick="document.location="https://eva.beta.gouv.fr/"">Ulitiser EVA pour faire éclorer vos talents.</button>');
             } else {
-                echo ('<a href="Login.php"><img src="https://i.pinimg.com/474x/81/c4/39/81c43990273687ad0218db03ed667d26.jpg" class="rounded-circle" alt="Bonhomme talent"></a>');
+                echo ('<button class="btn btn-light" onclick="document.location="Login.php"">Ulitiser EVA pour faire éclorer vos talents.</button>');
             }
             ?>
-             </div>
-            </div>
+          </div>
         </div>
+          
+        <div class="carousel-item">
+          <img src="https://lh3.googleusercontent.com/proxy/ur1wHEyIfAwSOTYwSxv5_8PPYLXU1hAIURB9Fqva96V72KSazl5NK1UUzSoFXUUfQR4NF4F7arPwdNuOumCzvbi-ClmtR6oZ4SpuN9LvnQgIb6uzswy4g48cQyliKqsp" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Nouvelle du jour</h>
+            <hr class="my-4">
+            <p></p>
+          </div>
+        </div> 
+          
+        <div class="carousel-item">
+          <img src="https://www.yeda.fr/3433/papier-peint-illustration-carte-des-etoiles-et.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Retours d'expériences des utilisateurs</h1>
+            <hr class="my-4">
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Précédent</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Prochaine</span>
+      </a>
+    </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
