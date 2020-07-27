@@ -534,23 +534,65 @@
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Stats" class="tabcontent">
-                  <h3>Mise en relation besoin</h3><hr>
+                  <h3>Mise en relation</h3><hr>
                   <?php
                     require_once('Fonctions.php');
-                    echo ('<p>Nombre de mise en relation réussit : </p>');
-                    echo ('<p>Nombre de mise en relation échoué : </p>');
-                    echo ('<h3>Mise en relation talent</h3><hr>');
-                    echo ('<p>Nombre de mise en relation réussit : </p>');
-                    echo ('<p>Nombre de mise en relation échoué : </p>');                    
+                    echo ('<dl>');
+                    echo ('<dt>Nombre de mise en relation besoins : ');
+                    $query5 = "select count(*) as reussit from compteurb";
+                    $result5 = mysqli_query ($session, $query5);
+                    if ($note = mysqli_fetch_array($result5)) {   
+                        echo $note["reussit"]; 
+                    }                   
+                    echo ('</dt>');
+                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
+                    $query1 = "select count(*) as reussit from compteurb where NumOuiB = 1";
+                    $result1 = mysqli_query ($session, $query1);
+                    if ($note = mysqli_fetch_array($result1)) {   
+                        echo $note["reussit"]; 
+                    }
+                    echo ('</dd>');
+                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
+                    $query2 = "select count(*) as echoue from compteurb where NumNonB = 1";
+                    $result2 = mysqli_query ($session, $query2);
+                    if ($note = mysqli_fetch_array($result2)) {   
+                        echo $note["echoue"]; 
+                    }                   
+                    echo ('</dd>');
+                    echo ('</dl>');  
+                    
+                    echo ('<dl>');
+                    echo ('<dt>Nombre de mise en relation talents : ');
+                    $query6 = "select count(*) as reussit from compteurt";
+                    $result6 = mysqli_query ($session, $query6);
+                    if ($note = mysqli_fetch_array($result6)) {   
+                        echo $note["reussit"]; 
+                    }                    
+                    echo ('</dt>');
+                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
+                    $query3 = "select count(*) as reussit from compteurt where NumOuiT = 1";
+                    $result3 = mysqli_query ($session, $query3);
+                    if ($note = mysqli_fetch_array($result3)) {   
+                        echo $note["reussit"]; 
+                    }                    
+                    echo ('</dd>');
+                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
+                    $query4 = "select count(*) as echoue from compteurt where NumNonT = 1";
+                    $result4 = mysqli_query ($session, $query4);
+                    if ($note = mysqli_fetch_array($result4)) {   
+                        echo $note["echoue"]; 
+                    }                    
+                    echo ('</dd>');
+                    echo ('</dl>');                                    
 
                     echo ('<h3>Retour d\'expérience</h3><hr>');
                     echo ('<p>Moyenne de notes : ');
                     $moyenne = "select AVG(Note) as moyenne from evaluation";
-                    $$notemoyenne = mysqli_query ($session, $moyenne);
-                    if (mysqli_num_rows($notemoyenne)>0) {
-                    while ($ligne = mysqli_fetch_array($notemoyenne)) {                                               
-                        echo $ligne["moyenne"];
+                    $notemoyenne = mysqli_query ($session, $moyenne);
+                    if ($note = mysqli_fetch_array($notemoyenne)) {   
+                        echo $note["moyenne"];
                         echo ('</p>'); 
+                    }
                     
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
                     echo ('<thead>');
@@ -560,6 +602,8 @@
                           echo ('</tr>');
                         echo ('</thead>');
                         echo ('<tbody>');
+                    $query = "select Note, Avis from evaluation where Avis != '' order by CodeE DESC limit 20";
+                    $result = mysqli_query ($session, $query);                        
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                                               
                           echo ('<tr>');
