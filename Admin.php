@@ -468,6 +468,7 @@
                     </form>
                   </div>
                   <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
+                  <form name="Supprimer" action="AdminUtilisateurFonction.php" method="post">
                    <?php
 
                     $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
@@ -496,19 +497,20 @@
                         echo ('<tbody>');
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
+                            echo ('<tr>');
                             echo ('<th scope="row">'.$ligne["CodeU"].'</th>');
                             echo ('<td>'.$ligne["NomU"].'</td>');
                             echo ('<td>'.$ligne["PrenomU"].'</td>');
                             echo ('<td>'.$ligne["Email"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             
-                             //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
-                             echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
-                             
-                             echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
+                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');                 
+                             echo ('<button type="button"  class="btn btn-secondary" data-toggle="modal" data-target="#supprimer'.$ligne["CodeU"].'"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"> '.$ligne["CodeU"].'</button>');    
+                             echo ('</div>');
+                            echo ('</td>');
+                            echo ('</tr>');              
+            
+                             echo('<div class="modal" tabindex="-1" id="supprimer'.$ligne["CodeU"].'" role="dialog">');
                                 echo('<div class="modal-dialog" role="document">');
                                   echo('<div class="modal-content">');
                                     echo('<div class="modal-header">');
@@ -520,23 +522,20 @@
                                     echo('<div class="modal-body">');
                                       echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
                                     echo('</div>');
-                                    echo('<div class="modal-footer">');
-                                      echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
+                                    echo('<div class="modal-footer">');                               
+                                      echo('<button name="codeu" value="'.$ligne["CodeU"].'" type="submit" class="btn btn-primary">Supprimer '.$ligne["CodeU"].'</button>');
                                       echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
                                     echo('</div>');
                                   echo('</div>');
                                 echo('</div>');
-                              echo('</div>');                
-                              //echo('</form>');
-                              
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
+                              echo('</div>');         
+         
                     }          
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
                     ?>        
+                   </form>
                 </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
                 <div id="Stats" class="tabcontent">   <!-- Onglet stats --> 

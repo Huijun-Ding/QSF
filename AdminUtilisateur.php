@@ -194,8 +194,45 @@
             }             
             ?>
              </ul>     
-
        </div> 
+         <br><br>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+         <div class="container" id="MesCatégories">
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                <h1> Ses catégories </h1>
+            </div>           
+            <hr>  
+             <ul class="list-inline">
+
+                  <?php
+                    require_once('Fonctions.php');
+
+                    $query = " select c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$_GET['t']} ";
+                    $result = mysqli_query ($session, $query);
+                        
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */       
+                        echo('<li class="list-inline-item">');
+                        echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');
+                        echo ('</div>');
+                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                        echo ('<div class="card-body text-center">');
+                        echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                        echo ('</div>');
+                        echo ('</div></li>'); 
+                    }          
+                    } else {
+                                echo("Cet utilisateur n'a pas encore s'abonner à des catégories");
+                            } 
+                  ?>      
+                  </ul>  
+                    </div>
+  
+
   <hr> 
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
