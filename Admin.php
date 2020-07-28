@@ -83,310 +83,309 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-        <div class="jumbotron">
-          <div class="container">
-              <h1>Admin</h1><hr>
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
-                <button class="tablink" onclick="openPage('Cartes', this, 'orange')">Cartes</button>
-                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
-                <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
-                <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
-                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
+    <div class="jumbotron">
+      <div class="container">
+          <h1>Admin</h1><hr>
+            <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
+            <button class="tablink" onclick="openPage('Cartes', this, 'orange')">Cartes</button>
+            <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
+            <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
+            <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
+            <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
 
-                <div id="Catégories" class="tabcontent">
-                  <h3>Catégories</h3>
-                  <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
-                  
-                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Nouvelle catégorie</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
+            <div id="Catégories" class="tabcontent">
+              <h3>Catégories</h3>
+              <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
+
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Nouvelle catégorie</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form>
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
+                          <input name="nomc" type="text" class="form-control" id="recipient-name">
                         </div>
-                        <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
-                              <input name="nomc" type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="form-group">
-                              <label for="message-text" class="col-form-label">Description de catégorie :</label>
-                              <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
-                            </div>
-                            <div class="form-group">
-                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
-                              <textarea name="photoc" class="form-control" id="message-text"></textarea>
-                            </div>
-                          </form>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Description de catégorie :</label>
+                          <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                         </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Créer</button>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
+                          <textarea name="photoc" class="form-control" id="message-text"></textarea>
                         </div>
-                      </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Créer</button>
                     </div>
                   </div>
-                  
-                   <?php
-                    require_once('Fonctions.php');
-
-                    $query = "select CodeC, NomC, DescriptionC, PhotoC from categories";
-
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Nom</th>');
-                            echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">PhotoC</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
-                            echo ('<td>'.$ligne["NomC"].'</td>');
-                            echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
-                            echo ('<td><img src="'.$ligne["PhotoC"].'" alt="PhotoC" width="100" height="90"></td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button>');
-                             echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                    ?>                        
                 </div>
+              </div>
+
+               <?php
+                require_once('Fonctions.php');
+
+                $query = "select CodeC, NomC, DescriptionC, PhotoC from categories";
+
+                $result = mysqli_query ($session, $query);
+
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Nom</th>');
+                        echo ('<th scope="col">Description</th>');
+                        echo ('<th scope="col">PhotoC</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
+                        echo ('<td>'.$ligne["NomC"].'</td>');
+                        echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
+                        echo ('<td><img src="'.$ligne["PhotoC"].'" alt="PhotoC" width="100" height="90"></td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button>');
+                         echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
+                         echo ('</div>');
+                        echo ('</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+                ?>                        
+            </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Cartes" class="tabcontent">      
-                
-                    <h3>Cartes</h3><hr>
-                  <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
-           
-                  <!-- Tab links -->
-                    <div class="tab">
-                      <button class="tablinksc" onclick="openCity(event, 'London')">Besoins</button>
-                      <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
-                    </div>
+            <div id="Cartes" class="tabcontent">      
 
-                    <!-- Tab content -->
-                    <div id="London" class="tabcontentc">
-                    <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                        <h3>Besoins</h3>
-                        <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                            <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
-                            <button type="submit" class="btn btn-outline-dark">Recherche</button>
-                        </form>
-                    </div>
-                  <form action="AdminCarteInapproprieB.php" method="post">
-                  <?php
-                   
-                    $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
+                <h3>Cartes</h3><hr>
+              <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
 
-                    if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
-                        $carteb = htmlspecialchars($_GET['carteb']);
-                        $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
-                    }
-                                      
-                    $result = mysqli_query ($session, $query);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                 
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Titre</th>');
-                            echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeB"].'</th>');                         
-                            echo ('<td>'.$ligne["TitreB"].'</td>');                           
-                            echo ('<td>'.$ligne["DescriptionB"].'</td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
-                             echo ('</div>');
-                            echo ('</td>');                         /* Problème d'affichage besoin */   
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                   
-                    
-                    echo('<br><h3>Besoins Cachés</h3><br>');
-
-                    $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
-
-                    if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
-                        $carteb = htmlspecialchars($_GET['carteb']);
-                        $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
-                    }
-                                      
-                    $result = mysqli_query ($session, $query2);
-
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Titre</th>');
-                            echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeB"].'</th>');
-                            echo ('<td>'.$ligne["TitreB"].'</td>');
-                            echo ('<td>'.$ligne["DescriptionB"].'</td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                    
-                    ?>        
-                </form>
+              <!-- Tab links -->
+                <div class="tab">
+                  <button class="tablinksc" onclick="openCity(event, 'London')">Besoins</button>
+                  <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
                 </div>
 
-                <div id="Paris" class="tabcontentc">
-                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Talents</h3>
+                <!-- Tab content -->
+                <div id="London" class="tabcontentc">
+                <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                    <h3>Besoins</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                        <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
+                        <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
-                  </div>
-                    
-                  <form action="AdminCarteInapproprieT.php" method="post">
-                  <?php
+                </div>
+              <form action="AdminCarteInapproprieB.php" method="post">
+              <?php
 
-                    $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
+                $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
-                    if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
-                        $cartet = htmlspecialchars($_GET['cartet']);
-                        $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
-                    }
-                                      
-                    $result = mysqli_query ($session, $query);
+                if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
+                    $carteb = htmlspecialchars($_GET['carteb']);
+                    $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
+                }
 
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Titre</th>');
-                            echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
-                            echo ('<td>'.$ligne["TitreT"].'</td>');
-                            echo ('<td>'.$ligne["DescriptionT"].'</td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                              echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                    
-                    echo('<br><h3>Talents Cachés</h3><br>');
-                    
-                    $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 order by CodeT DESC";
+                $result = mysqli_query ($session, $query);
 
-                    if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
-                        $cartet = htmlspecialchars($_GET['cartet']);
-                        $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
-                    }
-                                      
-                    $result = mysqli_query ($session, $query2);
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
 
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Titre</th>');
-                            echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
-                            echo ('<td>'.$ligne["TitreT"].'</td>');
-                            echo ('<td>'.$ligne["DescriptionT"].'</td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                   
-                    ?>        
-                </form>
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Titre</th>');
+                        echo ('<th scope="col">Description</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeB"].'</th>');                         
+                        echo ('<td>'.$ligne["TitreB"].'</td>');                           
+                        echo ('<td>'.$ligne["DescriptionB"].'</td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                         echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
+                         echo ('</div>');
+                        echo ('</td>');                         /* Problème d'affichage besoin */   
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+
+
+                echo('<br><h3>Besoins Cachés</h3><br>');
+
+                $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
+
+                if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
+                    $carteb = htmlspecialchars($_GET['carteb']);
+                    $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
+                }
+
+                $result = mysqli_query ($session, $query2);
+
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Titre</th>');
+                        echo ('<th scope="col">Description</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeB"].'</th>');
+                        echo ('<td>'.$ligne["TitreB"].'</td>');
+                        echo ('<td>'.$ligne["DescriptionB"].'</td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                         echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
+                         echo ('</div>');
+                        echo ('</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+
+                ?>        
+            </form>
             </div>
-     
+
+            <div id="Paris" class="tabcontentc">
+              <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                <h3>Talents</h3>
+                <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                    <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
+                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                </form>
+              </div>
+
+              <form action="AdminCarteInapproprieT.php" method="post">
+              <?php
+
+                $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
+
+                if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
+                    $cartet = htmlspecialchars($_GET['cartet']);
+                    $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
+                }
+
+                $result = mysqli_query ($session, $query);
+
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Titre</th>');
+                        echo ('<th scope="col">Description</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
+                        echo ('<td>'.$ligne["TitreT"].'</td>');
+                        echo ('<td>'.$ligne["DescriptionT"].'</td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                          echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
+                         echo ('</div>');
+                        echo ('</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+
+                echo('<br><h3>Talents Cachés</h3><br>');
+
+                $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 order by CodeT DESC";
+
+                if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
+                    $cartet = htmlspecialchars($_GET['cartet']);
+                    $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
+                }
+
+                $result = mysqli_query ($session, $query2);
+
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Titre</th>');
+                        echo ('<th scope="col">Description</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
+                        echo ('<td>'.$ligne["TitreT"].'</td>');
+                        echo ('<td>'.$ligne["DescriptionT"].'</td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                         echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                         echo ('</div>');
+                        echo ('</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+
+                ?>        
+              </form>
+            </div>
 
             <!-- CSS pour la tab des cartes-->
             <style>     
@@ -450,283 +449,352 @@
               evt.currentTarget.className += " active";
             }
             </script>
-        
-                </div>
+
+            </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Utilisateurs" class="tabcontent">
-                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                      <h3>Utilisateurs</h3><hr>
-                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                        <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
-                        <button type="submit" class="btn btn-outline-dark">Recherche</button>
-                    </form>
-                  </div>
-                  <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
-                   <?php
+            <div id="Utilisateurs" class="tabcontent">
+              <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                  <h3>Utilisateurs</h3><hr>
+                <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                    <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
+                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                </form>
+              </div>
+              <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
+               <?php
 
-                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
-                    
-                    if(isset($_GET['user']) AND !empty($_GET['user'])) {     /*Recherche par mot clé dans prénom, nom, email des utilisateurs*/
-                        $user = htmlspecialchars($_GET['user']);
-                        $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' and ( NomU LIKE '%$user%' or PrenomU LIKE '%$user%' or Email LIKE '%$user%' ) order by CodeU DESC";
-                    }
+                $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
 
-                    $result = mysqli_query ($session, $query);
+                if(isset($_GET['user']) AND !empty($_GET['user'])) {     /*Recherche par mot clé dans prénom, nom, email des utilisateurs*/
+                    $user = htmlspecialchars($_GET['user']);
+                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' and ( NomU LIKE '%$user%' or PrenomU LIKE '%$user%' or Email LIKE '%$user%' ) order by CodeU DESC";
+                }
 
-                    if ($result == false) {
-                        die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">#</th>');
-                            echo ('<th scope="col">Nom</th>');
-                            echo ('<th scope="col">Prénom</th>');
-                            echo ('<th scope="col">Email</th>');
-                            echo ('<th scope="col">Modification</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["CodeU"].'</th>');
-                            echo ('<td>'.$ligne["NomU"].'</td>');
-                            echo ('<td>'.$ligne["PrenomU"].'</td>');
-                            echo ('<td>'.$ligne["Email"].'</td>');
-                            echo ('<td>');
-                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<button type="button" class="btn btn-secondary"><img name="codeu" value="'.$ligne["CodeU"].'"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
-                             
-                             //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
-                             echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
-                             
-                             echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
-                                echo('<div class="modal-dialog" role="document">');
-                                  echo('<div class="modal-content">');
-                                    echo('<div class="modal-header">');
-                                      echo('<h5 class="modal-title">Vérification</h5>');
-                                      echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-                                        echo('<span aria-hidden="true">&times;</span>');
-                                      echo('</button>');
-                                    echo('</div>');
-                                    echo('<div class="modal-body">');
-                                      echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
-                                    echo('</div>');
-                                    echo('<div class="modal-footer">');
-                                      echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
-                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
-                                    echo('</div>');
-                                  echo('</div>');
+                $result = mysqli_query ($session, $query);
+
+                if ($result == false) {
+                    die("ereur requête : ". mysqli_error($session) );
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">#</th>');
+                        echo ('<th scope="col">Nom</th>');
+                        echo ('<th scope="col">Prénom</th>');
+                        echo ('<th scope="col">Email</th>');
+                        echo ('<th scope="col">Modification</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["CodeU"].'</th>');
+                        echo ('<td>'.$ligne["NomU"].'</td>');
+                        echo ('<td>'.$ligne["PrenomU"].'</td>');
+                        echo ('<td>'.$ligne["Email"].'</td>');
+                        echo ('<td>');
+                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                         echo ('<button type="button" class="btn btn-secondary"><img name="codeu" value="'.$ligne["CodeU"].'"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
+
+                         //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
+                         echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
+
+                         echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
+                            echo('<div class="modal-dialog" role="document">');
+                              echo('<div class="modal-content">');
+                                echo('<div class="modal-header">');
+                                  echo('<h5 class="modal-title">Vérification</h5>');
+                                  echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                    echo('<span aria-hidden="true">&times;</span>');
+                                  echo('</button>');
                                 echo('</div>');
-                              echo('</div>');                
-                              //echo('</form>');
-                              
-                             echo ('</div>');
-                            echo ('</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');
-                    ?>        
-                </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Stats" class="tabcontent">
-                  <h3>Nombre de connexion du site</h3><hr>                    
-                    
-                  <h3>Mise en relation</h3><hr>
-                  <?php
-                    require_once('Fonctions.php');
-                    echo ('<dl>');
-                    echo ('<dt>Nombre de mise en relation besoins : ');
-                    $query5 = "select count(*) as reussit from compteurb";
-                    $result5 = mysqli_query ($session, $query5);
-                    if ($note = mysqli_fetch_array($result5)) {   
-                        echo $note["reussit"]; 
-                    }                   
-                    echo ('</dt>');
-                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
-                    $query1 = "select count(*) as reussit from compteurb where NumOuiB = 1";
-                    $result1 = mysqli_query ($session, $query1);
-                    if ($note = mysqli_fetch_array($result1)) {   
-                        echo $note["reussit"]; 
-                    }
-                    echo ('</dd>');
-                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
-                    $query2 = "select count(*) as echoue from compteurb where NumNonB = 1";
-                    $result2 = mysqli_query ($session, $query2);
-                    if ($note = mysqli_fetch_array($result2)) {   
-                        echo $note["echoue"]; 
-                    }                   
-                    echo ('</dd>');
-                    echo ('</dl>');  
-                    
-                    echo ('<dl>');
-                    echo ('<dt>Nombre de mise en relation talents : ');
-                    $query6 = "select count(*) as reussit from compteurt";
-                    $result6 = mysqli_query ($session, $query6);
-                    if ($note = mysqli_fetch_array($result6)) {   
-                        echo $note["reussit"]; 
-                    }                    
-                    echo ('</dt>');
-                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
-                    $query3 = "select count(*) as reussit from compteurt where NumOuiT = 1";
-                    $result3 = mysqli_query ($session, $query3);
-                    if ($note = mysqli_fetch_array($result3)) {   
-                        echo $note["reussit"]; 
-                    }                    
-                    echo ('</dd>');
-                    echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
-                    $query4 = "select count(*) as echoue from compteurt where NumNonT = 1";
-                    $result4 = mysqli_query ($session, $query4);
-                    if ($note = mysqli_fetch_array($result4)) {   
-                        echo $note["echoue"]; 
-                    }                    
-                    echo ('</dd>');
-                    echo ('</dl>');                                    
+                                echo('<div class="modal-body">');
+                                  echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
+                                echo('</div>');
+                                echo('<div class="modal-footer">');
+                                  echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
+                                  echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                echo('</div>');
+                              echo('</div>');
+                            echo('</div>');
+                          echo('</div>');                
+                          //echo('</form>');
 
-                    echo ('<h3>Retour d\'expérience</h3><hr>');
-                    echo ('<p>Moyenne de notes : ');
-                    $moyenne = "select AVG(Note) as moyenne from evaluation";
-                    $notemoyenne = mysqli_query ($session, $moyenne);
-                    if ($note = mysqli_fetch_array($notemoyenne)) {   
-                        echo $note["moyenne"];
-                        echo ('</p>'); 
-                    }
-                    
-                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                    echo ('<thead>');
-                          echo ('<tr>');
-                            echo ('<th scope="col">Note</th>');
-                            echo ('<th scope="col">Commentaire</th>');
-                          echo ('</tr>');
-                        echo ('</thead>');
-                        echo ('<tbody>');
-                    $query = "select Note, Avis from evaluation where Avis != '' order by CodeE DESC limit 20";
-                    $result = mysqli_query ($session, $query);                        
-                    if (mysqli_num_rows($result)>0) {
-                    while ($ligne = mysqli_fetch_array($result)) {                                               
-                          echo ('<tr>');
-                            echo ('<th scope="row">'.$ligne["Note"].'</th>');
-                            echo ('<td>'.$ligne["Avis"].'</td>');
-                          echo ('</tr>');                     
-                    }          
-                    } 
-                     echo ('</tbody>');
-                    echo ('</table>');                    
-                    
-                  ?>
+                         echo ('</div>');
+                        echo ('</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');
+                ?>        
+            </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+            <div id="Stats" class="tabcontent">
+              <h3>Nombre de connexion du site</h3><hr>                    
+
+              <h3>Mise en relation</h3><hr>
+              <?php
+                require_once('Fonctions.php');
+                echo ('<dl>');
+                echo ('<dt>Nombre de mise en relation besoins : ');
+                $query5 = "select count(*) as reussit from compteurb";
+                $result5 = mysqli_query ($session, $query5);
+                if ($note = mysqli_fetch_array($result5)) {   
+                    echo $note["reussit"]; 
+                }                   
+                echo ('</dt>');
+                echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
+                $query1 = "select count(*) as reussit from compteurb where NumOuiB = 1";
+                $result1 = mysqli_query ($session, $query1);
+                if ($note = mysqli_fetch_array($result1)) {   
+                    echo $note["reussit"]; 
+                }
+                echo ('</dd>');
+                echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
+                $query2 = "select count(*) as echoue from compteurb where NumNonB = 1";
+                $result2 = mysqli_query ($session, $query2);
+                if ($note = mysqli_fetch_array($result2)) {   
+                    echo $note["echoue"]; 
+                }                   
+                echo ('</dd>');
+                echo ('</dl>');  
+
+                echo ('<dl>');
+                echo ('<dt>Nombre de mise en relation talents : ');
+                $query6 = "select count(*) as reussit from compteurt";
+                $result6 = mysqli_query ($session, $query6);
+                if ($note = mysqli_fetch_array($result6)) {   
+                    echo $note["reussit"]; 
+                }                    
+                echo ('</dt>');
+                echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation réussit : ');
+                $query3 = "select count(*) as reussit from compteurt where NumOuiT = 1";
+                $result3 = mysqli_query ($session, $query3);
+                if ($note = mysqli_fetch_array($result3)) {   
+                    echo $note["reussit"]; 
+                }                    
+                echo ('</dd>');
+                echo ('<dd style="text-indent:2em;"> - Nombre de mise en relation échoué : ');
+                $query4 = "select count(*) as echoue from compteurt where NumNonT = 1";
+                $result4 = mysqli_query ($session, $query4);
+                if ($note = mysqli_fetch_array($result4)) {   
+                    echo $note["echoue"]; 
+                }                    
+                echo ('</dd>');
+                echo ('</dl>');                                    
+
+                echo ('<h3>Retour d\'expérience</h3><hr>');
+                echo ('<p>Moyenne de notes : ');
+                $moyenne = "select AVG(Note) as moyenne from evaluation";
+                $notemoyenne = mysqli_query ($session, $moyenne);
+                if ($note = mysqli_fetch_array($notemoyenne)) {   
+                    echo $note["moyenne"];
+                    echo ('</p>'); 
+                }
+
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">Note</th>');
+                        echo ('<th scope="col">Commentaire</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                $query = "select Note, Avis from evaluation where Avis != '' order by CodeE DESC limit 20";
+                $result = mysqli_query ($session, $query);                        
+                if (mysqli_num_rows($result)>0) {
+                while ($ligne = mysqli_fetch_array($result)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["Note"].'</th>');
+                        echo ('<td>'.$ligne["Avis"].'</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                 echo ('</tbody>');
+                echo ('</table>');                    
+
+              ?>
+            </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->                  
+            <div id="Bandeau" class="tabcontent">
+                <h3>Bandeau</h3><hr>
+              <p>modifier les texts et les photos</p>
+
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+              </ol>
+              <div class="carousel-inner">
+
+                 <!--First slide-->
+                <div class="carousel-item active">
+                  <img src="https://r1pbk8s6fm-flywheel.netdna-ssl.com/wp-content/uploads/2018/04/map-connectivity-1200x400.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1>Bienvenue !</h1>
+                    <h5>Une plateforme qui permet de partager les compétences entre collaborateurs.</h5>
+                    <hr class="my-4">
+                    <p>Partageons nos talents, la solitarité c'est aussi entre nous.</p>
+                    <button class="btn btn-light" onclick="document.location='https://notmoebius.github.io/quaidessavoirfaire/'">En savoir plus</button>
+                    <p><br><br></p>
+                  </div>
                 </div>
- <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
-                <div id="Bandeau" class="tabcontent">
-                    <h3>Bandeau</h3><hr>
-                  <p>modifier les texts et les photos</p>
-                  
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                          <img class="d-block w-100" src="../img/Carrousel_1.png" alt="First slide">
-                          <div class="carousel-caption d-none d-md-block">
-                            <h5>Page bienvenu</h5>
-                            <p>Bienvenu à la PF</p>
-                          </div>                          
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="https://st4.depositphotos.com/17075580/24554/v/600/depositphotos_245544496-stock-video-pink-comment-icon-black-background.jpg" alt="Second slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Page commentaires</h5>
-                            <p>Voici des commentaires pour notre PF</p>
-                          </div>  
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="https://www.vhm.fr/themes/custom/vhmgroupe/public/images/actualites.jpg" alt="Third slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Page info</h5>
-                            <p>Voilà quelques infos</p>
-                          </div>  
+                <!--First slide-->
+
+                <!--Second slide-->
+                <div class="carousel-item">
+                  <img src="https://www.bravopromo.fr/cdn/blog/1200x400/le-green-friday-par-bravopromo-201911151231-preview.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1>Oui, vous avez des talents !</h1>
+                    <hr class="my-4">
+                    <?php
+                    require_once('Fonctions.php');
+
+                    if(isset($_SESSION['email'])){
+                        echo ('<button class="btn btn-light" onclick="document.location="https://eva.beta.gouv.fr/"">Ulitiser EVA pour faire éclorer vos talents.</button>');
+                    } else {
+                        echo ('<button class="btn btn-light" onclick="document.location="Login.php"">Ulitiser EVA pour faire éclorer vos talents.</button>');
+                    }
+                    ?>
+                    <p><br><br></p>
+                  </div>
+                </div>
+                <!--Second slide-->
+
+                <!--Third slide-->
+                <div class="carousel-item">
+                  <img src="https://lh3.googleusercontent.com/proxy/ur1wHEyIfAwSOTYwSxv5_8PPYLXU1hAIURB9Fqva96V72KSazl5NK1UUzSoFXUUfQR4NF4F7arPwdNuOumCzvbi-ClmtR6oZ4SpuN9LvnQgIb6uzswy4g48cQyliKqsp" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1>Nouvelle du jour</h1>
+                    <hr class="my-4">
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p><br><br></p>
+                  </div>
+                </div> 
+                <!--Third slide-->  
+
+                <!--Fourth slide-->
+                <div class="carousel-item">
+                  <img src="https://i.pinimg.com/originals/d1/a5/d3/d1a5d3d96f0862664846c7800e3c8aff.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h1>Retours d'expériences des utilisateurs</h1>
+                    <hr class="my-4">
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="card mb-2">
+                        <div class="card-body">
+                          <h4 class="text-secondary">User 1</h4>
+                          <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
+                        </div>
                       </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>     
+
+                    <div class="col-md-4 clearfix d-none d-md-block">
+                      <div class="card mb-2">
+                        <div class="card-body">
+                          <h4 class="text-secondary">User 2</h4>
+                          <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4 clearfix d-none d-md-block">
+                      <div class="card mb-2">
+                        <div class="card-body">
+                          <h4 class="text-secondary">User 3</h4>
+                          <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                    <p><br><br></p>
+                  </div>
                 </div>
- <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
-                <div id="Paramètres" class="tabcontent">
-                    <h3>Paramètres</h3><hr>
-                  <p>Paramétrer le délais d'envoie de mail d’évaluation <input type='text' placeholder="15"> jours </p>
-                  <button type="button" class="btn btn-primary"> Changer </button>
-                </div>
-           
-                <style>
+                <!--Fourth slide-->
 
-                /* Style tab links */
-                .tablink {
-                  background-color: #555;
-                  color: white;
-                  float: left;
-                  border: none;
-                  outline: none;
-                  cursor: pointer;
-                  padding: 14px 16px;
-                  font-size: 17px;
-                  width: 15%;
-                }
+              </div>
 
-                .tablink:hover {
-                  background-color: #777;
-                }
+              <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Prochaine</span>
+              </a>
 
-                /* Style the tab content (and add height:100% for full page content) */
-                .tabcontent {
-                  color: black;
-                  display: none;
-                  padding: 100px 20px;
-                  height: 100%;
-                }
-
-                </style>
-                
-                <script>
-                function openPage(pageName, elmnt, color) {
-                // Hide all elements with class="tabcontent" by default */
-                var i, tabcontent, tablinks;
-                tabcontent = document.getElementsByClassName("tabcontent");
-                for (i = 0; i < tabcontent.length; i++) {
-                  tabcontent[i].style.display = "none";
-                }
-
-                // Remove the background color of all tablinks/buttons
-                tablinks = document.getElementsByClassName("tablink");
-                for (i = 0; i < tablinks.length; i++) {
-                  tablinks[i].style.backgroundColor = "";
-                }
-
-                // Show the specific tab content
-                document.getElementById(pageName).style.display = "block";
-
-                // Add the specific color to the button used to open the tab content
-                elmnt.style.backgroundColor = color;
-              }
-
-              // Get the element with id="defaultOpen" and click on it
-              document.getElementById("defaultOpen").click();
-            </script>
-           
             </div>
-          </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->                  
+            <div id="Paramètres" class="tabcontent">
+                <h3>Paramètres</h3><hr>
+              <p>Paramétrer le délais d'envoie de mail d’évaluation <input type='text' placeholder="15"> jours </p>
+              <button type="button" class="btn btn-primary"> Changer </button>
+            </div>
+
+            <style>
+
+            /* Style tab links */
+            .tablink {
+              background-color: #555;
+              color: white;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              font-size: 17px;
+              width: 15%;
+            }
+
+            .tablink:hover {
+              background-color: #777;
+            }
+
+            /* Style the tab content (and add height:100% for full page content) */
+            .tabcontent {
+              color: black;
+              display: none;
+              padding: 100px 20px;
+              height: 100%;
+            }
+
+            </style>
+
+            <script>
+            function openPage(pageName, elmnt, color) {
+            // Hide all elements with class="tabcontent" by default */
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+            }
+
+            // Remove the background color of all tablinks/buttons
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+              tablinks[i].style.backgroundColor = "";
+            }
+
+            // Show the specific tab content
+            document.getElementById(pageName).style.display = "block";
+
+            // Add the specific color to the button used to open the tab content
+            elmnt.style.backgroundColor = color;
+          }
+
+          // Get the element with id="defaultOpen" and click on it
+          document.getElementById("defaultOpen").click();
+        </script>
+
+        </div>
+      </div>
+    </div>
 
   <hr> 
   <footer>
