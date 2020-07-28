@@ -22,35 +22,17 @@ if(isset($_POST['email'])){
         mysqli_stmt_bind_result($stmt2, $role);
         mysqli_stmt_fetch($stmt2);
     
-        if ($role == 'Admin') {
-                     session_start();
-                     $_SESSION['email'] = $Email;
-                     $_SESSION['password'] = $Password;
-                     header("Location: Admin.php");
-                } else {
-                     session_start();
-                     $_SESSION['email'] = $Email;
-                     $_SESSION['password'] = $Password;
-                     header("Location: Accueil.php");
-                }
-        /*
-        $query = "SELECT Role FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
-        $result = mysqli_query ($session, $query);
-
-            while ($ligne = mysqli_fetch_assoc($result)) {            
-                if ($ligne['Role'] == 'Admin') {
-                     session_start();
-                     $_SESSION['email'] = $Email;
-                     $_SESSION['password'] = $Password;
-                     header("Location: Admin.php");
-                } else {
-                     session_start();
-                     $_SESSION['email'] = $Email;
-                     $_SESSION['password'] = $Password;
-                     header("Location: Accueil.php");
-                }
-            }
-*/
+        if ($role == 'Admin') {         //Comment accéder la page Admin ?
+                session_start();
+                $_SESSION['email'] = $Email;
+                $_SESSION['password'] = $Password;
+                header("Location: Admin.php");
+           } else {
+                session_start();
+                $_SESSION['email'] = $Email;
+                $_SESSION['password'] = $Password;
+                header("Location: Accueil.php");
+           }
 
         
         // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
