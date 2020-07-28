@@ -13,14 +13,25 @@ if(isset($_POST['email'])){
     mysqli_stmt_bind_result($stmt, $good_password);
     mysqli_stmt_fetch($stmt);
 
-    //echo $Password;
-    //echo $good_password;
-
     if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session
-        session_start();
 
-            $_SESSION['email'] = $Email;
-            $_SESSION['password'] = $Password;
+        $query = "SELECT Role FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
+        $result = mysqli_query ($session, $query);
+
+            while ($ligne = mysqli_fetch_assoc($result)) {            
+                if ($ligne['Role'] == 'Admin') {
+                     session_start();
+                     $_SESSION['email'] = $Email;
+                     $_SESSION['password'] = $Password;
+                     header("Location: Admin.php");
+                } else {
+                     session_start();
+                     $_SESSION['email'] = $Email;
+                     $_SESSION['password'] = $Password;
+                     header("Location: Accueil.php");
+                }
+            }
+
 
         
 
@@ -36,7 +47,7 @@ if(isset($_POST['email'])){
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
         mail($destinataire, $sujet, $message, $header); // on envois le mail  
         
-        header("Location: Accueil.php");
+      
         
         } else {
               ?>
