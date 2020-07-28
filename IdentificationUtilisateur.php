@@ -15,7 +15,26 @@ if(isset($_POST['email'])){
 
     if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session
 
-        $query = "SELECT Role,Email,MotDePasse FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
+        $stmt2 = mysqli_prepare($session, "SELECT Role FROM utilisateurs WHERE Email= ?");   // Connecter et vérification de mot de passe
+        mysqli_stmt_bind_param($stmt2, "s", $Email);
+        mysqli_stmt_execute($stmt2);
+
+        mysqli_stmt_bind_result($stmt2, $role);
+        mysqli_stmt_fetch($stmt2);
+    
+        if ($role == 'Admin') {
+                     session_start();
+                     $_SESSION['email'] = $Email;
+                     $_SESSION['password'] = $Password;
+                     header("Location: Admin.php");
+                } else {
+                     session_start();
+                     $_SESSION['email'] = $Email;
+                     $_SESSION['password'] = $Password;
+                     header("Location: Accueil.php");
+                }
+        /*
+        $query = "SELECT Role FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
         $result = mysqli_query ($session, $query);
 
             while ($ligne = mysqli_fetch_assoc($result)) {            
@@ -31,7 +50,7 @@ if(isset($_POST['email'])){
                      header("Location: Accueil.php");
                 }
             }
-
+*/
 
         
         // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
