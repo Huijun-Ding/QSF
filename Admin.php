@@ -83,308 +83,311 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-    <div class="jumbotron">
-      <div class="container">
-          <h1>Admin</h1><hr>
-            <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen" >Catégories</button>   <!-- moteur de recherche : après changer de page-->   
-            <button class="tablink" onclick="openPage('Cartes', this, 'orange')">Cartes</button>
-            <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')">Utilisateurs</button>
-            <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
-            <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
-            <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
-
-            <div id="Catégories" class="tabcontent">
-              <h3>Catégories</h3>
-              <p>Gérer les catégories (ajouter : la page catégories, autres, envoyer un mail aux admins, modifier, désactiver, modifier l’image associée)</p>    
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
-
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Nouvelle catégorie</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
-                          <input name="nomc" type="text" class="form-control" id="recipient-name">
+        <div class="jumbotron">
+          <div class="container">
+               <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
+                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
+                <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
+                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" >Utilisateurs</button>
+                <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
+                <button class="tablink" onclick="openPage('Bandeau', this, 'orange')" >Bandeau</button>
+                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->  
+                <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
+                  <h3>Catégories</h3><hr>
+                    
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
+                    
+                  <form action="AdminCategorieFonction.php" method="POST">  <!--Créer une nouvelle catégorie --> 
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Nouvelle catégorie</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                        <div class="form-group">
-                          <label for="message-text" class="col-form-label">Description de catégorie :</label>
-                          <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
+                        <div class="modal-body">            
+                            <div class="form-group">
+                              <label for="recipient-name" class="col-form-label">Nom de catégorie :</label>
+                              <input name="nomc" type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Description de catégorie :</label>
+                              <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ? -->
+                              <textarea name="photoc" class="form-control" id="message-text"></textarea>
+                            </div>                        
                         </div>
-                        <div class="form-group">
-                          <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ou faire glisser directement -->
-                          <textarea name="photoc" class="form-control" id="message-text"></textarea>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Créer</button>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button name="creer" type="submit" class="btn btn-primary">Créer</button>
+                        </div>                     
+                      </div>
                     </div>
                   </div>
+                  </form>
+                  
+                   <?php
+                    require_once('Fonctions.php');
+
+                    $query = "select CodeC, NomC, DescriptionC, PhotoC, VisibiliteC from categories";
+
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Nom</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">PhotoC</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) { 
+                        if ($ligne["VisibiliteC"] == 1){
+                            echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
+                            echo ('<td>'.$ligne["NomC"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
+                            echo ('<td><img src="'.$ligne["PhotoC"].'" alt="'.$ligne["NomC"].'" width="100" height="90"></td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');  //Modifier une catégorie
+                             echo ('<a href="AdminCategorieModification.php?t='.$ligne["CodeC"].'"><button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
+                             echo ('<form action="AdminCategorieFonction.php" method="POST">');  //Désactiver une catégorie
+                             echo ('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
+                             echo ('</form>');
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    }
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    ?>                        
                 </div>
-              </div>
-
-               <?php
-                require_once('Fonctions.php');
-
-                $query = "select CodeC, NomC, DescriptionC, PhotoC from categories";
-
-                $result = mysqli_query ($session, $query);
-
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Nom</th>');
-                        echo ('<th scope="col">Description</th>');
-                        echo ('<th scope="col">PhotoC</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeC"].'</th>');
-                        echo ('<td>'.$ligne["NomC"].'</td>');
-                        echo ('<td>'.$ligne["DescriptionC"].'</td>');                       
-                        echo ('<td><img src="'.$ligne["PhotoC"].'" alt="PhotoC" width="100" height="90"></td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button>');
-                         echo ('<button type="button" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
-                         echo ('</div>');
-                        echo ('</td>');
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-                ?>                        
-            </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-            <div id="Cartes" class="tabcontent">      
+                <div id="Cartes" class="tabcontent">      <!-- Onglet carte --> 
+                
+                  <h3>Cartes</h3><hr>  
+           
+                  <!-- Tab links -->
+                    <div class="tab">
+                      <button class="tablinksc" onclick="openCity(event, 'London')" id="defaultOpenc">Besoins</button>
+                      <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
+                    </div>
 
-                <h3>Cartes</h3><hr>
-              <p>Supprimer les contenus des cartes inappropriés avec un mail d’info à celui qui l’a posté. Moteur de recherche dans le titre & description. Affichage du plus récent au plus ancien</p>
+                    <!-- Tab content -->
+                    <div id="London" class="tabcontentc">
+                    <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                        <h3>Besoins</h3>
+                        <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">     <!-- Moteur de recherche dans titre & description -->
+                            <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
+                            <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                        </form>
+                    </div>
+                  <form action="AdminCarteInapproprieB.php" method="post">
+                  <?php
+                   
+                    $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
-              <!-- Tab links -->
-                <div class="tab">
-                  <button class="tablinksc" onclick="openCity(event, 'London')">Besoins</button>
-                  <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
+                    if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $carteb = htmlspecialchars($_GET['carteb']);
+                        $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                 
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les besoins existants*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeB"].'</th>');                         
+                            echo ('<td>'.$ligne["TitreB"].'</td>');                           
+                            echo ('<td>'.$ligne["DescriptionB"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
+                             echo ('</div>');
+                            echo ('</td>');                        
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                   
+                    
+                    echo('<br><h3>Besoins Cachés</h3><br>');   
+
+                    $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
+
+                    if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $carteb = htmlspecialchars($_GET['carteb']);
+                        $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query2);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les besoins cachés */       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeB"].'</th>');
+                            echo ('<td>'.$ligne["TitreB"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionB"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    
+                    ?>        
+                </form>
                 </div>
 
-                <!-- Tab content -->
-                <div id="London" class="tabcontentc">
-                <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Besoins</h3>
+                <div id="Paris" class="tabcontentc">      
+                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                    <h3>Talents</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                         <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                 </div>
-              <form action="AdminCarteInapproprieB.php" method="post">
-              <?php
+                    
+                  <form action="AdminCarteInapproprieT.php" method="post">
+                  <?php
 
-                $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
+                    $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
 
-                if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
-                    $carteb = htmlspecialchars($_GET['carteb']);
-                    $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
-                }
+                    if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $cartet = htmlspecialchars($_GET['cartet']);
+                        $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query);
 
-                $result = mysqli_query ($session, $query);
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
+                            echo ('<td>'.$ligne["TitreT"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionT"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                              echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    
+                    echo('<br><h3>Talents Cachés</h3><br>');
+                    
+                    $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 order by CodeT DESC";
 
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
+                    if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $cartet = htmlspecialchars($_GET['cartet']);
+                        $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query2);
 
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Titre</th>');
-                        echo ('<th scope="col">Description</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeB"].'</th>');                         
-                        echo ('<td>'.$ligne["TitreB"].'</td>');                           
-                        echo ('<td>'.$ligne["DescriptionB"].'</td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                         echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
-                         echo ('</div>');
-                        echo ('</td>');                         /* Problème d'affichage besoin */   
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-
-
-                echo('<br><h3>Besoins Cachés</h3><br>');
-
-                $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
-
-                if(isset($_GET['carteb']) AND !empty($_GET['carteb'])) {     /*Recherche par mot clé dans le titre et description*/
-                    $carteb = htmlspecialchars($_GET['carteb']);
-                    $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 and ( TitreB LIKE '%$carteb%' or DescriptionB LIKE '%$carteb%' ) order by CodeB DESC";
-                }
-
-                $result = mysqli_query ($session, $query2);
-
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Titre</th>');
-                        echo ('<th scope="col">Description</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeB"].'</th>');
-                        echo ('<td>'.$ligne["TitreB"].'</td>');
-                        echo ('<td>'.$ligne["DescriptionB"].'</td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                         echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
-                         echo ('</div>');
-                        echo ('</td>');
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-
-                ?>        
-            </form>
-            </div>
-
-            <div id="Paris" class="tabcontentc">
-              <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                <h3>Talents</h3>
-                <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
-                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents cachés*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
+                            echo ('<td>'.$ligne["TitreT"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionT"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                   
+                    ?>        
                 </form>
-              </div>
-
-              <form action="AdminCarteInapproprieT.php" method="post">
-              <?php
-
-                $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
-
-                if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
-                    $cartet = htmlspecialchars($_GET['cartet']);
-                    $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
-                }
-
-                $result = mysqli_query ($session, $query);
-
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Titre</th>');
-                        echo ('<th scope="col">Description</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
-                        echo ('<td>'.$ligne["TitreT"].'</td>');
-                        echo ('<td>'.$ligne["DescriptionT"].'</td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                          echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
-                         echo ('</div>');
-                        echo ('</td>');
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-
-                echo('<br><h3>Talents Cachés</h3><br>');
-
-                $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 order by CodeT DESC";
-
-                if(isset($_GET['cartet']) AND !empty($_GET['cartet'])) {     /*Recherche par mot clé dans le titre et description*/
-                    $cartet = htmlspecialchars($_GET['cartet']);
-                    $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 and ( TitreT LIKE '%$cartet%' or DescriptionT LIKE '%$cartet%' ) order by CodeT DESC";
-                }
-
-                $result = mysqli_query ($session, $query2);
-
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Titre</th>');
-                        echo ('<th scope="col">Description</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeT"].'</th>');
-                        echo ('<td>'.$ligne["TitreT"].'</td>');
-                        echo ('<td>'.$ligne["DescriptionT"].'</td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                         echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
-                         echo ('</div>');
-                        echo ('</td>');
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-
-                ?>        
-              </form>
             </div>
 
             <!-- CSS pour la tab des cartes-->
@@ -448,93 +451,96 @@
               document.getElementById(cityName).style.display = "block";
               evt.currentTarget.className += " active";
             }
+            // Get the element with id="defaultOpen" and click on it
+              document.getElementById("defaultOpenc").click();
             </script>
 
             </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
-            <div id="Utilisateurs" class="tabcontent">
-              <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                  <h3>Utilisateurs</h3><hr>
-                <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
-                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
-                </form>
-              </div>
-              <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
-               <?php
+                <div id="Utilisateurs" class="tabcontent">      <!-- Onglet utilisateur --> 
+                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                      <h3>Utilisateurs</h3><hr>
+                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">  <!-- Moteur de recherche --> 
+                        <input class="form-control mr-sm-2" type="search" name="user" placeholder="Nom/Prénom/Email" aria-label="Recherche">
+                        <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                    </form>
+                  </div>
+                  <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
+                  <form name="Supprimer" action="AdminUtilisateurFonction.php" method="post">
+                   <?php
 
-                $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
+                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
+                    
+                    if(isset($_GET['user']) AND !empty($_GET['user'])) {     /*Recherche par mot clé dans prénom, nom, email des utilisateurs*/
+                        $user = htmlspecialchars($_GET['user']);
+                        $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' and ( NomU LIKE '%$user%' or PrenomU LIKE '%$user%' or Email LIKE '%$user%' ) order by CodeU DESC";
+                    }
 
-                if(isset($_GET['user']) AND !empty($_GET['user'])) {     /*Recherche par mot clé dans prénom, nom, email des utilisateurs*/
-                    $user = htmlspecialchars($_GET['user']);
-                    $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' and ( NomU LIKE '%$user%' or PrenomU LIKE '%$user%' or Email LIKE '%$user%' ) order by CodeU DESC";
-                }
+                    $result = mysqli_query ($session, $query);
 
-                $result = mysqli_query ($session, $query);
-
-                if ($result == false) {
-                    die("ereur requête : ". mysqli_error($session) );
-                }
-
-                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
-                echo ('<thead>');
-                      echo ('<tr>');
-                        echo ('<th scope="col">#</th>');
-                        echo ('<th scope="col">Nom</th>');
-                        echo ('<th scope="col">Prénom</th>');
-                        echo ('<th scope="col">Email</th>');
-                        echo ('<th scope="col">Modification</th>');
-                      echo ('</tr>');
-                    echo ('</thead>');
-                    echo ('<tbody>');
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
-                      echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["CodeU"].'</th>');
-                        echo ('<td>'.$ligne["NomU"].'</td>');
-                        echo ('<td>'.$ligne["PrenomU"].'</td>');
-                        echo ('<td>'.$ligne["Email"].'</td>');
-                        echo ('<td>');
-                         echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                         echo ('<button type="button" class="btn btn-secondary"><img name="codeu" value="'.$ligne["CodeU"].'"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button>');
-
-                         //echo ('<form name="Supprimer" action="AdminSupprimer1Compte.php" method="post"><br>');
-                         echo ('<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#supprimer"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');
-
-                         echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
-                            echo('<div class="modal-dialog" role="document">');
-                              echo('<div class="modal-content">');
-                                echo('<div class="modal-header">');
-                                  echo('<h5 class="modal-title">Vérification</h5>');
-                                  echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
-                                    echo('<span aria-hidden="true">&times;</span>');
-                                  echo('</button>');
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Nom</th>');
+                            echo ('<th scope="col">Prénom</th>');
+                            echo ('<th scope="col">Email</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                            echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeU"].'</th>');
+                            echo ('<td>'.$ligne["NomU"].'</td>');
+                            echo ('<td>'.$ligne["PrenomU"].'</td>');
+                            echo ('<td>'.$ligne["Email"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');                 
+                             echo ('<button type="button"  class="btn btn-secondary" data-toggle="modal" data-target="#supprimer'.$ligne["CodeU"].'"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');    
+                             echo ('</div>');
+                            echo ('</td>');
+                            echo ('</tr>');              
+            
+                             echo('<div class="modal" tabindex="-1" id="supprimer'.$ligne["CodeU"].'" role="dialog">');
+                                echo('<div class="modal-dialog" role="document">');
+                                  echo('<div class="modal-content">');
+                                    echo('<div class="modal-header">');
+                                      echo('<h5 class="modal-title">Vérification</h5>');
+                                      echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                        echo('<span aria-hidden="true">&times;</span>');
+                                      echo('</button>');
+                                    echo('</div>');
+                                    echo('<div class="modal-body">');
+                                      echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
+                                    echo('</div>');
+                                    echo('<div class="modal-footer">');                               
+                                      echo('<button name="codeu" value="'.$ligne["CodeU"].'" type="submit" class="btn btn-primary">Supprimer</button>');
+                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                    echo('</div>');
+                                  echo('</div>');
                                 echo('</div>');
-                                echo('<div class="modal-body">');
-                                  echo('<p>Êtes-Vous sûr de supprimer ce compte ?  </p>');
-                                echo('</div>');
-                                echo('<div class="modal-footer">');
-                                  echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
-                                  echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
-                                echo('</div>');
-                              echo('</div>');
-                            echo('</div>');
-                          echo('</div>');                
-                          //echo('</form>');
-
-                         echo ('</div>');
-                        echo ('</td>');
-                      echo ('</tr>');                     
-                }          
-                } 
-                 echo ('</tbody>');
-                echo ('</table>');
-                ?>        
-            </div>
+                              echo('</div>');         
+         
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    ?>        
+                   </form>
+                </div>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Stats" class="tabcontent">
               <h3>Nombre de connexion du site</h3><hr>                    
-
+              <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" class="btn btn-light">Aller voir sur Google Analytics</a>
+              <p><br></p>
+              
               <h3>Mise en relation</h3><hr>
               <?php
                 require_once('Fonctions.php');
@@ -621,7 +627,6 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
             <div id="Bandeau" class="tabcontent">
                 <h3>Bandeau</h3><hr>
-              <p>modifier les texts et les photos</p>
 
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
@@ -641,7 +646,6 @@
                     <hr class="my-4">
                     <p>Partageons nos talents, la solitarité c'est aussi entre nous.</p>
                     <button class="btn btn-light" onclick="document.location='https://notmoebius.github.io/quaidessavoirfaire/'">En savoir plus</button>
-                    <p><br><br></p>
                   </div>
                 </div>
                 <!--First slide-->
@@ -661,7 +665,6 @@
                         echo ('<button class="btn btn-light" onclick="document.location="Login.php"">Ulitiser EVA pour faire éclorer vos talents.</button>');
                     }
                     ?>
-                    <p><br><br></p>
                   </div>
                 </div>
                 <!--Second slide-->
@@ -673,7 +676,6 @@
                     <h1>Nouvelle du jour</h1>
                     <hr class="my-4">
                     <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <p><br><br></p>
                   </div>
                 </div> 
                 <!--Third slide-->  
@@ -713,7 +715,6 @@
                       </div>
                     </div>
                   </div>
-                    <p><br><br></p>
                   </div>
                 </div>
                 <!--Fourth slide-->
@@ -730,11 +731,12 @@
               </a>
 
             </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->                  
+        </div>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
               <p>Paramétrer le délais d'envoie de mail d’évaluation <input type='text' placeholder="15"> jours </p>
-              <button type="button" class="btn btn-primary"> Changer </button>
+              <button type="button" class="btn btn-dark"> Changer </button>
             </div>
 
             <style>
@@ -790,9 +792,8 @@
 
           // Get the element with id="defaultOpen" and click on it
           document.getElementById("defaultOpen").click();
-        </script>
-
-        </div>
+              </script>
+<!---------------------------------------------------------------------------------------------------------------------------------------------> 
       </div>
     </div>
 

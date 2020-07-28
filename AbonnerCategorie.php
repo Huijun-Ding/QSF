@@ -101,7 +101,7 @@
                     }
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
-                      
+                      if ($ligne["VisibiliteC"] == 1){
                         echo ('<div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');
                         echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
@@ -111,6 +111,7 @@
                         echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
                         echo ('</div>');
                         echo ('</div>'); 
+                      }
                     }          
                     } 
                     ?>      
