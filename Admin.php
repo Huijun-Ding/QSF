@@ -88,9 +88,9 @@
                <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
                 <button class="tablink" onclick="openPage('Catégories', this, 'orange')" >Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
                 <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
-                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" id="defaultOpen">Utilisateurs</button>
+                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" >Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Stats</button>
-                <button class="tablink" onclick="openPage('Bandeau', this, 'orange')">Bandeau</button>
+                <button class="tablink" onclick="openPage('Bandeau', this, 'orange')" id="defaultOpen">Bandeau</button>
                 <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
 
                 <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
@@ -585,6 +585,23 @@
                       <span class="sr-only">Next</span>
                     </a>
                   </div>     
+                  
+                  <div class="form-group">
+                    <label for="inputEmail4">Titre</label>
+                    <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail4">Contenu</label>
+                    <input type="text" name="Contenu" class="form-control col-md-4" id="inputEmail4" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputEmail4">Photo</label>
+                     <textarea name="photo" class="form-control" id="message-text"></textarea>
+                  </div>
+                   <div class="form-group">
+                    <button type="submit" class="btn btn-dark">Changer</button>
+                   </div>
+                  
                 </div>
  <!--------------------------------------------------------------------------------------------------------------------------------------------->                  
                 <div id="Paramètres" class="tabcontent">   <!-- Onglet paramètre --> 

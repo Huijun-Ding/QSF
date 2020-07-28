@@ -15,7 +15,7 @@ if(isset($_POST['email'])){
 
     if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session
 
-        $query = "SELECT Role FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
+        $query = "SELECT Role,Email,MotDePasse FROM utilisateurs WHERE Email= '$Email'";    // Vérifier si cet utilisateur est un admin
         $result = mysqli_query ($session, $query);
 
             while ($ligne = mysqli_fetch_assoc($result)) {            
@@ -34,7 +34,6 @@ if(isset($_POST['email'])){
 
 
         
-
         // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
 
         $destinataire = "$Email"; // adresse mail du destinataire
