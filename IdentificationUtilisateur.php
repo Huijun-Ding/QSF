@@ -54,7 +54,6 @@ if(isset($_POST['email'])){
             }   
         }
     }
-
         
         // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
 

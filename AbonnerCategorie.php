@@ -92,7 +92,7 @@
                   <?php
                     require_once('Fonctions.php');
 
-                    $query = "select NomC, PhotoC, CodeC from categories c ";
+                    $query = "select VisibiliteC, NomC, PhotoC, CodeC from categories c ";
 
                     $result = mysqli_query ($session, $query);
 
@@ -102,15 +102,34 @@
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
                       if ($ligne["VisibiliteC"] == 1){
-                        echo ('<div class="card" style="width: 12rem;">');
-                        echo ('<div class="card-header">');
-                        echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
-                        echo ('</div>');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
-                        echo ('<div class="card-body text-center">');
-                        echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
-                        echo ('</div>');
-                        echo ('</div>'); 
+                           if ($ligne["NomC"] == 'Autres') {
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<div class="card-header">');
+                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<div class="input-group-prepend">');
+                                  echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
+                                echo ('</div>');
+                                  echo ('<input name="nomcp" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                  echo ('<div class="input-group-prepend">');
+                                    echo ('<span class="input-group-text" id="basic-addon1">Description</span>');
+                                  echo ('</div>');
+                                  echo ('<input name="descriptioncp" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                echo ('</div>');
+                                echo ('<div class="card-body text-center">');
+                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo ('</div>');
+                                echo ('</div>');      
+                        } else {
+                            echo ('<div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('</div>');
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<div class="card-body text-center">');
+                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo ('</div>');
+                            echo ('</div>'); 
+                        }
                       }
                     }          
                     } 

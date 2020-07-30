@@ -94,7 +94,7 @@
                   <?php
                     require_once('Fonctions.php');
 
-                    $query = " select c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
+                    $query = " select c.VisibiliteC, c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
                         
                     if ($result == false) {
@@ -102,15 +102,36 @@
                     }
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */       
-                        echo ('<div class="card" style="width: 12rem;">');
-                        echo ('<div class="card-header">');
-                        echo ('<input class="card-text" type="checkbox" id="Child_Checkbox1" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
-                        echo ('</div>');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
-                        echo ('<div class="card-body text-center">');
-                        echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
-                        echo ('</div>');
-                        echo ('</div>'); 
+                         if ($ligne["VisibiliteC"] == 1){
+                           if ($ligne["NomC"] == 'Autres') {
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<div class="card-header">');
+                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<div class="input-group-prepend">');
+                                  echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
+                                echo ('</div>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                  echo ('<div class="input-group-prepend">');
+                                    echo ('<span class="input-group-text" id="basic-addon1">Description</span>');
+                                  echo ('</div>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                echo ('</div>');
+                                echo ('<div class="card-body text-center">');
+                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo ('</div>');
+                                echo ('</div>');      
+                        } else {
+                            echo ('<div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('</div>');
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<div class="card-body text-center">');
+                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo ('</div>');
+                            echo ('</div>'); 
+                        }
+                      }                                    
                     }          
                     } else {
                                 echo("<h5> Vous n'avez pas encore s'abonné à des catégories </h5>");
@@ -163,7 +184,7 @@
                   <?php
                     require_once('Fonctions.php');
 
-                    $query = "select NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
+                    $query = "select VisibiliteC, NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
                     $result = mysqli_query ($session, $query);      
                         
                     if ($result == false) {
@@ -171,16 +192,36 @@
                     }
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher */  
-                      
-                        echo ('<div class="card" style="width: 12rem;">');
-                        echo ('<div class="card-header">');
-                        echo ('<input class="card-text" type="checkbox" id="Child_Checkbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'">');
-                        echo ('</div>');
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
-                        echo ('<div class="card-body text-center">');
-                        echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
-                        echo ('</div>');
-                        echo ('</div>'); 
+                       if ($ligne["VisibiliteC"] == 1){
+                           if ($ligne["NomC"] == 'Autres') {
+                                echo ('<div class="card" style="width: 12rem;">');
+                                echo ('<div class="card-header">');
+                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<div class="input-group-prepend">');
+                                  echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
+                                echo ('</div>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                  echo ('<div class="input-group-prepend">');
+                                    echo ('<span class="input-group-text" id="basic-addon1">Description</span>');
+                                  echo ('</div>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                echo ('</div>');
+                                echo ('<div class="card-body text-center">');
+                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo ('</div>');
+                                echo ('</div>');      
+                        } else {
+                            echo ('<div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('</div>');
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<div class="card-body text-center">');
+                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo ('</div>');
+                            echo ('</div>'); 
+                        }
+                      }                          
                     }          
                     } else {
                                 echo("<h5> Vous avez abonné toutes les catégories </h5>");
