@@ -96,7 +96,7 @@
                 <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3><hr>
                     
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
+                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
                     
                   <form action="AdminCategorieFonction.php" method="POST">  <!--Créer une nouvelle catégorie --> 
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

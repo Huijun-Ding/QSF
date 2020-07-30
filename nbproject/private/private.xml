@@ -5,20 +5,20 @@
             <url>Accueil.php</url>
             <bookmark id="1">
                 <name/>
-                <line>176</line>
+                <line>271</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCarteInapproprieB.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCategorie.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Admin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/BesoinX.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/AjouterUtilisateurs.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Accueil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Admin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/BD_script.txt</file>
         </group>
->>>>>>> 004fe21a86c5916702f1ef3b46db4d519b386d2d
     </open-files>
 </project-private>

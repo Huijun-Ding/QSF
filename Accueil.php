@@ -44,7 +44,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-          </li>  
+          </li> 
         </ul>
           
           <form  method="get">
@@ -87,9 +87,14 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php
                 if(isset($_SESSION['email'])){
-                    echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                    echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                    echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                    if(isset($_SESSION['role'])) {
+                        echo ('<a class="dropdown-item" href="Admin.php">Espace administrateur</a>');
+                    } else {
+                        echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                        echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                    }
+
                 ?>
                     <script>
                         function Deconnexion() {
