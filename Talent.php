@@ -93,7 +93,7 @@
             
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                  <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                 三 Filtre
                 </button>
                 

@@ -101,10 +101,12 @@
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 
-                    
-                    echo ('<hr>');
+                        echo ('<hr>');
                     if(isset($_SESSION['email'])){
                        echo ('<a href="MailBesoin.php?c='.$ligne["CodeB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="besoinx.fonction.php?c='.$ligne["CodeB"].'">
+                                <input type="submit" class="btn btn-dark btn-lg" name="rejoint" value="Rejoindre à ce besoin"></input>
+                              </a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
