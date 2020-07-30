@@ -66,10 +66,22 @@ if (isset($_POST['9'])) {
     mysqli_stmt_execute($stmt9); 
 }
 
-if (isset($_POST['10'])) {
-    $stmt10 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");
+if (isset($_POST['10'])) {    //Autres : email les admins 
+    $NomCP = $_POST['nomcp'];
+    $DescriptionCP = $_POST['descriptioncp'];
+    
+        $destinataire = ""; // adresse mail de l'admin
+        $sujet = "Demande d'une nouvelle catégorie"; // sujet du mail
+        $message = "Nom de catégories : $NomCP \n 
+                    Description de catégories : $DescriptionCP"; // message qui dira que le destinataire a bien lu votre mail
+        // maintenant, l'en-tête du mail
+        $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
+        $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
+        mail ($destinataire, $sujet, $message, $header); // on envois le mail 
+    
+    /*$stmt10 = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");
     mysqli_stmt_bind_param($stmt10, 'ii', $usercode, $checkbox10);
-    mysqli_stmt_execute($stmt10); 
+    mysqli_stmt_execute($stmt10); */
 }
 header("Location: MesCategories.php");
 
