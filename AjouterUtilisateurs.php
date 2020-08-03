@@ -1,6 +1,7 @@
 <?php
 require_once('Fonctions.php');
-       
+
+
 if(isset($_POST['email'])){                                 //Ajouter le nouveau utilisateur dans la base de donnée
    $Email = $_POST['email'];
     if(is_unique_login($session, $Email)){
@@ -30,68 +31,12 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
                 header("Location: Accueil.php");
-               
-                
-                //Envoyer un mail en utilisant PHPMailer
-                use PHPMailer\PHPMailer\PHPMailer; 
-                use PHPMailer\PHPMailer\Exception; 
-                // path du dossier PHPMailer % fichier d'envoi du mail 
-                require 'PHPMailer/src/Exception.php'; 
-                require 'PHPMailer/src/PHPMailer.php'; 
-                require 'PHPMailer/src/SMTP.php';
-                
-                function sendmail($objet, $contenu, $destinataire) {   
-                // on crée une nouvelle instance de la classe 
-                $mail = new PHPMailer(true); 
-                  // puis on l’exécute avec un 'try/catch' qui teste les erreurs d'envoi 
-                  try { 
-                    /* DONNEES SERVEUR */ 
-                    ##################### 
-                    $mail->setLanguage('fr', '../PHPMailer/language/');   // pour avoir les messages d'erreur en FR 
-                    $mail->SMTPDebug = 0;            // en production (sinon "2") 
-                    // $mail->SMTPDebug = 2;            // décommenter en mode débug 
-                    $mail->isSMTP();                                                            // envoi avec le SMTP du serveur 
-                    $mail->Host       = 'smtp.gmail.com';                            // serveur SMTP 
-                    $mail->SMTPAuth   = true;                                            // le serveur SMTP nécessite une authentification ("false" sinon) 
-                    $mail->Username   = 'mllexuanwei@gmail.com';     // login SMTP 
-                    $mail->Password   = 'Wx19960104';                                                // Mot de passe SMTP 
-                    $mail->SMTPSecure = 'tls';     // encodage des données TLS (ou juste 'tls') > "Aucun chiffrement des données"; sinon PHPMailer::ENCRYPTION_SMTPS (ou juste 'ssl') 
-                    $mail->Port       = 465;                                                               // port TCP (ou 25, ou 465...) 
 
-                    /* DONNEES DESTINATAIRES */ 
-                    ########################## 
-                    $mail->setFrom('mllexuanwei@gmail.com', 'No-Reply');  //adresse de l'expéditeur (pas d'accents) 
-                    $mail->addAddress($destinataire, 'Clients de Mon_Domaine');        // Adresse du destinataire (le nom est facultatif) 
-                    // $mail->addReplyTo('moi@mon_domaine.fr', 'son nom');     // réponse à un autre que l'expéditeur (le nom est facultatif) 
-                    // $mail->addCC('cc@example.com');            // Cc (copie) : autant d'adresse que souhaité = Cc (le nom est facultatif) 
-                    // $mail->addBCC('bcc@example.com');          // Cci (Copie cachée) :  : autant d'adresse que souhaité = Cci (le nom est facultatif) 
-
-                    /* PIECES JOINTES */ 
-                    ########################## 
-                    // $mail->addAttachment('../dossier/fichier.zip');         // Pièces jointes en gardant le nom du fichier sur le serveur 
-                    // $mail->addAttachment('../dossier/fichier.zip', 'nouveau_nom.zip');    // Ou : pièce jointe + nouveau nom 
-
-                    /* CONTENU DE L'EMAIL*/ 
-                    ########################## 
-                    $mail->isHTML(true);                                      // email au format HTML 
-                    $mail->Subject = utf8_decode($objet);      // Objet du message (éviter les accents là, sauf si utf8_encode) 
-                    $mail->Body    = $contenu;          // corps du message en HTML - Mettre des slashes si apostrophes 
-                    $mail->AltBody = 'Contenu au format texte pour les clients e-mails qiui ne le supportent pas'; // ajout facultatif de texte sans balises HTML (format texte) 
-
-                    $mail->send(); 
-                    echo 'Message envoyé.'; 
-
-                  } 
-                  // si le try ne marche pas > exception ici 
-                  catch (Exception $e) { 
-                    echo "Le Message n'a pas été envoyé. Mailer Error: {$mail->ErrorInfo}"; // Affiche l'erreur concernée le cas échéant 
-                  }   
-                } // fin de la fonction sendmail
-                
-                $dest = "$Email"; 
-                $objet = "[Platforme] Confirmation de la création de compte"; 
-                $contenu = '<!DOCTYPE html>'; 
-                $contenu .= '               
+                // Envoyer un mail
+           
+            $destinataire = "$Email"; // adresse mail du destinataire
+            $sujet = "Confirmation de la création de compte"; // sujet du mail
+            $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
@@ -804,18 +749,22 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 </table>
 </div>
 </body>
-</html>
-                '; 
-                
+</html>'; // message qui dira que le destinataire a bien lu votre mail
+            // maintenant, l'en-tête du mail
+             // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
+     $headers[] = 'MIME-Version: 1.0';
+     $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+
+     // En-têtes additionnels
     
+     $headers[] = 'From: [Plateforme]';
 
-              sendmail($objet, $contenu, $dest);
-
-       
-                
+     
+     
+        mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         
-                
-                
+
+
             } else {
                 echo 'Inscription échoué';
                 echo $Password ;
