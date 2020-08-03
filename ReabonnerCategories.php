@@ -85,12 +85,13 @@ if (isset($_POST['10'])) {    //Autres : email les admins
 }
 header("Location: MesCategories.php");
 
- $Email = mysqli_prepare($session, "select Email from utilisateurs where CodeU = $usercode");   
-    mysqli_stmt_bind_param($Email, 'i', $usercode);
-    mysqli_stmt_execute($Email); 
-
-
-        $destinataire = "mllexuanwei@gmail.com"; // adresse mail du destinataire
+    
+    $sql = "select Email from utilisateurs where CodeU = $usercode";
+    $result = mysqli_query ($session, $sql);
+    if ($email = mysqli_fetch_array($result)) {   
+        $Email = $email['Email'];
+       
+        $destinataire = "$Email"; // adresse mail du destinataire
         $sujet = "Abonnement des catégories"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -407,7 +408,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous venez de vous abonn&eacute; sur des nouvelles cat&eacute;gories</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous venez de vous abonner sur des nouvelles cat&eacute;gories</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Vous voulez g&eacute;rer tous vos abonnements ?</p><span class="mso-font-fix-tahoma">
 
@@ -543,6 +544,12 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
      
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         
+
+        
+        
+        
+         }  
+
 
 
    
