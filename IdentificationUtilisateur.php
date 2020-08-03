@@ -54,21 +54,7 @@ if(isset($_POST['email'])){
             }   
         }
     }
-        
-        // Envoyer un mail, mais on ne peut pas tester en utilisant un serveur local
-
-     /*   $destinataire = "$Email"; // adresse mail du destinataire
-        $sujet = "Confirmation de la création de compte"; // sujet du mail
-        $message = "Bienvenue dans la communauté du « Quai des Savoirs Faires », vous pouvez dès à présent accéder à toutes les offres (services) aussi bien professionnelles que personnelles.\n 
-                    Merci de respecter la charte d’utilisation, bon partage d’expérience à vous."; // message qui dira que le destinataire a bien lu votre mail
-        // maintenant, l'en-tête du mail
-        $header = 'From: '. "[Quai des savoir-faire]\r\n"; 
-        $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
-        $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive
-        mail($destinataire, $sujet, $message, $header); // on envois le mail  */
-        
-      
-        
+    
     
         }
           ?>
