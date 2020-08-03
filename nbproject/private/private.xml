@@ -5,24 +5,20 @@
             <url>Accueil.php</url>
             <bookmark id="1">
                 <name/>
-                <line>271</line>
+                <line>276</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/BesoinX.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/AjouterUtilisateurs.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Accueil.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Admin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/evaluation.html.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/IdentificationUtilisateur.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/BD_script.txt</file>
-=======
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/IdentificationUtilisateur.php</file>
->>>>>>> 4dccd0f75d307c08b28e07e4b592d58e7f13a417
         </group>
     </open-files>
 </project-private>

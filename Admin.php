@@ -671,7 +671,7 @@
 
                 <!--Third slide-->
                 <div class="carousel-item">
-                  <img src="https://lh3.googleusercontent.com/proxy/ur1wHEyIfAwSOTYwSxv5_8PPYLXU1hAIURB9Fqva96V72KSazl5NK1UUzSoFXUUfQR4NF4F7arPwdNuOumCzvbi-ClmtR6oZ4SpuN9LvnQgIb6uzswy4g48cQyliKqsp" class="d-block w-100" alt="...">
+                  <img src="https://gray-ktuu-prod.cdn.arcpublishing.com/resizer/gDT0TCs6HrkaegOnMo6p0ZZX694=/1200x400/smart/cloudfront-us-east-1.images.arcpublishing.com/gray/3BWLQZ7DZ5NMFF35HJEJ7KFTR4.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
                     <h1>Nouvelle du jour</h1>
                     <hr class="my-4">
