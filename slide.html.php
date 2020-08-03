@@ -47,7 +47,7 @@
                   <div class="carousel-caption d-none d-md-block">
                     <h1>Nouvelle du jour</h1>
                     <hr class="my-4">
-                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p>Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <p><br></p>
                   </div>
                 </div> 
@@ -64,7 +64,7 @@
                     <div class="col-md-4">
                       <div class="card mb-2">
                         <div class="card-body">
-                          <h4 class="text-secondary">User 1</h4>
+                          <h4 class="text-secondary">Utilisateur 1</h4>
                           <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
                         </div>
                       </div>
@@ -73,7 +73,7 @@
                     <div class="col-md-4 clearfix d-none d-md-block">
                       <div class="card mb-2">
                         <div class="card-body">
-                          <h4 class="text-secondary">User 2</h4>
+                          <h4 class="text-secondary">Utilisateur 2</h4>
                           <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
                         </div>
                       </div>
@@ -82,7 +82,7 @@
                     <div class="col-md-4 clearfix d-none d-md-block">
                       <div class="card mb-2">
                         <div class="card-body">
-                          <h4 class="text-secondary">User 3</h4>
+                          <h4 class="text-secondary">Utilisateur 3</h4>
                           <p class="text-secondary">"Some quick example text to build on the card title and make up the bulk of the card's content."</p>
                         </div>
                       </div>
