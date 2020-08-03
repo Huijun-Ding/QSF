@@ -720,7 +720,6 @@
                 <!--Fourth slide-->
 
               </div>
-
               <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Précédent</span>
@@ -729,9 +728,57 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Prochaine</span>
               </a>
+            </div><br>
 
-            </div>
-        </div>
+        <h4>Modification</h4><hr>
+        
+        <form method="POST" action="AdminBandeaFonction.php">           
+            <h5>Premier slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Paragraphe 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Paragraphe 2</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_2"></textarea>
+                </div><br>           
+            <!--<h5>Deuxième slide</h5><br>-->
+            <h5>Troisième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Nouvelle</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3"></textarea>
+                </div><br>
+            <h5>Quatième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Utilisateur 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Utilisateur 2</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_2"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Utilisateur 3</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_3"></textarea>
+                </div><br>           
+            <input type="submit" class="btn btn-dark" value="Modifier">
+        </form>        
+        </div>  
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
