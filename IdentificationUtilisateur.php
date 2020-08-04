@@ -25,7 +25,7 @@ if(isset($_POST['email'])){
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
                 $_SESSION['role'] = 'admin';
-                header("Location: Accueil.php"); 
+                header("Location: index.php"); 
             } else {
                 ?>
            <script type="text/javascript">
@@ -46,7 +46,7 @@ if(isset($_POST['email'])){
                 session_start();
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                header("Location: Accueil.php"); 
+                header("Location: index.php"); 
             } else {
                  ?>
             <script type="text/javascript">

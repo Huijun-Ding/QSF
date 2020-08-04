@@ -36,5 +36,5 @@ require_once('Fonctions.php');
     mysqli_stmt_execute($S7);
     
 session_destroy();
-header("Location: Accueil.php")
+header("Location: index.php")
 ?>
