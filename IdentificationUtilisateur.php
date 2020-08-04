@@ -22,7 +22,7 @@ if(isset($_POST['email'])){
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
                 $_SESSION['role'] = 'admin';
-                header("Location: Admin.php"); 
+                header("Location: Accueil.php"); 
             } else {
                 ?>
            <script type="text/javascript">

@@ -87,14 +87,13 @@
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
-              <form action="" method="POST">
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
 
                     <div class="col-sm-10">
                         <?php 
                         //requête prendre titre de besoin
-                         $query = "select TitreT from talents where CodeT = {$_GET['t']} ";
+                         $query = "select CodeT, TitreT from talents where CodeT = {$_GET['t']} ";
                          $result = mysqli_query ($session, $query);
                          
                          if (mysqli_num_rows($result)>0) {       
@@ -107,13 +106,13 @@
                                 echo('<textarea name="contenu_talent">');
                                 echo ('Bonjour,');
                                 echo('</textarea>');     
+                                echo ('</div>');
+                                echo ('<a href="talent.email.php?t='.$talent['CodeT'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');                               
                             }
                         }
-                        echo ('</div>');
-                        echo ('<a href="talent.email.php?t='.$_GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');?>
+                        ?>
                     </div>
                 </div>
-              </form>
         <script>
             var editor1 = CKEDITOR.replace('contenu_talent', {
                 extraAllowedContent: 'div',
