@@ -112,7 +112,7 @@
                          <h3> Par catégorie </h3>
                              <?php
                              require_once('Fonctions.php');
-                             $query = "select CodeC, NomC from categories";
+                             $query = "select CodeC, NomC from categories where VisibiliteC = 1";
                              $result = mysqli_query ($session, $query);
                              if (mysqli_num_rows($result)>0) {       
                                 while ($ligne = mysqli_fetch_array($result)) { 

@@ -95,7 +95,7 @@
                     <div class="col-sm-10">
                         <?php 
                         //requête prendre titre de besoin
-                         $query1 = "select TitreB from besoins where CodeB = {$_GET['c']} ";
+                         $query1 = "select CodeB, TitreB from besoins where CodeB = {$_GET['c']} ";
                          $result = mysqli_query ($session, $query1);
                          
                          if (mysqli_num_rows($result)>0) {       
