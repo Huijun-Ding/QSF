@@ -89,6 +89,7 @@
                 if(isset($_SESSION['email'])){
                     if(isset($_SESSION['role'])) {
                         echo ('<a class="dropdown-item" href="Admin.php">Espace administrateur</a>');
+                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
                     } else {
                         echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                         echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
@@ -119,9 +120,9 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-    <?php
-    require_once('slide.html.php');
-    ?>
+        <?php
+        require_once('slide.html.php');
+        ?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="container" id="besoins">
             <h1 id="titre1"><a href="Besoin.php" class="badge badge-light">Besoins</a></h1><br>
