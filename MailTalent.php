@@ -87,12 +87,7 @@
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
-<<<<<<< HEAD
-              <form action="" method="POST"> 
-=======
               <form action="" method="POST">
-                 
->>>>>>> huijun
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
 
@@ -114,7 +109,6 @@
                                 echo('</textarea>');     
                             }
                         }
-                               
                         echo ('</div>');
                         echo ('<a href="talent.email.php?t='.$_GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');?>
                     </div>
