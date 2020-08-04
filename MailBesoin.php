@@ -87,7 +87,7 @@
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
-              <form action="besoin.email.php" method="GET">
+
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     
@@ -107,13 +107,13 @@
                                 echo('<textarea name="contenu_besoin">');
                                 echo ('Bonjour,');
                                 echo('</textarea>');     
+                                echo ('</div>');
+                                echo('<a href="besoin.email.php?c='.$besoin["CodeB"].'"><button type="submit" nameclass="btn btn-primary">Envoyer</button></a>');                               
                             }
-                        }
-                        echo ('</div>');
-                        echo('<a href="besoin.email.php?c='.$_GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>'); ?> 
+                        } ?> 
                 </div>    
             </div>
-          </form> 
+ 
         </div>
             
         <script>

@@ -88,26 +88,25 @@
                 <?php
                 if(isset($_SESSION['email'])){
                     if(isset($_SESSION['role'])) {
-                        echo ('<a class="dropdown-item" href="Admin.php">Espace administrateur</a>');
+                        echo ('<a class="dropdown-item" href="Admin.php">Espace admin</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
                     } else {
                         echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
                         echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
                     }
-
                 ?>
-                    <script>
-                        function Deconnexion() {
-                            alert("Déconnexion réussite !");
-                            }
-                            
-                         $('.navbar-nav mr-auto').find('a').each(function () {
-                            if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
-                                $(this).parent().addClass('active'); // this.className = 'active';
-                            }
-                        });
-                    </script>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+
+                     $('.navbar-nav mr-auto').find('a').each(function () {
+                        if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
+                            $(this).parent().addClass('active'); // this.className = 'active';
+                        }
+                    });
+                </script>
                 <?php
                 } else {
                     echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');

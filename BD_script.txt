@@ -102,7 +102,7 @@ CREATE TABLE `utilisateurs` (
   `MotDePasse` text(150) NOT NULL,
   `Anonyme` tinyint(1) default 1,
   `TypeU` enum('Pro','Perso'),
-  `RoleU` text(30) NULL,
+  `RoleU` text(30) NULL default NULL,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 --
