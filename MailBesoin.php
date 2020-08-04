@@ -101,7 +101,7 @@
                     <div class="col-sm-10">
                         <?php 
                         //requête prendre titre de besoin
-                         $query1 = "select TitreB from besoins where CodeB = {$_GET['c']} ";
+                         $query1 = "select CodeB, TitreB from besoins where CodeB = {$_GET['c']} ";
                          $result = mysqli_query ($session, $query1);
                          
                          if (mysqli_num_rows($result)>0) {       
@@ -577,8 +577,7 @@
                                 </html>
                                 ';
                                 echo('</textarea>');     
-                            }
-                        }
+                          
                     ?>
 
                 <script>
@@ -587,10 +586,13 @@
                         height: 460
                       });
                 </script>
-                
-                </div>
-                    <a href="besoin.email.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
-                </div>
+                <?php
+                echo('</div>');
+                    echo('<a href="besoin.email.php?c='.$besoin['CodeB'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');
+                echo('</div>');
+                    }
+                        }
+                        ?>
             </form>     
             </div>
         </div>
