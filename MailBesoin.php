@@ -113,9 +113,9 @@
 
                         echo ('</div>');
                         echo('<a href="besoin.email.php?c='.$_GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>'); ?> 
-                </div>
-            </form>     
+                </div>    
             </div>
+          </form> 
         </div>
             
         <script>

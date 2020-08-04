@@ -112,11 +112,10 @@
                         }
                                
                         echo ('</div>');
-                        echo ('<a href="talent.email.php?t='.$_GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');
-                        echo ('</div>');
-                        ?>
-          </form>
-        </div>
+                        echo ('<a href="talent.email.php?t='.$_GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');?>
+                    </div>
+                </div>
+              </form>
         <script>
             var editor1 = CKEDITOR.replace('contenu_talent', {
                 extraAllowedContent: 'div',
