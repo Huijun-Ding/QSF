@@ -9,6 +9,7 @@ if(isset($_POST['email'])){
     $sql = "SELECT RoleU from utilisateurs where Email = '{$Email}'";
     $result = mysqli_query ($session, $sql);
     if ($ligne = mysqli_fetch_array($result)) {   
+
         if (isset($ligne['RoleU'])) {
             $stmt = mysqli_prepare($session, "SELECT MotDePasse FROM utilisateurs WHERE Email=?");   // Connecter et vérification de mot de passe
             mysqli_stmt_bind_param($stmt, "s", $Email);
