@@ -71,7 +71,7 @@
                 $result = mysqli_query ($session, $query);
                 
                 while ($besoin = mysqli_fetch_array($result)) { 
-                    if ($besoin["ReponseB"] == 1) {
+                    if ($besoin["ReponseB"] > 0) {
                         echo ('<span class="badge badge-danger">Nouveau message</span>');                           
                     }
                 }    
