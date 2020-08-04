@@ -1,24 +1,3 @@
-<script>
-contenu_talent.on('instanceReady', function() {
-      // Output self-closing tags the HTML4 way, like <br>.
-      this.dataProcessor.writer.selfClosingEnd = '>';
-
-      // Use line breaks for block elements, tables, and lists.
-      var dtd = CKEDITOR.dtd;
-      for (var e in CKEDITOR.tools.extend({}, dtd.$nonBodyContent, dtd.$block, dtd.$listItem, dtd.$tableContent)) {
-        this.dataProcessor.writer.setRules(e, {
-          indent: true,
-          breakBeforeOpen: true,
-          breakAfterOpen: true,
-          breakBeforeClose: true,
-          breakAfterClose: true
-        });
-      }
-      // Start in source mode.
-      Var mailtalent = this.setMode('source');
-    });
-</script>
-
 <?php 
         //requête prendre l'email destinataire
         $query2 = "select b.TitreT, u.Email from utilisateurs u, talents t, proposer p where u.CodeU = p.CodeU and t.CodeT = p.CodeT and t.CodeT = {$_GET['t']}";

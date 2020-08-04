@@ -87,44 +87,42 @@
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
-              <form action="besoin.email.php" method="GET">                 
+              <form action="besoin.email.php" method="GET">
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
                     
                     <div class="col-sm-10">
                         <?php 
                         //requête prendre titre de besoin
-                         $query1 = "select TitreB from besoins where CodeB = {$_GET['c']} ";
+                         $query1 = "select CodeB, TitreB from besoins where CodeB = {$_GET['c']} ";
                          $result = mysqli_query ($session, $query1);
                          
                          if (mysqli_num_rows($result)>0) {       
                               while ($besoin = mysqli_fetch_array($result)) {         
-                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Répondre à votre besoin '.$besoin["TitreB"].' " disabled >');                         
+                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Plateforme] Répondre à votre besoin '.$besoin["TitreB"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
                                 echo('<div class="form-group">');
                                 echo('<label for="inputEmail4"><strong>Contenu du message</strong></label>');
                                 echo('<textarea name="contenu_besoin">');
-                                echo('Bonjour,');
+                                echo ('Bonjour,');
                                 echo('</textarea>');     
                             }
                         }
-                    ?>
-
-                <script>
-                    var editor1 = CKEDITOR.replace('contenu_besoin', {
-                        extraAllowedContent: 'div',
-                        height: 250
-                      });
-                </script>
-                
-                </div>
-                    <a href="besoin.email.php?c='.$GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
-                </div>
-            </form>     
+                        echo ('</div>');
+                        echo('<a href="besoin.email.php?c='.$_GET['c'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>'); ?> 
+                </div>    
             </div>
+          </form> 
         </div>
-
+            
+        <script>
+            var editor1 = CKEDITOR.replace('contenu_besoin', {
+                extraAllowedContent: 'div',
+                height: 250
+              });
+        </script>
+                
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

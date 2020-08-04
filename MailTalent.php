@@ -13,6 +13,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -86,7 +87,12 @@
           <div class="container">
               <h1>Rédiger votre e-mail</h1>      
               <hr>
+<<<<<<< HEAD
               <form action="" method="POST"> 
+=======
+              <form action="" method="POST">
+                 
+>>>>>>> huijun
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
 
@@ -98,31 +104,29 @@
                          
                          if (mysqli_num_rows($result)>0) {       
                               while ($talent = mysqli_fetch_array($result)) {         
-                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Quai des savoir-faire] Demande de partager votre talent '.$talent["TitreT"].' " disabled >');                         
+                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Plateforme] Demande de partager votre talent '.$talent["TitreT"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
                                 echo('<div class="form-group">');
                                 echo('<label for="inputEmail4"><strong>Contenu du message</strong></label>');
                                 echo('<textarea name="contenu_talent">');
-                                echo('Bonjour,');
+                                echo ('Bonjour,');
                                 echo('</textarea>');     
                             }
                         }
-                    ?>
-                           
+                               
+                        echo ('</div>');
+                        echo ('<a href="talent.email.php?t='.$_GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');?>
                     </div>
-                    <a href="talent.email.php?t='.$GET['t'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>
+                </div>
+              </form>
+        <script>
+            var editor1 = CKEDITOR.replace('contenu_talent', {
+                extraAllowedContent: 'div',
+                height: 250
+              });
+        </script>
                 
-            <script>
-                var editor1 = CKEDITOR.replace('contenu_talent', {
-                    extraAllowedContent: 'div',
-                    height: 250
-                  });
-            </script>      
-          </div>
-          </form>
-        </div>
-
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
