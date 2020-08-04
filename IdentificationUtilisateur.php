@@ -5,10 +5,12 @@ require_once('Fonctions.php');
 if(isset($_POST['email'])){
     $Email = $_POST['email'];
     $Password = $_POST["password"];
-
+    
     $sql = "SELECT RoleU from utilisateurs where Email = '{$Email}'";
     $result = mysqli_query ($session, $sql);
-    if ($ligne = mysqli_fetch_array($result)) {   
+    
+    if (mysqli_num_rows($result)>0) {
+      while ($ligne = mysqli_fetch_array($result)) {   
 
         if (isset($ligne['RoleU'])) {
             $stmt = mysqli_prepare($session, "SELECT MotDePasse FROM utilisateurs WHERE Email=?");   // Connecter et vérification de mot de passe
@@ -23,11 +25,11 @@ if(isset($_POST['email'])){
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
                 $_SESSION['role'] = 'admin';
-                header("Location: Accueil.php"); 
+                header("Location: index.php"); 
             } else {
                 ?>
            <script type="text/javascript">
-               alert("Mauvais Email / mot de passe ! \n Veuillez réessayer. ");
+               alert("Mauvais mot de passe ! \n Veuillez réessayer. ");
                document.location.href = 'Login.php';
            </script>
            <?php
@@ -44,18 +46,25 @@ if(isset($_POST['email'])){
                 session_start();
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                header("Location: Accueil.php"); 
+                header("Location: index.php"); 
             } else {
-                ?>
+                 ?>
             <script type="text/javascript">
-                alert("Mauvais Email / mot de passe ! \n Veuillez réessayer. ");
+                alert("Mauvais mot de passe ! \n Veuillez réessayer. ");
                 document.location.href = 'Login.php';
             </script>
             <?php
             }   
         }
     }
-    
-    
+        } else {
+             ?>
+            <script type="text/javascript">
+                alert("Cet Email n\'existe pas ! \n Veuillez créer un compte. ");
+                document.location.href = 'Login.php';
+            </script>
+            <?php
         }
-          ?>
+}
+ ?>
+        

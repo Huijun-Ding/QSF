@@ -944,5 +944,5 @@
         }
     }
     
-    header("Location: Accueil.php");
+    header("Location: index.php");
 ?>

@@ -1,5 +1,5 @@
 <?php 
-    //header("Location: Accueil.php");
+    //header("Location: index.php");
         //requête prendre l'email destinataire
 
         require_once ('Fonctions.php');

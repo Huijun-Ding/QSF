@@ -30,7 +30,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                 session_start();    // Vers la page Accueil
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                header("Location: Accueil.php");
+                header("Location: index.php");
 
                 // Envoyer un mail
            

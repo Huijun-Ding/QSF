@@ -9,7 +9,7 @@ if (isset($raisonT)) {
     mysqli_stmt_bind_param($sql, 's', $raisonT);
     mysqli_stmt_execute($sql); 
     
-    header("Location: Accueil.php");
+    header("Location: index.php");
     echo $raisonT;
 
 }
