@@ -14,6 +14,35 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
     
+    <style>
+
+    /* Style tab links */
+    .tablink {
+      background-color: #555;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 15%;
+    }
+
+    .tablink:hover {
+      background-color: #777;
+    }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: black;
+      display: none;
+      padding: 100px 20px;
+      height: 100%;
+    }
+
+    </style>
+            
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -91,7 +120,7 @@
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" >Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')" >Bandeau</button>
-                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
+                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>              
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
                 <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3><hr>
@@ -686,39 +715,12 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
-              <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='text' placeholder="15"> jours </p>
-              <button type="button" class="btn btn-dark"> Changer </button>
+                <form method="GET" action="admin-parametres.php">
+                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='text' placeholder="15" name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button>
+                </form>
             </div>
-
-            <style>
-
-            /* Style tab links */
-            .tablink {
-              background-color: #555;
-              color: white;
-              float: left;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              padding: 14px 16px;
-              font-size: 17px;
-              width: 15%;
-            }
-
-            .tablink:hover {
-              background-color: #777;
-            }
-
-            /* Style the tab content (and add height:100% for full page content) */
-            .tabcontent {
-              color: black;
-              display: none;
-              padding: 100px 20px;
-              height: 100%;
-            }
-
-            </style>
-
+<!---------------------------------------------------------------------------------------------------------------------------------------------> 
             <script>
             function openPage(pageName, elmnt, color) {
             // Hide all elements with class="tabcontent" by default */
@@ -743,8 +745,7 @@
 
           // Get the element with id="defaultOpen" and click on it
           document.getElementById("defaultOpen").click();
-              </script>
-<!---------------------------------------------------------------------------------------------------------------------------------------------> 
+          </script>
       </div>
     </div>
 

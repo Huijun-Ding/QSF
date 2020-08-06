@@ -8,7 +8,6 @@
 --
 -- Table structure for table `besoins`
 --
-
 DROP TABLE IF EXISTS `besoins`;
 
 CREATE TABLE `besoins` (
@@ -34,7 +33,6 @@ CREATE TABLE `besoins` (
 --
 -- Table structure for table `talents`
 --
-
 DROP TABLE IF EXISTS `talents`;
 
 CREATE TABLE `talents` (
@@ -59,7 +57,6 @@ CREATE TABLE `talents` (
 --
 -- Table structure for table `categories`
 --
-
 DROP TABLE IF EXISTS `categories`;
 
 CREATE TABLE `categories` (
@@ -91,7 +88,6 @@ UNLOCK TABLES;
 --
 -- Table structure for table `utilisateurs`
 --
-
 DROP TABLE IF EXISTS `utilisateurs`;
 
 CREATE TABLE `utilisateurs` (
@@ -109,15 +105,14 @@ CREATE TABLE `utilisateurs` (
 -- Dumping data for table `Utilisateurs`
 --
 
-LOCK TABLES `Utilisateurs` WRITE;
-INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
+LOCK TABLES `utilisateurs` WRITE;
+INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
 UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
 --
 -- Table structure for table `saisir`
 --
-
 DROP TABLE IF EXISTS `saisir`;
 
 CREATE TABLE `saisir` (
@@ -132,7 +127,6 @@ CREATE TABLE `saisir` (
 --
 -- Table structure for table `proposer`
 --
-
 DROP TABLE IF EXISTS `proposer`;
 
 CREATE TABLE `proposer` (
@@ -147,7 +141,6 @@ CREATE TABLE `proposer` (
 --
 -- Table structure for table `abonner`
 --
-
 DROP TABLE IF EXISTS `abonner`;
 
 CREATE TABLE `abonner` (
@@ -159,14 +152,12 @@ CREATE TABLE `abonner` (
 -- Dumping data for table `abonner`
 --
 -- ------------------------------------------------------------------------------------------------
-
 --
--- Table structure for table `projet`
+-- Table structure for table `projets`
 --
+DROP TABLE IF EXISTS `projets`;
 
-DROP TABLE IF EXISTS `projet`;
-
-CREATE TABLE `projet` (
+CREATE TABLE `projets` (
   `CodeP` int(10) NOT NULL AUTO_INCREMENT,
   `TitreP` text(30) NOT NULL,
   `DescriptionP` text(200) NOT NULL,
@@ -176,17 +167,16 @@ CREATE TABLE `projet` (
   `CodeC` int(10) NOT NULL,
   `VisibiliteP` tinyint(1) default 1,
   PRIMARY KEY (`CodeP`),
-  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+  CONSTRAINT `date_projets` check ((`DateButoireP`>`DatePublicationP`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `projet`
+-- Dumping data for table `projets`
 --
 -- --------------------------------------------------------------------------------------------
 --
 -- Table structure for table `participerp`
 --
-
 DROP TABLE IF EXISTS `participerp`;
 
 CREATE TABLE `participerp` (
@@ -202,14 +192,13 @@ CREATE TABLE `participerp` (
 --
 -- Table structure for table `compteurb`
 --
-
 DROP TABLE IF EXISTS `compteurb`;
 
 CREATE TABLE `compteurb` (
   `CodeCB` INT(11) AUTO_INCREMENT, 
   `NumOuiB` TINYINT(1), 
   `NumNonB` TINYINT(1),
-  `RaisonB` TEXT(30),
+  `RaisonB` TEXT(500),
    PRIMARY KEY (`CodeCB`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -217,14 +206,13 @@ CREATE TABLE `compteurb` (
 --
 -- Table structure for table `compteurt`
 --
-
 DROP TABLE IF EXISTS `compteurt`;
 
 CREATE TABLE `compteurt` (
   `CodeCT` INT(11) AUTO_INCREMENT, 
   `NumOuiT` TINYINT(1), 
   `NumNonT` TINYINT(1),
-  `RaisonT` TEXT(30),
+  `RaisonT` TEXT(500),
    PRIMARY KEY (`CodeCT`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -232,14 +220,57 @@ CREATE TABLE `compteurt` (
 --
 -- Table structure for table `evaluation`
 --
-
 DROP TABLE IF EXISTS `evaluation`;
 
 CREATE TABLE `evaluation` (
   `CodeE` INT(11) AUTO_INCREMENT, 
   `Note` INT(11) NOT NULL, 
-  `Avis` TEXT(30),
+  `Avis` TEXT(500),
    PRIMARY KEY (`CodeE`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `parametres`
+--
+  DROP TABLE IF EXISTS `parametres`;
+
+  CREATE TABLE `parametres` (
+    `Interval` INT(11) 
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `parametres` WRITE;
+INSERT INTO `parametres` VALUES (15);
+UNLOCK TABLES;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `slides`
+--
+  DROP TABLE IF EXISTS `slides`;
+
+  CREATE TABLE `slides` (
+    `NumSlide` enum('1','2','3','4') NOT NULL, 
+    `TitreS` TEXT(200),
+    `PhotoS` TEXT(100),
+    `TextS` TEXT(1000),
+    PRIMARY KEY (`NumSlide`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `emails`
+--
+  DROP TABLE IF EXISTS `emails`;
+
+  CREATE TABLE `emails` (
+    `CodeEM` INT(11) AUTO_INCREMENT, 
+    `Provenance` TEXT(50) NOT NULL,
+    `Destinataire` TEXT(50) NOT NULL,
+    `Sujet` TEXT(200) NOT NULL,
+    `Contenue` TEXT(1000) NOT NULL,
+    `DateEvaluation` DATE NOT NULL,
+    PRIMARY KEY (`CodeEM`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- ----------------------------------------------------------------------------------------------
@@ -247,7 +278,7 @@ CREATE TABLE `evaluation` (
 -- ----------------------------------------------------------------------------------------------
 ALTER TABLE `besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 ALTER TABLE `talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
-ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `projets` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`);
@@ -259,7 +290,7 @@ ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU
 ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
-ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projet`(`CodeP`);
+ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projets`(`CodeP`);
 
 -- ----------------------------------------------------------------------------------------------
 -- fin de script
