@@ -360,6 +360,7 @@
             </div>           
             </form>        
           </div>
+        <br><br>
 
 <!--------------------------------------------------------------------------------------------------------------------------------------------->     
   <div class="container" id="MesBesoins">
@@ -377,7 +378,7 @@
             <?php
             require_once('Fonctions.php');
 
-            $query = "select b.ReponseB, b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, ateliers a, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
+            $query = "select a.CodeA, a.TitreA, A.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$usercode} order by a.CodeA DESC ";
 
             $result = mysqli_query ($session, $query);
 
@@ -386,34 +387,27 @@
             }
          
             if (mysqli_num_rows($result)>0) {
-                 while ($besoin = mysqli_fetch_array($result)) {            
-                    if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
+                 while ($atelier = mysqli_fetch_array($result)) {            
+                    if ($atelier["VisibiliteA"] == 1) {  
                         echo('<li class="list-inline-item">');
-                        if ($besoin["ReponseB"] == 1) {
-                            echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
-                        }
                         echo ('<div class="card" style="width: 12rem;">');
                         echo ('<div class="card-header">');    
-                        echo ('<center><input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/><center>');
+                        echo ('<center><input type="radio" name="codeA" value="'.$atelier["CodeA"].'"/><center>');
                         echo ('</div>');
-                        echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
+                        echo ('<img src="'.$atelier["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
-                        echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
-                        echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<h5 class="card-title">'.$atelier["TitreA"].'</h5>');
+                        echo ('<p class="card-text">Date de publication: '.$atelier["DatePublicationA"].'</p>');
+                        echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
+                        echo ('<a href="AtelierX.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                         echo ('<br>');
-                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
-                        if ($besoin["ReponseB"] == 1) {
-                            echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["TitreB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
-                        }
+                        echo ('<a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>');               
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }
                 } 
             } else {
-                    echo ("Vous n'avez pas encore saisi un besoin");
+                    echo ("Vous n'avez pas encore créé un atelier");
             }             
   
             ?>

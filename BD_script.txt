@@ -181,7 +181,6 @@ CREATE TABLE `ateliers` (
   `VisibiliteA` tinyint(1) default 1,
   
   PRIMARY KEY (`CodeA`),
-  CONSTRAINT `date_atelier` check ((`DateA`>`DatePublicationA`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
