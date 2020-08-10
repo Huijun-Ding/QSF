@@ -200,11 +200,11 @@
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');
-                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                   echo ('<div class="input-group-prepend">');
                                     echo ('<span class="input-group-text" id="basic-addon1">Description</span>');
                                   echo ('</div>');
-                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" required>');
+                                  echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                 echo ('</div>');
                                 echo ('<div class="card-body text-center">');
                                 echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');

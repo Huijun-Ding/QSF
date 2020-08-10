@@ -665,49 +665,107 @@
         <br>  
         <h4>Modification</h4><hr>
         
-        <form method="POST" action="AdminBandeaFonction.php">           
+        <form method="POST" action="AdminBandeauFonction.php">           
             <h5>Premier slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_1"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_2"></textarea>
+                </div>
+          
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Paragraphe 1</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide1_1"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_3"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Paragraphe 2</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide1_2"></textarea>
-                </div><br>           
-            <!--<h5>Deuxième slide</h5><br>-->
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_4"></textarea>
+                </div><br>        
+                
+            <h5>Deuxième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 2</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide2_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide2_2"></textarea>
+                </div><br>
+            
             <h5>Troisième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 3</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_2"></textarea>
+                </div>            
+            
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Nouvelle</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide3"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_3"></textarea>
                 </div><br>
+                
             <h5>Quatième slide</h5>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 1</span>
+                      <span class="input-group-text">Titre slide 4</span>
                     </div>
                     <textarea class="form-control" aria-label="With textarea" name="slide4_1"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 2</span>
+                      <span class="input-group-text">Photo (URL)</span>
                     </div>
                     <textarea class="form-control" aria-label="With textarea" name="slide4_2"></textarea>
+                </div>             
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Commentaire 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_3"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 3</span>
+                      <span class="input-group-text">Commentaire 2</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide4_3"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_4"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Commentaire 3</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_5"></textarea>
                 </div><br>           
             <input type="submit" class="btn btn-dark" value="Modifier">
         </form>        
