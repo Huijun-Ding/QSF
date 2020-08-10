@@ -24,7 +24,11 @@ if(isset($_POST['email'])){
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
                 $_SESSION['role'] = 'admin';
-                header("Location: index.php"); 
+                ?>
+                <script>
+                    window.history.back();
+                </script>
+            <?php
             } else {
                 ?>
            <script type="text/javascript">
@@ -45,7 +49,11 @@ if(isset($_POST['email'])){
                 session_start();
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                header("Location: index.php"); 
+                ?>
+                <script>
+                    window.history.back();
+                </script>
+            <?php
             } else {
                  ?>
             <script type="text/javascript">
