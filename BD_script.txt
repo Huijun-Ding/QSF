@@ -198,7 +198,7 @@ CREATE TABLE `participera` (
   `CodeU` int(10) NOT NULL,
   `CodeA` int(10) NOT NULL,
   `RoleA` enum('createur','participant') NOT NULL,
-  PRIMARY KEY (`CodeU`,`CodeP`)
+  PRIMARY KEY (`CodeU`,`CodeA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
 -- Dumping data for table `participera`

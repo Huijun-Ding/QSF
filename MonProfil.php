@@ -360,6 +360,96 @@
             </div>           
             </form>        
           </div>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+  <div class="container" id="MesBesoins">
+           
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+              <h1> Mes ateliers </h1>
+              <?php //is_login_new_besoin(); ?>
+            </div>
+            <hr>
+  
+            <form method="POST" action="..Desactiver1CarteB.php">
+                <div class="row">
+                <div class="col-10">
+                <ul class="list-inline">
+            <?php
+            require_once('Fonctions.php');
+
+            $query = "select b.ReponseB, b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, ateliers a, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
+
+            $result = mysqli_query ($session, $query);
+
+            if ($result == false) {
+                die("ereur requête : ". mysqli_error($session) );
+            }
+         
+            if (mysqli_num_rows($result)>0) {
+                 while ($besoin = mysqli_fetch_array($result)) {            
+                    if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
+                        echo('<li class="list-inline-item">');
+                        if ($besoin["ReponseB"] == 1) {
+                            echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
+                        }
+                        echo ('<div class="card" style="width: 12rem;">');
+                        echo ('<div class="card-header">');    
+                        echo ('<center><input type="radio" name="codeB" value="'.$besoin["CodeB"].'"/><center>');
+                        echo ('</div>');
+                        echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
+                        echo ('<div class="card-body card text-center">');
+                        echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
+                        echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
+                        echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
+                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
+                        echo ('<br>');
+                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
+                        if ($besoin["ReponseB"] == 1) {
+                            echo ('<br>');                     
+                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["TitreB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                        }
+                        echo ('</div>');  
+                        echo ('</div></li>');       
+                       }
+                } 
+            } else {
+                    echo ("Vous n'avez pas encore saisi un besoin");
+            }             
+  
+            ?>
+                </ul>
+                     </div>
+                <div class="col-2">
+                     <!-- Button trigger modal -->
+                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
+
+                     <!-- Modal -->
+                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vérification</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> 
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <p> Êtes-Vous sûr de désactiver cette carte ?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button name="desactiverB" type="submit" class="btn btn-primary">Désactiver</button>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>          
+            </div>
+            </form>   
+          </div>  
+       
+        <br><br>
+
        </div> 
   <hr> 
   <footer>

@@ -7,26 +7,25 @@ $Lieu = $_POST['lieu'];
 $Nombre = $_POST['nb'];
 $Type = $_POST['type'];   
 $URL = $_POST['url'];
-$plus = $_POST['plus'];
+$Plus = $_POST['plus'];
 $DatePublicationA = date("yy/m/d");
-
 
 require_once('Fonctions.php');
 
-$stmt = mysqli_prepare($session, "INSERT INTO besoins(TitreB,DescriptionB,DateButoireB,DatePublicationB,TypeB,CodeC) VALUES(?,?,?,?,?,?)");  //insérer un nouveau besoin dans le table besoins
-mysqli_stmt_bind_param($stmt, 'sssssi', $Titre, $Description, $DateButoire, $DatePublicationB, $Type, $Categorie);
+$stmt = mysqli_prepare($session, "INSERT INTO ateliers(TitreA,DescriptionA,DateA,LieuA,NombreA,DatePublicationA,URL,PlusA,TypeA,CodeC) VALUES(?,?,?,?,?,?,?,?,?,?)");  //insérer un nouveau besoin dans le table besoins
+mysqli_stmt_bind_param($stmt, 'ssssissssi', $Titre, $Description, $Date, $Lieu, $Nombre, $DatePublicationA, $URL, $Plus, $Type, $Categorie);
 
 
 if (mysqli_stmt_execute($stmt) === true) {
-        echo "Votre besoin a bien été enregistré";
+        echo "Votre atelier a bien été enregistré";
         
     //ajouter codeb et codeu dans le table saisir
-    $sql = "select CodeB from besoins order by CodeB DESC limit 1";
+    $sql = "select CodeA from participera order by CodeA DESC limit 1";
     $result = mysqli_query ($session, $sql);
     if ($code = mysqli_fetch_array($result)) {   
-        $codeb = $code['CodeB'];
-        $stmt2 = mysqli_prepare($session, "INSERT INTO saisir(CodeU,CodeB) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
-        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codeb);
+        $codea = $code['CodeA'];
+        $stmt2 = mysqli_prepare($session, "INSERT INTO participera(CodeU,CodeA) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
+        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codea);
         mysqli_stmt_execute($stmt2); 
          }  
      
@@ -38,7 +37,7 @@ if (mysqli_stmt_execute($stmt) === true) {
             $Email = $email['Email'];
         
         $destinataire = "$Email"; // adresse mail du destinataire
-        $sujet = "Création de nouvelle carte"; // sujet du mail
+        $sujet = "Création de nouveau atelier"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -356,7 +355,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous venez de vous créer une nouvelle carte</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous venez de vous créer un nouveau atelier</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Vous voulez g&eacute;rer tous vos cartes ?</p><span class="mso-font-fix-tahoma">
 
