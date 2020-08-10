@@ -367,7 +367,7 @@
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
-              <?php //is_login_new_besoin(); ?>
+              <?php is_login_new_atelier(); ?>
             </div>
             <hr>
   
