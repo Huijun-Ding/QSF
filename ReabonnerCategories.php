@@ -91,7 +91,7 @@ header("Location: MesCategories.php");
     if ($email = mysqli_fetch_array($result)) {   
         $Email = $email['Email'];
        
-        $destinataire = "$Email"; // adresse mail du destinataire
+        $destinataire = "mathilda.cnfr@gmail.com"; // adresse mail du destinataire $Email
         $sujet = "Abonnement des catégories"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -432,7 +432,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes abonnements</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/MesCategories.php">G&eacute;rer mes abonnements</a></span>
 </font>
 </span>
 </td>
@@ -452,7 +452,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes abonnements</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/MesCategories.php">G&eacute;rer mes abonnements</a></span>
 </font>
 </span>
 </a>
