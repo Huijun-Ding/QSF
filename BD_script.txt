@@ -161,6 +161,46 @@ CREATE TABLE `abonner` (
 -- ------------------------------------------------------------------------------------------------
 
 --
+-- Table structure for table `ateliers`
+--
+
+DROP TABLE IF EXISTS `ateliers`;
+
+CREATE TABLE `ateliers` (
+  `CodeA` int(10) NOT NULL AUTO_INCREMENT,
+  `TitreA` text(30) NOT NULL,
+  `DescriptionA` text(200) NOT NULL,
+  `DateA` date NOT NULL,
+  `DatePublicationP` date,
+  `TypeP` enum('Pro','Perso','Pro et Perso'),
+  `CodeC` int(10) NOT NULL,
+  `VisibiliteP` tinyint(1) default 1,
+  PRIMARY KEY (`CodeP`),
+  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projet`
+--
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `participerp`
+--
+
+DROP TABLE IF EXISTS `participerp`;
+
+CREATE TABLE `participerp` (
+  `CodeU` int(10) NOT NULL,
+  `CodeP` int(10) NOT NULL,
+  `RoleP` enum('createur','participant') NOT NULL,
+  PRIMARY KEY (`CodeU`,`CodeP`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `participerp`
+--
+-- ------------------------------------------------------------------------------------------------
+
+--
 -- Table structure for table `projet`
 --
 

@@ -85,8 +85,8 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> Creer un besoin </h1>
-            <form action="Saisir1Besoin.php" method="post">
+            <h1> Creer un atelier </h1>
+            <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
@@ -97,7 +97,7 @@
                       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
                       <select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>
                             <option value="" selected>Choisir une catégorie</option>
-                             <?php
+                              <?php
                              require_once('Fonctions.php');
                              $query = "select CodeC, NomC from categories where VisibiliteC = 1";
                              $result = mysqli_query ($session, $query);
@@ -116,7 +116,7 @@
               <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" required>
             </div>
             <div class="form-group">
-                    <label for="inputEmail4">Description du besoin(<span style="color:red">*</span>)</label><br/>
+                    <label for="inputEmail4">Description du atelier(<span style="color:red">*</span>)</label><br/>
                     <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre besoin" required></textarea>
             </div>
             <div class="form-group">
