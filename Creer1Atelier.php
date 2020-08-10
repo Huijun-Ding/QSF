@@ -90,7 +90,7 @@
             <?php
             require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
-            echo "Date de création :   " . date("yy/m/d"); 
+            echo "Date de création :   " . date("d/m/yy"); 
             ?>
             <div class="form-row align-items-center">
                     <div class="col-auto my-1">
@@ -116,15 +116,23 @@
               <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" required>
             </div>
             <div class="form-group">
-                    <label for="inputEmail4">Description du atelier(<span style="color:red">*</span>)</label><br/>
-                    <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre besoin" required></textarea>
+                    <label for="inputEmail4">Description(<span style="color:red">*</span>)</label><br/>
+                    <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre atelier" required></textarea>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Date butoire(<span style="color:red">*</span>)</label>
-              <input type="date" name="datebutoire" class="form-control col-md-4" id="inputEmail4" required />
+              <label for="inputEmail4">Date & Créneau horaire(<span style="color:red">*</span>)</label>
+              <input type="text" name="date" class="form-control col-md-4" placeholder="Du 14/10 au 16/10 14h00" id="inputEmail4" required />
+            </div>
+                 <div class="form-group">
+              <label for="inputEmail4">Lieu(<span style="color:red">*</span>)</label>
+              <input type="text" name="lieu" class="form-control col-md-4" placeholder="Salle 6.40" id="inputEmail4" required />
+            </div>
+                 <div class="form-group">
+              <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
+              <input type="number" name="nb" class="form-control col-md-4" placeholder="5" id="inputEmail4" required />
             </div>
             <div class="form-group">
-                  <label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>				
+                  <label for="inputAddress">Type d'atelier(<span style="color:red">*</span>)</label>				
             </div>
             <div class="form-group" >
               <div class="form-check form-check-inline">
@@ -139,6 +147,14 @@
                 <input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">
                 <label class="form-check-label" for="inlineRadio3">Pro&Perso</label>
               </div>               
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">URL de l'inscription(<span style="color:red">*</span>)</label>
+              <input type="text" name="url" class="form-control col-md-4" placeholder="https://www.linscription.com/..." id="inputEmail4" required />
+            </div>    
+            <div class="form-group">
+              <label for="inputEmail4">En savoir plus</label>
+              <input type="text" name="plus" class="form-control col-md-4" placeholder="https://fr.wikipedia.org/wiki/Yoga" id="inputEmail4" />
             </div>
 
             <div class="form-group">

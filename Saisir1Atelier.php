@@ -1,10 +1,15 @@
 <?php 
+$Categorie = $_POST['categorie'];
 $Titre = $_POST['titre'];   // récupéré les valeurs selon la méthode POST
 $Description = $_POST['description'];
-$DateButoire = $_POST['datebutoire'];
+$Date = $_POST['date'];
+$Lieu = $_POST['lieu'];
+$Nombre = $_POST['nb'];
 $Type = $_POST['type'];   
-$DatePublicationB = date("yy/m/d");
-$Categorie = $_POST['categorie'];
+$URL = $_POST['url'];
+$plus = $_POST['plus'];
+$DatePublicationA = date("yy/m/d");
+
 
 require_once('Fonctions.php');
 

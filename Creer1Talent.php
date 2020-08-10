@@ -89,7 +89,7 @@
             <?php
             require_once('Fonctions.php');
             date_default_timezone_set('Europe/Paris');
-            echo "Date de création : " . date("yy/m/d"); 
+            echo "Date de création : " . date("d/m/yy"); 
             ?>
             <div class="form-row align-items-center">
                     <div class="col-auto my-1">

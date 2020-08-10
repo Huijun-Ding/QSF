@@ -170,33 +170,38 @@ CREATE TABLE `ateliers` (
   `CodeA` int(10) NOT NULL AUTO_INCREMENT,
   `TitreA` text(30) NOT NULL,
   `DescriptionA` text(200) NOT NULL,
-  `DateA` date NOT NULL,
-  `DatePublicationP` date,
-  `TypeP` enum('Pro','Perso','Pro et Perso'),
+  `DateA` text(50) NOT NULL,
+  `LieuA` text(50) NOT NULL,
+  `NombreA` int(10) NOT NULL,
+  `DatePublicationA` date,
+  `URL` text(50) NOT NULL,
+  `PlusA` text(50) NULL,
+  `TypeA` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
-  `VisibiliteP` tinyint(1) default 1,
-  PRIMARY KEY (`CodeP`),
-  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+  `VisibiliteA` tinyint(1) default 1,
+  
+  PRIMARY KEY (`CodeA`),
+  CONSTRAINT `date_atelier` check ((`DateA`>`DatePublicationA`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `projet`
+-- Dumping data for table `atelier`
 --
 -- --------------------------------------------------------------------------------------------
 --
--- Table structure for table `participerp`
+-- Table structure for table `participera`
 --
 
-DROP TABLE IF EXISTS `participerp`;
+DROP TABLE IF EXISTS `participera`;
 
-CREATE TABLE `participerp` (
+CREATE TABLE `participera` (
   `CodeU` int(10) NOT NULL,
-  `CodeP` int(10) NOT NULL,
-  `RoleP` enum('createur','participant') NOT NULL,
+  `CodeA` int(10) NOT NULL,
+  `RoleA` enum('createur','participant') NOT NULL,
   PRIMARY KEY (`CodeU`,`CodeP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
--- Dumping data for table `participerp`
+-- Dumping data for table `participera`
 --
 -- ------------------------------------------------------------------------------------------------
 
