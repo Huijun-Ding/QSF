@@ -26,7 +26,8 @@ if(isset($_POST['email'])){
                 $_SESSION['role'] = 'admin';
                 ?>
                 <script>
-                    window.history.back();
+                    alert("Connexion réussit! ");
+                    document.location.href = window.history.go(-2);
                 </script>
             <?php
             } else {
@@ -48,10 +49,11 @@ if(isset($_POST['email'])){
             if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session 
                 session_start();
                 $_SESSION['email'] = $Email;
-                $_SESSION['password'] = $Password;
+                $_SESSION['password'] = $Password;               
                 ?>
                 <script>
-                    window.history.back();
+                    alert("Connexion réussit! ");
+                    document.location.href = window.history.go(-2);
                 </script>
             <?php
             } else {
