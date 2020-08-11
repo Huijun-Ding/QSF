@@ -103,10 +103,10 @@
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionA"].'</p>'); 
                         echo ('<p><strong>Lieu d\'atelier : </strong>'.$ligne["LieuA"].'</p>');             
                         echo ('<p><strong>Nombre de personnes maximum : </strong>'.$ligne["NombreA"].'</p>');  
-                         echo ('<p><strong>En savoir plus : </strong>'.$ligne["PlusA"].'</p>');  
+                        echo ('<strong>En savoir plus : </strong><a href="'.$ligne["PlusA"].'" target="_blank">'.$ligne["PlusA"].'</a>');  
                         echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="'.$ligne["URL"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');              
+                       echo ('<a href="'.$ligne["URL"].'" target="_blank"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');              
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
                     }   
