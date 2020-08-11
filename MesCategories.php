@@ -1,11 +1,3 @@
-<?php
-require_once 'Fonctions.php';
-
-if(empty($_SESSION['email'])){
-    header("location:login.php");
-}
-?>
-
 <!doctype html>
 <html lang="fr">
   <head>
@@ -47,7 +39,9 @@ if(empty($_SESSION['email'])){
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
-            <?php           
+            <?php      
+            require_once 'Fonctions.php';
+            
             if(isset($_SESSION['email'])){
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
@@ -98,6 +92,8 @@ if(empty($_SESSION['email'])){
                 <div class="col-10">
                     <div id="carteb" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
                   <?php
+            if(isset($_SESSION['email'])) {
+                      
                     $query = " select c.VisibiliteC, c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
                         
@@ -140,6 +136,9 @@ if(empty($_SESSION['email'])){
                     } else {
                                 echo("<h5> Vous n'avez pas encore s'abonné à des catégories </h5>");
                             } 
+            } else {
+                echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
+            }
                   ?>      
                     </div>
                 </div>
@@ -186,6 +185,8 @@ if(empty($_SESSION['email'])){
             
                 <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
                   <?php
+            if(isset($_SESSION['email'])) {
+                                  
                     $query = "select VisibiliteC, NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
                     $result = mysqli_query ($session, $query);      
                         
@@ -228,6 +229,9 @@ if(empty($_SESSION['email'])){
                     } else {
                                 echo("<h5> Vous avez abonné toutes les catégories </h5>");
                             } 
+            } else {
+                echo ('    ');
+            }                            
                           ?>      
                     </div>
                 </div>
