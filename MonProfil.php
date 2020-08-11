@@ -101,9 +101,11 @@
             <div class="row">
                 <div class="col-8">
 
-                    <?php
-                    require_once('Fonctions.php');
-
+            <?php
+            require_once('Fonctions.php');  
+            
+if(isset($_SESSION['email'])) {
+                
                     $query = " select NomU, PrenomU, Email, TypeU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
 
@@ -329,9 +331,9 @@
                     }
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
-            }             
-            ?>
-             </ul>     
+            }    
+
+        echo '  </ul>     
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
@@ -356,7 +358,7 @@
                         </div>
                       </div>
                     </div>
-                    </div>          
+                    </div>
             </div>           
             </form>        
           </div>
@@ -364,8 +366,12 @@
   <hr> 
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-  </footer>
-
+  </footer>'; 
+        
+} else {
+    echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
+}         
+            ?> 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

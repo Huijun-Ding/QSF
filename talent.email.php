@@ -359,7 +359,7 @@
             <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/Login.php">Voir son message</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
             </font>
             </span>
             </td>
@@ -379,7 +379,7 @@
 
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/Login.php">Voir son message</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
             </font>
             </span>
             </a>

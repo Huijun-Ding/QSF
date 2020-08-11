@@ -91,7 +91,7 @@ header("Location: MesCategories.php");
     if ($email = mysqli_fetch_array($result)) {   
         $Email = $email['Email'];
        
-        $destinataire = "mathilda.cnfr@gmail.com"; // adresse mail du destinataire $Email
+        $destinataire = "$Email"; // adresse mail du destinataire 
         $sujet = "Abonnement des catégories"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

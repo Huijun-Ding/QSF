@@ -374,7 +374,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes cartes</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">G&eacute;rer mes cartes</a></span>
 </font>
 </span>
 </td>
@@ -394,7 +394,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes cartes</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">G&eacute;rer mes cartes</a></span>
 </font>
 </span>
 </a>

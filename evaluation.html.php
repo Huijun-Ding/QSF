@@ -131,6 +131,11 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
   <div class="container">
       <form method="POST" action="evaluation.fonction.php">
         <h1>Evaluer votre expérience</h1><hr>
+        <?php
+        require_once 'Fonctions.php';
+        if(isset($_SESSION['email'])) {
+
+        echo '              
         <fieldset>
           <legend>Notation :</legend>
            <rating>
@@ -145,18 +150,23 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
         <fieldset>
           <legend>Votre avis nous intéresse :</legend>
            <rating>
-               <textarea name="avis" placeholder=""></textarea>
+               <textarea name="avis" placeholder=""></textarea>'; ?>
                 <script>
                     var editor1 = CKEDITOR.replace('avis', {
                         extraAllowedContent: 'div',
                         height: 200
                       });
                 </script>
+            <?php echo '    
            </rating>
         </fieldset>
-          <br><p>Si votre besoin a été résolu, n'oubliez pas d'désactiver votre carte</p>
+          <br><p>Si votre besoin a été résolu, n\'oubliez pas d\'désactiver votre carte</p>
         <input type="reset" class="btn btn-dark">
-        <input type="submit" class="btn btn-dark">
+        <input type="submit" class="btn btn-dark">'; 
+        } else {
+            echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
+        }           
+        ?>
       </form>
   </div>
 </div>
