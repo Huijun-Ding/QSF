@@ -113,16 +113,13 @@
                       echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
                       echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
                             echo('<option value="'.$ligne["CodeC"].'" name="categorie" selected>'.$ligne["NomC"].'</option>');
-                            echo('<option value="1" name="categorie" title="...">Sport</option>');
-                            echo('<option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>');
-                            echo('<option value="3" name="categorie"title="...">Outils métiers</option>');
-                            echo('<option value="4" name="categorie" title="Yoga, méditation...">Développement personnel</option>');
-                            echo('<option value="5" name="categorie" title="...">Associatif</option>');
-                            echo('<option value="6" name="categorie" title="...">Covoiturage</option>');
-                            echo('<option value="7" name="categorie" title="Word, Excel, PowerPoint, Outlook...">Bureautique</option>');
-                            echo('<option value="8" name="categorie" title="Internet, site Web, réparation PC...">Informatique</option>');
-                            echo('<option value="9" name="categorie" title="Cuisine, bricolage, musique, théâtre, ciné, culture, philatélie, généalogie...">Loisir </option>');
-                            echo ('<option value="10" name="categorie" title="Demande de créér une catégorie à l\'administrateur" >Autres </option>');
+                             $query2 = "select CodeC, NomC, DescriptionC from categories where VisibiliteC = 1";
+                             $result = mysqli_query ($session, $query2);
+                             if (mysqli_num_rows($result)>0) {       
+                                while ($c = mysqli_fetch_array($result)) {                                  
+                                    echo ('<option value="'.$c["CodeC"].'" name="categorie" title="'.$c["DescriptionC"].'">'.$c["NomC"].'</option>');                                         
+                                }     
+                             }                          
                       echo('</select>');
                     echo('</div>');
                     echo('</div>');
