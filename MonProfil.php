@@ -374,7 +374,7 @@
             </div>
             <hr>
   
-            <form method="POST" action="..Desactiver1CarteB.php">
+            <form method="POST" action="Desactiver1Atelier.php">
                 <div class="row">
                 <div class="col-10">
                 <ul class="list-inline">

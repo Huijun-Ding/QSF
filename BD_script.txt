@@ -179,8 +179,8 @@ CREATE TABLE `ateliers` (
   `TypeA` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
   `VisibiliteA` tinyint(1) default 1,
-  
   PRIMARY KEY (`CodeA`),
+  CONSTRAINT `nb_positive` check ((`NombreA`>0))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -196,7 +196,7 @@ DROP TABLE IF EXISTS `participera`;
 CREATE TABLE `participera` (
   `CodeU` int(10) NOT NULL,
   `CodeA` int(10) NOT NULL,
-  `RoleA` enum('createur','participant') NOT NULL,
+  `RoleA` enum('createur','participant') NULL,
   PRIMARY KEY (`CodeU`,`CodeA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --

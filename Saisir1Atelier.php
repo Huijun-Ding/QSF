@@ -20,7 +20,7 @@ if (mysqli_stmt_execute($stmt) === true) {
         echo "Votre atelier a bien été enregistré";
         
     //ajouter codeb et codeu dans le table saisir
-    $sql = "select CodeA from participera order by CodeA DESC limit 1";
+    $sql = "select CodeA from ateliers order by CodeA DESC limit 1";
     $result = mysqli_query ($session, $sql);
     if ($code = mysqli_fetch_array($result)) {   
         $codea = $code['CodeA'];
@@ -498,8 +498,8 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
     ?>
 
        <script>
-           alert("Désolé, votre besoin n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(La date butoire d'un besoin doit être supérieure à aujourd'hui)");
-           document.location.href = 'Creer1Besoin.php';
+           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(Le nombre de personne doit être positif)");
+           document.location.href = 'Creer1Atelier.php';
         </script>
         
         <?php     
