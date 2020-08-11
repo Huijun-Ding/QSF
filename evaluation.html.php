@@ -80,6 +80,9 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
+           <li class="nav-item">
+              <a class="nav-link" href="Atelier.php">Ateliers</a>
+          </li> 
         </ul>
 
         <ul class="navbar-nav ml-auto">
