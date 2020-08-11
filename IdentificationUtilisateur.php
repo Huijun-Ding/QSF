@@ -23,12 +23,7 @@ if(isset($_POST['email'])){
                 session_start();
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                $_SESSION['role'] = 'admin';
-                $query1 = "select CodeU from utilisateurs WHERE Email = '{$Email}' ";
-                $result1 = mysqli_query ($session, $query1);
-                if ($ligne1 = mysqli_fetch_array($result1)) {
-                    $_SESSION['codeu'] = $ligne1['CodeU'];
-                }                
+                $_SESSION['role'] = 'admin';              
                 ?>
                 <script>
                     alert("Connexion réussit! ");
@@ -54,12 +49,7 @@ if(isset($_POST['email'])){
             if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session 
                 session_start();
                 $_SESSION['email'] = $Email;
-                $_SESSION['password'] = $Password;
-                $query2 = "select CodeU from utilisateurs WHERE Email = '{$Email}' ";
-                $result2 = mysqli_query ($session, $query2);
-                if ($ligne2 = mysqli_fetch_array($result2)) {
-                    $_SESSION['codeu'] = $ligne1['CodeU'];
-                }                 
+                $_SESSION['password'] = $Password;                 
                 ?>
                 <script>
                     alert("Connexion réussit! ");

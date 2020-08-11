@@ -29,13 +29,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
             if (mysqli_stmt_execute($stmt) == true) {
                 session_start();    // Vers la page Accueil
                 $_SESSION['email'] = $Email;
-                $_SESSION['password'] = $Password;
-                
-                $query = "select CodeU from utilisateurs WHERE Email = '{$Email}' ";
-                $result = mysqli_query ($session, $query);
-                if ($ligne = mysqli_fetch_array($result)) {
-                    $_SESSION['codeu'] = $ligne1['CodeU'];
-                }                  
+                $_SESSION['password'] = $Password;                
                 header("Location: index.php");
 
                 // Envoyer un mail
