@@ -25,8 +25,8 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php">Accueil</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="Besoin.php">Besoins<span class="sr-only">(current)</span></a>
+          <li class="nav-item">
+            <a class="nav-link" href="Besoin.php">Besoins</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Talent.php">Talents</a>
@@ -95,9 +95,9 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <div class="jumbotron">
           <div class="container">
-              <h1>Modifiez votre besoin</h1>      
+              <h1>Modifiez votre atelier</h1>      
               <hr>
-              <form action="Modifier1CarteB.php" method="POST">
+              <form action="Modifier1Atelier.php" method="POST">
                <?php
                 require_once('Fonctions.php');
                 date_default_timezone_set('Europe/Paris');
@@ -105,15 +105,15 @@
                ?>         
                <?php
                 $T = $_GET['t'];
-                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = $T ";
+                $query = "select c.NomC, a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = $T ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
-                    if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-
+                    if ($ligne["VisibiliteA"] == 1) {   
+                        
                             echo('<div class="form-row align-items-center">');
                             echo('<div class="col-auto my-1">');
                             echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
@@ -136,20 +136,41 @@
                    
                         echo ('<div class="form-group">');
                         echo ('<label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>');
-                        echo ('<input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" maxlength="20" value="'.$ligne["TitreB"].'" required>');
+                        echo ('<input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" maxlength="20" value="'.$ligne["TitreA"].'" required>');
                         echo ('</div>');
                         
-                        echo('<div class="form-group">') ;
-                        echo('<label for="inputEmail4">Description du besoin(<span style="color:red">*</span>)</label><br/>') ;
-                        echo('<textarea rows="4" cols="50" name="description" required>'.$ligne["DescriptionB"].'</textarea>') ;
-                        echo('</div>') ;
-                        
-                        echo('<div class="form-group">');
-                        echo('<label for="inputEmail4">Date butoire(<span style="color:red">*</span>)</label>');
-                        echo('<input type="date" name="datebutoire" value="'.$ligne["DateButoireB"].'" class="form-control col-md-4" id="inputEmail4" maxlength="10" required>');
+                         echo('<div class="form-group">');
+                        echo('<label for="inputEmail4">Date & Créneau horaire (<span style="color:red">*</span>)</label>');
+                        echo('<input type="text" name="date" value="'.$ligne["DateA"].'" class="form-control col-md-4" id="inputEmail4" maxlength="100" required>');
                         echo('</div>');
                         
-                        if ($ligne["TypeB"] == "Pro") {
+                        echo('<div class="form-group">') ;
+                        echo('<label for="inputEmail4">Description(<span style="color:red">*</span>)</label><br/>') ;
+                        echo('<textarea rows="4" cols="50" name="description" required>'.$ligne["DescriptionA"].'</textarea>') ;
+                        echo('</div>') ;
+                        
+                        echo ('<div class="form-group">');
+                        echo ('<label for="inputEmail4">Lieu d\'atelier(<span style="color:red">*</span>)</label>');
+                        echo ('<input type="text" name="lieu" class="form-control col-md-4" id="inputEmail4" maxlength="50" value="'.$ligne["LieuA"].'" required>');
+                        echo ('</div>');
+                        
+                        echo ('<div class="form-group">');
+                        echo ('<label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>');
+                        echo ('<input type="text" name="nb" class="form-control col-md-4" id="inputEmail4" maxlength="50" value="'.$ligne["NombreA"].'" required>');
+                        echo ('</div>');
+                        
+                        echo ('<div class="form-group">');
+                        echo ('<label for="inputEmail4">URL de l\'inscription(<span style="color:red">*</span>)</label>');
+                        echo ('<input type="text" name="url" class="form-control col-md-4" id="inputEmail4" maxlength="100" value="'.$ligne["URL"].'" required>');
+                        echo ('</div>');
+                        
+                        echo ('<div class="form-group">');
+                        echo ('<label for="inputEmail4">En savoir plus</label>');
+                        echo ('<input type="text" name="plus" class="form-control col-md-4" id="inputEmail4" maxlength="100" value="'.$ligne["PlusA"].'">');
+                        echo ('</div>');
+                       
+                        
+                        if ($ligne["TypeA"] == "Pro") {
                             echo('<div class="form-group">');
                                 echo('<label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>');			
                           echo('</div>');
@@ -169,7 +190,7 @@
                           echo('</div>');
                         }
                         
-                         if ($ligne["TypeB"] == "Perso") {
+                         if ($ligne["TypeA"] == "Perso") {
                             echo('<div class="form-group">');
                                 echo('<label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>');			
                           echo('</div>');
@@ -190,7 +211,7 @@
                         }
  
                         
-                        if ($ligne["TypeB"] == "Pro et Perso") {
+                        if ($ligne["TypeA"] == "Pro et Perso") {
                           echo('<div class="form-group">');
                                 echo('<label for="inputAddress">Type de besoin(<span style="color:red">*</span>)</label>');			
                           echo('</div>');
@@ -212,7 +233,7 @@
            
                      echo('<hr>');
             echo('<div class="form-group">');
-                echo('<button name="codeB" type="submit" value="'.$ligne["CodeB"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
+                echo('<button name="codeA" type="submit" value="'.$ligne["CodeA"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
            echo('</div>');
                               }
                 }

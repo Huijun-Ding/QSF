@@ -7,5 +7,5 @@ require_once('Fonctions.php');
         mysqli_stmt_bind_param($S2, 'i', $CodeA);
         mysqli_stmt_execute($S2);
 
-
+      header("Location: MonProfil.php");
 ?>

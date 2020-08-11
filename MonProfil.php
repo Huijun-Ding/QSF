@@ -366,7 +366,7 @@
         <br><br>
 
 <!--------------------------------------------------------------------------------------------------------------------------------------------->     
-  <div class="container" id="MesAteliers">
+       <div class="container" id="MesAteliers">
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
@@ -418,10 +418,10 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
+                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#Myatelier">Désactiver carte</button>
 
                      <!-- Modal -->
-                    <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                    <div class="modal fade" id="Myatelier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -446,6 +446,7 @@
           </div>  
        
         <br><br>
+
 
        </div> 
   <hr> 

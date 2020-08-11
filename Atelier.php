@@ -35,7 +35,7 @@
           <li class="nav-item">
             <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li>  
-          <li class="nav-item">
+          <li class="nav-item active">
               <a class="nav-link" href="Atelier.php">Ateliers <span class="sr-only">(current)</span></a>
           </li> 
         </ul>

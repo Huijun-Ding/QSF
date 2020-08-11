@@ -133,7 +133,7 @@
                         echo ('</div>');
                         
                         echo('<div class="form-group">') ;
-                        echo('<label for="inputEmail4">Déscription du besoin(<span style="color:red">*</span>)</label><br/>') ;
+                        echo('<label for="inputEmail4">Description du besoin(<span style="color:red">*</span>)</label><br/>') ;
                         echo('<textarea rows="4" cols="50" name="description" required>'.$ligne["DescriptionT"].'</textarea>') ;
                         echo('</div>') ;
             
