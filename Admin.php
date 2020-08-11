@@ -624,34 +624,70 @@
                 echo ('</dl>');                                    
 
                 echo ('<br><h5>Retour d\'expérience</h5><hr>');
-                echo ('<p>Moyenne de notes : ');
-                $moyenne = "select AVG(Note) as moyenne from evaluation";
-                $notemoyenne = mysqli_query ($session, $moyenne);
-                if ($note = mysqli_fetch_array($notemoyenne)) {   
-                    echo $note["moyenne"];
+                
+                echo ('<p>Moyenne de notes besoin : ');
+                $moyenneb = "select AVG(NoteB) as moyenne from evaluerb";
+                $notemoyenneb = mysqli_query ($session, $moyenneb);
+                if ($noteb = mysqli_fetch_array($notemoyenneb)) {   
+                    echo $noteb["moyenne"];
                     echo ('</p>'); 
-                }
-
+                }                               
+                
+                echo ('<h5>Avis besoin</h5>');
                 echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
                 echo ('<thead>');
                       echo ('<tr>');
+                        echo ('<th scope="col">besoin</th>');
                         echo ('<th scope="col">Note</th>');
                         echo ('<th scope="col">Commentaire</th>');
                       echo ('</tr>');
                     echo ('</thead>');
                     echo ('<tbody>');
-                $query = "select Note, Avis from evaluation where Avis != '' order by CodeE DESC limit 20";
-                $result = mysqli_query ($session, $query);                        
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
+                $query1 = "select b.TitreB, e.NoteB, e.AvisB from evaluerb as e, besoins as b where e.AvisB != '' and e.CodeB = b.CodeB order by DateEB DESC limit 20";
+                $result1 = mysqli_query ($session, $query1);                        
+                if (mysqli_num_rows($result1)>0) {
+                while ($ligne = mysqli_fetch_array($result1)) {                                               
                       echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["Note"].'</th>');
-                        echo ('<td>'.$ligne["Avis"].'</td>');
+                        echo ('<th scope="row">'.$ligne["TitreB"].'</th>');
+                        echo ('<td>'.$ligne["NoteB"].'</td>');
+                        echo ('<td>'.$ligne["AvisB"].'</td>');
                       echo ('</tr>');                     
                 }          
                 } 
-                 echo ('</tbody>');
-                echo ('</table>');                    
+                echo ('</tbody>');
+                echo ('</table><hr>');              
+                
+                echo ('<p>Moyenne de notes talent : ');
+                $moyennet = "select AVG(NoteT) as moyenne from evaluert";
+                $notemoyennet = mysqli_query ($session, $moyennet);
+                if ($notet = mysqli_fetch_array($notemoyennet)) {   
+                    echo $notet["moyenne"];
+                    echo ('</p>'); 
+                }              
+                
+                echo ('<h5>Avis talent</h5>');
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">talent</th>');
+                        echo ('<th scope="col">Note</th>');
+                        echo ('<th scope="col">Commentaire</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                $query2 = "select t.TitreT, e.NoteT, e.AvisT from evaluert as e, talents as t where e.AvisT != '' and e.CodeT = t.CodeT order by DateET DESC limit 20";
+                $result2 = mysqli_query ($session, $query2);                        
+                if (mysqli_num_rows($result2)>0) {
+                while ($ligne = mysqli_fetch_array($result2)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["TitreT"].'</th>');
+                        echo ('<td>'.$ligne["NoteT"].'</td>');
+                        echo ('<td>'.$ligne["AvisT"].'</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                echo ('</tbody>');
+                echo ('</table>');                  
 
               ?>
             </div>

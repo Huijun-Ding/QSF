@@ -129,44 +129,64 @@ rating input[type=radio]:checked ~ input[type=radio]:not(:checked)::after{
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
 <div class="jumbotron">
   <div class="container">
-      <form method="POST" action="evaluation.fonction.php">
-        <h1>Evaluer votre expérience</h1><hr>
+      <form method="POST" action="evaluation-besoin.fonction.php">
         <?php
         require_once 'Fonctions.php';
         if(isset($_SESSION['email'])) {
 
-        echo '              
-        <fieldset>
-          <legend>Notation :</legend>
-           <rating>
-             <input type="radio" name="rating" value="1" aria-label="1 star" required/>
-             <input type="radio" name="rating" value="2" aria-label="2 stars"/>
-             <input type="radio" name="rating" value="3" aria-label="3 stars"/>
-             <input type="radio" name="rating" value="4" aria-label="4 stars"/>
-             <input type="radio" name="rating" value="5" aria-label="5 stars"/>
-           </rating>
-        </fieldset>
-          <br>
-        <fieldset>
-          <legend>Votre avis nous intéresse :</legend>
-           <rating>
-               <textarea name="avis" placeholder=""></textarea>'; ?>
-                <script>
-                    var editor1 = CKEDITOR.replace('avis', {
-                        extraAllowedContent: 'div',
-                        height: 200
-                      });
-                </script>
-            <?php echo '    
-           </rating>
-        </fieldset>
-          <br><p>Si votre besoin a été résolu, n\'oubliez pas d\'désactiver votre carte</p>
-        <input type="reset" class="btn btn-dark">
-        <input type="submit" class="btn btn-dark">'; 
+                echo '<h1>Evaluer votre expérience [besoin]</h1><hr>';
+                echo '<div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Veuillez choisir sur quel besoin vous voulez évaluer</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="besoin" required>';
+
+                $query = "select b.CodeB, b.TitreB from utilisateurs as u, saisir as s, besoins as b WHERE u.Email = '{$_SESSION['email']}' and u.CodeU = s.CodeU and s.CodeB = b.CodeB";
+                $result = mysqli_query ($session, $query);
+                while ($ligne = mysqli_fetch_array($result)) {   
+                    echo "<option value=\"{$ligne['CodeB']}\">{$ligne['TitreB']}</option>";    
+                }  
+                    echo '</select></div>';
+
+                echo '<fieldset>
+                  <legend>Notation :</legend>
+                   <rating>
+                     <input type="radio" name="rating" value="1" aria-label="1 star" required/>
+                     <input type="radio" name="rating" value="2" aria-label="2 stars"/>
+                     <input type="radio" name="rating" value="3" aria-label="3 stars"/>
+                     <input type="radio" name="rating" value="4" aria-label="4 stars"/>
+                     <input type="radio" name="rating" value="5" aria-label="5 stars"/>
+                   </rating>
+                </fieldset>
+                  <br>
+                <fieldset>
+                  <legend>Votre avis nous intéresse :</legend>
+                   <rating>
+                       <textarea name="avis" placeholder=""></textarea><br>'; ?>
+                        <script>
+                            var editor1 = CKEDITOR.replace('avis', {
+                                extraAllowedContent: 'div',
+                                height: 200
+                              });
+                        </script>
+                    <?php echo '    
+                   </rating>
+                </fieldset>
+                  <br><p>Si votre besoin a été résolu, n\'oubliez pas d\'désactiver votre carte</p>';
+
+                $query2 = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                $result2 = mysqli_query ($session, $query2);
+                if ($ligne = mysqli_fetch_array($result2)) {
+                    echo '<input id="codeu" name="codeu" type="hidden" value="'.$ligne['CodeU'].'">';
+                } 
+                
+                echo '<input type="reset" class="btn btn-dark">
+                <input type="submit" class="btn btn-dark">'; 
         } else {
             echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
         }           
         ?>
+               
       </form>
   </div>
 </div>
