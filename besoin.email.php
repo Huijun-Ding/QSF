@@ -1,16 +1,12 @@
 <?php 
     require_once ('Fonctions.php');
-  
+    $date =  date("yy/m/d") + 15;
     //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd
-
-    
-    
-    
-    
-    
+    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation) values({$_SESSION['email']},{$_POST['codeu']},{$_POST['sujet']},{$_POST['contenu_besoin']},'$date')";
+    mysqli_query ($session, $sql);
     
     //requête prendre l'email destinataire
-    $query = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_GET['c']}";
+    $query = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['c']}";
     $result = mysqli_query ($session, $query);
     echo $_GET['c'];
         
