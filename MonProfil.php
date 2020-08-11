@@ -434,7 +434,7 @@
                             <p> Êtes-Vous sûr de désactiver cette carte ?</p>
                           </div>
                           <div class="modal-footer">
-                            <button name="desactiverB" type="submit" class="btn btn-primary">Désactiver</button>  
+                            <button name="desactiverA" type="submit" class="btn btn-primary">Désactiver</button>  
                           </div>
                         </div>
                       </div>
