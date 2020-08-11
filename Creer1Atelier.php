@@ -102,7 +102,7 @@
                             <option value="" selected>Choisir une catégorie</option>
                               <?php
                              require_once('Fonctions.php');
-                             $query = "select CodeC, NomC from categories where VisibiliteC = 1";
+                             $query = "select DescriptionC, CodeC, NomC from categories where VisibiliteC = 1";
                              $result = mysqli_query ($session, $query);
                              if (mysqli_num_rows($result)>0) {       
                                 while ($ligne = mysqli_fetch_array($result)) { 
@@ -132,7 +132,7 @@
             </div>
                  <div class="form-group">
               <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
-              <input type="number" name="nb" class="form-control col-md-4" placeholder="5" id="inputEmail4" required />
+              <input type="number" name="nb" class="form-control col-md-4" min="0" placeholder="5" id="inputEmail4" required />
             </div>
             <div class="form-group">
                   <label for="inputAddress">Type d'atelier(<span style="color:red">*</span>)</label>				

@@ -105,7 +105,7 @@
                ?>         
                <?php
                 $T = $_GET['t'];
-                $query = "select b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.NomC, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = $T ";
+                $query = "select c.CodeC, c.NomC, c.DescriptionC, b.TypeB, b.CodeB, b.VisibiliteB, b.TitreB, c.CodeC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = $T and c.VisibiliteC = 1";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -119,6 +119,7 @@
                             echo('<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>');
                             echo('<select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>');
                             echo('<option name="categorie" value="'.$ligne["CodeC"].'" selected>'.$ligne["NomC"].'</option>');
+                            //echo ('<option value="'.$ligne["CodeC"].'" name="categorie" title="'.$ligne["DescriptionC"].'">'.$ligne["NomC"].'</option>'); 
                             echo('<option value="1" name="categorie" title="...">Sport</option>');
                             echo('<option value="2" name="categorie" title="Réunions créatives/Pitcher .....">Animation</option>');
                             echo('<option value="3" name="categorie"title="...">Outils métiers</option>');

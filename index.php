@@ -268,6 +268,11 @@
                     $('#cartesT').children().css('display', 'none');
                     $('#cartesT').children().slice(first, last).css('display', 'block');
                 }
+                
+                function set_display3(first, last) {
+                    $('#cartesA').children().css('display', 'none');
+                    $('#cartesA').children().slice(first, last).css('display', 'block');
+                }
 
                 function previous(){
                     if($('.active').prev('.page_link').length) go_to_page(current_page - 1);
@@ -276,6 +281,7 @@
                 function next(){
                     if($('.active').next('.page_link').length) go_to_page(current_page + 1);
                 }
+                
                 function previous2(){
                     if($('.active').prev('.page_link').length) go_to_page2(current_page - 1);
                 }
@@ -283,6 +289,15 @@
                 function next2(){
                     if($('.active').next('.page_link').length) go_to_page2(current_page + 1);
                 }
+                
+                 function previous3(){
+                    if($('.active').prev('.page_link').length) go_to_page3(current_page - 1);
+                }
+
+                function next3(){
+                    if($('.active').next('.page_link').length) go_to_page3(current_page + 1);
+                }
+                
                 function go_to_page(page_num){
                     current_page = page_num;
                     start_from = current_page * show_per_page;
@@ -291,6 +306,7 @@
                     $('.active').removeClass('active');
                     $('#id' + page_num).addClass('active');
                 }
+                
                 function go_to_page2(page_num){
                     current_page = page_num;
                     start_from = current_page * show_per_page;
@@ -299,12 +315,26 @@
                     $('.active').removeClass('active');
                     $('#sid' + page_num).addClass('active');
                 }
+                
+                function go_to_page3(page_num){
+                    current_page = page_num;
+                    start_from = current_page * show_per_page;
+                    end_on = start_from + show_per_page;
+                    set_display3(start_from, end_on);
+                    $('.active').removeClass('active');
+                    $('#id3' + page_num).addClass('active');
+                }
+                
                 $(document).ready(function() {
 
                     var number_of_pages = Math.ceil($('#cartesB').children().length / show_per_page);
                     var number_of_pages2 = Math.ceil($('#cartesT').children().length / show_per_page);
+                    var number_of_pages3 = Math.ceil($('#cartesA').children().length / show_per_page);
+                    
                     var nav = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous();">Précédent</a>';
                     var nav2 = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous2();">Précédent</a>';
+                    var nav3 = '<nav aria-label="Page navigation example" class="page"><ul class="pagination justify-content-center"><li class="page-item"><a class="page-link" href="javascript:previous3();">Précédent</a>';
+                    
                     var i = -1;
                     while(number_of_pages > ++i){
                         nav += '<li class="page_link'
@@ -328,67 +358,105 @@
 
                     $('#page_navigation2').html(nav2);
                     set_display2(0, show_per_page);
+                    
+                    var i = -1;
+                    while(number_of_pages3 > ++i){
+                        nav3 += '<li class="page_link'
+                        if(!i) nav += ' active';
+                        nav3 += '" id="id3' + i +'">';
+                        nav3 += '<a class="page-link" href="javascript:go_to_page3(' + i +')">'+ (i + 1) +'</a>';
+                    }
+                    nav3 += '<li class="page-item"><a class="page-link" href="javascript:next3();">Suivant</a></ul></nav>';
+
+                    $('#page_navigation3').html(nav3);
+                    set_display3(0, show_per_page);
 
                 });
 
             </script>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
-     <!--    <div class="container" id="cours">
-            <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
-            <h1 id="titre3"><a href="#" class="badge badge-light">Ateliers</a></h1>
-              <form class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Course à pied ..." aria-label="Search">
-                    <button type="button" class="btn btn-outline-dark">Recherche</button>
-              </form>
+        <div class="container" id="ateliers">
+            <h1 id="titre1"><a href="Atelier.php" class="badge badge-light">Ateliers</a></h1><br>
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+              <form method="GET" class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search"  name="motA" placeholder="Fitness/Excel/..." aria-label="Search">
+                    <button type="submit" class="btn btn-outline-dark">Recherche</button>
+              </form> 
+              <?php is_login_new_atelier(); ?>
             </div>
-            <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
-              <div class="card" style="width: 12rem;">
-                <img src="https://www.lecoindesentrepreneurs.fr/wp-content/uploads/2015/03/Logiciel-pour-la-gestion-de-projet.png" class="card-img-top" alt="...">
-                <div class="card-body card text-center">
-                  <h5 class="card-title">Atelier AI et emploi</h5>
-                  <p class="card-text">Description</p>
-                  <a href="" class="btn btn-outline-dark">Je participe</a>
-                </div>
-              </div>
-              <div class="card" style="width: 12rem;">
-                <img src="https://lte.ma/wp-content/uploads/2016/09/Big-Data-et-marketing.jpg" class="card-img-top" alt="...">
-                <div class="card-body card text-center">
-                  <h5 class="card-title">Atelier Big data and marketing</h5>
-                  <p class="card-text">Description</p>
-                  <a href="" class="btn btn-outline-dark">Je participe</a>
-                </div>
-              </div>
-              <div class="card" style="width: 12rem;">
-                <img src="https://www.dynamique-mag.com/wp-content/uploads/6d3e1d04a6540332e1247436547e3d49-737x405.jpg" class="card-img-top" alt="...">
-                <div class="card-body card text-center">
-                  <h5 class="card-title">Atelier Finance d'entreprise</h5>
-                  <p class="card-text">Description</p>
-                  <a href="" class="btn btn-outline-dark">Je participe</a>
-                </div>
-              </div>
-              <div class="card" style="width: 12rem;">
-                <img src="https://resize.prod.docfr.doc-media.fr/r/720,480,center-middle,ffffff,smartcrop/img/var/doctissimo/storage/images/fr/www/medecines-douces/meditation/meditation-pleine-conscience/653552-1-fre-FR/meditation-pleine-conscience.jpg" class="card-img-top" alt="...">
-                <div class="card-body card text-center">
-                  <h5 class="card-title">Atelier découverte de la méditation en pleine conscience</h5>
-                  <p class="card-text">Description</p>
-                  <a href="" class="btn btn-outline-dark">Je participe</a>
-                </div>
-              </div>
+                       
+            <div id="cartesA" class="flex-parent d-flex flex-wrap justify-content-around mt-3">     
+            <?php
+            
+              
+                if(isset($_SESSION['email'])) {
+                    if(isset($st)) {                                            // Utilisateur connecté, sélectionné les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, sélectionné les catégories, son type est Pro ou Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_SESSION['type']}' OR a.TypeA ='Pro et Perso') and a.CodeC in $st order by CodeA DESC";
+                        } else {                                                // Utilisateur connecté, sélectionné les catégories, son type est Pro et Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeC in $st order by CodeA DESC";
+                        }
+                    } else {                                                    // Utilisateur connecté, n'a pas sélectionner les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro ou Perso
+                            $query = "select  a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_SESSION['type']}' OR a.TypeA ='Pro et Perso') order by CodeA DESC";
+                        } else {                                                // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro et Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC order by CodeA DESC";
+                        }
+                    } 
+                } else {
+                    if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_POST['type']}' OR a.TypeA ='Pro et Perso') and a.CodeC in $st order by CodeA DESC";
+                    } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_POST['type']}' OR a.TypeA ='Pro et Perso') order by CodeA DESC";
+                    } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeC in $st order by CodeA DESC";
+                    }  else {  // V-si un visiteur rien choisit 
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC order by CodeA DESC";
+                    }
+                }
+                        
+                if(isset($_GET['motA']) AND !empty($_GET['motA'])) {     /*Recherche par mot clé*/
+                    $mot = htmlspecialchars($_GET['mot']);
+                    if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.TitreA LIKE '%$mot%' and a.TypeA = '{$_SESSION['type']}' order by a.CodeA DESC";
+                    } else {
+                       $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.TitreA LIKE '%$mot%' order by a.CodeA DESC";
+                    }
+                }
+
+            $result = mysqli_query ($session, $query);
+            
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
+                         if ($ligne["VisibiliteA"] == 1) {   
+                            if ($ligne["TypeA"] == 'Pro et Perso') {
+                                echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeA"].'</span></h5>');
+                            } elseif ($ligne["TypeA"] == 'Pro') {
+                                echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeA"].'</span></h5>');
+                            } elseif ($ligne["TypeA"] == 'Perso') {
+                                echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeA"].'</span></h5>');
+                            }                                     
+                            echo ('<div class="card" style="width: 12rem;">');                                 
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                            echo ('<div class="card-body card text-center">');
+                            echo ('<h5 class="card-title">'.$ligne["TitreA"].'</h5>');
+                            echo ('<p class="card-text">Date de publication: '.$ligne["DatePublicationA"].'</p>');
+                            echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
+                            echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
+                            echo ('<a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
+                            echo ('</div>');   
+                            echo ('</div></div>');   
+                            } 
+                    }
+                    } else {
+                        echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                    }                 
+             ?>
             </div>
-            <nav aria-label="Page navigation example" class="page">
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Suivant</a>
-                </li>
-              </ul>
-            </nav>
-          </div>  -->
+           
+            <div id="page_navigation3"> </div>
+         </div>
+   
 <!--------------------------------------------------------------------------------------------------------------------------------------------->
         <!--  <div class="container" id="projets">
             <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
@@ -435,73 +503,8 @@
               </ul>
             </nav>
             </div>  ---->
-<!--------------------------------------------------------------------------------------------------------------------------------------------
-            <div class="container">
-              <div class="flex-parent d-flex flex-wrap justify-between-around mt-3">
-                <h1 id="titre5"><a href="#" class="badge badge-light">Vie ma vie</a></h1>
-                <form class="form-inline my-2 my-lg-0" class="recherche">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Chargé(e) de projet ..." aria-label="Search">
-                  <button type="button" class="btn btn-outline-dark">Recherche</button>
-                </form>
-              </div>
-            	<div id="accordion">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Chargé(e) de recrutement <-> Responsable administratif adjoint
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body">
-                    Date : 23/02/2020 <br><br>
-                    Lieu : Toulouse <br><br>
-                    Mission du post 1 : Rédiger et publier des offres d’emplois attractives, via notre ATS « Jobaffinity » ;
-                    Suivre les annonces, tri des CV, présélections téléphoniques ;
-                    Conduire les entretiens de recrutement individuels ou collectifs, selon les profils, avec les opérationnels ;
-                    Gérer l’intégralité du processus de recrutement et participer à la prise de décision ; <br><br>
-                    Mission du post 2 : Contribue à la réalisation et au suivi des objectifs stratégiques de l’organisme en assistant la direction locale; Participe à la mise en œuvre opérationnelle de la politique impulsée par la direction régionale; Mobilise les collaborateurs autour des missions, ambitions et objectifs de l’échelon et les accompagne dans les changements engagés, les nouvelles organisations.<br>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingTwo">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Chargé de documentation <-> Responsable adjoint(e) service administration du personnel
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    Date : <br>
-                    Lieu : <br>
-                    Mission du post 1 : <br>
-                    Mission du post 2 : <br>
-                  </div>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header" id="headingThree">
-                  <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Développeur <-> Chargé(e) de projet
-                    </button>
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body">
-                    Date : <br>
-                    Lieu : <br>
-                    Mission du post 1 : <br>
-                    Mission du post 2 : <br>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-------------------------------------------------------------------------------------------------------------------------------------------->
+
+<!------------------------------------------------------------------------------------------------------------------------------------------->
         <hr/>    
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
