@@ -2,8 +2,7 @@
     require_once ('Fonctions.php');
     
     //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd    
-    $dateevaluation  = mktime(0, 0, 0, date("m")  , date("d")+15, date("Y"));
-
+    $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
     $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
     mysqli_query ($session, $sql);
     
@@ -14,8 +13,7 @@
     //echo 'DateEvaluation : '.$dateevaluation.'';
     //echo 'CodeCarte : '.$_POST['codecarte'].'';
     
-    // incrémenter sur besoins.ReponseT
-
+    // incrémenter sur talent.ReponseT
     $query = "UPDATE talents SET ReponseT = ReponseT + 1 WHERE CodeT = {$_POST['codecarte']}";
     mysqli_query ($session, $query);
     

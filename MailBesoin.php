@@ -90,11 +90,11 @@
 
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label" name="sujet"><strong>Sujet</strong></label>
-                    
                     <div class="col-sm-10">
+                        <form action="besoin.email.php" method="POST">
                         <?php 
                         //requête prendre titre de besoin
-                         $query1 = "select CodeB, TitreB from besoins where CodeB = {$_GET['c']} ";
+                         $query1 = "select b.CodeB, b.TitreB, s.CodeU from besoins as b, saisir as s where b.CodeB = {$_GET['c']} and b.CodeB = s.CodeB";
                          $result = mysqli_query ($session, $query1);
                          
                          if (mysqli_num_rows($result)>0) {       
@@ -108,9 +108,13 @@
                                 echo ('Bonjour,');
                                 echo('</textarea>');     
                                 echo ('</div>');
-                                echo('<a href="besoin.email.php?c='.$besoin["CodeB"].'"><button type="submit" nameclass="btn btn-primary">Envoyer</button></a>');                               
+                                echo ('<input type="hidden" name="codecarte" value="'.$besoin['CodeB'].'">');
+                                echo ('<input type="hidden" name="destinataire" value="'.$besoin['CodeU'].'">');
+                                echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');                               
+                                echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');                               
                             }
                         } ?> 
+                        </form>
                 </div>    
             </div>
  

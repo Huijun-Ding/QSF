@@ -2,14 +2,25 @@
     require_once ('Fonctions.php');
     
     //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd
-    $dateevaluation  = mktime(0, 0, 0, date("m")  , date("d")+15, date("Y"));
+    $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
 
-    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{},{$_POST['sujet']},{$_POST['contenu_besoin']},'$dateevaluation')";
+    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$_POST["titrecarte"]}','{$_POST['contenu_besoin']}','$dateevaluation',1,{$_POST['codecarte']},'besoin')";
     mysqli_query ($session, $sql);
     
+   // echo 'Provenance : '.$_SESSION['codeu'].'';
+   // echo 'Destinataire : '.$_POST['destinataire'].'';
+    //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
+    //echo 'Contenue : '.$_POST['contenu_talent'].'';
+    //echo 'DateEvaluation : '.$dateevaluation.'';
+    //echo 'CodeCarte : '.$_POST['codecarte'].'';
+    
+    // incrémenter sur besoins.ReponseB
+    $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
+    mysqli_query ($session, $query);
+    
     //requête prendre l'email destinataire
-    $query = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['c']}";
-    $result = mysqli_query ($session, $query);
+    $query2 = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['c']}";
+    $result = mysqli_query ($session, $query2);
         
     if (mysqli_num_rows($result)>0) { 
         if ($email = mysqli_fetch_array($result)) { 
@@ -459,5 +470,5 @@
             mail ($destinataire, $sujet, $message, $headers); // on envois le mail 
         }
     }      
-    header("Location: index.php");
+    //header("Location: index.php");
 ?>
