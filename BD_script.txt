@@ -293,6 +293,8 @@ UNLOCK TABLES;
     `CodeEM` INT(10) AUTO_INCREMENT, 
     `Provenance` INT(10) NOT NULL,
     `Destinataire` INT(10) NOT NULL,
+    `CodeCarte` INT(10) NOT NULL,
+    `TypeCarte` enum('besoin','talent') NOT NULL,
     `Sujet` TEXT(200) NOT NULL,
     `Contenue` TEXT(1000) NOT NULL,
     `DateEvaluation` DATE NOT NULL,

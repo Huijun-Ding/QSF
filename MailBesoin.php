@@ -89,7 +89,7 @@
               <hr>
 
                 <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
+                    <label for="staticEmail" class="col-sm-2 col-form-label" name="sujet"><strong>Sujet</strong></label>
                     
                     <div class="col-sm-10">
                         <?php 
