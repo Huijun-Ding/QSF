@@ -133,7 +133,7 @@
                 <hr> 
                 <?php
                 require_once('Fonctions.php');
-                $query = "select b.CodeB, b.TypeB, b.VisibiliteB, b.TitreB, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b where b.TitreB = '{$_GET['titre']}' "; //au cas où qu'on a besoin d'afficher d'autres infos que le titre
+                $query = "SELECT e.Sujet, e.Contenue, u.Email, b.DateButoireB, b.VisibiliteB FROM emails AS e, utilisateurs AS u, besoins AS b WHERE e.TypeCarte = 'besoin' AND e.Destinataire = 4 AND e.VisibiliteE = 1 AND e.CodeCarte = 36  AND e.Provenance = u.CodeU AND b.CodeB = e.CodeCarte"; 
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -141,14 +141,13 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-                        echo ('<h3>'.$ligne["TitreB"]. '</h3>');                                             
-                        echo ('<p>contenu du mail, envoyé par un expert, via admin</p>');             
+                        echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
+                        echo ('<p>'.$ligne["Contenue"]. '</p><br>'); 
+                        echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a>');
+                        echo ('<a href="besoinnon.html.php"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
+                    }
                 }
-                }
-                 ?>
-                <hr> 
-                <a href="besoinoui.html.php"><button type="button" class="btn btn-primary">Possible</button></a>
-                <a href="besoinnon.html.php"><button type="button" class="btn btn-secondary">Pas possible</button></a>
+                ?>                
           </div>
         </div>
   <hr> 

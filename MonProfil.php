@@ -253,7 +253,7 @@ if(isset($_SESSION['email'])) {
                  while ($besoin = mysqli_fetch_array($result)) {            
                     if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
                         echo('<li class="list-inline-item">');
-                        if ($besoin["ReponseB"] == 1) {
+                        if ($besoin["ReponseB"] > 0) {
                             echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
                         }
                         echo ('<div class="card" style="width: 12rem;">');
@@ -270,7 +270,7 @@ if(isset($_SESSION['email'])) {
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] > 0) {
                             echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["TitreB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["CodeB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -342,7 +342,7 @@ if(isset($_SESSION['email'])) {
                     while ($talent = mysqli_fetch_array($result)) {                     
                          if ($talent["VisibiliteT"] == 1) {  
                             echo('<li class="list-inline-item">');
-                            if ($talent["ReponseT"] == 1) {
+                            if ($talent["ReponseT"] > 0) {
                                 echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
                             }
                             echo ('<div class="card" style="width: 12rem;">');
@@ -356,9 +356,9 @@ if(isset($_SESSION['email'])) {
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
                             echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
-                            if ($talent["ReponseT"] == 1) {
+                            if ($talent["ReponseT"] > 0) {
                                 echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?titre='.$talent["TitreT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                                echo ('<a href="ReponseTalent.php?titre='.$talent["CodeT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
