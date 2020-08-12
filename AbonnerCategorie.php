@@ -108,7 +108,7 @@
                            if ($ligne["NomC"] == 'Autres') {
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<div class="card-header">');
-                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');
@@ -125,7 +125,7 @@
                         } else {
                             echo ('<div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="'.$ligne["CodeC"].'" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
                             echo ('<div class="card-body text-center">');
