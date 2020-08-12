@@ -23,7 +23,7 @@
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
-    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
+    <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -129,38 +129,88 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">
           <div class="container">
-              <h1>Rédiger votre e-mail</h1>      
-              <hr>
-              <form action="besoinoui.fonction.php" method="POST">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
-                    <div class="col-sm-10">
-                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="Re: Demande de partage votre talent" disabled >
-                    </div>
-                </div>
-                    
-                <div class="form-group">
-                    <label for="inputEmail4"><strong>Contenu du message</strong></label>
-                    
-                    <textarea name="contenu_besoin_oui">
-                    Bonjour,
-                    </textarea>
-                <script>
-                    var editor1 = CKEDITOR.replace('contenu_besoin_oui', {
-                        extraAllowedContent: 'div',
-                        height: 250
-                      });
-                </script>
-                           
-                </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-                </form>
-                
-          </div>
-        </div>
+			
+            <h1> Creer un atelier </h1>
+            <form action="Saisir1Atelier.php" method="post">
+            <?php
+            require_once('Fonctions.php');
+            date_default_timezone_set('Europe/Paris');
+            echo "Date de création :   " . date("d/m/yy"); 
+            ?>
+            <div class="form-row align-items-center">
+                    <div class="col-auto my-1">
+                      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+                      <select class="custom-select mr-sm-2" name="categorie" id="inlineFormCustomSelect" required>
+                            <option value="" selected>Choisir une catégorie</option>
+                              <?php
+                             require_once('Fonctions.php');
+                             $query = "select DescriptionC, CodeC, NomC from categories where VisibiliteC = 1";
+                             $result = mysqli_query ($session, $query);
+                             if (mysqli_num_rows($result)>0) {       
+                                while ($ligne = mysqli_fetch_array($result)) { 
+                                 
+                                    echo ('<option value="'.$ligne["CodeC"].'" name="categorie" title="'.$ligne["DescriptionC"].'">'.$ligne["NomC"].'</option>');                                         
+                                }     
+                             }
+                             ?>                     
+                      </select>
+                    </div><p>(<span style="color:red">*</span>)</p>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">Titre(<span style="color:red">*</span>)</label>
+              <input type="text" name="titre" class="form-control col-md-4" id="inputEmail4" required>
+            </div>
+            <div class="form-group">
+                    <label for="inputEmail4">Description(<span style="color:red">*</span>)</label><br/>
+                    <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre atelier" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">Date & Créneau horaire(<span style="color:red">*</span>)</label>
+              <input type="text" name="date" class="form-control col-md-4" placeholder="Du 14/10 au 16/10 14h00" id="inputEmail4" required />
+            </div>
+                 <div class="form-group">
+              <label for="inputEmail4">Lieu(<span style="color:red">*</span>)</label>
+              <input type="text" name="lieu" class="form-control col-md-4" placeholder="Salle 6.40" id="inputEmail4" required />
+            </div>
+                 <div class="form-group">
+              <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
+              <input type="number" name="nb" class="form-control col-md-4" min="0" placeholder="5" id="inputEmail4" required />
+            </div>
+            <div class="form-group">
+                  <label for="inputAddress">Type d'atelier(<span style="color:red">*</span>)</label>				
+            </div>
+            <div class="form-group" >
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="type" id="inlineRadio1" required value="Pro">
+                <label class="form-check-label" for="inlineRadio1">Pro</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio2" value="Perso">
+                <label class="form-check-label" for="inlineRadio2">Perso</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">
+                <label class="form-check-label" for="inlineRadio3">Pro&Perso</label>
+              </div>               
+            </div>
+            <div class="form-group">
+              <label for="inputEmail4">URL de l'inscription(<span style="color:red">*</span>)</label>
+              <input type="text" name="url" class="form-control col-md-4" placeholder="https://www.linscription.com/..." id="inputEmail4" required />
+            </div>    
+            <div class="form-group">
+              <label for="inputEmail4">En savoir plus</label>
+              <input type="text" name="plus" class="form-control col-md-4" placeholder="https://fr.wikipedia.org/wiki/Yoga" id="inputEmail4" />
+            </div>
 
+            <div class="form-group">
+                <button type="submit" class="btn btn-dark">CREER</button>
+            </div>
+            </form>   
+          </div>
+        </div>  
+        
         <footer>
-          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+          <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 
     <!-- Optional JavaScript -->
@@ -170,3 +220,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+

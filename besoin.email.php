@@ -31,10 +31,9 @@
     $liste = '';
     $req2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";
     foreach  (mysqli_query ($session, $req2) as $ligne) {
-        $liste = $ligne['Email'].','.' ';
+        $liste = $liste.$ligne['Email'].', ';
     }
     $liste = rtrim($liste,', ');
-    echo $liste;
     
     $query2 = "select b.TitreB from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";;
     $result = mysqli_query ($session, $query2);   

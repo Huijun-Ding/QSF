@@ -41,10 +41,10 @@
             <a class="nav-link" href="Besoin.php">Besoins</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="Talent.php">Talents<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="Talent.php">Talents</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="Atelier.php">Ateliers</a>
+              <a class="nav-link" href="Atelier.php">Ateliers<span class="sr-only">(current)</span></a>
           </li> 
           <li class="nav-item">
             <a class="nav-link" href="Projet.php">Projets</a>
@@ -131,31 +131,31 @@
           <div class="container">
 			
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <h1>LES TALENTS </h1>
-              <?php is_login_new_talent(); ?>
+              <h1>LES ATELIERS </h1>         
+              <?php is_login_new_atelier(); ?>
             </div>
             <hr>
-            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                 <!-- Button trigger modal -->
+              
+              <!-- Button trigger modal -->
                 <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
                 三 Filtre
                 </button>
                 
-            <form action="Talent.php" method="post">
+              <form action="Atelier.php" method="post">
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-xl">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Filter les talents</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Filter les ateliers</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
                       <div class="modal-body">
                          <h3> Par catégorie </h3>
-                            <?php
+                             <?php
                              require_once('Fonctions.php');
                              $query = "select CodeC, NomC from categories where VisibiliteC = 1";
                              $result = mysqli_query ($session, $query);
@@ -166,7 +166,6 @@
                              }
                              ?>
                             
-                        
                         <?php     
                         if (empty($_SESSION['email'])) {
                             echo ('<br><br>');
@@ -174,6 +173,7 @@
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Pro"><em><strong>Pro</strong></em></label>');
                             echo ('<label class="radio-inline"><input type="radio" name="type" value="Perso"><em><strong>Perso</strong></em></label>');
                         }
+                           
                       ?>
                       </div>
                         
@@ -185,92 +185,99 @@
                   </div>
                 </div>
               </form>
-            
+                                
               <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
               </form>
-            </div> 
+            </div>
             
             <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
+                
+       
             <?php
-             require_once('Fonctions.php');
-             
-             if (isset($_POST['categorie'])) {
-                $st = "(";
-                foreach ($_POST["categorie"] as $categories) {                        
-                    $st = $st.$categories;
-                    $st = $st.",";
-                }
-                $st = rtrim($st, ',');
-                $st = $st.")";
-            }
+                require_once('Fonctions.php');
+                
 
-            if(isset($_SESSION['email'])) {
-                if(isset($st)) {                                            // Utilisateur connecté, sélectionné les catégories
-                    if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, sélectionné les catégories, son type est Pro ou Perso
-                        $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
-                    } else {                                                // Utilisateur connecté, sélectionné les catégories, son type est Pro et Perso
-                        $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.CodeC in $st order by CodeT DESC";
+                if (isset($_POST['categorie'])) {
+                    $st = "(";
+                    foreach ($_POST["categorie"] as $categories) {                        
+                        $st = $st.$categories;
+                        $st = $st.",";
                     }
-                } else {                                                    // Utilisateur connecté, n'a pas sélectionner les catégories
-                    if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro ou Perso
-                        $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_SESSION['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                    } else {                                                // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro et Perso
-                        $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
-                    }
-                }   
-            } else {
-
-                if (isset($_POST['type']) && isset($_POST['categorie'])) {      // V-si un visiteur choisit les deux filtres
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') and t.CodeC in $st order by CodeT DESC";
-                } elseif (isset($_POST['type'])) {                              // V-si un visiteur choisit filtre type
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and (t.TypeT = '{$_POST['type']}' OR t.TypeT ='Pro et Perso') order by CodeT DESC";
-                } elseif (isset($_POST['categorie'])) {                         // V-si un visiteur choisit filtre categorie
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.CodeC in $st order by CodeT DESC";
-                }  else {                                                       // V-si un visiteur rien choisit 
-                    $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC order by CodeT DESC";
+                    $st = rtrim($st, ',');
+                    $st = $st.")";
                 }
-            }                
-               
-            if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
-                $mot = htmlspecialchars($_GET['mot']);
-                if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
-                   $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' and t.TypeT = '{$_SESSION['type']}' order by t.CodeT DESC";
+              
+                //select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a where c.CodeC = a.CodeC order by a.CodeA DESC ; 
+                
+                if(isset($_SESSION['email'])) {
+                    if(isset($st)) {                                            // Utilisateur connecté, sélectionné les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, sélectionné les catégories, son type est Pro ou Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_SESSION['type']}' OR a.TypeA ='Pro et Perso') and a.CodeC in $st order by CodeA DESC";
+                        } else {                                                // Utilisateur connecté, sélectionné les catégories, son type est Pro et Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeC in $st order by CodeA DESC";
+                        }
+                    } else {                                                    // Utilisateur connecté, n'a pas sélectionner les catégories
+                        if ($_SESSION['type'] != NULL) {                        // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro ou Perso
+                            $query = "select  a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_SESSION['type']}' OR a.TypeA ='Pro et Perso') order by CodeA DESC";
+                        } else {                                                // Utilisateur connecté, n'a pas sélectionner les catégories, son type est Pro et Perso
+                            $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC order by CodeA DESC";
+                        }
+                    } 
                 } else {
-                   $query = "select t.CodeT, t.VisibiliteT, t.TitreT, c.PhotoC, t.TypeT from talents t, categories c where t.CodeC = c.CodeC and t.TitreT LIKE '%$mot%' order by t.CodeT DESC";
-                }                   
-            }
+                    if (isset($_POST['type']) && isset($_POST['categorie'])) { // V-si un visiteur choisit les deux filtres
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_POST['type']}' OR a.TypeA ='Pro et Perso') and a.CodeC in $st order by CodeA DESC";
+                    } elseif (isset($_POST['type'])) {  // V-si un visiteur choisit filtre type
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and (a.TypeA = '{$_POST['type']}' OR a.TypeA ='Pro et Perso') order by CodeA DESC";
+                    } elseif (isset($_POST['categorie'])) { // V-si un visiteur choisit filtre categorie
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeC in $st order by CodeA DESC";
+                    }  else {  // V-si un visiteur rien choisit 
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC order by CodeA DESC";
+                    }
+                }
+                        
+                if(isset($_GET['mot']) AND !empty($_GET['mot'])) {     /*Recherche par mot clé*/
+                    $mot = htmlspecialchars($_GET['mot']);
+                    if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
+                        $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.TitreA LIKE '%$mot%' and a.TypeA = '{$_SESSION['type']}' order by a.CodeA DESC";
+                    } else {
+                       $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.TitreA LIKE '%$mot%' order by a.CodeA DESC";
+                    }
+                }
 
-               $result = mysqli_query ($session, $query);
+                $result = mysqli_query ($session, $query);
 
-               if (mysqli_num_rows($result)>0) {       
-                   while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                     if ($ligne["VisibiliteT"] == 1){
-                           if ($ligne["TypeT"] == 'Pro et Perso') {
-                               echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeT"].'</span></h5>');
-                           } elseif ($ligne["TypeT"] == 'Pro') {
-                               echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeT"].'</span></h5>');
-                           } elseif ($ligne["TypeT"] == 'Perso') {
-                               echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeT"].'</span></h5>');
-                           }                                  
-                       echo ('<div class="card" style="width: 12rem;">');                              
-                       echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                       echo ('<div class="card-body card text-center">');
-                       echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                       echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                       echo ('</div>');   
-                       echo ('</div></div>');             
-                     }
-                   }
-               } else {
-                 echo('<h5>Aucun résultat</h5>');
-               }                                          
-            ?>
+                if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
+                         if ($ligne["VisibiliteA"] == 1) {   
+                            if ($ligne["TypeA"] == 'Pro et Perso') {
+                                echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeA"].'</span></h5>');
+                            } elseif ($ligne["TypeA"] == 'Pro') {
+                                echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeA"].'</span></h5>');
+                            } elseif ($ligne["TypeA"] == 'Perso') {
+                                echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeA"].'</span></h5>');
+                            }                                     
+                            echo ('<div class="card" style="width: 12rem;">');                                 
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
+                            echo ('<div class="card-body card text-center">');
+                            echo ('<h5 class="card-title">'.$ligne["TitreA"].'</h5>');
+                            echo ('<p class="card-text">Date de publication: '.$ligne["DatePublicationA"].'</p>');
+                            echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
+                            echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
+                            echo ('<a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
+                            echo ('</div>');   
+                            echo ('</div></div>');   
+                            } 
+                    }
+                    } else {
+                        echo('<h5>Aucun résultat</h5>');
+                    }                     
+                    ?>
             </div>
           </div>
-        </div>
-
+        </div>        
+                
         <footer>
           <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

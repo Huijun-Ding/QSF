@@ -1,27 +1,43 @@
 <?php 
-require_once('Fonctions.php');
-     
-        if (isset($_POST['categorie'])) { 
-             foreach ($_POST["categorie"] as $categories) {                  
-                $stmt = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans la table abonner
-                mysqli_stmt_bind_param($stmt, 'ii', $usercode, $categories);
-                mysqli_stmt_execute($stmt); 
-             }
-        }
-            
-           
-                
- 
-header("Location: MesCategories.php");
+$Categorie = $_POST['categorie'];
+$Titre = $_POST['titre'];   // récupéré les valeurs selon la méthode POST
+$Description = $_POST['description'];
+$Date = $_POST['date'];
+$Lieu = $_POST['lieu'];
+$Nombre = $_POST['nb'];
+$Type = $_POST['type'];   
+$URL = $_POST['url'];
+$Plus = $_POST['plus'];
+$DatePublicationA = date("yy/m/d");
 
-    
-    $sql = "select Email from utilisateurs where CodeU = $usercode";
+require_once('Fonctions.php');
+
+$stmt = mysqli_prepare($session, "INSERT INTO ateliers(TitreA,DescriptionA,DateA,LieuA,NombreA,DatePublicationA,URL,PlusA,TypeA,CodeC) VALUES(?,?,?,?,?,?,?,?,?,?)");  //insérer un nouveau besoin dans le table besoins
+mysqli_stmt_bind_param($stmt, 'ssssissssi', $Titre, $Description, $Date, $Lieu, $Nombre, $DatePublicationA, $URL, $Plus, $Type, $Categorie);
+
+
+if (mysqli_stmt_execute($stmt) === true) {
+        echo "Votre atelier a bien été enregistré";
+        
+    //ajouter codeb et codeu dans le table saisir
+    $sql = "select CodeA from ateliers order by CodeA DESC limit 1";
     $result = mysqli_query ($session, $sql);
-    if ($email = mysqli_fetch_array($result)) {   
-        $Email = $email['Email'];
-       
-        $destinataire = "$Email"; // adresse mail du destinataire 
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Abonnement des catégories"; // sujet du mail
+    if ($code = mysqli_fetch_array($result)) {   
+        $codea = $code['CodeA'];
+        $stmt2 = mysqli_prepare($session, "INSERT INTO participera(CodeU,CodeA) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
+        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codea);
+        mysqli_stmt_execute($stmt2); 
+         }  
+     
+        header("Location: MonProfil.php");
+  
+        $sql = "select Email from utilisateurs where CodeU = $usercode";
+        $result = mysqli_query ($session, $sql);
+        if ($email = mysqli_fetch_array($result)) {   
+            $Email = $email['Email'];
+        
+        $destinataire = "$Email"; // adresse mail du destinataire
+        $sujet = "Création de nouveau atelier"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -322,7 +338,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>Nouvelle abonnement sur des cat&eacute;gories</strong></p><span class="mso-font-fix-arial">
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>Cr&eacute;ation de nouvelle carte</strong></p><span class="mso-font-fix-arial">
 </span></div>
 </td>
 </tr>
@@ -331,15 +347,17 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left"></span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left">
+
+</span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
 <p style="padding: 0; margin: 0;">Bonjour,</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous venez de vous abonner sur des nouvelles cat&eacute;gories</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous venez de vous créer un nouveau atelier</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous voulez g&eacute;rer tous vos abonnements ?</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous voulez g&eacute;rer tous vos cartes ?</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 </span></div>
@@ -361,7 +379,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MesCategories.php">G&eacute;rer mes abonnements</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes cartes</a></span>
 </font>
 </span>
 </td>
@@ -381,7 +399,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MesCategories.php">G&eacute;rer mes abonnements</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/Login.php">G&eacute;rer mes cartes</a></span>
 </font>
 </span>
 </a>
@@ -455,7 +473,8 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 </table>
 </div>
 </body>
-</html>'; // message qui dira que le destinataire a bien lu votre mail
+</html>';
+        
         // maintenant, l'en-tête du mail
         /*$header = "From: [Plateforme]\r\n"; 
         $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
@@ -467,20 +486,24 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
      // En-têtes additionnels
     
-     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>';
+     $headers[] = 'From: [Plateforme]';
 
      
      
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         
+            }
+     
+} else {
+    ?>
 
+       <script>
+           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(Le nombre de personne doit être positif)");
+           document.location.href = 'Creer1Atelier.php';
+        </script>
         
-        
-        
-         }  
-
-
+        <?php     
+}
 
    
-
 ?>

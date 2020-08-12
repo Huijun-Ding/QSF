@@ -153,6 +153,50 @@ CREATE TABLE `abonner` (
 --
 -- ------------------------------------------------------------------------------------------------
 --
+-- Table structure for table `ateliers`
+--
+
+DROP TABLE IF EXISTS `ateliers`;
+
+CREATE TABLE `ateliers` (
+  `CodeA` int(10) NOT NULL AUTO_INCREMENT,
+  `TitreA` text(30) NOT NULL,
+  `DescriptionA` text(200) NOT NULL,
+  `DateA` text(50) NOT NULL,
+  `LieuA` text(50) NOT NULL,
+  `NombreA` int(10) NOT NULL,
+  `DatePublicationA` date,
+  `URL` text(50) NOT NULL,
+  `PlusA` text(50) NULL,
+  `TypeA` enum('Pro','Perso','Pro et Perso'),
+  `CodeC` int(10) NOT NULL,
+  `VisibiliteA` tinyint(1) default 1,
+  PRIMARY KEY (`CodeA`),
+  CONSTRAINT `nb_positive` check ((`NombreA`>0))
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `atelier`
+--
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `participera`
+--
+
+DROP TABLE IF EXISTS `participera`;
+
+CREATE TABLE `participera` (
+  `CodeU` int(10) NOT NULL,
+  `CodeA` int(10) NOT NULL,
+  `RoleA` enum('createur','participant') NULL,
+  PRIMARY KEY (`CodeU`,`CodeA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+--
+-- Dumping data for table `participera`
+--
+-- ------------------------------------------------------------------------------------------------
+
+--
 -- Table structure for table `projets`
 --
 DROP TABLE IF EXISTS `projets`;
@@ -293,12 +337,12 @@ UNLOCK TABLES;
     `CodeEM` INT(10) AUTO_INCREMENT, 
     `Provenance` INT(10) NOT NULL,
     `Destinataire` INT(10) NOT NULL,
-    `CodeCarte` INT(10) NOT NULL,
-    `TypeCarte` enum('besoin','talent') NOT NULL,
     `Sujet` TEXT(200) NOT NULL,
     `Contenue` TEXT(1000) NOT NULL,
     `DateEvaluation` DATE NOT NULL,
     `VisibiliteB` enum('1','0') default 1,
+    `CodeCarte` INT(10) NOT NULL,
+    `TypeCarte` enum('besoin','talent') NOT NULL,
     PRIMARY KEY (`CodeEM`,`Provenance`,`Destinataire`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
