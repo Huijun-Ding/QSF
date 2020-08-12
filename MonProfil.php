@@ -151,7 +151,7 @@ if(isset($_SESSION['email'])) {
                 <form method="POST" action="monespace.fonction.php">
                    <?php 
                     echo ('<p>Type d\'information affichée : </p>'); 
-                    if ($_SESSION['type'] == NULL){
+                    if ($_SESSION['type'] == ''){
                         echo ('<div class="switch-field">');
                         echo ('<input type="radio" id="radio-three" name="switch-two" value="" checked/>');
                         echo ('<label for="radio-three">Tout</label>');
