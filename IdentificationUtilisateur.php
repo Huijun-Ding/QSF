@@ -26,7 +26,6 @@ if(isset($_POST['email'])){
                 $_SESSION['role'] = 'admin';              
                 ?>
                 <script>
-                    alert("Connexion réussit! ");
                     document.location.href = window.history.go(-2);
                 </script>
             <?php
@@ -52,7 +51,6 @@ if(isset($_POST['email'])){
                 $_SESSION['password'] = $Password;                 
                 ?>
                 <script>
-                    alert("Connexion réussit! ");
                     document.location.href = window.history.go(-2);
                 </script>
             <?php

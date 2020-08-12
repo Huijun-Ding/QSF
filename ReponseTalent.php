@@ -133,7 +133,7 @@
                 <hr> 
                 <?php
                 require_once('Fonctions.php');
-                $query = "select t.CodeT, t.TypeT, t.VisibiliteT, t.TitreT, t.DatePublicationT, t.DescriptionT from talents t where t.TitreT = '{$_GET['titre']}' "; //au cas où qu'on a besoin d'afficher d'autres infos que le titre
+                $query = "SELECT e.Sujet, e.Contenue, u.Email, t.VisibiliteT, e.Provenance FROM emails AS e, utilisateurs AS u, talents AS t WHERE e.TypeCarte = 'talent' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND t.CodeT = e.CodeCarte"; 
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -141,14 +141,13 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if ($ligne["VisibiliteT"] == 1) {   
-                        echo ('<h3>'.$ligne["TitreT"]. '</h3>');                                             
-                        echo ('<p>contenu du mail, envoyé par un apprenant, via admin</p>');             
+                        echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
+                        echo ('<p>'.$ligne["Contenue"]. '</p><br>'); 
+                        echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a>');
+                        echo ('<a href="talentnon.html.php"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
+                    }
                 }
-                }
-                 ?>
-                <hr> 
-                <a href="talentoui.html.php"><button type="button" class="btn btn-primary">Possible</button></a>
-                <a href="talentnon.html.php"><button type="button" class="btn btn-secondary">Pas possible</button></a>
+                ?>    
           </div>
         </div>
   <hr> 

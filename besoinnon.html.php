@@ -127,6 +127,14 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
+    <?php
+   /* $req = "UPDATE besoins SET ReponseT = ReponseT - 1 WHERE CodeT = {$_GET['codecarte']}";
+    mysqli_query($session, $req);
+
+    $query = "UPDATE emails SET VisibiliteE = '0' WHERE CodeCarte = {$_GET['codecarte']} AND TypeCarte = 'besoin' AND Provenance = {$_SESSION['provenance']}";
+    mysqli_query ($session, $query); */
+    ?>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">
           <div class="container">
               <h1>Pourquoi ?</h1><hr>

@@ -270,7 +270,7 @@ if(isset($_SESSION['email'])) {
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] > 0) {
                             echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?titre='.$besoin["CodeB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -358,7 +358,7 @@ if(isset($_SESSION['email'])) {
                             echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
                             if ($talent["ReponseT"] > 0) {
                                 echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?titre='.$talent["CodeT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
