@@ -94,11 +94,11 @@
                         <form action="besoin.email.php" method="POST">
                         <?php 
                         //requête prendre titre de besoin
-                         $query1 = "select b.CodeB, b.TitreB, s.CodeU from besoins as b, saisir as s where b.CodeB = {$_GET['c']} and b.CodeB = s.CodeB";
+                         $query1 = "select CodeB, TitreB from besoins where CodeB = {$_GET['c']}";
                          $result = mysqli_query ($session, $query1);
                          
                          if (mysqli_num_rows($result)>0) {       
-                              while ($besoin = mysqli_fetch_array($result)) {         
+                              if ($besoin = mysqli_fetch_array($result)) {         
                                 echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" name="sujet" value="[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin '.$besoin["TitreB"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
@@ -109,11 +109,12 @@
                                 echo('</textarea>');     
                                 echo ('</div>');
                                 echo ('<input type="hidden" name="codecarte" value="'.$besoin['CodeB'].'">');
-                                echo ('<input type="hidden" name="destinataire" value="'.$besoin['CodeU'].'">');
-                                echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');                               
-                                echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');                               
+                                echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');                                                         
                             }
-                        } ?> 
+                        } 
+                        
+                        echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');     
+                        ?> 
                         </form>
                 </div>    
             </div>
