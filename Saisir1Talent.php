@@ -32,7 +32,7 @@ if (mysqli_stmt_execute($stmt) === true) {
             $Email = $email['Email'];
         
         $destinataire = "$Email"; // adresse mail du destinataire
-        $sujet = "Création de nouvelle carte"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Création de nouvelle carte"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -480,7 +480,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
      // En-têtes additionnels
     
-     $headers[] = 'From: [Plateforme]';
+     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>';
 
      
      

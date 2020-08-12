@@ -21,7 +21,7 @@ require_once('Fonctions.php');
             <h5>'.$slide1['TextS1'].'</h5>
             <hr class="my-4">
             <p>'.$slide1['TextS2'].'</p>
-            <button class="btn btn-light" onclick="document.location=\'https://notmoebius.github.io/quaidessavoirfaire/\'">En savoir plus</button>
+            <button class="btn btn-light" onclick="document.location=\'https://qualif-qsf.cpam31.fr/lp/index.php\'">En savoir plus</button>
             <p><br></p>
           </div>
         </div>';

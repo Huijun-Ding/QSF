@@ -7,7 +7,7 @@
             //email pour evaluation de l'expérience
             $to = "{$email['Email']}"; // adresse mail du destinataire
             $to .= "{$_SESSION['email']}";
-            $subject = "[Noreply] Evaluation sur votre expérience"; // sujet du mail
+            $subject = "[COUP DE MAIN, COUP DE POUCE] Evaluation sur votre expérience"; // sujet du mail
             $content = '
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -348,7 +348,7 @@
             <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/evaluation.html.php">Oui,&nbsp; &eacute;valuer</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/evaluation-talent.html.php">Oui,&nbsp; &eacute;valuer</a></span>
             </font>
             </span>
             </td>
@@ -368,7 +368,7 @@
 
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/evaluation.html.php">Oui,&nbsp; &eacute;valuer</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/evaluation-talent.html.php">Oui,&nbsp; &eacute;valuer</a></span>
             </font>
             </span>
             </a>
@@ -492,7 +492,7 @@
             </html> ';
             $from = 'MIME-Version: 1.0' . "\r\n";
             $from .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-            $from .= 'From: Plateforme<qsf@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
+            $from .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
             mail ($to, $subject, $content, $from); // on envois le mail  
 ?>
 

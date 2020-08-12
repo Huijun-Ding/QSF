@@ -97,7 +97,7 @@ CREATE TABLE `utilisateurs` (
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
   `Anonyme` tinyint(1) default 1,
-  `TypeU` enum('Pro','Perso'),
+  `TypeU` enum('Pro','Perso',''),
   `RoleU` text(30) NULL default NULL,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -278,7 +278,7 @@ UNLOCK TABLES;
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
   LOCK TABLES `slides` WRITE;
-  INSERT INTO `slides` VALUES (1, "Bienvenue !", 'https://r1pbk8s6fm-flywheel.netdna-ssl.com/wp-content/uploads/2018/04/map-connectivity-1200x400.jpg', "Une plateforme qui permet de partager les compétences entre collaborateurs.", "Partageons nos talents, la solitarité c'est aussi entre nous.", '');
+  INSERT INTO `slides` VALUES (1, "Bienvenue chez COUP DE MAIN, COUP DE POUCE !", 'https://r1pbk8s6fm-flywheel.netdna-ssl.com/wp-content/uploads/2018/04/map-connectivity-1200x400.jpg', "COUP DE MAIN, COUP DE POUCE est une plateforme qui permet de partager les compétences entre collaborateurs.", "Partageons nos talents, la solitarité c'est aussi entre nous.", '');
   INSERT INTO `slides` VALUES (2, "Oui, vous avez des talents !", "https://www.bravopromo.fr/cdn/blog/1200x400/le-green-friday-par-bravopromo-201911151231-preview.jpg", "", "", "");
   INSERT INTO `slides` VALUES (3, "Nouvelle du jour", "https://gray-ktuu-prod.cdn.arcpublishing.com/resizer/gDT0TCs6HrkaegOnMo6p0ZZX694=/1200x400/smart/cloudfront-us-east-1.images.arcpublishing.com/gray/3BWLQZ7DZ5NMFF35HJEJ7KFTR4.jpg", "Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content.", "", "");
   INSERT INTO `slides` VALUES (4, "Retours d'expériences des utilisateurs", "https://i.pinimg.com/originals/d1/a5/d3/d1a5d3d96f0862664846c7800e3c8aff.jpg", "Some quick example text to build on the card title and make up the bulk of the card\'s content.", "Some quick example text to build on the card title and make up the bulk of the card\'s content.", "Some quick example text to build on the card title and make up the bulk of the card\'s content.");
@@ -296,6 +296,7 @@ UNLOCK TABLES;
     `Sujet` TEXT(200) NOT NULL,
     `Contenue` TEXT(1000) NOT NULL,
     `DateEvaluation` DATE NOT NULL,
+    `VisibiliteB` enum('1','0') default 1,
     PRIMARY KEY (`CodeEM`,`Provenance`,`Destinataire`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 

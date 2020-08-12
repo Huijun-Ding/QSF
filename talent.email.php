@@ -17,7 +17,7 @@
         while ($email = mysqli_fetch_array($result)) {
             // email pour répondre un besoin
             $destinataire = $mail["Email"]; // adresse mail du destinataire
-            $sujet = "Demande de partage votre talent {$email["TitreT"]}"; // sujet du mail
+            $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$email["TitreT"]}"; // sujet du mail
             $message = '
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -457,7 +457,7 @@
             ; // Contenue du mail 
             $headers = "MIME-Version: 1.0" . "\r\n";
             $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-            $headers .= 'From: Plateforme<qsf@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
+            $headers .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
             mail ($destinataire, $sujet, $message, $headers); // on envois le mail  
         }
     }
