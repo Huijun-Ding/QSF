@@ -28,14 +28,21 @@
     mysqli_query ($session, $query);
     
     //requête prendre l'email destinataire
-    $query2 = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";
-    $result = mysqli_query ($session, $query2);
-        
+    $liste = '';
+    $req2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";
+    foreach  (mysqli_query ($session, $req2) as $ligne) {
+        $liste = $ligne['Email'].','.' ';
+    }
+    $liste = rtrim($liste,', ');
+    echo $liste;
+    
+    $query2 = "select b.TitreB from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";;
+    $result = mysqli_query ($session, $query2);   
     if (mysqli_num_rows($result)>0) { 
         if ($email = mysqli_fetch_array($result)) { 
             // email pour répondre un besoin
-            $destinataire = "{$email['Email']}" . ","; // adresse mail du destinataire   
-            $sujet = "[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$email['TitreB']} "; // sujet du mail
+            $destinataire = "$liste"; // adresse mail du destinataire   
+            $sujet = "[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$email['TitreB']}"; // sujet du mail
             $message = '  
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
