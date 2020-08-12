@@ -4,25 +4,29 @@
     //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd    
     $dateevaluation  = mktime(0, 0, 0, date("m")  , date("d")+15, date("Y"));
 
-    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation) values({$_SESSION['codeu']},{},{$_POST['sujet']},{$_POST['contenu_besoin']},'$dateevaluation')";
+    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
     mysqli_query ($session, $sql);
     
+   // echo 'Provenance : '.$_SESSION['codeu'].'';
+   // echo 'Destinataire : '.$_POST['destinataire'].'';
+    //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
+    //echo 'Contenue : '.$_POST['contenu_talent'].'';
+    //echo 'DateEvaluation : '.$dateevaluation.'';
+    //echo 'CodeCarte : '.$_POST['codecarte'].'';
+    
+    // incrémenter sur besoins.ReponseT
+
+    $query = "UPDATE talents SET ReponseT = ReponseT + 1 WHERE CodeT = {$_POST['codecarte']}";
+    mysqli_query ($session, $query);
+    
     //requête prendre l'email destinataire
-    $query = "select b.TitreB, u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['c']}";
-    $result = mysqli_query ($session, $query);   
-    
-    
-    
-    
-    
-    //requête prendre l'email destinataire
-    $query2 = "select b.TitreT, u.Email from utilisateurs u, talents t, proposer p where u.CodeU = p.CodeU and t.CodeT = p.CodeT and t.CodeT = {$_GET['t']}";
+    $query2 = "select t.TitreT, u.Email from utilisateurs u, talents t, proposer p where u.CodeU = p.CodeU and t.CodeT = p.CodeT and t.CodeT = {$_POST['codecarte']}";
     $result = mysqli_query ($session, $query2);
 
     if (mysqli_num_rows($result)>0) {       
         while ($email = mysqli_fetch_array($result)) {
             // email pour répondre un besoin
-            $destinataire = $mail["Email"]; // adresse mail du destinataire
+            $destinataire = $email["Email"]; // adresse mail du destinataire
             $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$email["TitreT"]}"; // sujet du mail
             $message = '
             <!DOCTYPE html>

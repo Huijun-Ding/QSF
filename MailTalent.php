@@ -89,16 +89,16 @@
               <hr>
                 <div class="form-group row">
                     <label for="staticEmail" class="col-sm-2 col-form-label"><strong>Sujet</strong></label>
-
                     <div class="col-sm-10">
+                        <form action="talent.email.php" method="POST">
                         <?php 
                         //requête prendre titre de besoin
-                         $query = "select CodeT, TitreT from talents where CodeT = {$_GET['t']} ";
+                         $query = "select t.CodeT, p.CodeU, t.TitreT from talents as t, proposer as p where t.CodeT = {$_GET['t']} and t.CodeT = p.CodeT";
                          $result = mysqli_query ($session, $query);
                          
                          if (mysqli_num_rows($result)>0) {       
                               while ($talent = mysqli_fetch_array($result)) {         
-                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" value="[Plateforme] Demande de partager votre talent '.$talent["TitreT"].' " disabled >');                         
+                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" name="sujet" value="[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$talent["TitreT"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
                                 echo('<div class="form-group">');
@@ -107,10 +107,14 @@
                                 echo ('Bonjour,');
                                 echo('</textarea>');     
                                 echo ('</div>');
-                                echo ('<a href="talent.email.php?t='.$talent['CodeT'].'"><button type="submit" class="btn btn-primary">Envoyer</button></a>');                               
+                                echo ('<input type="hidden" name="codecarte" value="'.$talent['CodeT'].'">');
+                                echo ('<input type="hidden" name="destinataire" value="'.$talent['CodeU'].'">');
+                                echo ('<input type="hidden" name="titrecarte" value="'.$talent['TitreT'].'">');
+                                echo ('<button type="submit" class="btn btn-primary">Envoyer</button>');                               
                             }
                         }
                         ?>
+                        </form>
                     </div>
                 </div>
         <script>

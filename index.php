@@ -67,11 +67,11 @@
     
             if(isset($_SESSION['email'])){    
                 
-                $query = "select b.ReponseB from besoins b, saisir s where s.CodeB = b.CodeB and s.CodeU = {$usercode} ";
+                $query = "select b.ReponseB, t.ReponseT from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode}";
                 $result = mysqli_query ($session, $query);
                 
-                while ($besoin = mysqli_fetch_array($result)) { 
-                    if ($besoin["ReponseB"] > 0) {
+                while ($ligne = mysqli_fetch_array($result)) { 
+                    if ($ligne["ReponseB"] > 0 or $ligne['ReponseT'] > 0 ) {
                         echo ('<span class="badge badge-danger">Nouveau message</span>');                           
                     }
                 }    

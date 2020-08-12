@@ -14,7 +14,7 @@
     if (mysqli_num_rows($result)>0) { 
         if ($email = mysqli_fetch_array($result)) { 
             // email pour répondre un besoin
-            $destinataire = "{$email['Email']}"; // adresse mail du destinataire   
+            $destinataire = "{$email['Email']}" . ","; // adresse mail du destinataire   
             $sujet = "[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$email['TitreB']} "; // sujet du mail
             $message = '  
             <!DOCTYPE html>

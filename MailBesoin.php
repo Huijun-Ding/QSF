@@ -99,7 +99,7 @@
                          
                          if (mysqli_num_rows($result)>0) {       
                               while ($besoin = mysqli_fetch_array($result)) {         
-                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" name="sujet" value="[Plateforme] Répondre à votre besoin '.$besoin["TitreB"].' " disabled >');                         
+                                echo ('<input type="text" readonly class="form-control-plaintext" id="staticEmail" name="sujet" value="[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin '.$besoin["TitreB"].' " disabled >');                         
                                 echo('</div>');
                                 echo('</div>');
                                 echo('<div class="form-group">');

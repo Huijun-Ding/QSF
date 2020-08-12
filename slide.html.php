@@ -17,8 +17,8 @@ require_once('Fonctions.php');
         echo '<div class="carousel-item active">
           <img src="'.$slide1['PhotoS'].'" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h1>'.$slide1['TitreS'].'</h1>
-            <h5>'.$slide1['TextS1'].'</h5>
+            <h1>'.$slide1['TitreS'].'</h1><br>
+            <h6>'.$slide1['TextS1'].'</h6>
             <hr class="my-4">
             <p>'.$slide1['TextS2'].'</p>
             <button class="btn btn-light" onclick="document.location=\'https://qualif-qsf.cpam31.fr/lp/index.php\'">En savoir plus</button>
