@@ -689,7 +689,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
-              <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='text' placeholder="15"> jours </p>
+              <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" min="0"> jours </p>
               <button type="button" class="btn btn-dark"> Changer </button>
             </div>
 
