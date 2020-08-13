@@ -485,5 +485,5 @@
             mail ($destinataire, $sujet, $message, $headers); // on envois le mail 
         }
     }      
-    //header("Location: index.php");
+    header("Location: index.php");
 ?>

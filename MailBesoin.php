@@ -153,11 +153,10 @@
                                 echo('</textarea>');     
                                 echo ('</div>');
                                 echo ('<input type="hidden" name="codecarte" value="'.$besoin['CodeB'].'">');
-                                echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');                                                         
+                                echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');     
+                                echo ('<button type="submit" class="btn btn-primary">Envoyer</button>');  
                             }
-                        } 
-                        
-                        echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');     
+                        }  
                         ?> 
                         </form>
                 </div>    
