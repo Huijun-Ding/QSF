@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-<<<<<<< HEAD
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>Accueil.php</url>
@@ -13,28 +12,16 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/talent.email.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MailBesoin.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoin.email.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/index.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/IdentificationUtilisateur.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinx.fonction.php</file>
-=======
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReabonnerCategories.php</file>
-<<<<<<< HEAD
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/DesabonnerCategories.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BesoinX.php</file>
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Besoin.php</file>
-=======
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MonProfil.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Atelier.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Atelier.php</file>
->>>>>>> 36b5c66b80843e938de773e9954b4b3687164a94
->>>>>>> b91f453acf89a3ff36d5a1d0c5bd2f5e6399526e
         </group>
     </open-files>
 </project-private>

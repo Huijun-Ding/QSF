@@ -34,7 +34,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">Accueil<!--<span class="sr-only">(current)</span>--></a> 
           </li>
           <li class="nav-item">
@@ -46,7 +46,7 @@
           <li class="nav-item">
               <a class="nav-link" href="Atelier.php">Ateliers</a>
           </li> 
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="Projet.php">Projets</a>
           </li>                
           <li class="nav-item">
@@ -162,7 +162,7 @@
 				echo ('<div class="card-body card text-center">');
 				echo ('<h5 class="card-title">'.$ligne["TitreP"].'</h5>');
 				echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireP"].'</p>');
-				echo ('<a href="BesoinX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
+				echo ('<a href="ProjetX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
 				echo ('</div>');  
 				echo ('</div>');         
 				}
