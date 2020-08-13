@@ -244,7 +244,7 @@ CREATE TABLE `compteurb` (
   `NumNonB` TINYINT(1),
   `RaisonB` TEXT(500),
    PRIMARY KEY (`CodeCB`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+) ENGINE=INNODB DEFAULT CHARSET=latin1;  
 
 -- --------------------------------------------------------------------------------------------
 --
