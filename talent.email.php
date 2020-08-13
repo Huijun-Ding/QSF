@@ -23,6 +23,8 @@
 
     if (mysqli_num_rows($result)>0) {       
         while ($email = mysqli_fetch_array($result)) {
+            //echo $email["Email"];
+            //echo $email["TitreT"];
             // email pour répondre un besoin
             $destinataire = $email["Email"]; // adresse mail du destinataire
             $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$email["TitreT"]}"; // sujet du mail
@@ -463,10 +465,10 @@
             </body>
             </html>'                
             ; // Contenue du mail 
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-            $headers .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
-            mail ($destinataire, $sujet, $message, $headers); // on envois le mail  
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type:text/html;charset=iso-8859-1';
+            $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>'; // En-têtes additionnels  
+            mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         }
     }
     header("Location: index.php");

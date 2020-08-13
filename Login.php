@@ -139,7 +139,7 @@
                     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
                     <div class="checkbox mb-3">
                             <label>
-                              <input type="checkbox" value="remember-me"> Remember me
+                              <br><input type="checkbox" value="remember-me"> se souvenir de moi
                               <p> <a href="Inscription.php" target="_blank"> S'inscrire <a> </p>
                             </label>
                     </div>

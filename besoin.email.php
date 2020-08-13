@@ -479,10 +479,10 @@
             </div>
             </body>
             </html> ';               
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-            $headers .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
-            mail ($destinataire, $sujet, $message, $headers); // on envois le mail 
+            $headers[] = 'MIME-Version: 1.0';
+            $headers[] = 'Content-type:text/html;charset=iso-8859-1';
+            $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>'; // En-têtes additionnels  
+            mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail 
         }
     }      
     header("Location: index.php");

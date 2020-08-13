@@ -130,7 +130,7 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> Creer un atelier </h1>
+            <h1> Créer un atelier </h1>
             <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
