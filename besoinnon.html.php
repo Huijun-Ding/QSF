@@ -128,11 +128,12 @@
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
     <?php
-   /* $req = "UPDATE besoins SET ReponseT = ReponseT - 1 WHERE CodeT = {$_GET['codecarte']}";
+ 
+    $req = "UPDATE besoins SET ReponseB = ReponseB - 1 WHERE CodeB = {$_GET['c']}";
     mysqli_query($session, $req);
 
-    $query = "UPDATE emails SET VisibiliteE = '0' WHERE CodeCarte = {$_GET['codecarte']} AND TypeCarte = 'besoin' AND Provenance = {$_SESSION['provenance']}";
-    mysqli_query ($session, $query); */
+    $query = "UPDATE emails SET VisibiliteE = 0 WHERE CodeCarte = {$_GET['c']} AND TypeCarte = 'besoin' AND Provenance = {$_GET['p']}";
+    mysqli_query ($session, $query); 
     ?>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">

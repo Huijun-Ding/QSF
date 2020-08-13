@@ -133,7 +133,7 @@
                 <hr> 
                 <?php
                 require_once('Fonctions.php');
-                $query = "SELECT e.Sujet, e.Contenue, u.Email, t.VisibiliteT, e.Provenance FROM emails AS e, utilisateurs AS u, talents AS t WHERE e.TypeCarte = 'talent' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND t.CodeT = e.CodeCarte"; 
+                $query = "SELECT e.CodeCarte, e.Sujet, e.Contenu, u.Email, t.VisibiliteT, e.Provenance FROM emails AS e, utilisateurs AS u, talents AS t WHERE e.TypeCarte = 'talent' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND t.CodeT = e.CodeCarte"; 
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -142,9 +142,9 @@
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if ($ligne["VisibiliteT"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
-                        echo ('<p>'.$ligne["Contenue"]. '</p><br>'); 
+                        echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
                         echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a>');
-                        echo ('<a href="talentnon.html.php"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
+                        echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
                     }
                 }
                 ?>    
