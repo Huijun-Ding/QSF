@@ -1,15 +1,15 @@
 <?php 
     require_once ('Fonctions.php');
     
-    //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd    
+    //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd    
     $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
-    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
+    $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
     mysqli_query ($session, $sql);
     
    // echo 'Provenance : '.$_SESSION['codeu'].'';
    // echo 'Destinataire : '.$_POST['destinataire'].'';
     //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
-    //echo 'Contenue : '.$_POST['contenu_talent'].'';
+    //echo 'Contenu : '.$_POST['contenu_talent'].'';
     //echo 'DateEvaluation : '.$dateevaluation.'';
     //echo 'CodeCarte : '.$_POST['codecarte'].'';
     

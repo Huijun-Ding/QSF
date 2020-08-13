@@ -133,7 +133,9 @@
                 <hr> 
                 <?php
                 require_once('Fonctions.php');
+
                 $query = "SELECT e.CodeCarte, e.Sujet, e.Contenu, u.Email, t.VisibiliteT, e.Provenance FROM emails AS e, utilisateurs AS u, talents AS t WHERE e.TypeCarte = 'talent' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND t.CodeT = e.CodeCarte"; 
+
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {

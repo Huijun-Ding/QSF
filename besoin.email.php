@@ -1,7 +1,7 @@
 <?php 
     require_once ('Fonctions.php');
     
-    //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd
+    //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd
     $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
 
     $req = "select s.CodeU from besoins as b, saisir as s where b.CodeB = {$_POST['codecarte']} and b.CodeB = s.CodeB";                         
@@ -11,7 +11,7 @@
     }
                         
     foreach ($TableauDestinataires as $apprenant) {
-        $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},$apprenant,'[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$_POST["titrecarte"]}','{$_POST['contenu_besoin']}','$dateevaluation',1,{$_POST['codecarte']},'besoin')";
+        $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},$apprenant,'[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$_POST["titrecarte"]}','{$_POST['contenu_besoin']}','$dateevaluation',1,{$_POST['codecarte']},'besoin')";
         mysqli_query ($session, $sql);
     }
     
@@ -19,7 +19,7 @@
     //print_r($TableauDestinataires);
     //print_r($apprenant);
     //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
-    //echo 'Contenue : '.$_POST['contenu_besoin'].'';
+    //echo 'Contenu : '.$_POST['contenu_besoin'].'';
     //echo 'DateEvaluation : '.$dateevaluation.'';
     //echo 'CodeCarte : '.$_POST['codecarte'].'';
     

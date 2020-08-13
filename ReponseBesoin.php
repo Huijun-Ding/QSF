@@ -133,7 +133,9 @@
                 <hr> 
                 <?php
                 require_once('Fonctions.php');
+
                 $query = "SELECT e.CodeCarte, e.Sujet, e.Contenu, u.Email, b.DateButoireB, b.VisibiliteB, e.Provenance FROM emails AS e, utilisateurs AS u, besoins AS b WHERE e.TypeCarte = 'besoin' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND b.CodeB = e.CodeCarte"; 
+
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -142,7 +144,7 @@
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
-                        echo ('<p>'.$ligne["Contenu"]. '</p><br>');
+                        echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
                         echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a>');
                         echo ('<a href="besoinnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
                     }

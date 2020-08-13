@@ -244,7 +244,7 @@ CREATE TABLE `compteurb` (
   `NumNonB` TINYINT(1),
   `RaisonB` TEXT(500),
    PRIMARY KEY (`CodeCB`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+) ENGINE=INNODB DEFAULT CHARSET=latin1;  
 
 -- --------------------------------------------------------------------------------------------
 --
@@ -338,7 +338,7 @@ UNLOCK TABLES;
     `Provenance` INT(10) NOT NULL,
     `Destinataire` INT(10) NOT NULL,
     `Sujet` TEXT(200) NOT NULL,
-    `Contenue` TEXT(1000) NOT NULL,
+    `Contenu` TEXT(1000) NOT NULL,
     `DateEvaluation` DATE NOT NULL,
     `VisibiliteE` tinyint(1) default 1,
     `CodeCarte` INT(10) NOT NULL,
