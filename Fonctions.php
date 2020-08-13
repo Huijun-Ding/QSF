@@ -49,6 +49,14 @@
                 }   
             }
             
+            if (isset($_SESSION['email'])) {                     
+                 $requete = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                 $resultat = mysqli_query ($session, $requete);
+                 if ($ligne = mysqli_fetch_array($resultat)) {
+                     $_SESSION['codeu'] = $ligne['CodeU'];
+                 }
+            }
+            
         // 5. récupérer le type d'info d'un utilisateur
             if (isset($_SESSION['email'])) {
                 $query = "select TypeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";

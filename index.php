@@ -18,15 +18,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Plateforme</title>
+    <title>COUP DE MAIN, COUP DE POUCE</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!--<link rel="stylesheet" type="text/css" href="evaluation.css">-->
     <script src="jquery.js"></script>
+    <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">Plateforme</a>
+      <a class="navbar-brand" href="index.php">COUP DE MAIN, COUP DE POUCE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span> </a> 
+            <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -43,16 +45,20 @@
             <a class="nav-link" href="Talent.php">Talents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+              <a class="nav-link" href="Atelier.php">Ateliers</a>
           </li> 
           <li class="nav-item">
-              <a class="nav-link" href="Atelier.php">Ateliers</a>
+            <a class="nav-link" href="Projet.php">Projets</a>
+          </li>                
+          <li class="nav-item">
+            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
           </li> 
         </ul>
           
           <form  method="get">
           <?php
             require_once 'Fonctions.php';
+            
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
                 echo ('<button type="radio" id="tout" class="btn btn-secondary btn-sm" name="tout">Tout</button>');
@@ -70,13 +76,13 @@
     
             if(isset($_SESSION['email'])){    
                 
-                $query = "select b.ReponseB from besoins b, saisir s where s.CodeB = b.CodeB and s.CodeU = {$usercode} ";
+                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode}";
                 $result = mysqli_query ($session, $query);
                 
-                while ($besoin = mysqli_fetch_array($result)) { 
-                    if ($besoin["ReponseB"] == 1) {
+                while ($ligne = mysqli_fetch_array($result)) { 
+                    if ($ligne["Reponse"] > 0) {
                         echo ('<span class="badge badge-danger">Nouveau message</span>');                           
-                    }
+                    } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
@@ -184,7 +190,7 @@
                         } 
                 }
                 } else {
-                    echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                    echo('<h5> Aucun résultat</h5>');
                 } 
              ?>
             </div>
@@ -247,7 +253,7 @@
                   }
                 }
             } else {
-              echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+              echo('<h5> Aucun résultat</h5>');
             }  
             ?>
             </div>            
@@ -449,7 +455,7 @@
                             } 
                     }
                     } else {
-                        echo('<h5> Aucun résultat pour : '.$mot.'</h5>');
+                        echo('<h5> Aucun résultat</h5>');
                     }                 
              ?>
             </div>

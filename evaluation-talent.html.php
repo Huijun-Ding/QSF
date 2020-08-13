@@ -22,8 +22,9 @@
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="evaluation.css">
     <script src="jquery.js"></script>
-    <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
+    <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -35,7 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil<!--<span class="sr-only">(current)</span>--></a> 
+            <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -56,7 +57,7 @@
           
           <form  method="get">
           <?php
-            /*require_once 'Fonctions.php';
+            require_once 'Fonctions.php';
             
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
@@ -64,7 +65,7 @@
                 echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
                 echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
                 echo ('</div>');
-            } */
+            } 
           ?>
           </form>      
                    
@@ -126,82 +127,72 @@
         </ul>
       </div>
     </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-        <div class="jumbotron">
-          <div class="container">
-			
-			<h1> CREER UN COMPTE </h1>
-			
-                        <form method = 'POST' action="AjouterUtilisateurs.php">
-			  <div class="form-row">
-				<div class="form-group col-md-6">
-				  <label for="inputEmail4">Nom</label>
-				  <input type="text" class="form-control" name="nom" id="inputEmail4" maxlength="40" required>
-				</div>
-				<div class="form-group col-md-6">
-				  <label for="inputPassword4" >Prénom</label>
-				  <input type="text" class="form-control" name="prenom" id="inputPassword4" maxlength="25" required>
-				</div>
-			  </div>
-			  <div class="form-group">
-				<label for="inputAddress">Email (Perso)</label>
-				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
-			  </div>
-                        
-			  <div class="form-group">
-				<div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck" required="">
-				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
-				  </label>
-				</div>
-			  </div>
-                          
-			  <div class="form-row">
-				<div class="form-group col-md-6">
-				  <label for="inputPassword1">Mot de Passe</label>
-				  <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" maxlength="40" required>
-				</div>                       
-				<div class="form-group col-md-6">
-				  <label for="inputPassword4">Confirmation de Mot de Passe </label>
-				  <input type="password" class="form-control" name="passwordcf" id="exampleInputPassword1"  placeholder="Password Confirmation" maxlength="40" required>
-				</div>
-			  </div>
-                            
-                        <div id="radiotypeu">
-                          <p>Sélectionner le type d'information affichée</p> 
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" value="" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                              Pro et Perso
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios2" value="Pro">
-                            <label class="form-check-label" for="exampleRadios2">
-                              Pro
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="typeu" id="exampleRadios3" value="Perso">
-                            <label class="form-check-label" for="exampleRadios3">
-                              Perso
-                            </label>
-                          </div>
-                            <br>
-                        </div>
-                            
-                        <div class="form-group">
-                              <button type="submit" class="btn btn-dark">S'inscrire</button>
-                        </div>
-            </form>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->  
+<div class="jumbotron">
+  <div class="container">
+      <form method="POST" action="evaluation-talent.fonction.php">
+        <?php
+        require_once 'Fonctions.php';
+        if(isset($_SESSION['email'])) {
 
-          </div>
-        </div>
+                echo '<h1>Evaluer votre expérience [talent]</h1><hr>';
+                echo '<div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Veuillez choisir sur quel talent vous voulez évaluer</label>
+                    </div>
+                    <select class="custom-select" id="talent" name="talent" required>';
 
-    <footer>
-      <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-    </footer>
+                $query = "select t.CodeT, T.TitreT from utilisateurs as u, proposer as p, talents as t WHERE u.Email = '{$_SESSION['email']}' and u.CodeU = p.CodeU and p.CodeT = t.CodeT";
+                $result = mysqli_query ($session, $query);
+                while ($ligne = mysqli_fetch_array($result)) {   
+                    echo "<option value=\"{$ligne['CodeT']}\">{$ligne['TitreT']}</option>";    
+                }  
+                    echo '</select></div>';
+
+                echo '<fieldset>
+                  <legend>Notation :</legend>
+                   <rating>
+                     <input type="radio" name="rating" value="1" aria-label="1 star" required/>
+                     <input type="radio" name="rating" value="2" aria-label="2 stars"/>
+                     <input type="radio" name="rating" value="3" aria-label="3 stars"/>
+                     <input type="radio" name="rating" value="4" aria-label="4 stars"/>
+                     <input type="radio" name="rating" value="5" aria-label="5 stars"/>
+                   </rating>
+                </fieldset>
+                  <br>
+                <fieldset>
+                  <legend>Votre avis nous intéresse :</legend>
+                   <rating>
+                       <textarea name="avis" placeholder=""></textarea><br>'; ?>
+                        <script>
+                            var editor1 = CKEDITOR.replace('avis', {
+                                extraAllowedContent: 'div',
+                                height: 200
+                              });
+                        </script>
+                    <?php echo '    
+                   </rating>
+                </fieldset>';
+                    
+                $query2 = "select CodeU from utilisateurs WHERE Email = '{$_SESSION['email']}' ";
+                $result2 = mysqli_query ($session, $query2);
+                if ($ligne = mysqli_fetch_array($result2)) {
+                    echo '<input id="codeu" name="codeu" type="hidden" value="'.$ligne['CodeU'].'">';
+                } 
+                
+                echo '<input type="reset" class="btn btn-dark">
+                <input type="submit" class="btn btn-dark">'; 
+        } else {
+            echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
+        }           
+        ?>
+               
+      </form>
+  </div>
+</div>
+        <footer>
+          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+        </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -210,5 +201,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-
-

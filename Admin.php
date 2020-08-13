@@ -1,31 +1,67 @@
 <!doctype html>
 <html lang="fr">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173955301-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-173955301-1');
+    </script>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-​
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Plateforme</title>
+    <title>COUP DE MAIN, COUP DE POUCE</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="jquery.js"></script>
+    <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
     
+    <style>
+    .tablink {
+      background-color: #555;
+      color: white;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 17px;
+      width: 15%;
+    }
+
+    .tablink:hover {
+      background-color: #777;
+    }
+
+    /* Style the tab content (and add height:100% for full page content) */
+    .tabcontent {
+      color: black;
+      display: none;
+      padding: 100px 20px;
+      height: 100%;
+    }      
+    </style>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="Admin.php">Plateforme</a>
+      <a class="navbar-brand" href="index.php">COUP DE MAIN, COUP DE POUCE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span> </a> 
+          <li class="nav-item active">
+            <a class="nav-link" href="index.php">Accueil<!--<span class="sr-only">(current)</span>--></a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -34,19 +70,45 @@
             <a class="nav-link" href="Talent.php">Talents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-          </li>  
-          <li class="nav-item">
               <a class="nav-link" href="Atelier.php">Ateliers</a>
           </li> 
+          <li class="nav-item">
+            <a class="nav-link" href="Projet.php">Projets</a>
+          </li>                
+          <li class="nav-item">
+            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
+          </li> 
         </ul>
-
+          
+          <form  method="get">
+          <?php
+            /*require_once 'Fonctions.php';
+            
+            if (empty($_SESSION['email'])){
+                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
+                echo ('<button type="radio" id="tout" class="btn btn-secondary btn-sm" name="tout">Tout</button>');
+                echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
+                echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
+                echo ('</div>');
+            } */
+          ?>
+          </form>      
+                   
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
             <?php
             require_once 'Fonctions.php';
-            
-            if(isset($_SESSION['email'])){
+    
+            if(isset($_SESSION['email'])){    
+                
+                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode}";
+                $result = mysqli_query ($session, $query);
+                
+                while ($ligne = mysqli_fetch_array($result)) { 
+                    if ($ligne["Reponse"] > 0) {
+                        echo ('<span class="badge badge-danger">Nouveau message</span>');                           
+                    } 
+                }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
                     echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
                     echo('</a>');
@@ -59,21 +121,26 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <?php
                 if(isset($_SESSION['email'])){
-                    echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                    echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                    echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                    if(isset($_SESSION['role'])) {
+                        echo ('<a class="dropdown-item" href="Admin.php">Espace admin</a>');
+                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
+                    } else {
+                        echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                        echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
+                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
+                    }
                 ?>
-                    <script>
-                        function Deconnexion() {
-                            alert("Déconnexion réussite !");
-                            }
-                            
-                         $('.navbar-nav mr-auto').find('a').each(function () {
-                            if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
-                                $(this).parent().addClass('active'); // this.className = 'active';
-                            }
-                        });
-                    </script>
+                <script>
+                    function Deconnexion() {
+                        alert("Déconnexion réussite !");
+                        }
+
+                     $('.navbar-nav mr-auto').find('a').each(function () {
+                        if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
+                            $(this).parent().addClass('active'); // this.className = 'active';
+                        }
+                    });
+                </script>
                 <?php
                 } else {
                     echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');
@@ -94,7 +161,7 @@
                 <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" >Utilisateurs</button>
                 <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
                 <button class="tablink" onclick="openPage('Bandeau', this, 'orange')" >Bandeau</button>
-                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>
+                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>              
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
                 <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3><hr>
@@ -468,7 +535,6 @@
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                   </div>
-                  <p>Accéder au profil d'utilisateur. Bloquer un compte avec un mail de prévenance (modal : êtes-vous sûr ? comme ne pouvoir pas réactiver un compte). Moteur de recherche dans nom, prénom, email</p>
                   <form name="Supprimer" action="AdminUtilisateurFonction.php" method="post">
                    <?php
 
@@ -595,37 +661,82 @@
                     echo $note["echoue"]; 
                 }                    
                 echo ('</dd>');
-                echo ('</dl>');                                    
-
-                echo ('<br><h5>Retour d\'expérience</h5><hr>');
-                echo ('<p>Moyenne de notes : ');
-                $moyenne = "select AVG(Note) as moyenne from evaluation";
+                echo ('</dl><br>');    
+               //----------------------------------------------------------------------->                 
+                echo ('<h5>Notes</h5><hr>');
+                echo ('<dl>');
+                echo ('<dt>Note moyenne : ');
+                $moyenne = "SELECT (SUM(b.NoteB) + SUM(t.NoteT))/(COUNT(b.NoteB) + COUNT(t.NoteT)) AS moyenne FROM evaluerb AS b, evaluert AS t";
                 $notemoyenne = mysqli_query ($session, $moyenne);
                 if ($note = mysqli_fetch_array($notemoyenne)) {   
                     echo $note["moyenne"];
-                    echo ('</p>'); 
-                }
-
+                }                               
+                echo ('</dt>');
+                echo ('<dd style="text-indent:2em;"><p> - Moyenne de notes besoin : ');
+                $moyenneb = "select AVG(NoteB) as moyenne from evaluerb";
+                $notemoyenneb = mysqli_query ($session, $moyenneb);
+                if ($noteb = mysqli_fetch_array($notemoyenneb)) {   
+                    echo $noteb["moyenne"];
+                }                               
+                echo ('</p></dd>');                           
+                echo ('<dd style="text-indent:2em;"><p> - Moyenne de notes talent : ');
+                $moyennet = "select AVG(NoteT) as moyenne from evaluert";
+                $notemoyennet = mysqli_query ($session, $moyennet);
+                if ($notet = mysqli_fetch_array($notemoyennet)) {   
+                    echo $notet["moyenne"];
+                } 
+                echo ('</p></dd>');                 
+                echo ('</dl>');
+                //-----------------------------------------------------------------------> 
+                echo ('<br><h5>Retour d\'expérience</h5><hr>');   
+                
+                echo ('<h5>Avis besoin</h5>');
                 echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
                 echo ('<thead>');
                       echo ('<tr>');
+                        echo ('<th scope="col">besoin</th>');
                         echo ('<th scope="col">Note</th>');
                         echo ('<th scope="col">Commentaire</th>');
                       echo ('</tr>');
                     echo ('</thead>');
                     echo ('<tbody>');
-                $query = "select Note, Avis from evaluation where Avis != '' order by CodeE DESC limit 20";
-                $result = mysqli_query ($session, $query);                        
-                if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                                               
+                $requete1 = "select b.TitreB, e.NoteB, e.AvisB from evaluerb as e, besoins as b where e.AvisB != '' and e.CodeB = b.CodeB order by DateEB DESC limit 20";
+                $resultat1 = mysqli_query ($session, $requete1);                        
+                if (mysqli_num_rows($resultat1)>0) {
+                while ($ligne = mysqli_fetch_array($resultat1)) {                                               
                       echo ('<tr>');
-                        echo ('<th scope="row">'.$ligne["Note"].'</th>');
-                        echo ('<td>'.$ligne["Avis"].'</td>');
+                        echo ('<th scope="row">'.$ligne["TitreB"].'</th>');
+                        echo ('<td>'.$ligne["NoteB"].'</td>');
+                        echo ('<td>'.$ligne["AvisB"].'</td>');
                       echo ('</tr>');                     
                 }          
                 } 
-                 echo ('</tbody>');
-                echo ('</table>');                    
+                echo ('</tbody>');
+                echo ('</table><br><br>');                        
+                
+                echo ('<h5>Avis talent</h5>');
+                echo ('<table class="table table-striped">');      /* Tableau pour afficher les catégories existantes*/       
+                echo ('<thead>');
+                      echo ('<tr>');
+                        echo ('<th scope="col">talent</th>');
+                        echo ('<th scope="col">Note</th>');
+                        echo ('<th scope="col">Commentaire</th>');
+                      echo ('</tr>');
+                    echo ('</thead>');
+                    echo ('<tbody>');
+                $requete2 = "select t.TitreT, e.NoteT, e.AvisT from evaluert as e, talents as t where e.AvisT != '' and e.CodeT = t.CodeT order by DateET DESC limit 20";
+                $resultat2 = mysqli_query ($session, $requete2);                        
+                if (mysqli_num_rows($resultat2)>0) {
+                while ($ligne = mysqli_fetch_array($resultat2)) {                                               
+                      echo ('<tr>');
+                        echo ('<th scope="row">'.$ligne["TitreT"].'</th>');
+                        echo ('<td>'.$ligne["NoteT"].'</td>');
+                        echo ('<td>'.$ligne["AvisT"].'</td>');
+                      echo ('</tr>');                     
+                }          
+                } 
+                echo ('</tbody>');
+                echo ('</table>');                  
 
               ?>
             </div>
@@ -639,49 +750,107 @@
         <br>  
         <h4>Modification</h4><hr>
         
-        <form method="POST" action="AdminBandeaFonction.php">           
+        <form method="POST" action="AdminBandeauFonction.php">           
             <h5>Premier slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_1"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_2"></textarea>
+                </div>
+          
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Paragraphe 1</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide1_1"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_3"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Paragraphe 2</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide1_2"></textarea>
-                </div><br>           
-            <!--<h5>Deuxième slide</h5><br>-->
+                    <textarea class="form-control" aria-label="With textarea" name="slide1_4"></textarea>
+                </div><br>        
+                
+            <h5>Deuxième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 2</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide2_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide2_2"></textarea>
+                </div><br>
+            
             <h5>Troisième slide</h5>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Titre slide 3</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_1"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Photo (URL)</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_2"></textarea>
+                </div>            
+            
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Nouvelle</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide3"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide3_3"></textarea>
                 </div><br>
+                
             <h5>Quatième slide</h5>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 1</span>
+                      <span class="input-group-text">Titre slide 4</span>
                     </div>
                     <textarea class="form-control" aria-label="With textarea" name="slide4_1"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 2</span>
+                      <span class="input-group-text">Photo (URL)</span>
                     </div>
                     <textarea class="form-control" aria-label="With textarea" name="slide4_2"></textarea>
+                </div>             
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Commentaire 1</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_3"></textarea>
                 </div>
             
                 <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Utilisateur 3</span>
+                      <span class="input-group-text">Commentaire 2</span>
                     </div>
-                    <textarea class="form-control" aria-label="With textarea" name="slide4_3"></textarea>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_4"></textarea>
+                </div>
+            
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Commentaire 3</span>
+                    </div>
+                    <textarea class="form-control" aria-label="With textarea" name="slide4_5"></textarea>
                 </div><br>           
             <input type="submit" class="btn btn-dark" value="Modifier">
         </form>        
@@ -689,39 +858,14 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
             <div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
-              <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" min="0"> jours </p>
-              <button type="button" class="btn btn-dark"> Changer </button>
+
+                <form method="GET" action="AdminParametresFonction.php">
+                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" min="0" name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button>
+                </form>
+
             </div>
-
-            <style>
-
-            /* Style tab links */
-            .tablink {
-              background-color: #555;
-              color: white;
-              float: left;
-              border: none;
-              outline: none;
-              cursor: pointer;
-              padding: 14px 16px;
-              font-size: 17px;
-              width: 15%;
-            }
-
-            .tablink:hover {
-              background-color: #777;
-            }
-
-            /* Style the tab content (and add height:100% for full page content) */
-            .tabcontent {
-              color: black;
-              display: none;
-              padding: 100px 20px;
-              height: 100%;
-            }
-
-            </style>
-
+<!---------------------------------------------------------------------------------------------------------------------------------------------> 
             <script>
             function openPage(pageName, elmnt, color) {
             // Hide all elements with class="tabcontent" by default */
@@ -746,8 +890,7 @@
 
           // Get the element with id="defaultOpen" and click on it
           document.getElementById("defaultOpen").click();
-              </script>
-<!---------------------------------------------------------------------------------------------------------------------------------------------> 
+          </script>
       </div>
     </div>
 

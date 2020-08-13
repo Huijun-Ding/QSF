@@ -8,7 +8,6 @@
 --
 -- Table structure for table `besoins`
 --
-
 DROP TABLE IF EXISTS `besoins`;
 
 CREATE TABLE `besoins` (
@@ -34,7 +33,6 @@ CREATE TABLE `besoins` (
 --
 -- Table structure for table `talents`
 --
-
 DROP TABLE IF EXISTS `talents`;
 
 CREATE TABLE `talents` (
@@ -59,7 +57,6 @@ CREATE TABLE `talents` (
 --
 -- Table structure for table `categories`
 --
-
 DROP TABLE IF EXISTS `categories`;
 
 CREATE TABLE `categories` (
@@ -75,23 +72,22 @@ CREATE TABLE `categories` (
 --
 
 LOCK TABLES `categories` WRITE;
-INSERT INTO `categories` VALUES (1,'Sport','Basketball, Football...', 'https://www.bls.gov/spotlight/2017/sports-and-exercise/images/cover_image.jpg');               
-INSERT INTO `categories` VALUES (2,'Animation','Réunions créatives, Pitcher...', 'https://www.maxicasting.com/sites/default/files/styles/medium_article/public/field/image/Virginie_Guilhaume.jpg?itok=9llLIC0Q');
-INSERT INTO `categories` VALUES (3,'Outils métiers','', 'https://www.cm-alsace.fr/sites/default/files/styles/header_banner/public/image/201405/page_tic.jpg?itok=mvNBiA_w');
-INSERT INTO `categories` VALUES (4,'Développement personnel','Yoga, méditation', 'http://mylenebeaudoin.com/wp-content/uploads/2019/04/Capture-d%C3%A9cran-2019-03-03-21.39.08-1080x675.png');
-INSERT INTO `categories` VALUES (5,'Associatif','', 'https://i2.wp.com/www.maxmanroe.com/wp-content/uploads/2017/09/Pengertian-Struktur-Organisasi.png?w=600&ssl=1');
-INSERT INTO `categories` VALUES (6,'Covoiturage','', 'http://www.ipj.news/enquetes/wp-content/uploads/sites/26/2019/06/illustration-covoiturage-20170827.jpg');
-INSERT INTO `categories` VALUES (7,'Bureautique','Word, Excel, Outlook, PowerPoint...', 'http://romualdtechnology.asso-web.com/uploaded/image/image-bureautique2-480x290.jpg');
-INSERT INTO `categories` VALUES (8,'Informatique','Réseaux, Site Web, Réparation PC...', 'https://www.nbs-system.com/wp-content/uploads/2018/03/180403_NBS_Attaque_protection_siteWeb-788x433.jpg');
-INSERT INTO `categories` VALUES (9,'Loisir','Cuisine, Bricolage, Musique, Théâtre, Cinéma, Cilture, Philatélie, généalogie...', 'https://www.lepointdufle.net/ia/sportsloisirs1.jpg');
-INSERT INTO `categories` VALUES (10,'Autres','', 'https://www.ccilaval.qc.ca/wp-content/uploads/2017/02/Icone_Autre.jpg');
+INSERT INTO `categories` VALUES (1,'Sport','Basketball, Football...', 'https://www.bls.gov/spotlight/2017/sports-and-exercise/images/cover_image.jpg', 1);               
+INSERT INTO `categories` VALUES (2,'Animation','Réunions créatives, Pitcher...', 'https://www.maxicasting.com/sites/default/files/styles/medium_article/public/field/image/Virginie_Guilhaume.jpg?itok=9llLIC0Q', 1);
+INSERT INTO `categories` VALUES (3,'Outils métiers','', 'https://www.cm-alsace.fr/sites/default/files/styles/header_banner/public/image/201405/page_tic.jpg?itok=mvNBiA_w', 1);
+INSERT INTO `categories` VALUES (4,'Développement personnel','Yoga, méditation', 'http://mylenebeaudoin.com/wp-content/uploads/2019/04/Capture-d%C3%A9cran-2019-03-03-21.39.08-1080x675.png', 1);
+INSERT INTO `categories` VALUES (5,'Associatif','', 'https://i2.wp.com/www.maxmanroe.com/wp-content/uploads/2017/09/Pengertian-Struktur-Organisasi.png?w=600&ssl=1', 1);
+INSERT INTO `categories` VALUES (6,'Covoiturage','', 'http://www.ipj.news/enquetes/wp-content/uploads/sites/26/2019/06/illustration-covoiturage-20170827.jpg', 1);
+INSERT INTO `categories` VALUES (7,'Bureautique','Word, Excel, Outlook, PowerPoint...', 'http://romualdtechnology.asso-web.com/uploaded/image/image-bureautique2-480x290.jpg', 1);
+INSERT INTO `categories` VALUES (8,'Informatique','Réseaux, Site Web, Réparation PC...', 'https://www.nbs-system.com/wp-content/uploads/2018/03/180403_NBS_Attaque_protection_siteWeb-788x433.jpg', 1);
+INSERT INTO `categories` VALUES (9,'Loisir','Cuisine, Bricolage, Musique, Théâtre, Cinéma, Cilture, Philatélie, généalogie...', 'https://www.lepointdufle.net/ia/sportsloisirs1.jpg', 1);
+INSERT INTO `categories` VALUES (10,'Autres','', 'https://www.ccilaval.qc.ca/wp-content/uploads/2017/02/Icone_Autre.jpg', 1);
 UNLOCK TABLES;
 
 -- ------------------------------------------------------------------------------------------
 --
 -- Table structure for table `utilisateurs`
 --
-
 DROP TABLE IF EXISTS `utilisateurs`;
 
 CREATE TABLE `utilisateurs` (
@@ -101,7 +97,7 @@ CREATE TABLE `utilisateurs` (
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
   `Anonyme` tinyint(1) default 1,
-  `TypeU` enum('Pro','Perso'),
+  `TypeU` enum('Pro','Perso',''),
   `RoleU` text(30) NULL default NULL,
   PRIMARY KEY (`CodeU`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
@@ -109,15 +105,14 @@ CREATE TABLE `utilisateurs` (
 -- Dumping data for table `Utilisateurs`
 --
 
-LOCK TABLES `Utilisateurs` WRITE;
-INSERT INTO `Utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '');
+LOCK TABLES `utilisateurs` WRITE;
+INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '', NULL);
 UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
 --
 -- Table structure for table `saisir`
 --
-
 DROP TABLE IF EXISTS `saisir`;
 
 CREATE TABLE `saisir` (
@@ -132,7 +127,6 @@ CREATE TABLE `saisir` (
 --
 -- Table structure for table `proposer`
 --
-
 DROP TABLE IF EXISTS `proposer`;
 
 CREATE TABLE `proposer` (
@@ -147,7 +141,6 @@ CREATE TABLE `proposer` (
 --
 -- Table structure for table `abonner`
 --
-
 DROP TABLE IF EXISTS `abonner`;
 
 CREATE TABLE `abonner` (
@@ -159,7 +152,6 @@ CREATE TABLE `abonner` (
 -- Dumping data for table `abonner`
 --
 -- ------------------------------------------------------------------------------------------------
-
 --
 -- Table structure for table `ateliers`
 --
@@ -205,12 +197,11 @@ CREATE TABLE `participera` (
 -- ------------------------------------------------------------------------------------------------
 
 --
--- Table structure for table `projet`
+-- Table structure for table `projets`
 --
+DROP TABLE IF EXISTS `projets`;
 
-DROP TABLE IF EXISTS `projet`;
-
-CREATE TABLE `projet` (
+CREATE TABLE `projets` (
   `CodeP` int(10) NOT NULL AUTO_INCREMENT,
   `TitreP` text(30) NOT NULL,
   `DescriptionP` text(200) NOT NULL,
@@ -220,17 +211,16 @@ CREATE TABLE `projet` (
   `CodeC` int(10) NOT NULL,
   `VisibiliteP` tinyint(1) default 1,
   PRIMARY KEY (`CodeP`),
-  CONSTRAINT `date_projet` check ((`DateButoireP`>`DatePublicationP`))
+  CONSTRAINT `date_projets` check ((`DateButoireP`>`DatePublicationP`))
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `projet`
+-- Dumping data for table `projets`
 --
 -- --------------------------------------------------------------------------------------------
 --
 -- Table structure for table `participerp`
 --
-
 DROP TABLE IF EXISTS `participerp`;
 
 CREATE TABLE `participerp` (
@@ -246,14 +236,13 @@ CREATE TABLE `participerp` (
 --
 -- Table structure for table `compteurb`
 --
-
 DROP TABLE IF EXISTS `compteurb`;
 
 CREATE TABLE `compteurb` (
-  `CodeCB` INT(11) AUTO_INCREMENT, 
+  `CodeCB` INT(10) AUTO_INCREMENT, 
   `NumOuiB` TINYINT(1), 
   `NumNonB` TINYINT(1),
-  `RaisonB` TEXT(30),
+  `RaisonB` TEXT(500),
    PRIMARY KEY (`CodeCB`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
@@ -261,29 +250,100 @@ CREATE TABLE `compteurb` (
 --
 -- Table structure for table `compteurt`
 --
-
 DROP TABLE IF EXISTS `compteurt`;
 
 CREATE TABLE `compteurt` (
-  `CodeCT` INT(11) AUTO_INCREMENT, 
+  `CodeCT` INT(10) AUTO_INCREMENT, 
   `NumOuiT` TINYINT(1), 
   `NumNonT` TINYINT(1),
-  `RaisonT` TEXT(30),
+  `RaisonT` TEXT(500),
    PRIMARY KEY (`CodeCT`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------------------------------------------
 --
--- Table structure for table `evaluation`
+-- Table structure for table `evaluerb`
 --
+DROP TABLE IF EXISTS `evaluerb`;
 
-DROP TABLE IF EXISTS `evaluation`;
+CREATE TABLE `evaluerb` (
+  `NoteB` INT(10) NOT NULL, 
+  `AvisB` TEXT(500),
+  `DateEB` date NOT NULL,
+  `CodeU` int(10) NOT NULL,
+  `CodeB` int(10) NOT NULL,
+   PRIMARY KEY (`CodeU`,`CodeB`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `evaluation` (
-  `CodeE` INT(11) AUTO_INCREMENT, 
-  `Note` INT(11) NOT NULL, 
-  `Avis` TEXT(30),
-   PRIMARY KEY (`CodeE`)
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `evaluert`
+--
+DROP TABLE IF EXISTS `evaluert`;
+
+CREATE TABLE `evaluert` (
+  `CodeET` INT(10) AUTO_INCREMENT, 
+  `NoteT` INT(10) NOT NULL, 
+  `AvisT` TEXT(500),
+  `DateET` date NOT NULL,
+  `CodeU` int(10) NOT NULL,
+  `CodeT` int(10) NOT NULL,
+   PRIMARY KEY (`CodeET`,`CodeU`,`CodeT`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `parametres`
+--
+  DROP TABLE IF EXISTS `parametres`;
+
+  CREATE TABLE `parametres` (
+    `Interval` INT(10) 
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+LOCK TABLES `parametres` WRITE;
+INSERT INTO `parametres` VALUES (15);
+UNLOCK TABLES;
+
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `slides`
+--
+  DROP TABLE IF EXISTS `slides`;
+
+  CREATE TABLE `slides` (
+    `NumSlide` enum('1','2','3','4') NOT NULL, 
+    `TitreS` TEXT(200),
+    `PhotoS` TEXT(100),
+    `TextS1` TEXT(1000),
+    `TextS2` TEXT(1000),
+    `TextS3` TEXT(1000),
+    PRIMARY KEY (`NumSlide`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+  LOCK TABLES `slides` WRITE;
+  INSERT INTO `slides` VALUES (1, "Bienvenue chez COUP DE MAIN, COUP DE POUCE !", 'https://r1pbk8s6fm-flywheel.netdna-ssl.com/wp-content/uploads/2018/04/map-connectivity-1200x400.jpg', "COUP DE MAIN, COUP DE POUCE est une plateforme qui permet de partager les compétences entre collaborateurs.", "Partageons nos talents, la solitarité c'est aussi entre nous.", '');
+  INSERT INTO `slides` VALUES (2, "Oui, vous avez des talents !", "https://www.bravopromo.fr/cdn/blog/1200x400/le-green-friday-par-bravopromo-201911151231-preview.jpg", "", "", "");
+  INSERT INTO `slides` VALUES (3, "Nouvelle du jour", "https://gray-ktuu-prod.cdn.arcpublishing.com/resizer/gDT0TCs6HrkaegOnMo6p0ZZX694=/1200x400/smart/cloudfront-us-east-1.images.arcpublishing.com/gray/3BWLQZ7DZ5NMFF35HJEJ7KFTR4.jpg", "Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content,Some quick example text to build on the card title and make up the bulk of the card's content.", "", "");
+  INSERT INTO `slides` VALUES (4, "Retours d'expériences des utilisateurs", "https://i.pinimg.com/originals/d1/a5/d3/d1a5d3d96f0862664846c7800e3c8aff.jpg", "Some quick example text to build on the card title and make up the bulk of the card\'s content.", "Some quick example text to build on the card title and make up the bulk of the card\'s content.", "Some quick example text to build on the card title and make up the bulk of the card\'s content.");
+  UNLOCK TABLES;
+-- --------------------------------------------------------------------------------------------
+--
+-- Table structure for table `emails`
+--
+  DROP TABLE IF EXISTS `emails`;
+
+  CREATE TABLE `emails` (
+    `CodeEM` INT(10) AUTO_INCREMENT, 
+    `Provenance` INT(10) NOT NULL,
+    `Destinataire` INT(10) NOT NULL,
+    `Sujet` TEXT(200) NOT NULL,
+    `Contenue` TEXT(1000) NOT NULL,
+    `DateEvaluation` DATE NOT NULL,
+    `VisibiliteB` enum('1','0') default 1,
+    `CodeCarte` INT(10) NOT NULL,
+    `TypeCarte` enum('besoin','talent') NOT NULL,
+    PRIMARY KEY (`CodeEM`,`Provenance`,`Destinataire`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- ----------------------------------------------------------------------------------------------
@@ -291,7 +351,7 @@ CREATE TABLE `evaluation` (
 -- ----------------------------------------------------------------------------------------------
 ALTER TABLE `besoins` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 ALTER TABLE `talents` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
-ALTER TABLE `projet` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
+ALTER TABLE `projets` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
 ALTER TABLE `saisir` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`);
@@ -303,7 +363,16 @@ ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU
 ALTER TABLE `abonner` ADD FOREIGN KEY (`CodeC`) REFERENCES `categories`(`CodeC`);
 
 ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);
-ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projet`(`CodeP`);
+ALTER TABLE `participerp` ADD FOREIGN KEY (`CodeP`) REFERENCES `projets`(`CodeP`);
+
+ALTER TABLE `evaluerb` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);   
+ALTER TABLE `evaluerb` ADD FOREIGN KEY (`CodeB`) REFERENCES `besoins`(`CodeB`);
+
+ALTER TABLE `evaluert` ADD FOREIGN KEY (`CodeU`) REFERENCES `utilisateurs`(`CodeU`);   
+ALTER TABLE `evaluert` ADD FOREIGN KEY (`CodeT`) REFERENCES `talents`(`CodeT`);  
+
+ALTER TABLE `emails` ADD FOREIGN KEY (`Provenance`) REFERENCES `utilisateurs`(`CodeU`);   
+ALTER TABLE `emails` ADD FOREIGN KEY (`Destinataire`) REFERENCES `utilisateurs`(`CodeU`); 
 
 -- ----------------------------------------------------------------------------------------------
 -- fin de script

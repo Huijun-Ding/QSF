@@ -1,48 +1,14 @@
-<?php 
-    require_once ('Fonctions.php');
-    
-    //requête pour insérer provenance, destinataire, sujet, contenue et la date d'évaluation dans la bdd
-    $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
+<?php  //script
+// si la date d'aujourd'hui est égale à la date d'évaluation, envoyer le mail 
+    require_once ('../Fonctions.php');
 
-    $req = "select s.CodeU from besoins as b, saisir as s where b.CodeB = {$_POST['codecarte']} and b.CodeB = s.CodeB";                         
-    $TableauDestinataires = array();
-    foreach  (mysqli_query ($session, $req) as $row) {
-        $TableauDestinataires[] = $row['CodeU'];
-    }
-                        
-    foreach ($TableauDestinataires as $apprenant) {
-        $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenue,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},$apprenant,'[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$_POST["titrecarte"]}','{$_POST['contenu_besoin']}','$dateevaluation',1,{$_POST['codecarte']},'besoin')";
-        mysqli_query ($session, $sql);
-    }
-    
-    //echo 'Provenance : '.$_SESSION['codeu'].'';
-    //print_r($TableauDestinataires);
-    //print_r($apprenant);
-    //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
-    //echo 'Contenue : '.$_POST['contenu_besoin'].'';
-    //echo 'DateEvaluation : '.$dateevaluation.'';
-    //echo 'CodeCarte : '.$_POST['codecarte'].'';
-    
-    // incrémenter sur besoins.ReponseB
-    $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
-    mysqli_query ($session, $query);
-    
-    //requête prendre l'email destinataire
-    $liste = '';
-    $req2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";
-    foreach  (mysqli_query ($session, $req2) as $ligne) {
-        $liste = $liste.$ligne['Email'].', ';
-    }
-    $liste = rtrim($liste,', ');
-    
-    $query2 = "select b.TitreB from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";;
-    $result = mysqli_query ($session, $query2);   
-    if (mysqli_num_rows($result)>0) { 
-        if ($email = mysqli_fetch_array($result)) { 
-            // email pour répondre un besoin
-            $destinataire = "$liste"; // adresse mail du destinataire   
-            $sujet = "[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$email['TitreB']}"; // sujet du mail
-            $message = '  
+
+
+            //email pour evaluation de l'expérience
+            $to = "{$email['Email']}"; // adresse mail du destinataire
+            $to .= "{$_SESSION['email']}";
+            $subject = "[COUP DE MAIN, COUP DE POUCE] Evaluation sur votre expérience"; // sujet du mail
+            $content = '
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -343,7 +309,7 @@
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr>
 
-            <td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>R&eacute;pondre &agrave; votre besoin</strong></p><span class="mso-font-fix-arial">
+            <td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>Evaluation de votre exp&eacute;rience d&#39;utilisation</strong></p><span class="mso-font-fix-arial">
             </span></div>
             </td>
             </tr>
@@ -352,17 +318,15 @@
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr>
 
-            <td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left">
-
-            </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
+            <td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left"></span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
             <p style="padding: 0; margin: 0;">Bonjour,</p><span class="mso-font-fix-tahoma">
 
             </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-            </span><p style="padding: 0; margin: 0;">Il y a un collaborateur voudrait répondre à votre besoin.</p><span class="mso-font-fix-tahoma">
+            </span><p style="padding: 0; margin: 0;">Est-ce que vous &ecirc;tes satisfait de cette exp&eacute;rience ?&nbsp;</p><span class="mso-font-fix-tahoma">
 
-            </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
+            </span><p style="padding: 0; margin: 0;">Votre avis nous int&eacute;resse !&nbsp;Pourriez-vous &eacute;valuer cette exp&eacute;rience sur&nbsp;notre plateforme ?</p><span class="mso-font-fix-tahoma">
 
             </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
             </span></div>
@@ -384,7 +348,7 @@
             <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/evaluation-talent.html.php">Oui,&nbsp; &eacute;valuer</a></span>
             </font>
             </span>
             </td>
@@ -404,7 +368,54 @@
 
             <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
             <font style="color:#ffffff;" class="button">
-            <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
+            <span><a href="https://qualif-qsf.cpam31.fr/evaluation-talent.html.php">Oui,&nbsp; &eacute;valuer</a></span>
+            </font>
+            </span>
+            </a>
+            </td>
+            </tr>
+            </table>
+
+            </div>
+            </td>
+            </tr>
+            </table>
+
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr>
+
+            <td valign="top" align="center" style="padding:20px">
+            <!--[if !mso]><!-- -->
+            <a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
+            <span>
+
+            <table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
+            <tr>
+
+            <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
+            <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
+            <font style="color:#ffffff;" class="button">
+            <span>Pas encore, me demander dans 15 jours</span>
+            </font>
+            </span>
+            </td>
+            </tr>
+            </table>
+
+            </span>
+            </a>
+            <!--<![endif]-->
+            <div style="display:none; mso-hide: none;">
+
+            <table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
+            <tr>
+
+            <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
+            <a href="" target="_blank" style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;text-decoration:none;text-align:center;">
+
+            <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
+            <font style="color:#ffffff;" class="button">
+            <span>Pas encore, me demander dans 15 jours</span>
             </font>
             </span>
             </a>
@@ -478,12 +489,10 @@
             </table>
             </div>
             </body>
-            </html> ';               
-            $headers = "MIME-Version: 1.0" . "\r\n";
-            $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
-            $headers .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
-            mail ($destinataire, $sujet, $message, $headers); // on envois le mail 
-        }
-    }      
-    //header("Location: index.php");
+            </html> ';
+            $from = 'MIME-Version: 1.0' . "\r\n";
+            $from .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+            $from .= 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>' . "\r\n"; // En-têtes additionnels  
+            mail ($to, $subject, $content, $from); // on envois le mail  
 ?>
+
