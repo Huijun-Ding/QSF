@@ -338,9 +338,9 @@ UNLOCK TABLES;
     `Provenance` INT(10) NOT NULL,
     `Destinataire` INT(10) NOT NULL,
     `Sujet` TEXT(200) NOT NULL,
-    `Contenue` TEXT(1000) NOT NULL,
+    `Contenu` TEXT(1000) NOT NULL,
     `DateEvaluation` DATE NOT NULL,
-    `VisibiliteB` enum('1','0') default 1,
+    `VisibiliteE` tinyint(1) default 1,
     `CodeCarte` INT(10) NOT NULL,
     `TypeCarte` enum('besoin','talent') NOT NULL,
     PRIMARY KEY (`CodeEM`,`Provenance`,`Destinataire`)
