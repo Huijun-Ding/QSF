@@ -295,7 +295,7 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
+                     <button  title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
 
                      <!-- Modal -->
                     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -382,7 +382,7 @@
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver carte</button>
+                     <button title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver carte</button>
                     
                      <!-- Modal -->
                     <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -460,7 +460,7 @@
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#Myatelier">Désactiver carte</button>
+                     <button title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#Myatelier">Désactiver carte</button>
 
                      <!-- Modal -->
                     <div class="modal fade" id="Myatelier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
