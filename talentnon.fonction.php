@@ -10,7 +10,10 @@ if (isset($raisonT)) {
     mysqli_stmt_execute($sql); 
     
     header("Location: index.php");
-    echo $raisonT;
-
 }
+
+
+
+
+
 ?>

@@ -157,7 +157,8 @@
                             }
                         } 
                         
-                        echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');     
+                        echo('<button type="submit" nameclass="btn btn-primary">Envoyer</button>');  
+                        echo('<button type="submit" nameclass="btn">Annuler</button>');  
                         ?> 
                         </form>
                 </div>    

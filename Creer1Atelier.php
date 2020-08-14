@@ -130,7 +130,7 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> Creer un atelier </h1>
+            <h1> Créer un atelier </h1>
             <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
@@ -165,12 +165,12 @@
                     <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre atelier" required></textarea>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Date & Créneau horaire(<span style="color:red">*</span>)</label>
+              <label for="inputEmail4">Date & Créneau horaire (Zone libre) (<span style="color:red">*</span>)</label>
               <input type="text" name="date" class="form-control col-md-4" placeholder="Du 14/10 au 16/10 14h00" id="inputEmail4" required />
             </div>
                  <div class="form-group">
-              <label for="inputEmail4">Lieu(<span style="color:red">*</span>)</label>
-              <input type="text" name="lieu" class="form-control col-md-4" placeholder="Salle 6.40" id="inputEmail4" required />
+              <label for="inputEmail4">Lieu (Pensez à réserver la salle) (<span style="color:red">*</span>)</label>
+              <input type="text" name="lieu" class="form-control col-md-4" placeholder="6.36 Salle de créativité"  id="inputEmail4" required />
             </div>
                  <div class="form-group">
               <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
@@ -198,7 +198,7 @@
               <input type="text" name="url" class="form-control col-md-4" placeholder="https://www.linscription.com/..." id="inputEmail4" required />
             </div>    
             <div class="form-group">
-              <label for="inputEmail4">En savoir plus</label>
+              <label for="inputEmail4">En savoir plus(si vous le souhaitez, indiquez un site internet pour plus d'informations)</label>
               <input type="text" name="plus" class="form-control col-md-4" placeholder="https://fr.wikipedia.org/wiki/Yoga" id="inputEmail4" />
             </div>
 

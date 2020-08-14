@@ -144,7 +144,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputAddress">Email (Perso)</label>
+				<label for="inputAddress">Email (Pro & Perso)</label>
 				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
 			  </div>
                         
@@ -152,7 +152,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>
@@ -169,7 +169,7 @@
 			  </div>
                             
                         <div id="radiotypeu">
-                          <p>Sélectionner le type d'information affichée</p> 
+                          <p>Sélectionner le type d'information que vous souhaitez visualiser</p> 
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" value="" checked>
                             <label class="form-check-label" for="exampleRadios1">

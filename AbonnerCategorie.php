@@ -182,7 +182,7 @@
                     </div>
             <hr>       
             <div>           
-                <button type="submit" class="btn btn-dark">Abonner</button>
+                <button type="submit" class="btn btn-dark">S'abonner</button>
             </div>
             </form>
           </div>

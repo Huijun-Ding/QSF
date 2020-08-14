@@ -139,7 +139,7 @@
             <?php
             require_once('Fonctions.php');  
             
-if(isset($_SESSION['email'])) {
+            if(isset($_SESSION['email'])) {
                 
                     $query = " select NomU, PrenomU, Email, TypeU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
@@ -151,7 +151,8 @@ if(isset($_SESSION['email'])) {
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                    } ?>
+                    } 
+            }?>
                 </div>
                 <div class="col-4">
                     <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
@@ -224,7 +225,7 @@ if(isset($_SESSION['email'])) {
                     </script>                  
                 </form>
             </div>
-          </div>
+         
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
            
@@ -367,8 +368,8 @@ if(isset($_SESSION['email'])) {
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
             }    
-
-        echo '  </ul>     
+?>
+        </ul>     
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
@@ -397,10 +398,10 @@ if(isset($_SESSION['email'])) {
             </div>           
             </form>        
           </div>
-        <br><br>';
-
-//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        echo '<div class="container" id="MesAteliers">
+        <br><br>
+        
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        <div class="container" id="MesAteliers">
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
@@ -411,8 +412,9 @@ if(isset($_SESSION['email'])) {
             <form method="POST" action="Desactiver1Atelier.php">
                 <div class="row">
                 <div class="col-10">
-                <ul class="list-inline">';
+                <ul class="list-inline">
 
+            <?php
             $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$usercode} order by a.CodeA DESC ";
 
             $result = mysqli_query ($session, $query);
@@ -444,8 +446,8 @@ if(isset($_SESSION['email'])) {
             } else {
                     echo ("Vous n'avez pas encore créé un atelier");
             }             
-  
-            echo '   </ul>
+  ?>
+            </ul>
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
@@ -477,18 +479,17 @@ if(isset($_SESSION['email'])) {
           </div>  
        
         <br><br>
-
-
-       </div> 
+ </div>
+ 
+                    
+       
   <hr> 
   <footer>
     <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-  </footer>'; 
+  </footer>
         
-} else {
-    echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
-}         
-            ?> 
+
+            
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

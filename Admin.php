@@ -188,12 +188,12 @@
                               <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="message-text" class="col-form-label">Photo de catégorie :</label>  <!-- url de l'image ? -->
+                              <label for="message-text" class="col-form-label">Photo de catégorie (url):</label>  <!-- url de l'image ? -->
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
                             </div>                        
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
                           <button name="creer" type="submit" class="btn btn-primary">Créer</button>
                         </div>                     
                       </div>
@@ -218,7 +218,7 @@
                             echo ('<th scope="col">#</th>');
                             echo ('<th scope="col">Nom</th>');
                             echo ('<th scope="col">Description</th>');
-                            echo ('<th scope="col">PhotoC</th>');
+                            echo ('<th scope="col"><center>Photo</center></th>');
                             echo ('<th scope="col">Modification</th>');
                           echo ('</tr>');
                         echo ('</thead>');
@@ -261,7 +261,7 @@
                     <!-- Tab content -->
                     <div id="London" class="tabcontentc">
                     <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                        <h3>Besoins</h3>
+                        <h3>Besoins en cours</h3>
                         <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">     <!-- Moteur de recherche dans titre & description -->
                             <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                             <button type="submit" class="btn btn-outline-dark">Recherche</button>
@@ -362,7 +362,7 @@
 
                 <div id="Paris" class="tabcontentc">      
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                    <h3>Talents</h3>
+                    <h3>Talents en cours</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                         <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
@@ -860,7 +860,7 @@
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" min="0" name="interval"> jours </p>
+                    <p>Paramétrer le délais d'envoi de mail d’évaluation : <input type='text' placeholder="15" name="interval"> jours </p>
                     <button type="submit" class="btn btn-dark"> Modifier </button>
                 </form>
 

@@ -139,18 +139,18 @@
         <div class="jumbotron">
           <div class="container">
               <h1>Pourquoi ?</h1><hr>
-              <p>Veuillez sélectionner une raison de refuse : </p><br>
-              <form action="besoinnon.fonction.php" method="GET">
+              <p>Veuillez sélectionner une raison de refus : </p><br>
+               <?php echo('<form action="besoinnon.fonction.php?p='.$_GET['p'].'&c='.$_GET['c'].'" method="GET">');  ?>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Mon besoin a été résolu" checked>
                   <label class="form-check-label" for="besoin_raison1">
-                    Mon besoin a été répondu
+                    Merci, j'ai déjà reçu une réponse pour mon besoin
                   </label>
                 </div><br>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison2" value="Je ne suis pas libre">
                   <label class="form-check-label" for="besoin_raison2">
-                    Je ne suis pas libre
+                    Je serais disponible à partir du   
                   </label>
                 </div><br>
                 <div class="form-check">

@@ -131,7 +131,7 @@
           <div class="container">
             <hr>
             <center><h1>Mes Abonnements</h1></center>
-            <hr> <input class="card-text" type="checkbox" onclick="ToutDesabonner()" id="parent1" name="selectall" value="">  <strong> <span id="label1">Tout désabonner </span></strong>
+            <hr> <input class="card-text" type="checkbox" onclick="ToutDesabonner()" id="parent1" name="selectall" value="">  <strong> <span id="label1">Se désabonner à tout</span></strong>
             <form  action="DesabonnerCategories.php" method="post">
             <div class="row">
                 <div class="col-10">
@@ -212,7 +212,7 @@
                     }
                 </script>
                 <div class="col-2">
-                   <button type="submit" class="btn btn-dark">Désabonner</button> 
+                   <button type="submit" class="btn btn-dark">Se désabonner</button> 
                 </div>          
             </div>
             </form>
@@ -221,7 +221,7 @@
           <div class="container">
             <hr>
             <center><h1> Abonnements Disponibles </h1> </center>  <!--Tous les catégories qui restent-->
-                <hr>  <input class="card-text" type="checkbox" onclick="ToutAbonner()" id="parent" name="selectall" value="">  <strong> <span id="label">Tout abonner </span></strong>
+                <hr>  <input class="card-text" type="checkbox" onclick="ToutAbonner()" id="parent" name="selectall" value="">  <strong> <span id="label">S'abonner à tout</span></strong>
            
             
             <form  action="ReabonnerCategories.php" method="post">	
@@ -306,7 +306,7 @@
                 </script>
                 <div class="col-2">
             <div>           
-                <button type="submit" class="btn btn-dark">Abonner</button>
+                <button type="submit" class="btn btn-dark">S'abonner</button>
             </div>
                     </div>
                     </div>

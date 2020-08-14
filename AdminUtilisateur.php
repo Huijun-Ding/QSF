@@ -244,7 +244,7 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
          <div class="container" id="MesCatégories">
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                <h1> Ses catégories </h1>
+                <h1> Abonné à ces catégories </h1>
             </div>           
             <hr>  
              <ul class="list-inline">
