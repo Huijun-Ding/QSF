@@ -174,7 +174,9 @@
                               echo('</button>');
                             echo('</div>');
                             echo('<div class="modal-body">');
-                              echo('<p>Êtes-Vous sûr de supprimer votre compte ? </p>');
+                              echo('<p>Êtes-Vous sûr de supprimer votre compte ? <br>');
+                              echo('Attention : toutes vos cartes associées seront supprimées.<br>');
+                              echo('Pour tout problème, veuillez contacter l\'administrateur. </p>');
                             echo('</div>');
                             echo('<div class="modal-footer">');
                               echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
@@ -185,6 +187,8 @@
                       echo('</div>');                
                     ?>         
                     </form>
+                    <br>
+                    <p>Si vous voulez modifier votre adresse mail, veuillez recréer un nouveau compte. </p>
                 </div>
             </div>
 
@@ -229,6 +233,7 @@
                     </script>                  
                 </form>
             </div>
+            <br><br>
          
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
@@ -275,7 +280,7 @@
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] > 0) {
                             echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -363,7 +368,7 @@
                             echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
                             if ($talent["ReponseT"] > 0) {
                                 echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                

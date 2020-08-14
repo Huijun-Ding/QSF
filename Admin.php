@@ -188,7 +188,7 @@
                               <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="message-text" class="col-form-label">Photo de catégorie (url):</label>  <!-- url de l'image ? -->
+                              <label for="message-text" class="col-form-label">URL de photo :</label>  <!-- url de l'image ? -->
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
                             </div>                        
                         </div>
@@ -234,8 +234,29 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');  //Modifier une catégorie
                              echo ('<a href="AdminCategorieModification.php?t='.$ligne["CodeC"].'"><button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
-                             echo ('<form action="AdminCategorieFonction.php" method="POST">');  //Désactiver une catégorie
-                             echo ('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Supprimer" width="30" height="30"></button>');
+                             echo ('<form action="AdminCategorieFonction.php" method="POST">');  //Désactiver une catégorie                            
+                             echo ('<button type="button"  class="btn btn-secondary" data-toggle="modal" data-target="#desactiver'.$ligne["CodeC"].'"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');    
+                                 
+                             echo('<div class="modal" tabindex="-1" id="desactiver'.$ligne["CodeC"].'" role="dialog">');
+                                echo('<div class="modal-dialog" role="document">');
+                                  echo('<div class="modal-content">');
+                                    echo('<div class="modal-header">');
+                                      echo('<h5 class="modal-title">Vérification</h5>');
+                                      echo('<button type="button" class="close" data-dismiss="modal" aria-label="Close">');
+                                        echo('<span aria-hidden="true">&times;</span>');
+                                      echo('</button>');
+                                    echo('</div>');
+                                    echo('<div class="modal-body">');
+                                      echo('<p>Êtes-Vous sûr de supprimer cette catégorie ?  </p>');
+                                    echo('</div>');
+                                    echo('<div class="modal-footer">');                               
+                                      echo('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-primary">Supprimer</button>');
+                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                    echo('</div>');
+                                  echo('</div>');
+                                echo('</div>');
+                              echo('</div>');         
+                              
                              echo ('</form>');
                              echo ('</div>');
                             echo ('</td>');
@@ -313,7 +334,7 @@
                     echo ('</table>');
                    
                     
-                    echo('<br><h3>Besoins Cachés</h3><br>');   
+                    echo('<br><h3>Besoins cachés</h3><br>');   
 
                     $query2 = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 0 order by CodeB DESC";
 
@@ -413,7 +434,7 @@
                      echo ('</tbody>');
                     echo ('</table>');
                     
-                    echo('<br><h3>Talents Cachés</h3><br>');
+                    echo('<br><h3>Talents cachés</h3><br>');
                     
                     $query2 = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 0 order by CodeT DESC";
 

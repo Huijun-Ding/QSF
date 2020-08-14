@@ -134,7 +134,7 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> S'ABONNER A DES CATEGORIES </h1>
+            <h1 title="Tous les 15 jours, vous recevrez un Newsletter à propos des cartes créées dans les catégories que vous vous êtes abonnées. "> S'ABONNER A DES CATEGORIES </h1>
             <hr>
             <form  action="ReabonnerCategories.php" method="post">			  
                 <div id="categories" class="flex-parent d-flex flex-wrap justify-content-around mt-3">
@@ -186,7 +186,7 @@
                     </div>
             <hr>       
             <div>           
-                <button type="submit" class="btn btn-dark">S'abonner</button>
+                <button type="submit" class="btn btn-dark" title="Tous les 15 jours, vous recevrez un Newsletter à propos des cartes créées dans les catégories que vous vous êtes abonnées. ">S'abonner</button>
             </div>
             </form>
           </div>

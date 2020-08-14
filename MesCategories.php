@@ -134,7 +134,7 @@
         <div class="jumbotron">
           <div class="container">
             <hr>
-            <center><h1>Mes Abonnements</h1></center>
+            <center><h1 title="Tous les 15 jours, vous recevrez un Newsletter à propos des cartes créées dans les catégories que vous vous êtes abonnées. ">Mes Abonnements</h1></center>
             <hr> <input class="card-text" type="checkbox" onclick="ToutDesabonner()" id="parent1" name="selectall" value="">  <strong> <span id="label1">Se désabonner à tout</span></strong>
             <form  action="DesabonnerCategories.php" method="post">
             <div class="row">
@@ -310,7 +310,7 @@
                 </script>
                 <div class="col-2">
             <div>           
-                <button type="submit" class="btn btn-dark">S'abonner</button>
+                <button type="submit" class="btn btn-dark" title="Tous les 15 jours, vous recevrez un Newsletter à propos des cartes créées dans les catégories que vous vous êtes abonnées. ">S'abonner</button>
             </div>
                     </div>
                     </div>
