@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -139,7 +143,7 @@
                     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
                     <div class="checkbox mb-3">
                             <label>
-                              <input type="checkbox" value="remember-me"> Remember me
+                              <input type="checkbox" value="remember-me"> Se souvenir de moi 
                               <p> <a href="Inscription.php" target="_blank"> S'inscrire <a> </p>
                             </label>
                     </div>

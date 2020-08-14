@@ -88,7 +88,7 @@
                     $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $prenom);
                     while ($prenom = mysqli_fetch_array($result)) {      
-                        echo $prenom['PrenomU'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
                     }
                     echo('</a>');
             } else {
