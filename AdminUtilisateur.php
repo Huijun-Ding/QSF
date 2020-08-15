@@ -27,7 +27,7 @@
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">COUP DE MAIN, COUP DE POUCE</a>
+      <a class="navbar-brand" href="Admin.php">COUP DE MAIN, COUP DE POUCE</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -236,6 +236,47 @@
                     }
             } else {
                     echo ("Cet utilisateur n'a pas encore saisi un talent");
+            }             
+            ?>
+             </ul>     
+       </div> 
+         <br><br>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+   <div class="container" id="MesAteliers">
+            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                <h1> Ses ateliers </h1>
+            </div>           
+            <hr>  
+              <ul class="list-inline">
+            <?php
+            require_once('Fonctions.php');
+
+            $query = " select a.TitreA, a.DateA, a.DatePublicationA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$_GET['t']} order by a.CodeA DESC";
+
+            $result = mysqli_query ($session, $query);
+
+            if ($result == false) {
+                die("ereur requête : ". mysqli_error($session) );
+            }
+    
+            if (mysqli_num_rows($result)>0) {
+                    while ($atelier = mysqli_fetch_array($result)) {                     
+                         if ($atelier["VisibiliteA"] == 1) {  
+                            echo('<li class="list-inline-item">');                  
+                            echo ('<div class="card" style="width: 12rem;">');
+                            echo ('<div class="card-header">');
+                            echo ('</div>');
+                            echo ('<img src="'.$atelier["PhotoC"].'" class="card-img-top" alt="...">');   
+                            echo ('<div class="card-body card text-center">');
+                            echo ('<h5 class="card-title">'.$atelier["TitreA"].'</h5>');
+                            echo ('<p class="card-text">Date de publication: '.$atelier["DatePublicationA"].'</p>');    
+                            echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
+                            echo ('</div>');  
+                            echo ('</div></li>');                
+                          } 
+                    }
+            } else {
+                    echo ("Cet utilisateur n'a pas encore saisi un atelier");
             }             
             ?>
              </ul>     
