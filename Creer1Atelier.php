@@ -169,16 +169,16 @@
                     <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre atelier" required></textarea>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Date & Créneau horaire (Zone libre) (<span style="color:red">*</span>)</label>
-              <input type="text" name="date" class="form-control col-md-4" placeholder="Du 14/10 au 16/10 14h00" id="inputEmail4" required />
+              <label for="inputEmail4">Date & Créneau horaire (Zone libre) [e.x. Du 14/10 au 16/10 14h00] (<span style="color:red">*</span>)</label>
+              <input type="text" name="date" class="form-control col-md-4"  id="inputEmail4" required />
             </div>
                  <div class="form-group">
-              <label for="inputEmail4">Lieu (Pensez à réserver la salle) (<span style="color:red">*</span>)</label>
-              <input type="text" name="lieu" class="form-control col-md-4" placeholder="6.36 Salle de créativité"  id="inputEmail4" required />
+              <label for="inputEmail4">Lieu (Pensez à réserver la salle) [e.x. 6.36 Salle de créativité] (<span style="color:red">*</span>)</label>
+              <input type="text" name="lieu" class="form-control col-md-4"  id="inputEmail4" required />
             </div>
                  <div class="form-group">
-              <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
-              <input type="number" name="nb" class="form-control col-md-4" min="0" placeholder="5" id="inputEmail4" required />
+              <label for="inputEmail4">Nombre de personnes maximum [e.x. 5] (<span style="color:red">*</span>)</label>
+              <input type="number" name="nb" class="form-control col-md-4" min="0" id="inputEmail4" required />
             </div>
             <div class="form-group">
                   <label for="inputAddress">Type d'atelier(<span style="color:red">*</span>)</label>				
@@ -198,12 +198,12 @@
               </div>               
             </div>
             <div class="form-group">
-              <label for="inputEmail4">URL de l'inscription(<span style="color:red">*</span>)</label>
-              <input type="text" name="url" class="form-control col-md-4" placeholder="https://www.linscription.com/..." id="inputEmail4" required />
+              <label for="inputEmail4">URL de l'inscription [e.x. https://www.linscription.com/...] (<span style="color:red">*</span>)</label>
+              <input type="text" name="url" class="form-control col-md-4"  id="inputEmail4" required />
             </div>    
             <div class="form-group">
-              <label for="inputEmail4">En savoir plus(si vous le souhaitez, indiquez un site internet pour plus d'informations)</label>
-              <input type="text" name="plus" class="form-control col-md-4" placeholder="https://fr.wikipedia.org/wiki/Yoga" id="inputEmail4" />
+              <label for="inputEmail4">En savoir plus (si vous le souhaitez, indiquez un site internet pour plus d'informations) <br> [e.x. https://fr.wikipedia.org/wiki/Yoga] </label>
+              <input type="text" name="plus" class="form-control col-md-4" id="inputEmail4" />
             </div>
 
             <div class="form-group">
