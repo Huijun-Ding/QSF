@@ -277,6 +277,7 @@
                     <div class="tab">
                       <button class="tablinksc" onclick="openCity(event, 'London')" id="defaultOpenc">Besoins</button>
                       <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
+                      <button class="tablinksc" onclick="openCity(event, 'Pekin')">Ateliers</button>
                     </div>
 
                     <!-- Tab content -->
@@ -385,7 +386,7 @@
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                     <h3>Talents en cours</h3>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
-                        <input class="form-control mr-sm-2" type="search" name="carteb" placeholder="Titre/Description" aria-label="Recherche">
+                        <input class="form-control mr-sm-2" type="search" name="cartet" placeholder="Titre/Description" aria-label="Recherche">
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                 </div>
@@ -481,6 +482,106 @@
                 </form>
             </div>
 
+                    <div id="Pekin" class="tabcontentc">      
+                  <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
+                    <h3>Ateliers en cours</h3>
+                    <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
+                        <input class="form-control mr-sm-2" type="search" name="cartea" placeholder="Titre/Description" aria-label="Recherche">
+                        <button type="submit" class="btn btn-outline-dark">Recherche</button>
+                    </form>
+                </div>
+                    
+                  <form action="AdminCarteInapproprieA.php" method="post">
+                  <?php
+
+                    $query = "select CodeA, TitreA, DescriptionA from ateliers where VisibiliteA = 1 order by CodeA DESC";
+
+                    if(isset($_GET['cartea']) AND !empty($_GET['cartea'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $cartet = htmlspecialchars($_GET['cartea']);
+                        $query = "select CodeA, TitreA, DescriptionA from ateliers where VisibiliteA = 1 and ( TitreA LIKE '%$cartea%' or DescriptionA LIKE '%$cartea%' ) order by CodeA DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents existantes*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeA"].'</th>');
+                            echo ('<td>'.$ligne["TitreA"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionA"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                              echo ('<button type="submit" name="desactivera" value="'.$ligne["CodeA"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                    
+                    echo('<br><h3>Ateliers cachés</h3><br>');
+                    
+                    $query2 = "select CodeA, TitreA, DescriptionA from ateliers where VisibiliteA = 0 order by CodeA DESC";
+
+                    if(isset($_GET['cartea']) AND !empty($_GET['cartea'])) {     /*Recherche par mot clé dans le titre et description*/
+                        $cartet = htmlspecialchars($_GET['cartea']);
+                        $query2 = "select CodeA, TitreA, DescriptionA from ateliers where VisibiliteA = 0 and ( TitreA LIKE '%$cartea%' or DescriptionA LIKE '%$cartea%' ) order by CodeA DESC";
+                    }
+                                      
+                    $result = mysqli_query ($session, $query2);
+
+                    if ($result == false) {
+                        die("ereur requête : ". mysqli_error($session) );
+                    }
+                    
+                    echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents cachés*/       
+                    echo ('<thead>');
+                          echo ('<tr>');
+                            echo ('<th scope="col">#</th>');
+                            echo ('<th scope="col">Titre</th>');
+                            echo ('<th scope="col">Description</th>');
+                            echo ('<th scope="col">Modification</th>');
+                          echo ('</tr>');
+                        echo ('</thead>');
+                        echo ('<tbody>');
+                    if (mysqli_num_rows($result)>0) {
+                    while ($ligne = mysqli_fetch_array($result)) {                                               
+                          echo ('<tr>');
+                            echo ('<th scope="row">'.$ligne["CodeA"].'</th>');
+                            echo ('<td>'.$ligne["TitreA"].'</td>');
+                            echo ('<td>'.$ligne["DescriptionA"].'</td>');
+                            echo ('<td>');
+                             echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
+                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activera" value="'.$ligne["CodeA"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                             echo ('</div>');
+                            echo ('</td>');
+                          echo ('</tr>');                     
+                    }          
+                    } 
+                     echo ('</tbody>');
+                    echo ('</table>');
+                   
+                    ?>        
+                </form>
+            </div>
+                    
             <!-- CSS pour la tab des cartes-->
             <style>     
             /* Style the tab */

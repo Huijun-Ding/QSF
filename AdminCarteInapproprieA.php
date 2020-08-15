@@ -2,11 +2,11 @@
 require_once('Fonctions.php');
 
 //Désactiver une carte qui contient des contenus inappropriés
-$CodeB = $_POST['desactiverb'];
+$CodeA = $_POST['desactivera'];
 
-if (isset($_POST['desactiverb'])) {
-    $stmt1 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 0 WHERE CodeB = ?");
-    mysqli_stmt_bind_param($stmt1, 'i', $CodeB);
+if (isset($_POST['desactivera'])) {
+    $stmt1 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 0 WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt1, 'i', $CodeA);
     mysqli_stmt_execute($stmt1);
 }
 
@@ -14,11 +14,11 @@ if (isset($_POST['desactiverb'])) {
 
 
 
-$CodeBC = $_POST['activerb'];
+$CodeAC = $_POST['activera'];
 
-if (isset($_POST['activerb'])) {
-    $stmt2 = mysqli_prepare($session, "UPDATE besoins SET VisibiliteB = 1 WHERE CodeB = ?");
-    mysqli_stmt_bind_param($stmt2, 'i', $CodeBC);
+if (isset($_POST['activera'])) {
+    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1 WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt2, 'i', $CodeAC);
     mysqli_stmt_execute($stmt2);
 }
 
@@ -28,14 +28,14 @@ header("Location: Admin.php");
 
 //Envoyer un mail pour informer cette personne
 
-        $sql = "SELECT u.Email, b.TitreB FROM utilisateurs u, saisir s, besoins b WHERE u.CodeU = s.CodeU and s.CodeB = b.CodeB and s.CodeB = $CodeB";
+        $sql = "SELECT u.Email, a.TitreA FROM utilisateurs u, participera p, ateliers a WHERE u.CodeU = p.CodeU and p.CodeA = a.CodeA and p.CodeA = $CodeA";
         $result = mysqli_query ($session, $sql);
     
         if ($email = mysqli_fetch_array($result)) {   
             $Email = $email['Email'];
             
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "Votre besoin « '.{$email['TitreB']}.'» a été supprimé par l'administrateur"; // sujet du mail
+            $sujet = "Votre atelier « '.{$email['TitreA']}.'» a été supprimé par l'administrateur"; // sujet du mail
              $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -351,7 +351,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Votre besoin « '.$email['TitreB'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre atelier « '.$email['TitreA'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;"> à cause des contenus inappropriés.</p><span class="mso-font-fix-tahoma">
 
