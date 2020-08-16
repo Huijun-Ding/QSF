@@ -151,11 +151,11 @@ if(isset($_SESSION['email'])) {
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
+                        echo ('<p><a href="">Changer mon mot de passe</a></p>');
                     } ?>
                 </div>
                 <div class="col-4">
-                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
-                        
+                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br> 
                     <?php
                     echo('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
@@ -224,7 +224,7 @@ if(isset($_SESSION['email'])) {
                     </script>                  
                 </form>
             </div>
-          </div>
+        </div><br>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
            

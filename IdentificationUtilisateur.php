@@ -23,11 +23,9 @@ if(isset($_POST['email'])){
                 session_start();
                 $_SESSION['email'] = $Email;
                 $_SESSION['password'] = $Password;
-                $_SESSION['role'] = 'admin';              
+                $_SESSION['role'] = 'admin';     
+                header("Location:Admin.php");
                 ?>
-                <script>
-                    document.location.href = window.history.go(-2);
-                </script>
             <?php
             } else {
                 ?>

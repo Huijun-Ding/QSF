@@ -142,10 +142,10 @@
                     </div>
                     <select class="custom-select" id="talent" name="talent" required>';
 
-                $query = "select t.CodeT, T.TitreT from utilisateurs as u, proposer as p, talents as t WHERE u.Email = '{$_SESSION['email']}' and u.CodeU = p.CodeU and p.CodeT = t.CodeT";
+                $query = "SELECT DISTINCT e.CodeCarte, t.TitreT FROM emails as e, talents as t WHERE e.TypeCarte = 'talent' and (e.Provenance = {$_SESSION['codeu']} or e.destinataire = {$_SESSION['codeu']}) and e.CodeCarte = t.CodeT";
                 $result = mysqli_query ($session, $query);
                 while ($ligne = mysqli_fetch_array($result)) {   
-                    echo "<option value=\"{$ligne['CodeT']}\">{$ligne['TitreT']}</option>";    
+                    echo "<option value=\"{$ligne['CodeCarte']}\">{$ligne['TitreT']}</option>";    
                 }  
                     echo '</select></div>';
 

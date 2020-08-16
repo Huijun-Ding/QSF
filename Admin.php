@@ -860,7 +860,7 @@
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" min="0" name="interval"> jours </p>
+                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" name="interval"> jours </p>
                     <button type="submit" class="btn btn-dark"> Modifier </button>
                 </form>
 

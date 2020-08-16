@@ -142,16 +142,17 @@
               <p>Veuillez sélectionner une raison de refuse : </p><br>
               <form action="besoinnon.fonction.php" method="GET">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Mon besoin a été résolu" checked>
+                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Merci, j’ai déjà reçu une solution pour mon besoin" checked>
                   <label class="form-check-label" for="besoin_raison1">
-                    Mon besoin a été répondu
+                    Merci, j’ai déjà reçu une solution pour mon besoin
                   </label>
                 </div><br>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison2" value="Je ne suis pas libre">
+                  <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison2" value="Je serais disponible à partir du ">
                   <label class="form-check-label" for="besoin_raison2">
-                    Je ne suis pas libre
+                    Je serais disponible à partir du  
                   </label>
+                  <input type="date" name="datedispo">
                 </div><br>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison3" value="">
