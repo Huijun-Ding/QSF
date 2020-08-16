@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son prénom
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -264,7 +268,8 @@
            
                      echo('<hr>');
             echo('<div class="form-group">');
-                echo('<button name="codeA" type="submit" value="'.$ligne["CodeA"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
+                echo('<button name="codeA" type="submit" value="'.$ligne["CodeA"].'" class="btn btn-primary">Modifier</button>');
+                echo (' <input type="reset" class="btn btn-dark" value="Annuler">');
            echo('</div>');
                               }
                 }
@@ -275,7 +280,7 @@
         </div>
 
         <footer>
-          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 
     <!-- Optional JavaScript -->

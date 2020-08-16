@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -139,7 +143,7 @@
             <?php
             require_once('Fonctions.php');  
             
-if(isset($_SESSION['email'])) {
+            if(isset($_SESSION['email'])) {
                 
                     $query = " select NomU, PrenomU, Email, TypeU from utilisateurs where CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
@@ -152,10 +156,12 @@ if(isset($_SESSION['email'])) {
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
                         echo ('<p><a href="">Changer mon mot de passe</a></p>');
-                    } ?>
+                    } 
+            }?>
                 </div>
                 <div class="col-4">
-                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br> 
+                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
+                        
                     <?php
                     echo('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
@@ -169,7 +175,9 @@ if(isset($_SESSION['email'])) {
                               echo('</button>');
                             echo('</div>');
                             echo('<div class="modal-body">');
-                              echo('<p>Êtes-Vous sûr de supprimer votre compte ? </p>');
+                              echo('<p>Êtes-Vous sûr de supprimer votre compte ? <br>');
+                              echo('Attention : toutes vos cartes associées seront supprimées.<br>');
+                              echo('Pour tout problème, veuillez contacter l\'administrateur. </p>');
                             echo('</div>');
                             echo('<div class="modal-footer">');
                               echo('<button type="submit" class="btn btn-primary">Supprimer</button>');
@@ -180,6 +188,8 @@ if(isset($_SESSION['email'])) {
                       echo('</div>');                
                     ?>         
                     </form>
+                    <br>
+                    <p>Si vous voulez modifier votre adresse mail, veuillez recréer un nouveau compte. </p>
                 </div>
             </div>
 
@@ -224,7 +234,8 @@ if(isset($_SESSION['email'])) {
                     </script>                  
                 </form>
             </div>
-        </div><br>
+            <br><br>
+         
 <!--------------------------------------------------------------------------------------------------------------------------------------------->           
            <div class="container" id="MesBesoins">
            
@@ -270,7 +281,7 @@ if(isset($_SESSION['email'])) {
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] > 0) {
                             echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -285,7 +296,7 @@ if(isset($_SESSION['email'])) {
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
+                     <button  title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModal">Désactiver carte</button>
 
                      <!-- Modal -->
                     <div class="modal fade" id="MyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -358,7 +369,7 @@ if(isset($_SESSION['email'])) {
                             echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
                             if ($talent["ReponseT"] > 0) {
                                 echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Répondre</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
@@ -367,12 +378,12 @@ if(isset($_SESSION['email'])) {
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
             }    
-
-        echo '  </ul>     
+?>
+        </ul>     
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver carte</button>
+                     <button title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#MyModalT">Désactiver carte</button>
                     
                      <!-- Modal -->
                     <div class="modal fade" id="MyModalT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -397,10 +408,10 @@ if(isset($_SESSION['email'])) {
             </div>           
             </form>        
           </div>
-        <br><br>';
-
-//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        echo '<div class="container" id="MesAteliers">
+        <br><br>
+        
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        <div class="container" id="MesAteliers">
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
@@ -411,8 +422,9 @@ if(isset($_SESSION['email'])) {
             <form method="POST" action="Desactiver1Atelier.php">
                 <div class="row">
                 <div class="col-10">
-                <ul class="list-inline">';
+                <ul class="list-inline">
 
+            <?php
             $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$usercode} order by a.CodeA DESC ";
 
             $result = mysqli_query ($session, $query);
@@ -444,12 +456,12 @@ if(isset($_SESSION['email'])) {
             } else {
                     echo ("Vous n'avez pas encore créé un atelier");
             }             
-  
-            echo '   </ul>
+  ?>
+            </ul>
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
-                     <button  type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#Myatelier">Désactiver carte</button>
+                     <button title="Veuillez sélectionner une carte" type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#Myatelier">Désactiver carte</button>
 
                      <!-- Modal -->
                     <div class="modal fade" id="Myatelier" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">  
@@ -477,18 +489,17 @@ if(isset($_SESSION['email'])) {
           </div>  
        
         <br><br>
-
-
-       </div> 
+ </div>
+ 
+                    
+       
   <hr> 
   <footer>
-    <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-  </footer>'; 
+    <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+  </footer>
         
-} else {
-    echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
-}         
-            ?> 
+
+            
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

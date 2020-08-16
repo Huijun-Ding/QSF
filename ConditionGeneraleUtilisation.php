@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -167,12 +171,19 @@
             </ul>
             <br><h4>Sécurité des données </h4>
             <br><a>De plus, la CPAM 31 a confié l’hébergement de son Site à la société OVH pour assurer la sécurité des données personnelles confiées par ses utilisateurs, les données de nos utilisateurs sont stockées que sur les bases de données du Site, l’infrastructure hardware et software sur laquelle les sites sont hébergés est conçue pour garantir une sécurité absolue des données (antivirus, switch, routeurs, serveurs et firewalls redondants). </a>
-            
+            <p>   </p>
+            <button type="button" class="btn btn-secondary" onclick="goBack()">Annuler</button>
           </div>
         </div>        
-
+        
+        <script>
+            function goBack() {
+                window.history.back();
+              }              
+        </script>
+            
         <footer>
-          <p id="copyright"><em><small>copyright &#9400; Quai des savoir-faire, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 
     <!-- Optional JavaScript -->

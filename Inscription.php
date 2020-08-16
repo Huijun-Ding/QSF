@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -144,7 +148,7 @@
 				</div>
 			  </div>
 			  <div class="form-group">
-				<label for="inputAddress">Email (Perso)</label>
+				<label for="inputAddress">Email (Pro & Perso)</label>
 				<input type="text" class="form-control" name="email" id="inputAddress" placeholder="@gmail.com" maxlength="255" required>
 			  </div>
                         
@@ -152,7 +156,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Toutes vos échanges sur Quai des savoir-faire sont en anonyme, si vous voulez en savoir plus, vuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle" target="_blank">Je m'engage à respecter <u>la charte</u>.<span> Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>
@@ -169,7 +173,7 @@
 			  </div>
                             
                         <div id="radiotypeu">
-                          <p>Sélectionner le type d'information affichée</p> 
+                          <p>Sélectionner le type d'information que vous souhaitez visualiser</p> 
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="typeu" id="exampleRadios1" value="" checked>
                             <label class="form-check-label" for="exampleRadios1">
@@ -192,7 +196,8 @@
                         </div>
                             
                         <div class="form-group">
-                              <button type="submit" class="btn btn-dark">S'inscrire</button>
+                              <button type="submit" class="btn btn-primary">S'inscrire</button>
+                              <input type="reset" class="btn btn-dark" value="Annuler">
                         </div>
             </form>
 
@@ -200,7 +205,7 @@
         </div>
 
     <footer>
-      <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+      <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
     </footer>
 
     <!-- Optional JavaScript -->

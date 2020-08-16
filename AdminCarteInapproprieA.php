@@ -1,39 +1,42 @@
 <?php 
 require_once('Fonctions.php');
 
-$TitreT = $_POST['titreT'];
-$DescriptionT = $_POST['descriptionT'];
-$TypeT = $_POST['typeT']; 
-$DatePublicationT = date("yy/m/d");
-$Categorie = $_POST['categorieT'];
+//Désactiver une carte qui contient des contenus inappropriés
+$CodeA = $_POST['desactivera'];
 
-$stmt = mysqli_prepare($session, "INSERT INTO talents(TitreT,DescriptionT,DatePublicationT,TypeT,CodeC) VALUES(?,?,?,?,?)");  //insérer un nouveau talet dans le table talents
-mysqli_stmt_bind_param($stmt, 'ssssi', $TitreT, $DescriptionT, $DatePublicationT, $TypeT, $Categorie);
+if (isset($_POST['desactivera'])) {
+    $stmt1 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 0 WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt1, 'i', $CodeA);
+    mysqli_stmt_execute($stmt1);
+}
 
-if (mysqli_stmt_execute($stmt) === true) {
-        echo "Votre talent a bien été enregistré";
-  
-        
-        //ajouter codeT et CodeU dans le table proposer
-    $sql = "select CodeT from talents order by CodeT DESC limit 1";
-    $result = mysqli_query ($session, $sql);
-    if ($code = mysqli_fetch_array($result)) {   
-        $codet = $code['CodeT'];
-        $stmt2 = mysqli_prepare($session, "INSERT INTO proposer(CodeU,CodeT) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans le table abonner
-        mysqli_stmt_bind_param($stmt2, 'ii', $usercode, $codet);
-        mysqli_stmt_execute($stmt2); 
-    }  
-        
-        header("Location: MonProfil.php");
- 
-        $sql = "select u.Email, t.TitreT from utilisateurs u, talents t, proposer p where u.CodeU = $usercode and u.CodeU = p.CodeU and p.CodeT = t.CodeT order by t.CodeT DESC limit 1";
+   
+
+
+
+$CodeAC = $_POST['activera'];
+
+if (isset($_POST['activera'])) {
+    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1 WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt2, 'i', $CodeAC);
+    mysqli_stmt_execute($stmt2);
+}
+
+
+
+header("Location: Admin.php");
+
+//Envoyer un mail pour informer cette personne
+
+        $sql = "SELECT u.Email, a.TitreA FROM utilisateurs u, participera p, ateliers a WHERE u.CodeU = p.CodeU and p.CodeA = a.CodeA and p.CodeA = $CodeA";
         $result = mysqli_query ($session, $sql);
+    
         if ($email = mysqli_fetch_array($result)) {   
             $Email = $email['Email'];
-        
-        $destinataire = "$Email"; // adresse mail du destinataire
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Création de nouvelle carte « '.{$email['TitreT']}.'»"; // sujet du mail
-        $message = '<!DOCTYPE html>
+            
+            $destinataire = "$Email"; // adresse mail du destinataire
+            $sujet = "Votre atelier « '.{$email['TitreA']}.'» a été supprimé par l'administrateur"; // sujet du mail
+             $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
@@ -333,7 +336,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>Cr&eacute;ation de nouvelle carte</strong></p><span class="mso-font-fix-arial">
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:30px;color:#9ab0e0;line-height:37px;text-align:left"><p style="padding: 0; margin: 0;text-align: center;"><strong>Suppression de votre carte</strong></p><span class="mso-font-fix-arial">
 </span></div>
 </td>
 </tr>
@@ -342,17 +345,15 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 <tr>
 
-<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left">
-
-</span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
+<td valign="top" style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px"><div style="font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;font-size:15px;color:#114b5f;line-height:25px;text-align:left"></span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
 <p style="padding: 0; margin: 0;">Bonjour,</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous venez de créer une nouvelle carte  « '.$email['TitreT'].'» </p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre atelier « '.$email['TitreA'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Merci de votre participation ! </p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;"> à cause des contenus inappropriés.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 </span></div>
@@ -374,7 +375,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">G&eacute;rer mes cartes</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/Login.php">Voir mes cartes</a></span>
 </font>
 </span>
 </td>
@@ -394,7 +395,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
 <font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">G&eacute;rer mes cartes</a></span>
+<span><a href="https://qualif-qsf.cpam31.fr/Login.php">Voir mes cartes</a></span>
 </font>
 </span>
 </a>
@@ -468,7 +469,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 </table>
 </div>
 </body>
-</html>';
+</html>'; // message qui dira que le destinataire a bien lu votre mail
         // maintenant, l'en-tête du mail
         /*$header = "From: [Plateforme]\r\n"; 
         $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
@@ -480,24 +481,18 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
      // En-têtes additionnels
     
-     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>';
+     $headers[] = 'From: [COUP DE MAIN, COUP DE POUCE]';
 
      
      
-        mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
+     mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         
-        
+            
+            
         }
-     
-} else {
-        ?>
-
-       <script>
-           alert("Désolé, votre talent n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement !");
-           document.location.href = 'Creer1Talent.php';
-        </script>
         
-        <?php 
-}
+    
+ 
+       
 
 ?>

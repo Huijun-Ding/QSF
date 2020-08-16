@@ -10,8 +10,6 @@ if (isset($raisonT)) {
     mysqli_stmt_execute($sql); 
     
     header("Location: index.php");
-    echo $raisonT;
-
 }
 
 // envoyer email au provenance et préciser la raison de refuse
@@ -467,5 +465,4 @@ if (isset($raisonT)) {
         }
     }
     header("Location: MonProfil.php");
-?>
 ?>

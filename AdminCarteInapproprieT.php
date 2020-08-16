@@ -26,13 +26,13 @@ header("Location: Admin.php");
 
 //Envoyer un mail pour informer cette personne
 
-        $sql = "SELECT u.Email FROM utilisateurs u, proposer p WHERE u.CodeU = p.CodeU and CodeT = $CodeT";
+        $sql = "SELECT u.Email, t.TitreT FROM utilisateurs u, proposer p, talents t WHERE u.CodeU = p.CodeU and p.CodeT = t.CodeT and p.CodeT = $CodeT";
         $result = mysqli_query ($session, $sql);      
         
         if ($email = mysqli_fetch_array($result)) {   
             $Email = $email['Email'];
              $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "Votre talent a été supprimé par l'administrateur"; // sujet du mail
+            $sujet = "Votre talent « '.{$email['TitreT']}.'» a été supprimé par l'administrateur"; // sujet du mail
              $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -348,7 +348,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Votre talent a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre talent « '.$email['TitreT'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;"> à cause des contenus inappropriés.</p><span class="mso-font-fix-tahoma">
 
@@ -478,7 +478,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
      // En-têtes additionnels
     
-     $headers[] = 'From: [Plateforme]';
+     $headers[] = 'From: [COUP DE MAIN, COUP DE POUCE]';
 
      
      

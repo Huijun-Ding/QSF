@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -130,7 +134,23 @@
         <div class="jumbotron">
           <div class="container">
 			
-            <h1> Créer un atelier </h1>
+              <h1> Créer un atelier </h1><hr>
+              <h4>Etapes à suivre pour créer un atelier : </h4><br>
+              
+            <h5>Etape 1 : Je demande à créer un formulaire d’inscription en mentionnant :</h5>
+            <dl>
+                <dd style="text-indent:2em;"> - CMCP + Nom de votre atelier</dd>
+                <dd style="text-indent:2em;"> - Date de l’atelier / l’heure de début / l’heure de fin</dd>
+                <dd style="text-indent:2em;"> - Lieu</dd>
+                <dd style="text-indent:2em;"> - Date butoir d’inscription</dd>
+            </dl>
+            
+            <h5>Etape 2 : SAM me répond pour me donner l’adresse URL  d’inscription que je copie et que je colle dans le champ “URL”</h5><br>
+            
+            <h5>Etape 3 : Je termine de compléter le formulaire COUP DE MAIN, COUP DE POUCE</h5><br>
+
+            <h5>Etape 4 : J’envoie un mail à “<a href="contact.html.php">contact</a>” pour informer les administrateurs qui m’enverront la liste des inscrits</h5><br>
+            
             <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
@@ -165,16 +185,16 @@
                     <textarea rows="4" cols="50" name="description" placeholder=" Veuillez préciser votre atelier" required></textarea>
             </div>
             <div class="form-group">
-              <label for="inputEmail4">Date & Créneau horaire(<span style="color:red">*</span>)</label>
-              <input type="text" name="date" class="form-control col-md-4" placeholder="Du 14/10 au 16/10 14h00" id="inputEmail4" required />
+              <label for="inputEmail4">Date & Créneau horaire (Zone libre) [e.x. Du 14/10 au 16/10 14h00] (<span style="color:red">*</span>)</label>
+              <input type="text" name="date" class="form-control col-md-4"  id="inputEmail4" required />
             </div>
                  <div class="form-group">
-              <label for="inputEmail4">Lieu(<span style="color:red">*</span>)</label>
-              <input type="text" name="lieu" class="form-control col-md-4" placeholder="Salle 6.40" id="inputEmail4" required />
+              <label for="inputEmail4">Lieu (Pensez à réserver la salle) [e.x. 6.36 Salle de créativité] (<span style="color:red">*</span>)</label>
+              <input type="text" name="lieu" class="form-control col-md-4"  id="inputEmail4" required />
             </div>
                  <div class="form-group">
-              <label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>
-              <input type="number" name="nb" class="form-control col-md-4" min="0" placeholder="5" id="inputEmail4" required />
+              <label for="inputEmail4">Nombre de personnes maximum [e.x. 5] (<span style="color:red">*</span>)</label>
+              <input type="number" name="nb" class="form-control col-md-4" min="0" id="inputEmail4" required />
             </div>
             <div class="form-group">
                   <label for="inputAddress">Type d'atelier(<span style="color:red">*</span>)</label>				
@@ -194,23 +214,24 @@
               </div>               
             </div>
             <div class="form-group">
-              <label for="inputEmail4">URL de l'inscription(<span style="color:red">*</span>)</label>
-              <input type="text" name="url" class="form-control col-md-4" placeholder="https://www.linscription.com/..." id="inputEmail4" required />
+              <label for="inputEmail4">URL de l'inscription [e.x. https://www.linscription.com/...] (<span style="color:red">*</span>)</label>
+              <input type="text" name="url" class="form-control col-md-4"  id="inputEmail4" required />
             </div>    
             <div class="form-group">
-              <label for="inputEmail4">En savoir plus</label>
-              <input type="text" name="plus" class="form-control col-md-4" placeholder="https://fr.wikipedia.org/wiki/Yoga" id="inputEmail4" />
+              <label for="inputEmail4">En savoir plus (si vous le souhaitez, indiquez un site internet pour plus d'informations) <br> [e.x. https://fr.wikipedia.org/wiki/Yoga] </label>
+              <input type="text" name="plus" class="form-control col-md-4" id="inputEmail4" />
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-dark">CREER</button>
+                <button type="submit" class="btn btn-primary">Créer</button> 
+                <input type="reset" class="btn btn-dark" value="Annuler">
             </div>
-            </form>   
+            </form>  
           </div>
         </div>  
         
         <footer>
-          <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 
     <!-- Optional JavaScript -->

@@ -84,7 +84,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -143,7 +147,7 @@
                             <option value="" selected>Choisir une catégorie</option>
                              <?php
                              require_once('Fonctions.php');
-                             $query = "select Description, CodeC, NomC from categories where VisibiliteC = 1";
+                             $query = "select DescriptionC, CodeC, NomC from categories where VisibiliteC = 1";
                              $result = mysqli_query ($session, $query);
                              if (mysqli_num_rows($result)>0) {       
                                 while ($ligne = mysqli_fetch_array($result)) { 
@@ -153,7 +157,7 @@
                              }
                              ?>                     
                       </select>
-                      </select>
+              
                     </div> <p>(<span style="color:red">*</span>)</p>
             </div>
             <div class="form-group">
@@ -184,14 +188,15 @@
             </div>
 
               <div class="form-group">
-              <button type="submit" class="btn btn-dark">Créer</button>
+              <button type="submit" class="btn btn-primary">Créer</button> 
+              <input type="reset" class="btn btn-dark" value="Annuler">
               </div>
             </form>
           </div>
         </div>
         
         <footer>
-          <p id="copyright"><em><small>copyright &#9400; Talents Land, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 
     <!-- Optional JavaScript -->
