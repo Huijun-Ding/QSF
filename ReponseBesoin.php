@@ -149,14 +149,20 @@
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a> ');
+                        echo ('<a href="besoinoui.fonction.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Possible</button></a> ');
                         echo ('<a href="besoinnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
                     }
                 }
                 ?>   
+                <!-- href="mailto:'.$ligne["Email"].'"  -->
           </div>
         </div>
   <hr> 
+  <script>
+    function sendmail() {
+        window.location.href = "mailto:mail@example.org";
+    }
+  </script>
   <footer>
     <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
   </footer>
