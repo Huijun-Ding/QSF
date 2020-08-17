@@ -134,7 +134,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>Nous contacter</h1><hr>
-                <p>Par mail : dct.talentland@gmmail.com</p>
+                <p>Par mail : admincmcp@assurance-maladie.fr</p>
                 <p>Par téléphone :</p>
             </div>
         </div>
