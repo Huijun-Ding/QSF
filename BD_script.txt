@@ -15,7 +15,6 @@ CREATE TABLE `besoins` (
   `TitreB` text(30) NOT NULL,
   `DescriptionB` text(200) NOT NULL,
   `DateButoireB` date NOT NULL,
-  `SatisfaisantB` enum('1','2','3','4','5'),
   `DatePublicationB` date,
   `TypeB` enum('Pro','Perso','Pro et Perso'),
   `CodeC` int(10) NOT NULL,
@@ -96,7 +95,6 @@ CREATE TABLE `utilisateurs` (
   `PrenomU` text(30) NOT NULL,
   `Email` text(150) NOT NULL,
   `MotDePasse` text(150) NOT NULL,
-  `Anonyme` tinyint(1) default 1,
   `TypeU` enum('Pro','Perso',''),
   `RoleU` text(30) NULL default NULL,
   PRIMARY KEY (`CodeU`)
@@ -106,7 +104,7 @@ CREATE TABLE `utilisateurs` (
 --
 
 LOCK TABLES `utilisateurs` WRITE;
-INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', 1, '', NULL);
+INSERT INTO `utilisateurs` VALUES (1,'Dupont','David','DavidDepont@gmail.com','$2y$10$HqqrG3//Q/KkmuRMYhuBSeK6MkGk4WmN15TojXK.PKJ/nTYduW54S', '', NULL);
 UNLOCK TABLES;
 
 -- --------------------------------------------------------------------------------------------
