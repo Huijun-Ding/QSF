@@ -131,19 +131,11 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
-    <?php
-    $req = "UPDATE talents SET ReponseT = ReponseT - 1 WHERE CodeT = {$_GET['c']}";
-    mysqli_query($session, $req);
-
-    $query = "UPDATE emails SET VisibiliteE = 0 WHERE CodeCarte = {$_GET['c']} AND TypeCarte = 'talent' AND Provenance = {$_GET['p']}";
-    mysqli_query ($session, $query); 
-    ?>
-<!---------------------------------------------------------------------------------------------------------------------------------------------> 
         <div class="jumbotron">
           <div class="container">
               <h1>Pourquoi ?</h1><hr>
               <p>Veuillez sélectionner une raison de refuse : </p><br>
-              <form action="talentnon.fonction.php" method="GET">
+              <?php echo ('<form action="talentnon.fonction.php" method="GET">'); ?>
                   
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_talent" id="talent_raison1" value="Je ne suis pas libre" checked>
@@ -167,7 +159,10 @@
                   </label><br>
                   <textarea name="autre_raison" rows="4" cols="50"></textarea>
                 </div><br>
-                
+                <?php
+                echo '<input type="hidden" name="c" value="'.$_GET['c'].'">';
+                echo '<input type="hidden" name="p" value="'.$_GET['p'].'">';
+                ?>               
                 <button type="submit" class="btn btn-primary">Envoyer</button>
                 
               </form>

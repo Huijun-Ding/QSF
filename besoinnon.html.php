@@ -131,20 +131,11 @@
       </div>
     </nav>
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
-    <?php
- 
-    $req = "UPDATE besoins SET ReponseB = ReponseB - 1 WHERE CodeB = {$_GET['c']}";
-    mysqli_query($session, $req);
-
-    $query = "UPDATE emails SET VisibiliteE = 0 WHERE CodeCarte = {$_GET['c']} AND TypeCarte = 'besoin' AND Provenance = {$_GET['p']}";
-    mysqli_query ($session, $query); 
-    ?>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">
           <div class="container">
               <h1>Pourquoi ?</h1><hr>
               <p>Veuillez sélectionner une raison de refus : </p><br>
-               <?php echo('<form action="besoinnon.fonction.php?p='.$_GET['p'].'&c='.$_GET['c'].'" method="GET">');  ?>
+               <?php echo('<form action="besoinnon.fonction.php" method="GET">');  ?>
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="raison_non_besoin" id="besoin_raison1" value="Merci, j’ai déjà reçu une solution pour mon besoin" checked>
                   <label class="form-check-label" for="besoin_raison1">
@@ -165,6 +156,10 @@
                   </label><br>
                   <textarea name="autre_raison" rows="4" cols="50"></textarea>
                 </div><br>
+                <?php
+                echo '<input type="hidden" name="c" value="'.$_GET['c'].'">';
+                echo '<input type="hidden" name="p" value="'.$_GET['p'].'">';
+                ?>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
               </form>
               <hr>      

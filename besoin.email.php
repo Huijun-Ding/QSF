@@ -478,5 +478,7 @@
     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>'; // En-têtes additionnels  
     mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail 
 
-    header("Location: index.php");
 ?>
+<script>
+    document.location.href = window.history.go(-2);
+</script>
