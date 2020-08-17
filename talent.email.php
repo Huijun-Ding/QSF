@@ -25,7 +25,7 @@
         //email pour répondre un besoin
         $destinataire = "{$ligne['Email']}"; // adresse mail du destinataire
         //$destinataire = "mathilda.cnfr@gmail.com";
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$_POST['titrecarte']}"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage de talent {$_POST['titrecarte']}"; // sujet du mail
         $message = '
         <!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -36,7 +36,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="x-apple-disable-message-reformatting">
         <meta name="format-detection" content="telephone=no">
-        <title>NotificationBesoin</title>
+        <title>NotificationTalent</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -343,7 +343,7 @@
 
         </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur voudrais vous demander de partager votre talent.</p><span class="mso-font-fix-tahoma">
+        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur voudrait demander de partager votre talent.</p><span class="mso-font-fix-tahoma">
 
         </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 
