@@ -141,7 +141,7 @@
                   <?php
                     require_once('Fonctions.php');
 
-                    $query = "select VisibiliteC, NomC, PhotoC, CodeC from categories c ";
+                    $query = "select VisibiliteC, NomC, PhotoC, CodeC, DescriptionC from categories";
 
                     $result = mysqli_query ($session, $query);
 
@@ -165,7 +165,7 @@
                                   echo ('<input name="descriptioncp" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                 echo ('</div>');
                                 echo ('<div class="card-body text-center">');
-                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo('<h6 class="card-title" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">'.$ligne["NomC"].'</h6>');
                                 echo ('</div>');
                                 echo ('</div>');      
                         } else {
@@ -173,9 +173,9 @@
                             echo ('<div class="card-header">');
                             echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
-                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" title="'.$ligne["DescriptionC"].'">');    
                             echo ('<div class="card-body text-center">');
-                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo('<h6 class="card-title" title="'.$ligne["DescriptionC"].'">'.$ligne["NomC"].'</h6>');
                             echo ('</div>');
                             echo ('</div>'); 
                         }

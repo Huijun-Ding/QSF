@@ -35,7 +35,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                 // Envoyer un mail
            
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "[COUP DE MAIN, COUP DE POUCE] Confirmation de la création de compte"; // sujet du mail
+            $sujet = "[COUP DE MAIN, COUP DE POUCE] Confirmation de la cr&eacute;ation de compte"; // sujet du mail
             $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -355,7 +355,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Merci d&#39;avoir rejoindre notre plateforme.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Merci d&#39;avoir rejoint notre plateforme.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Nous avons cr&eacute;&eacute; cette plateforme pour faciliter et favoriser&nbsp;les &eacute;changes entre tout le personnel de la CPAM Haute-Garonne.</p><span class="mso-font-fix-tahoma">
 
@@ -757,7 +757,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
      // En-têtes additionnels
     
-     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>';
+     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>';
 
      
      

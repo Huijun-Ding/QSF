@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+<<<<<<< HEAD
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AbonnerCategorie.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Besoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/contact.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReponseTalent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MailTalent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCategorieModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BesoinModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Inscription.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/TalentModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talentnon.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCarteInapproprieT.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/index.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BesoinX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talent.email.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Admin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AjouterUtilisateurs.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Talent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ConditionGeneraleUtilisation.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminUtilisateur.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talentnon.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCarteInapproprieB.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Talent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-talent.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminBesoinX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Saisir1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReponseBesoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoinnon.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Modifier1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-besoin.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/TalentX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Projet.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AtelierX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MesCategories.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AtelierModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BD_script.txt</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoin.email.php</file>
+=======
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>Accueil.php</url>
@@ -12,8 +58,17 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/talent.email.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoin.email.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/AdminParametresFonction.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/IdentificationUtilisateur.php</file>
+>>>>>>> 89571de4ff8ce1a76bdb6cfe3ae4cb4d0901313b
+=======
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/talentnon.fonction.php</file>
             <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoinnon.fonction.php</file>
+>>>>>>> 6ff08d8874050102b6623768946b3a4650155c4f
         </group>
     </open-files>
 </project-private>

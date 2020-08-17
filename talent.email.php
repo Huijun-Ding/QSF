@@ -25,7 +25,7 @@
         //email pour répondre un besoin
         $destinataire = "{$ligne['Email']}"; // adresse mail du destinataire
         //$destinataire = "mathilda.cnfr@gmail.com";
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$_POST['titrecarte']}"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage de talent {$_POST['titrecarte']}"; // sujet du mail
         $message = '
         <!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -36,7 +36,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="x-apple-disable-message-reformatting">
         <meta name="format-detection" content="telephone=no">
-        <title>NotificationBesoin</title>
+        <title>NotificationTalent</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -343,7 +343,7 @@
 
         </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur voudrais vous demander de partager votre talent.</p><span class="mso-font-fix-tahoma">
+        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait demander de partager votre talent '.$_POST['titrecarte'].'.</p><span class="mso-font-fix-tahoma">
 
         </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 
@@ -361,39 +361,14 @@
         <a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
         <span>
 
-        <table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
-        <tr>
 
-        <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
-        <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
-        <font style="color:#ffffff;" class="button">
-        <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
-        </font>
-        </span>
-        </td>
-        </tr>
-        </table>
 
         </span>
         </a>
         <!--<![endif]-->
         <div style="display:none; mso-hide: none;">
 
-        <table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
-        <tr>
-
-        <td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
-        <a href="" target="_blank" style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;text-decoration:none;text-align:center;">
-
-        <span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
-        <font style="color:#ffffff;" class="button">
-        <span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Voir son message</a></span>
-        </font>
-        </span>
-        </a>
-        </td>
-        </tr>
-        </table>
+     
 
         </div>
         </td>
@@ -465,7 +440,7 @@
         ; // Contenue du mail 
         $headers[] = 'MIME-Version: 1.0';
         $headers[] = 'Content-type:text/html;charset=iso-8859-1';
-        $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>'; // En-têtes additionnels  
+        $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>'; // En-têtes additionnels  
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail
     }
 ?>
