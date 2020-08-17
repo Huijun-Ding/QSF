@@ -5,19 +5,24 @@ $raisonB = $_GET['raison_non_besoin']. $_GET['autre_raison'].$_GET['datedispo'];
 if (isset($raisonB)) {
     $sql = "insert into compteurb (NumOuiB, NumNonB, RaisonB) VALUES(0, 1, '{$raisonB}')";
     mysqli_query ($session, $sql);  
-    header("Location: index.php");
 }
+
+$req = "UPDATE besoins SET ReponseB = ReponseB - 1 WHERE CodeB = {$_GET['c']}";
+mysqli_query($session, $req);
+
+$query = "UPDATE emails SET VisibiliteE = 0 WHERE CodeCarte = {$_GET['c']} AND TypeCarte = 'besoin' AND Provenance = {$_GET['p']}";
+mysqli_query ($session, $query); 
 
 //Email de refus
    
-    //$sql = "SELECT e.Provenance FROM emails AS e, utilisateurs AS u, besoins AS b WHERE e.TypeCarte = 'besoin' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND b.CodeB = e.CodeCarte";
-    //$result = mysqli_query ($session, $sql);
-    //if ($email = mysqli_fetch_array($result)) {   
-        $Email = $_GET['p']; 
-       
-        $destinataire = "$Email"; // adresse mail du destinataire 
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Refus de besoin"; // sujet du mail
-        $message = '<!DOCTYPE html>
+//$sql = "SELECT e.Provenance FROM emails AS e, utilisateurs AS u, besoins AS b WHERE e.TypeCarte = 'besoin' AND e.Destinataire = {$_SESSION['codeu']} AND e.VisibiliteE = 1 AND e.CodeCarte = {$_GET['code']}  AND e.Provenance = u.CodeU AND b.CodeB = e.CodeCarte";
+//$result = mysqli_query ($session, $sql);
+//if ($email = mysqli_fetch_array($result)) {   
+    $Email = $_GET['p']; 
+
+    $destinataire = "$Email"; // adresse mail du destinataire 
+    $sujet = "[COUP DE MAIN, COUP DE POUCE] Refus de besoin"; // sujet du mail
+    $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
@@ -455,23 +460,23 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
         /*$header = "From: [Plateforme]\r\n"; 
         $headers = 'Content-Type: text/plain; charset=utf-8' . "\r\n";
         $header .= "Disposition-Notification-To:l'email d'un administrateur"; // c'est ici que l'on ajoute la directive*/
-        
+
            // Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
      $headers[] = 'MIME-Version: 1.0';
      $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
      // En-têtes additionnels
-    
-     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>';
 
-     
-     
+     $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>';
+
+
+
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
-        
 
-        
-        
-        
+
          //}  
-
 ?>
+
+<script>
+    document.location.href = window.history.go(-3);
+</script>

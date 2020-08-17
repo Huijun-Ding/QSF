@@ -155,15 +155,19 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
           <div class="container">
+              
+        <?php
+        if (isset($_SESSION['role'])) {
+            echo '
                <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
-                <button class="tablink" onclick="openPage('Catégories', this, 'orange')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
-                <button class="tablink" onclick="openPage('Cartes', this, 'orange')" >Cartes</button>
-                <button class="tablink" onclick="openPage('Utilisateurs', this, 'orange')" >Utilisateurs</button>
-                <button class="tablink" onclick="openPage('Stats', this, 'orange')">Statistiques</button>
-                <button class="tablink" onclick="openPage('Bandeau', this, 'orange')" >Bandeau</button>
-                <button class="tablink" onclick="openPage('Paramètres', this, 'orange')">Paramètres</button>              
-<!--------------------------------------------------------------------------------------------------------------------------------------------->  
-                <div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
+                <button class="tablink" onclick="openPage(\'Catégories\', this, \'orange\')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
+                <button class="tablink" onclick="openPage(\'Cartes\', this, \'orange\')" >Cartes</button>
+                <button class="tablink" onclick="openPage(\'Utilisateurs\', this, \'orange\')" >Utilisateurs</button>
+                <button class="tablink" onclick="openPage(\'Stats\', this, \'orange\')">Statistiques</button>
+                <button class="tablink" onclick="openPage(\'Bandeau\', this, \'orange\')" >Bandeau</button>
+                <button class="tablink" onclick="openPage(\'Paramètres\', this, \'orange\')">Paramètres</button>';            
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->  
+            echo '<div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3><hr>
                     
                   <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
@@ -188,7 +192,7 @@
                               <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="message-text" class="col-form-label">URL d'image :</label>  
+                              <label for="message-text" class="col-form-label">URL d\'image :</label>  
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
                             </div>                        
                         </div>
@@ -199,10 +203,7 @@
                       </div>
                     </div>
                   </div>
-                  </form>
-                  
-                   <?php
-                    require_once('Fonctions.php');
+                  </form>';
 
                     $query = "select CodeC, NomC, DescriptionC, PhotoC, VisibiliteC from categories";
 
@@ -265,19 +266,18 @@
                     }
                     } 
                      echo ('</tbody>');
-                    echo ('</table>');
-                    ?>                        
-                </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Cartes" class="tabcontent">      <!-- Onglet carte --> 
+                    echo ('</table>');                    
+                echo ('</div>');
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+                echo '<div id="Cartes" class="tabcontent">      <!-- Onglet carte --> 
                 
                   <h3>Cartes</h3><hr>  
            
                   <!-- Tab links -->
                     <div class="tab">
-                      <button class="tablinksc" onclick="openCity(event, 'London')" id="defaultOpenc">Besoins</button>
-                      <button class="tablinksc" onclick="openCity(event, 'Paris')">Talents</button>
-                      <button class="tablinksc" onclick="openCity(event, 'Pekin')">Ateliers</button>
+                      <button class="tablinksc" onclick="openCity(event, \'London\')" id="defaultOpenc">Besoins</button>
+                      <button class="tablinksc" onclick="openCity(event, \'Paris\')">Talents</button>
+                      <button class="tablinksc" onclick="openCity(event, \'Pekin\')">Ateliers</button>
                     </div>
 
                     <!-- Tab content -->
@@ -289,8 +289,7 @@
                             <button type="submit" class="btn btn-outline-dark">Recherche</button>
                         </form>
                     </div>
-                  <form action="AdminCarteInapproprieB.php" method="post">
-                  <?php
+                  <form action="AdminCarteInapproprieB.php" method="post">';
                    
                     $query = "select CodeB, TitreB, DescriptionB from besoins where VisibiliteB = 1 order by CodeB DESC";
 
@@ -303,8 +302,7 @@
 
                     if ($result == false) {
                         die("ereur requête : ". mysqli_error($session) );
-                    }
-                    
+                    }     
                  
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les besoins existants*/       
                     echo ('<thead>');
@@ -377,9 +375,8 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-                    
-                    ?>        
-                </form>
+                           
+                echo '</form>
                 </div>
 
                 <div id="Paris" class="tabcontentc">      
@@ -391,8 +388,7 @@
                     </form>
                 </div>
                     
-                  <form action="AdminCarteInapproprieT.php" method="post">
-                  <?php
+                  <form action="AdminCarteInapproprieT.php" method="post">';
 
                     $query = "select CodeT, TitreT, DescriptionT from talents where VisibiliteT = 1 order by CodeT DESC";
 
@@ -477,9 +473,8 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-                   
-                    ?>        
-                </form>
+                          
+                echo '</form>
             </div>
 
                     <div id="Pekin" class="tabcontentc">      
@@ -491,8 +486,7 @@
                     </form>
                 </div>
                     
-                  <form action="AdminCarteInapproprieA.php" method="post">
-                  <?php
+                  <form action="AdminCarteInapproprieA.php" method="post">';
 
                     $query = "select CodeA, TitreA, DescriptionA from ateliers where VisibiliteA = 1 order by CodeA DESC";
 
@@ -578,10 +572,10 @@
                      echo ('</tbody>');
                     echo ('</table>');
                    
-                    ?>        
-                </form>
-            </div>
-                    
+                echo ('</form>');
+            echo ('</div>');
+            
+            ?>         
             <!-- CSS pour la tab des cartes-->
             <style>     
             /* Style the tab */
@@ -646,10 +640,10 @@
             // Get the element with id="defaultOpen" and click on it
               document.getElementById("defaultOpenc").click();
             </script>
-
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-                <div id="Utilisateurs" class="tabcontent">      <!-- Onglet utilisateur --> 
+            <?php
+            echo ('</div>');
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->       
+            echo '<div id="Utilisateurs" class="tabcontent">      <!-- Onglet utilisateur --> 
                   <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                       <h3>Utilisateurs</h3><hr>
                     <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">  <!-- Moteur de recherche --> 
@@ -657,8 +651,7 @@
                         <button type="submit" class="btn btn-outline-dark">Recherche</button>
                     </form>
                   </div>
-                  <form name="Supprimer" action="AdminUtilisateurFonction.php" method="post">
-                   <?php
+                  <form name="Supprimer" action="AdminUtilisateurFonction.php" method="post">';
 
                     $query = "select CodeU, NomU, PrenomU, Email from utilisateurs where NomU <> 'XXXXX' order by CodeU DESC";
                     
@@ -721,22 +714,20 @@
          
                     }          
                     } 
-                     echo ('</tbody>');
+                    echo ('</tbody>');
                     echo ('</table>');
-                    ?>        
-                   </form>
-                </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-            <div id="Stats" class="tabcontent">
+                   echo '</form>
+                </div>';
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+            echo '<div id="Stats" class="tabcontent">
               <h3>Statistiques</h3><hr>   
               
               <h5>Nombre de connexion du site</h5>
               <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" class="btn btn-light">Aller voir sur Google Analytics</a>
               <p><br></p>
               
-              <h5>Mise en relation</h5><hr>
-              <?php
-                require_once('Fonctions.php');
+              <h5>Mise en relation</h5><hr>';
+
                 echo ('<dl>');
                 echo ('<dt>Nombre de mise en relation besoins : ');
                 $query5 = "select count(*) as reussit from compteurb";
@@ -860,16 +851,14 @@
                 echo ('</tbody>');
                 echo ('</table>');                  
 
-              ?>
-            </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->                  
-        <div id="Bandeau" class="tabcontent">
-            <h3>Bandeau</h3><hr>
-            
-            <?php
+            echo ('</div>');
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->                  
+        echo '<div id="Bandeau" class="tabcontent">
+            <h3>Bandeau</h3><hr>';
+
             require_once('slide.html.php');
-            ?>
-        <br>  
+
+        echo '<br>  
         <h4>Modification</h4><hr>
         
         <form method="POST" action="AdminBandeauFonction.php">           
@@ -976,18 +965,22 @@
                 </div><br>           
             <input type="submit" class="btn btn-dark" value="Modifier">
         </form>        
-        </div>  
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-            <div id="Paramètres" class="tabcontent">
+        </div> '; 
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->   
+            echo '<div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" name="interval"> jours </p>
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' placeholder="15" name="interval"> jours </p>
                     <button type="submit" class="btn btn-dark"> Modifier </button>
                 </form>
-
-            </div>
-<!---------------------------------------------------------------------------------------------------------------------------------------------> 
+            </div>';
+        } else {
+            echo '<div><center><p><br><br><br>Vous n\'avez pas le droit d\'accéder à cette page</p>';
+            echo '<a href="index.php">Retour à l\'acceuil</a></div></center>';
+        }
+//<!---------------------------------------------------------------------------------------------------------------------------------------------> 
+            ?>
             <script>
             function openPage(pageName, elmnt, color) {
             // Hide all elements with class="tabcontent" by default */

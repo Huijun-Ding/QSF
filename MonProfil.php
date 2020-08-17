@@ -130,18 +130,19 @@
         </ul>
       </div>
     </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
-        <div class="jumbotron">
-          <div class="container" id="MesInfos">
-           
-            <h1>Mes informations personnelles</h1>
-            <hr>
+<!---------------------------------------------------------------------------------------------------------------------------------------------> 
+    <?php 
+        echo '<div class="jumbotron">';
+        echo '<div classe="container">';
+        
+if (isset($_SESSION['email'])) { 
+          echo '<div class="container" id="MesInfos">';
+                   
+            echo '<h1>Mes informations personnelles</h1>';
+            echo '<hr>';
 
-            <div class="row">
-                <div class="col-8">
-
-            <?php
-            require_once('Fonctions.php');  
+            echo '<div class="row">';
+                echo '<div class="col-8">';
             
             if(isset($_SESSION['email'])) {
                 
@@ -155,14 +156,13 @@
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                        echo ('<p><a href="">Changer mon mot de passe</a></p>');
+                        echo ('<p><a href="changemdp.html.php">Changer mon mot de passe</a></p>');
                     } 
-            }?>
-                </div>
-                <div class="col-4">
-                    <form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>
+            }
+                echo '</div>';
+                echo '<div class="col-4">';
+                    echo '<form name="Supprimer" action="Supprimer1Compte.php" method="post"><br>';
                         
-                    <?php
                     echo('<button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#supprimer">Supprimer mon compte</button>');
                     
                     echo('<div class="modal" tabindex="-1" id="supprimer" role="dialog">');
@@ -186,15 +186,15 @@
                           echo('</div>');
                         echo('</div>');
                       echo('</div>');                
-                    ?>         
-                    </form>
-                    <br>
-                    <p>Si vous voulez modifier votre adresse mail, veuillez recréer un nouveau compte. </p>
-                </div>
-            </div>
+        
+                    echo '</form>';
+                    echo '<br>';
+                    echo '<p>Si vous voulez modifier votre adresse mail, veuillez recréer un nouveau compte. </p>';
+                echo '</div>';
+            echo '</div>';
 
-                <form method="POST" action="monespace.fonction.php">
-                   <?php 
+                echo '<form method="POST" action="monespace.fonction.php">';
+
                     echo ('<p>Type d\'information affichée : </p>'); 
                     if ($_SESSION['type'] == ''){
                         echo ('<div class="switch-field">');
@@ -224,33 +224,32 @@
                         echo ('<label for="radio-five">Perso</label>');
                         echo ('</div>');                 
                     }
+                    echo '<br>';
+                    echo '<button type="submit" onclick="Modifier()" class="btn btn-outline-dark">Modifier le type d\'information affichée</button>';
                     ?>
-                    <br>
-                    <button type="submit" onclick="Modifier()" class="btn btn-outline-dark">Modifier le type d'information affichée</button>
                     <script>
                         function Modifier() {
                             alert("Modification réussite !");
                             }
-                    </script>                  
-                </form>
-            </div>
-            <br><br>
+                    </script>   
+                    <?php
+                echo '</form>';
+            echo '</div>';
+            echo '<br><br>';
          
-<!--------------------------------------------------------------------------------------------------------------------------------------------->           
-           <div class="container" id="MesBesoins">
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->           
+           echo '<div class="container" id="MesBesoins">';
            
-            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <h1> Mes besoins </h1>
-              <?php is_login_new_besoin(); ?>
-            </div>
-            <hr>
+            echo '<div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">';
+              echo '<h1> Mes besoins </h1>';
+              is_login_new_besoin();
+            echo '</div>';
+            echo '<hr>';
   
-            <form method="POST" action="Desactiver1CarteB.php">
-                <div class="row">
-                <div class="col-10">
-                <ul class="list-inline">
-            <?php
-            require_once('Fonctions.php');
+            echo '<form method="POST" action="Desactiver1CarteB.php">';
+                echo '<div class="row">';
+                echo '<div class="col-10">';
+                echo '<ul class="list-inline">';
 
             $query = "select b.ReponseB, b.VisibiliteB, b.CodeB, b.TitreB, b.DescriptionB, b.DatePublicationB, b.DateButoireB, c.PhotoC from categories c, besoins b, saisir s where s.CodeB = b.CodeB and c.CodeC = b.CodeC and s.CodeU = {$usercode} order by b.CodeB DESC ";
 
@@ -291,8 +290,7 @@
                     echo ("Vous n'avez pas encore saisi un besoin");
             }             
   
-            ?>
-                </ul>
+            echo'    </ul>
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
@@ -323,12 +321,12 @@
             </form>   
           </div>  
        
-        <br><br>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        <div class="container" id="MesTalents">
+        <br><br>';
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        echo '<div class="container" id="MesTalents">
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
                 <h1> Mes talents </h1>
-                <?php is_login_new_talent(); ?>
+                php is_login_new_talent(); 
             </div>
             
             <hr>
@@ -336,9 +334,7 @@
             <form method="POST" action="Desactiver1CarteT.php">
               <div class="row">
               <div class="col-10">
-              <ul class="list-inline">
-            <?php
-            require_once('Fonctions.php');
+              <ul class="list-inline">';
 
             $query = " select t.ReponseT, t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} order by t.CodeT DESC";
 
@@ -378,8 +374,8 @@
             } else {
                     echo ("Vous n'avez pas encore saisi un talent");
             }    
-?>
-        </ul>     
+
+        echo '</ul>     
                    </div>
                    <div class="col-2">
                      <!-- Button trigger modal -->
@@ -408,23 +404,21 @@
             </div>           
             </form>        
           </div>
-        <br><br>
-        
-<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        <div class="container" id="MesAteliers">
+        <br><br>';
+//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        echo '<div class="container" id="MesAteliers">
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
-              <?php is_login_new_atelier(); ?>
+              is_login_new_atelier(); 
             </div>
             <hr>
   
             <form method="POST" action="Desactiver1Atelier.php">
                 <div class="row">
                 <div class="col-10">
-                <ul class="list-inline">
+                <ul class="list-inline">';
 
-            <?php
             $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$usercode} order by a.CodeA DESC ";
 
             $result = mysqli_query ($session, $query);
@@ -456,8 +450,8 @@
             } else {
                     echo ("Vous n'avez pas encore créé un atelier");
             }             
-  ?>
-            </ul>
+
+            echo '</ul>
                      </div>
                 <div class="col-2">
                      <!-- Button trigger modal -->
@@ -488,10 +482,12 @@
             </form>   
           </div>  
        
-        <br><br>
- </div>
- 
-                    
+        <br><br>';
+    } else {
+        echo ('<center><p><br><br>Veuillez d\'abord <a href="login.php">se connecter</a></p></center>');
+    }?>
+    </div>
+ </div>                 
        
   <hr> 
   <footer>

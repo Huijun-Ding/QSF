@@ -144,7 +144,7 @@
                     <div class="checkbox mb-3">
                             <label>
                               <br><p><input type="checkbox" value="remember-me"> se souvenir de moi</p>
-                              <p><a href="Inscription.php"> Mot de passe oublié </a></p> 
+                              <p><a href="findmdp.fonction.php"> Mot de passe oublié </a></p> 
                               <p><a href="Inscription.php"> S'inscrire </a></p>            
                             </label>
                     </div>
