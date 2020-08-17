@@ -13,7 +13,8 @@ require_once('Fonctions.php');
             
 header("Location: MesCategories.php");
 
-  //Mail à l'admin pour créer une nouvelle catégorie !Comment déclencher ce mail
+if (isset($_POST['nomcp'])) {
+     //Mail à l'admin pour créer une nouvelle catégorie !Comment déclencher ce mail ?
     $sql = "select Email from utilisateurs where CodeU = $usercode";
     $result = mysqli_query ($session, $sql);
     if ($email = mysqli_fetch_array($result)) {   
@@ -474,6 +475,8 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
         
    
          }  
+}
+ 
 
 //--------------------------------------------------------------------------------------------------------------------------
 

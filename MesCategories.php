@@ -143,7 +143,7 @@
                   <?php
             if(isset($_SESSION['email'])) {
                       
-                    $query = " select c.VisibiliteC, c.NomC,c.PhotoC,c.CodeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
+                    $query = " select c.VisibiliteC, c.NomC,c.PhotoC,c.CodeC, c.DescriptionC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = {$usercode} ";
                     $result = mysqli_query ($session, $query);
                         
                     if ($result == false) {
@@ -166,7 +166,7 @@
                                   echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                 echo ('</div>');
                                 echo ('<div class="card-body text-center">');
-                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo('<h6 class="card-title" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">'.$ligne["NomC"].'</h6>');
                                 echo ('</div>');
                                 echo ('</div>');      
                         } else {
@@ -174,9 +174,9 @@
                             echo ('<div class="card-header">');
                             echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
-                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" title="'.$ligne["DescriptionC"].'">');    
                             echo ('<div class="card-body text-center">');
-                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo('<h6 class="card-title" title="'.$ligne["DescriptionC"].'">'.$ligne["NomC"].'</h6>');
                             echo ('</div>');
                             echo ('</div>'); 
                         }
@@ -236,7 +236,7 @@
                   <?php
             if(isset($_SESSION['email'])) {
                                   
-                    $query = "select VisibiliteC, NomC, PhotoC, CodeC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
+                    $query = "select VisibiliteC, NomC, PhotoC, CodeC, DescriptionC from categories where codeC not in ( select c.codeC from categories c, abonner a where c.CodeC = a.CodeC and a.CodeU = $usercode )";
                     $result = mysqli_query ($session, $query);      
                         
                     if ($result == false) {
@@ -259,7 +259,7 @@
                                   echo ('<input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                 echo ('</div>');
                                 echo ('<div class="card-body text-center">');
-                                echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                                echo('<h6 class="card-title" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">'.$ligne["NomC"].'</h6>');
                                 echo ('</div>');
                                 echo ('</div>');      
                         } else {
@@ -267,9 +267,9 @@
                             echo ('<div class="card-header">');
                             echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
-                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');    
+                            echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" title="'.$ligne["DescriptionC"].'">');    
                             echo ('<div class="card-body text-center">');
-                            echo('<h6 class="card-title">'.$ligne["NomC"].'</h6>');
+                            echo('<h6 class="card-title" title="'.$ligne["DescriptionC"].'">'.$ligne["NomC"].'</h6>');
                             echo ('</div>');
                             echo ('</div>'); 
                         }
