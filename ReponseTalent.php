@@ -149,7 +149,7 @@
                     if ($ligne["VisibiliteT"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a>');
+                        echo ('<a href="mailto:'.$ligne["Email"].'"><button type="button" class="btn btn-primary">Possible</button></a> ');
                         echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
                     }
                 }

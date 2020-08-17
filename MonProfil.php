@@ -156,7 +156,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
-                        echo ('<p><a href="">Changer mon mot de passe</a></p>');
+                        echo ('<p><a href="changemdp.html.php">Changer mon mot de passe</a></p>');
                     } 
             }
                 echo '</div>';
