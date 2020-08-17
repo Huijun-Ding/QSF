@@ -158,7 +158,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle" target="_blank">Je m'engage à respecter <u>la charte</u>.<span> Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici</span> </a>
 				  </label>
 				</div>
 			  </div>

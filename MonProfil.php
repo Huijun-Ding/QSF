@@ -322,11 +322,12 @@ if (isset($_SESSION['email'])) {
           </div>  
        
         <br><br>';
-//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        echo '<div class="container" id="MesTalents">
+            ?>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        <div class="container" id="MesTalents">
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-                <h1> Mes talents </h1>
-                php is_login_new_talent(); 
+                <h1> Mes talents </h1>             
+                <?php is_login_new_talent(); ?>
             </div>
             
             <hr>
@@ -334,8 +335,9 @@ if (isset($_SESSION['email'])) {
             <form method="POST" action="Desactiver1CarteT.php">
               <div class="row">
               <div class="col-10">
-              <ul class="list-inline">';
-
+              <ul class="list-inline">
+                  
+<?php
             $query = " select t.ReponseT, t.VisibiliteT, t.CodeT, t.TitreT, t.DatePublicationT, c.PhotoC from categories c, talents t, proposer p where p.CodeT = t.CodeT and c.CodeC = t.CodeC and p.CodeU = {$usercode} order by t.CodeT DESC";
 
             $result = mysqli_query ($session, $query);
@@ -405,20 +407,22 @@ if (isset($_SESSION['email'])) {
             </form>        
           </div>
         <br><br>';
-//<!--------------------------------------------------------------------------------------------------------------------------------------------->     
-        echo '<div class="container" id="MesAteliers">
+        ?>
+<!--------------------------------------------------------------------------------------------------------------------------------------------->     
+        <div class="container" id="MesAteliers">
            
             <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
               <h1> Mes ateliers </h1>
-              is_login_new_atelier(); 
+              <?php is_login_new_atelier(); ?>
             </div>
             <hr>
   
             <form method="POST" action="Desactiver1Atelier.php">
                 <div class="row">
                 <div class="col-10">
-                <ul class="list-inline">';
+                <ul class="list-inline">
 
+        <?php
             $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from categories c, ateliers a, participera p where p.CodeA = a.CodeA and c.CodeC = a.CodeC and p.CodeU = {$usercode} order by a.CodeA DESC ";
 
             $result = mysqli_query ($session, $query);
@@ -484,7 +488,7 @@ if (isset($_SESSION['email'])) {
        
         <br><br>';
     } else {
-        echo ('<center><p><br><br>Veuillez d\'abord <a href="login.php">se connecter</a></p></center>');
+        echo ('<center><p><br><br>Veuillez d\'abord <a href="Login.php">se connecter</a></p></center>');
     }?>
     </div>
  </div>                 
