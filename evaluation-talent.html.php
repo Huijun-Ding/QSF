@@ -18,8 +18,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>COUP DE MAIN, COUP DE POUCE</title>
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <title>COUP DE MAIN, COUP DE POUCE</title>
+    <style>
+        .navbar-nav li:hover>.dropdown-menu {
+            display: block;
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="evaluation.css">
@@ -33,7 +39,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a> 
@@ -57,7 +63,7 @@
           
           <form  method="get">
           <?php
-            require_once 'Fonctions.php';
+            /*require_once 'Fonctions.php';
             
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
@@ -65,7 +71,7 @@
                 echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
                 echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
                 echo ('</div>');
-            } 
+            } */
           ?>
           </form>      
                    
@@ -76,7 +82,7 @@
     
             if(isset($_SESSION['email'])){    
                 
-                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode}";
+                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
                 $result = mysqli_query ($session, $query);
                 
                 while ($ligne = mysqli_fetch_array($result)) { 
@@ -104,7 +110,16 @@
                         echo ('<a class="dropdown-item" href="Admin.php">Espace admin</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
                     } else {
-                        echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                        $req = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
+                        $resultat = mysqli_query ($session, $req);
+
+                        if ($reponse = mysqli_fetch_array($resultat)) { 
+                            if ($reponse["Reponse"] > 0) {
+                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil <span class="badge badge-danger">ici</span></a>');                           
+                            } else {
+                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                            }
+                        }
                         echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
                     }
@@ -193,7 +208,9 @@
       </form>
   </div>
 </div>
+
         <footer>
+            <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
           <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>
 

@@ -63,7 +63,7 @@
           
           <form  method="get">
           <?php
-            require_once 'Fonctions.php';
+            /*require_once 'Fonctions.php';
             
             if (empty($_SESSION['email'])){
                 echo ('<div class="btn-group" role="group" aria-label="Basic example">');
@@ -71,7 +71,7 @@
                 echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
                 echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
                 echo ('</div>');
-            } 
+            } */
           ?>
           </form>      
                    
@@ -166,11 +166,10 @@
               }              
         </script>
 <!------------------------------------------------------------------------------------------------------------------------------------------->
-    <hr>    
-    <footer>
-        <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
-      <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-    </footer>
+        <footer>
+            <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+        </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
