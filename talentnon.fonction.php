@@ -20,7 +20,7 @@ if (isset($raisonT)) {
     if (mysqli_num_rows($result)>0) {       
         while ($email = mysqli_fetch_array($result)) {
             $destinataire = ""; // adresse mail du destinataire
-            $sujet = "[COUP DE MAIN, COUP DE POUCE] Désolé, votre demande sur {} a été refusée"; // sujet du mail
+            $sujet = "[COUP DE MAIN, COUP DE POUCE] Désolé, votre demande de partage sur {} a été refusée"; // sujet du mail
             $message = '
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

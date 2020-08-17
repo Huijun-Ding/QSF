@@ -11,6 +11,8 @@
       gtag('config', 'UA-173955301-1');
     </script>
     
+    <?php require_once 'Fonctions.php'; header('Cache-control: private, must-revalidate'); ?>
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
