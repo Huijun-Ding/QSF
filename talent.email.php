@@ -2,16 +2,16 @@
     require_once ('Fonctions.php');
     
     //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd    
-    $dateevaluation  = date("Y-m-d",strtotime("+15 day"));
+    $req1= "SELECT * FROM `parametres` WHERE 1";
+    $result1 = mysqli_query ($session, $req1);
+    if ($days = mysqli_fetch_array($result1)) { 
+        $day = $days['Interval'];
+    }
+
+    $dateevaluation  = date("Y-m-d",strtotime("+$day day"));
+    
     $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
     mysqli_query ($session, $sql);
-    
-   // echo 'Provenance : '.$_SESSION['codeu'].'';
-   // echo 'Destinataire : '.$_POST['destinataire'].'';
-    //echo 'Sujet : [COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent '.$_POST["titrecarte"].' ';
-    //echo 'Contenu : '.$_POST['contenu_talent'].'';
-    //echo 'DateEvaluation : '.$dateevaluation.'';
-    //echo 'CodeCarte : '.$_POST['codecarte'].'';
     
     // incrémenter sur talent.ReponseT
     $query = "UPDATE talents SET ReponseT = ReponseT + 1 WHERE CodeT = {$_POST['codecarte']}";
@@ -19,11 +19,12 @@
     
     //requête prendre l'email destinataire
     $query2 = "select Email from utilisateurs where CodeU = {$_POST['destinataire']}";
-    $result = mysqli_query ($session, $query2);
-    if ($ligne = mysqli_fetch_array($result)) {   
+    $result2 = mysqli_query ($session, $query2);
+    if ($ligne = mysqli_fetch_array($result2)) {   
         
         //email pour répondre un besoin
         $destinataire = "{$ligne['Email']}"; // adresse mail du destinataire
+        //$destinataire = "mathilda.cnfr@gmail.com";
         $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de partage votre talent {$_POST['titrecarte']}"; // sujet du mail
         $message = '
         <!DOCTYPE html>
@@ -467,5 +468,5 @@
         $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<cmcp@cpam31.fr>'; // En-têtes additionnels  
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail
     }
-    //header("Location: index.php");
+    header("Location: index.php");
 ?>

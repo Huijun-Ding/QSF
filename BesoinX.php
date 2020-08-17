@@ -152,19 +152,27 @@
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 
                         echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="MailBesoin.php?c='.$ligne["CodeB"].'"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="MailBesoin.php?c='.$ligne["CodeB"].'"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a>');
                        echo ('<a href="besoinx.fonction.php?c='.$ligne["CodeB"].'">
-                                <input type="submit" class="btn btn-dark btn-lg" name="rejoint" value="Rejoindre à ce besoin"></input>
+                                <input type="submit" class="btn btn-primary btn-lg" name="rejoint" value="Rejoindre à ce besoin"></input>
                               </a>');
+                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
                     } else {
-                       echo ('<a href="Login.php"><button type="button" class="btn btn-dark btn-lg">Contacter</button></a>');
+                       echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a>');
+                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
                     }   
                 }
                 }
                  ?>
             </div>
         </div>
-         
+        
+        <script>
+            function goBack() {
+                window.history.back();
+              }              
+        </script>
+        
         <footer>
             <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
         </footer>

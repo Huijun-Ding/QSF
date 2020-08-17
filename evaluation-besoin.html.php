@@ -146,10 +146,10 @@
                     </div>
                     <select class="custom-select" id="inputGroupSelect01" name="besoin" required>';
 
-                $query = "select b.CodeB, b.TitreB from utilisateurs as u, saisir as s, besoins as b WHERE u.Email = '{$_SESSION['email']}' and u.CodeU = s.CodeU and s.CodeB = b.CodeB";
+                $query = "SELECT DISTINCT e.CodeCarte, b.TitreB FROM emails as e, besoins as b WHERE e.TypeCarte = 'besoin' and (e.Provenance = {$_SESSION['codeu']} or e.destinataire = {$_SESSION['codeu']}) and e.CodeCarte = b.CodeB";
                 $result = mysqli_query ($session, $query);
                 while ($ligne = mysqli_fetch_array($result)) {   
-                    echo "<option value=\"{$ligne['CodeB']}\">{$ligne['TitreB']}</option>";    
+                    echo "<option value=\"{$ligne['CodeCarte']}\">{$ligne['TitreB']}</option>";    
                 }  
                     echo '</select></div>';
 
@@ -185,8 +185,7 @@
                     echo '<input id="codeu" name="codeu" type="hidden" value="'.$ligne['CodeU'].'">';
                 } 
                 
-                echo '<input type="reset" class="btn btn-dark">
-                <input type="submit" class="btn btn-dark">'; 
+                echo '<input type="submit" class="btn btn-primary"> <input type="reset" class="btn btn-dark" value="Annuler">'; 
         } else {
             echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
         }           

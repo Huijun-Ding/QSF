@@ -158,13 +158,13 @@
                                 echo ('</div>');
                                 echo ('<input type="hidden" name="codecarte" value="'.$besoin['CodeB'].'">');
                                 echo ('<input type="hidden" name="titrecarte" value="'.$besoin['TitreB'].'">');     
-                                echo ('<button type="submit" class="btn btn-primary">Envoyer</button>');  
-                                echo('<button type="submit" nameclass="btn" class="btn btn-secondary">Annuler</button>');  
+                                echo ('<button type="submit" class="btn btn-primary">Envoyer</button> ');  
                             }
                         }  
 
                         ?> 
                         </form>
+                        <button type="button" class="btn btn-secondary" onclick="goBack()">Annuler</button>
                 </div>    
             </div>
  
@@ -175,6 +175,10 @@
                 extraAllowedContent: 'div',
                 height: 250
               });
+              
+            function goBack() {
+                window.history.back();
+              }
         </script>
                 
         <footer>

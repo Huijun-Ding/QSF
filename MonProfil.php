@@ -155,6 +155,7 @@
                         echo ('<p>Nom : '.$info["NomU"].'</p>');          
                         echo ('<p>Prénom : '.$info["PrenomU"].'</p>');  
                         echo ('<p>Adresse mail : '.$info["Email"].'</p>');  
+                        echo ('<p><a href="">Changer mon mot de passe</a></p>');
                     } 
             }?>
                 </div>

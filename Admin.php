@@ -188,7 +188,7 @@
                               <textarea name="descriptionc" class="form-control" id="message-text"></textarea>
                             </div>
                             <div class="form-group">
-                              <label for="message-text" class="col-form-label">URL de photo :</label>  <!-- url de l'image ? -->
+                              <label for="message-text" class="col-form-label">URL d'image :</label>  
                               <textarea name="photoc" class="form-control" id="message-text"></textarea>
                             </div>                        
                         </div>
@@ -982,7 +982,7 @@
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d'envoi de mail d’évaluation : <input type='text' placeholder="15" name="interval"> jours </p>
+                    <p>Paramétrer le délais d'envoie de mail d’évaluation : <input type='number' placeholder="15" name="interval"> jours </p>
                     <button type="submit" class="btn btn-dark"> Modifier </button>
                 </form>
 

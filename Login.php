@@ -143,10 +143,9 @@
                     <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
                     <div class="checkbox mb-3">
                             <label>
-
-                              <br><input type="checkbox" value="remember-me"> se souvenir de moi
-
-                              <p> <a href="Inscription.php" target="_blank"> S'inscrire <a> </p>
+                              <br><p><input type="checkbox" value="remember-me"> se souvenir de moi</p>
+                              <p><a href="Inscription.php"> Mot de passe oublié </a></p> 
+                              <p><a href="Inscription.php"> S'inscrire </a></p>            
                             </label>
                     </div>
 		    <button class="btn btn-lg btn-dark btn-block" type="submit" style="width:40%">Se connecter</button>

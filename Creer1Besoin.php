@@ -191,7 +191,8 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-dark">CREER</button>
+                <button type="submit" class="btn btn-primary">Créer</button> 
+                <input type="reset" class="btn btn-dark" value="Annuler">
             </div>
             </form>   
           </div>

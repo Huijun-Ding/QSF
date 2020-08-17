@@ -268,7 +268,8 @@
            
                      echo('<hr>');
             echo('<div class="form-group">');
-                echo('<button name="codeA" type="submit" value="'.$ligne["CodeA"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
+                echo('<button name="codeA" type="submit" value="'.$ligne["CodeA"].'" class="btn btn-primary">Modifier</button>');
+                echo (' <input type="reset" class="btn btn-dark" value="Annuler">');
            echo('</div>');
                               }
                 }

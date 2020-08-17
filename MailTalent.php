@@ -163,6 +163,7 @@
                         }
                         ?>
                         </form>
+                        <button type="button" class="btn btn-secondary" onclick="goBack()">Annuler</button>
                     </div>
                 </div>
         <script>
@@ -170,6 +171,10 @@
                 extraAllowedContent: 'div',
                 height: 250
               });
+              
+            function goBack() {
+                window.history.back();
+              }              
         </script>
                 
         <footer>

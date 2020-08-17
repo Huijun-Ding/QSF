@@ -247,7 +247,8 @@
            
                      echo('<hr>');
             echo('<div class="form-group">');
-                echo('<button name="codeB" type="submit" value="'.$ligne["CodeB"].'" class="btn btn-dark btn-lg">MODIFIER </button>');
+                echo('<button name="codeB" type="submit" value="'.$ligne["CodeB"].'" class="btn btn-primary">Modifier</button>');
+                echo (' <input type="reset" class="btn btn-dark" value="Annuler">');
            echo('</div>');
                               }
                 }

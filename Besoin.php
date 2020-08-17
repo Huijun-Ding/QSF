@@ -189,7 +189,9 @@
                   </div>
                 </div>
               </form>
-                                
+                   
+              <input type=button value="Tout affficher" class="btn btn-light" onclick="location='Besoin.php'"> 
+              
               <form method="GET" class="form-inline my-2 my-lg-0" class="recherche">
                     <input class="form-control mr-sm-2" type="search" name="mot" placeholder="Entrez un mot clé" aria-label="Recherche">
                     <button type="submit" class="btn btn-outline-dark">Recherche</button>
