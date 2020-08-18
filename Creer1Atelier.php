@@ -150,23 +150,21 @@
         <div class="jumbotron">
           <div class="container">
 			
+              <div class="row">
+                <div class="col-6">
               <h1> Créer un atelier </h1><hr>
               <h4>Etapes à suivre pour créer un atelier : </h4><br>
               
-            <h5>Etape 1 : Je demande à créer un formulaire d’inscription en mentionnant :</h5>
-            <dl>
-                <dd style="text-indent:2em;"> - CMCP + Nom de votre atelier</dd>
-                <dd style="text-indent:2em;"> - Date de l’atelier / l’heure de début / l’heure de fin</dd>
-                <dd style="text-indent:2em;"> - Lieu</dd>
-                <dd style="text-indent:2em;"> - Date butoir d’inscription</dd>
-            </dl>
+            <h5>Etape 1 : Je remplis le formulaire.
             
-            <h5>Etape 2 : SAM me répond pour me donner l’adresse URL  d’inscription que je copie et que je colle dans le champ “URL”</h5><br>
+            <h5>Etape 2 : Ma carte est en attente d'un admin pour valider. </h5><br>
             
-            <h5>Etape 3 : Je termine de compléter le formulaire COUP DE MAIN, COUP DE POUCE</h5><br>
+            <h5>Etape 3 : Je reçois une liste de participants la veille. </h5><br>
 
-            <h5>Etape 4 : J’envoie un mail à “<a href="contact.html.php">contact</a>” pour informer les administrateurs qui m’enverront la liste des inscrits</h5><br>
+           
             
+            </div>
+                  <div class="col-6">
             <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
@@ -242,7 +240,9 @@
                 <button type="submit" class="btn btn-primary">Créer</button> 
                 <input type="reset" class="btn btn-dark" value="Annuler">
             </div>
+                
             </form>  
+                      </div>
           </div>
         </div>  
         

@@ -78,7 +78,7 @@
         <ul class="navbar-nav ml-auto">
           <li class="nav-item dropleft">   
             <?php
-            require_once 'Fonctions.php';
+            require_once 'Fonctions.php'; header('cache-control: private, must-revalidate');
     
             if(isset($_SESSION['email'])){    
                 
@@ -172,7 +172,7 @@
 				<div class="form-check">
                                   <input class="form-check-input" type="checkbox" id="gridCheck" required="">
 				  <label class="form-check-label" for="gridCheck">
-                                      <a href="ConditionGeneraleUtilisation.php" class="bulle">Je m'engage à respecter <u>la charte</u>.<span> Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici</span> </a>
+                                      <a href="ConditionGeneraleUtilisation.php" class="bulle" title="Tous vos échanges sur Coup de main coup de pouce sont anonymes, si vous voulez en savoir plus, veuillez cliquer ici">Je m'engage à respecter <u>la charte</u>. </a>
 				  </label>
 				</div>
 			  </div>
