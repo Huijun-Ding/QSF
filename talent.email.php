@@ -343,7 +343,7 @@
 
         </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait demander de partager votre talent '.$_POST['titrecarte'].'.</p><span class="mso-font-fix-tahoma">
+        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait vous demander de partager votre talent '.$_POST['titrecarte'].'.</p><span class="mso-font-fix-tahoma">
 
         </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 

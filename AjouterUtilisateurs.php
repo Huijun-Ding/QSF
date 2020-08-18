@@ -45,7 +45,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
 <meta name="format-detection" content="telephone=no">
-<title>Bienvenue</title>
+<title>Bienvenue sur COUP DE MAIN, COUPDE POUCE</title>
 
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
