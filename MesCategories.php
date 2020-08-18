@@ -171,7 +171,7 @@
                            if ($ligne["NomC"] == 'Autres') {
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<div class="card-header">');
-                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<center><input class="card-text" type="checkbox" id="Child_Checkbox1" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');
@@ -188,7 +188,7 @@
                         } else {
                             echo ('<div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('<center><input class="card-text" type="checkbox" id="Child_Checkbox1" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" title="'.$ligne["DescriptionC"].'">');    
                             echo ('<div class="card-body text-center">');
@@ -199,10 +199,10 @@
                       }                                    
                     }          
                     } else {
-                                echo("<h5> Vous n'avez pas encore s'abonné à des catégories </h5>");
+                                echo("<h5> Vous ne vous êtes pas encore abonné à des catégories </h5>");
                             } 
             } else {
-                echo ('<p>Veuillez d\'abord <a href="login.php">se connecter</a></p>');
+                echo ('<p>Veuillez d\'abord <a href="Login.php">se connecter</a></p>');
             }
                   ?>      
                     </div>
@@ -225,7 +225,7 @@
                            for (var i = 0; i < input.length ; i ++) {
                                if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox1" && input[i].checked == true) {
                                    input[i].checked = false ;
-                                   label.innerHTML = "Tout désabonner";
+                                   label.innerHTML = "Se désabonner à tout";
                                }
                            }
                         }
@@ -264,7 +264,7 @@
                            if ($ligne["NomC"] == 'Autres') {
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<div class="card-header">');
-                                echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<center><input class="card-text" type="checkbox" id="Child_Checkbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');
@@ -281,7 +281,7 @@
                         } else {
                             echo ('<div class="card" style="width: 12rem;">');
                             echo ('<div class="card-header">');
-                            echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
+                            echo ('<center><input class="card-text" type="checkbox" id="Child_Checkbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
                             echo ('</div>');
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" title="'.$ligne["DescriptionC"].'">');    
                             echo ('<div class="card-body text-center">');
@@ -292,7 +292,7 @@
                       }                          
                     }          
                     } else {
-                                echo("<h5> Vous avez abonné toutes les catégories </h5>");
+                                echo("<h5> Vous vous êtes abonné toutes les catégories </h5>");
                             } 
             } else {
                 echo ('    ');
@@ -318,7 +318,7 @@
                            for (var i = 0; i < input.length ; i ++) {
                                if (input [i].type == "checkbox" && input[i].id == "Child_Checkbox" && input[i].checked == true) {
                                    input[i].checked = false ;
-                                   label.innerHTML = "Tout abonner";
+                                   label.innerHTML = "S'abonner à tout";
                                }
                            }
                         }

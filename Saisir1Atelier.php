@@ -355,7 +355,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous venez de créer un nouveau atelier « '.$email['TitreA'].'»</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous venez de cr&eacute;er un nouveau atelier « '.$email['TitreA'].'»</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Merci de votre participation ! </p><span class="mso-font-fix-tahoma">
 
