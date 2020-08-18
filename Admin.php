@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173955301-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-173955301-1');
-    </script>
-    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
@@ -717,7 +707,7 @@
               <h3>Statistiques</h3><hr>   
               
               <h5>Nombre de connexion du site</h5>
-              <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" class="btn btn-light">Aller voir sur Google Analytics</a>
+              <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" target="_blank" class="btn btn-light">Aller voir sur Google Analytics</a>
               <p><br></p>
               
               <h5>Mise en relation</h5><hr>';
