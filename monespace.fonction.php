@@ -1,7 +1,7 @@
 <?php
-require_once 'Fonctions.php';
+require_once 'Fonctions.php'; 
 
-$retype = $_POST['switch-two'];  //type choisi dans mon espace via la boutton radio
+$retype = $_POST['switch-two'];  //type d'utilisateur choisi dans mon espace via la boutton radio
 echo $retype;
 
 $stmt = mysqli_prepare($session, 'UPDATE `utilisateurs` SET `TypeU` = ? WHERE `utilisateurs`.`CodeU` = ? ; ');   // Connecter et vérification de mot de passe
