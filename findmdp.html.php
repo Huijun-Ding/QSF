@@ -150,9 +150,9 @@
         <div class="jumbotron">
           <div class="container">
               <h1>Mot de passe oublié</h1><hr><br>
-            <form action="changemdp.fonction.php" method="POST">
+            <form action="findmdp.fonction.php" method="POST">
                 <h6>1) Veuillez d'abord saisir votre adresse mail.</h6>
-                <p>Votre adresse mail : <input type="text" name="email"></p><br>
+                <p>Votre adresse mail : <input type="text" name="adressemail"></p><br>
                 <h6>2) Vous allez recevoir un nouveau mot de passe par mail. Une fois vous arrivez à vous connecter, vous pouvez modifier votre mot de passe dans Mon Profil.</h6><br>
                 <input type="submit" value="Valider" class="btn btn-primary">
                 <input type="button" value="Retour" class="btn btn-dark" onclick="goBack()">

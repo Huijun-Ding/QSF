@@ -94,4 +94,16 @@
                 }
             }
 
+            // 6.4 Génerer un mot de passe aléatoire
+            function generate_password( $length = 8 ) {
+
+                // un chaîne de caractères avec le quel on récupère les élément de mot de passe
+                $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                $randpwd = '';
+                for ( $i = 0; $i < $length; $i++ ) {
+                    $randpwd .= $str{mt_rand(0,strlen($chars) - 1)};      // prendre au hasard un élément de $chars
+                    $randpwd .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+                }
+                return $randpwd;
+            }
 ?>
