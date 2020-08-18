@@ -165,8 +165,8 @@
                     if ($ligne["VisibiliteT"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="talentoui.fonction.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Possible</button></a> ');
-                        echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Pas possible</button></a><hr>');
+                        echo ('<a href="talentoui.fonction.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
+                        echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
                         $mail = $ligne["Email"];
                 ?>    
 

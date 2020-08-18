@@ -168,10 +168,10 @@
                     echo ('<hr>');
                     if(isset($_SESSION['email'])){
                        echo ('<a href="MailTalent.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a> ');
-                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
+                       echo ('<a href="Talent.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a> ');
-                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
+                       echo ('<a href="Talent.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
                     }   
                 }   
                 }  
@@ -179,12 +179,6 @@
             </div>
         </div>
 
-        <script>
-            function goBack() {
-                window.history.back();
-              }              
-        </script>
-        
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
           <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>

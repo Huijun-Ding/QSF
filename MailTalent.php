@@ -179,20 +179,10 @@
                         }
                         ?>
                         </form>
-                        <button type="button" class="btn btn-secondary" onclick="goBack()">Annuler</button>
+                        <a href="Talent.php"> <button type="button" class="btn btn-secondary">Annuler</button></a>
                     </div>
                 </div>
-        <script>
-            var editor1 = CKEDITOR.replace('contenu_talent', {
-                extraAllowedContent: 'div',
-                height: 250
-              });
               
-            function goBack() {
-                window.history.back();
-              }              
-        </script>
-                
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
           <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>

@@ -955,9 +955,17 @@
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' placeholder="15" name="interval"> jours </p>
-                    <button type="submit" class="btn btn-dark"> Modifier </button>
-                </form>
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button>';
+                    $query = "select p.Interval from parametres as p";
+                    $result = mysqli_query ($session, $query);
+                    if (mysqli_num_rows($result)>0) {
+                        while ($ligne = mysqli_fetch_array($result)) {     
+                            echo '<p>Le délai actuel est  '.$ligne['Interval'].' jours</p>';                 
+                        }
+                    }
+                    
+              echo '  </form>
             </div>';
         } else {
             echo '<div><center><p><br><br><br>Vous n\'avez pas le droit d\'accéder à cette page</p>';

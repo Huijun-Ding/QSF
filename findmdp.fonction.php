@@ -470,14 +470,14 @@ if (is_unique_login($session, $mail) == false) {       //si cette adresse mail e
         ?>
         <script type="text/javascript">
             alert("Nous allons vous envoyer votre nouveau mot de passe par mail, merci de consulter vos emails . ");
-            document.location.href = window.history.go(-2);
+            document.location.href = "Login.php";
         </script>
         <?php          
     } else {
         ?>
         <script type="text/javascript">
             alert("Désolé, veuillez réessayer");
-            document.location.href = window.history.go(-2);
+            document.location.href = "Login.php";
         </script>    
         <?php
     }    
@@ -486,7 +486,7 @@ if (is_unique_login($session, $mail) == false) {       //si cette adresse mail e
     ?>
     <script type="text/javascript">
         alert("Cette adresse mail n'existe pas, veuillez réessayer !");
-        document.location.href = window.history.go(-2);
+        document.location.href = "Login.php";
     </script>
     <?php     
 }
