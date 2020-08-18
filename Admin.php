@@ -1,16 +1,6 @@
 <!doctype html>
 <html lang="fr">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-173955301-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-173955301-1');
-    </script>
-    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
@@ -18,38 +8,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 ​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>COUP DE MAIN, COUP DE POUCE</title>
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+    <title>COUP DE MAIN, COUP DE POUCE</title>
+    <style>
+        .navbar-nav li:hover>.dropdown-menu {
+            display: block;
+        }
+    </style>
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!--<link rel="stylesheet" type="text/css" href="evaluation.css">-->
     <script src="jquery.js"></script>
     <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
-    
-    <style>
-    .tablink {
-      background-color: #555;
-      color: white;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      font-size: 17px;
-      width: 15%;
-    }
-
-    .tablink:hover {
-      background-color: #777;
-    }
-
-    /* Style the tab content (and add height:100% for full page content) */
-    .tabcontent {
-      color: black;
-      display: none;
-      padding: 100px 20px;
-      height: 100%;
-    }      
-    </style>
   </head>
   <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -58,10 +29,10 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil<!--<span class="sr-only">(current)</span>--></a> 
+            <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a> 
           </li>
           <li class="nav-item">
             <a class="nav-link" href="Besoin.php">Besoins</a>
@@ -101,7 +72,7 @@
     
             if(isset($_SESSION['email'])){    
                 
-                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode}";
+                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
                 $result = mysqli_query ($session, $query);
                 
                 while ($ligne = mysqli_fetch_array($result)) { 
@@ -110,7 +81,11 @@
                     } 
                 }    
                     echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    echo $_SESSION['email'];       // quand l'utiliateur n'a pas croché le case Anonyme au moment de l'inscription, on va afficher son adresse mail
+                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
+                    $result = mysqli_query ($session, $prenom);
+                    while ($prenom = mysqli_fetch_array($result)) {      
+                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
+                    }
                     echo('</a>');
             } else {
                 echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
@@ -125,7 +100,16 @@
                         echo ('<a class="dropdown-item" href="Admin.php">Espace admin</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
                     } else {
-                        echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                        $req = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
+                        $resultat = mysqli_query ($session, $req);
+
+                        if ($reponse = mysqli_fetch_array($resultat)) { 
+                            if ($reponse["Reponse"] > 0) {
+                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil <span class="badge badge-danger">ici</span></a>');                           
+                            } else {
+                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
+                            }
+                        }
                         echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
                         echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
                     }
@@ -723,7 +707,7 @@
               <h3>Statistiques</h3><hr>   
               
               <h5>Nombre de connexion du site</h5>
-              <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" class="btn btn-light">Aller voir sur Google Analytics</a>
+              <a href="https://analytics.google.com/analytics/web/?authuser=1#/report/visitors-overview/a173955301w241368476p225152034/" target="_blank" class="btn btn-light">Aller voir sur Google Analytics</a>
               <p><br></p>
               
               <h5>Mise en relation</h5><hr>';
@@ -1008,11 +992,11 @@
           </script>
       </div>
     </div>
-
-  <hr> 
-  <footer>
-    <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-  </footer>
+    
+        <footer>
+            <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
+          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
+        </footer>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
