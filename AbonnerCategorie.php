@@ -171,6 +171,7 @@
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<div class="card-header">');
                                 echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
+                                echo ('<center>demande d\'ajouter une nouvelle catégorie</center>');
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');

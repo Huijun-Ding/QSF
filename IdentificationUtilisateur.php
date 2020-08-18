@@ -46,10 +46,11 @@ if(isset($_POST['email'])){
             if(password_verify($Password,$good_password)) {    // si le mot de passe est bon, ouvert la session 
                 session_start();
                 $_SESSION['email'] = $Email;
-                $_SESSION['password'] = $Password;                 
+                $_SESSION['password'] = $Password;   
+    
                 ?>
                 <script>
-                    document.location.href = window.history.go(-2);
+                    document.location.href = 'index.php';
                 </script>
             <?php
             } else {
