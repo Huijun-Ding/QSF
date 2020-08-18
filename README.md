@@ -42,7 +42,7 @@ Compte Phpmyadmin:
         // 1. Connexion à la base de donnée
 
         $nomlogin = "bd_qualif_qsf";                    // Ici, nous connectons avec le serveur local, si vous voulez le tester sur d'autre serveur, vous pouvez changer ces 3 variables
-        $nompasswd = "mYSQLQSF31";
+        $nompasswd = "*******";
         $nombase = "bd_qualif_qsf";
         $serveur = "bm124975-001.privatesql";
         $port_bdd = "35171";
