@@ -2,10 +2,12 @@
 require_once('Fonctions.php');
      
         if (isset($_POST['categorie'])) { 
-             foreach ($_POST["categorie"] as $categories) {                  
-                $stmt = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans la table abonner
-                mysqli_stmt_bind_param($stmt, 'ii', $usercode, $categories);
-                mysqli_stmt_execute($stmt); 
+             foreach ($_POST["categorie"] as $categories) {  //abonner les catégories sauf que "Autres"
+                if ($categories <> 10) {     
+                    $stmt = mysqli_prepare($session, "INSERT INTO abonner(CodeU,CodeC) VALUES(?,?)");   // insérer le code de l'utilisateur et le code de catégorie dans la table abonner
+                    mysqli_stmt_bind_param($stmt, 'ii', $usercode, $categories);
+                    mysqli_stmt_execute($stmt); 
+                }       
              }
         }
   
@@ -14,7 +16,7 @@ require_once('Fonctions.php');
 header("Location: MesCategories.php");
 
 if (isset($_POST['nomcp'])) {
-     //Mail à l'admin pour créer une nouvelle catégorie !Comment déclencher ce mail ?
+     //Mail à l'admin pour créer une nouvelle catégorie ! 
     $sql = "select Email from utilisateurs where CodeU = $usercode";
     $result = mysqli_query ($session, $sql);
     if ($email = mysqli_fetch_array($result)) {   
