@@ -5,14 +5,14 @@ compte ftp:
 	ftp.cluster005.hosting.ovh.net
 	(ftp://cpambyqt-ftp_qsf@ftp.cluster005.hosting.ovh.net:21/)
 	user: cpambyqt-ftp_qsf
-	mdp: fTPQSF31
+
 
 Compte Phpmyadmin:
 	https://phpmyadmin-gra2.hosting.ovh.net
 	serveur: bm124975-001.privatesql
 	port: 35171
 	user: qsf_mysql
-	mdp: mYSQLQSF31
+
 
 _________________________________________________________________________________________________________________________________________________________________________________________
 
@@ -21,14 +21,14 @@ Site QSF en qualification sur le site https://qualif-qsf.cpam31.fr
 compte ftp: 
 	ftp.cluster005.hosting.ovh.net
 	User ftp : cpambyqt-qualifqsf
-	MDP ftp: fTPQSF31
+
 
 Compte smtp: 
 	https://www.ovh.com/fr/mail/
 	serveur:ssl0.ovh.net
 	port:587
 	Compte:qsf@cpam31.fr
-	Mdp:cpam_113101
+
 
 Compte Phpmyadmin:
 	https://phpmyadmin-gra2.hosting.ovh.net
@@ -36,7 +36,7 @@ Compte Phpmyadmin:
 	port: 35171
 	Base de données : bd_qualif_qsf
 	User bdd : bd_qualif_qsf
-	MDP bdd : mYSQLQSF31
+
 
 
         // 1. Connexion à la base de donnée
