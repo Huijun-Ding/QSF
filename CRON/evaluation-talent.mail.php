@@ -7,7 +7,7 @@
             //email pour evaluation de l'expérience
             $to = "{$email['Email']}"; // adresse mail du destinataire
             $to .= "{$_SESSION['email']}";
-            $subject = "[COUP DE MAIN, COUP DE POUCE] Evaluation sur votre expérience"; // sujet du mail
+            $subject = "[COUP DE MAIN, COUP DE POUCE] Evaluation sur votre expérience de la plateforme"; // sujet du mail
             $content = '
             <!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

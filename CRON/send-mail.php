@@ -20,5 +20,5 @@ do{
     
     sleep($interval); // exécute après 1jour
 }while(true);
-echo ('Hors de la boucle, regonfigurer la cron');
+echo ('Hors de la boucle, reconfigurer la cron');
 
