@@ -186,7 +186,6 @@ DROP TABLE IF EXISTS `participera`;
 CREATE TABLE `participera` (
   `CodeU` int(10) NOT NULL,
   `CodeA` int(10) NOT NULL,
-  `RoleA` enum('createur','participant') NULL,
   PRIMARY KEY (`CodeU`,`CodeA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
@@ -224,7 +223,6 @@ DROP TABLE IF EXISTS `participerp`;
 CREATE TABLE `participerp` (
   `CodeU` int(10) NOT NULL,
   `CodeP` int(10) NOT NULL,
-  `RoleP` enum('createur','participant') NOT NULL,
   PRIMARY KEY (`CodeU`,`CodeP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 --
