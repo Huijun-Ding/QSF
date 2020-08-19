@@ -542,7 +542,7 @@
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                                               
                           echo ('<tr>');
-                            echo ('<th scope="row"><input type="radio" name="activera" value="'.$ligne["CodeA"].'"/></th>');
+                            echo ('<th scope="row"><input type="radio" name="codea" value="'.$ligne["CodeA"].'"/></th>');
                             echo ('<th scope="row">'.$ligne["CodeA"].'</th>');
                             echo ('<td>'.$ligne["TitreA"].'</td>');
                             echo ('<td>'.$ligne["DescriptionA"].'</td>');
@@ -560,7 +560,7 @@
                    
                     echo ('<p>Veuillez choisir un atelier puis saisir un URL pour l\'activer</p>');
                     echo ('<input name="url" type="text"/>');
-                    echo ('<button type="submit"  class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                    echo ('<button type="submit" name="activera" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
                     
                 echo ('</form>');
             echo ('</div>');
