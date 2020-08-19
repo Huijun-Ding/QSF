@@ -461,10 +461,7 @@ $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
 $headers .= 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>' . "\r\n"; // En-têtes additionnels  
 mail ($destinataire, $sujet, $message, $headers); // on envois le mail  
 
-//header("Location: MonProfil.php");
+header("Location: MonProfil.php");
 ?>
 
-<script>
-    document.location.href = window.history.go(-3);
-</script>
 

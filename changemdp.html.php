@@ -154,16 +154,10 @@
                 <p>Nouveau mot de passe : <input type="text" name="newmdp1"></p><br>
                 <p>Confirmation de nouveau mot de passe : <input type="text" name="newmdp2"></p><br>
                 <input type="submit" value="Modifier" class="btn btn-primary">
-                <input type="reset" value="Annuler" class="btn btn-dark" onclick="goBack()">
+                <a href="MonProfil.php"><input type="reset" value="Annuler" class="btn btn-dark"></a>
             </form>
           </div>
         </div>
-
-        <script>
-            function goBack() {
-                window.history.back();
-              }              
-        </script>
 <!------------------------------------------------------------------------------------------------------------------------------------------->
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>

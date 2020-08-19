@@ -188,15 +188,9 @@
             <br><h4>Sécurité des données </h4>
             <br><a>De plus, la CPAM 31 a confié l’hébergement de son Site à la société OVH pour assurer la sécurité des données personnelles confiées par ses utilisateurs, les données de nos utilisateurs sont stockées que sur les bases de données du Site, l’infrastructure hardware et software sur laquelle les sites sont hébergés est conçue pour garantir une sécurité absolue des données (antivirus, switch, routeurs, serveurs et firewalls redondants). </a>
             <p>   </p>
-            <button type="button" class="btn btn-secondary" onclick="goBack()">Retour</button>
+            <a href="Inscription.php"><button type="button" class="btn btn-secondary" onclick="goBack()">Retour</button></a>
           </div>
         </div>        
-        
-        <script>
-            function goBack() {
-                window.history.back();
-              }              
-        </script>
             
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>

@@ -172,22 +172,16 @@
                         echo ('<hr>');
                     if(isset($_SESSION['email'])){
                        echo ('<a href="'.$ligne["URL"].'" target="_blank"><button type="button" class="btn btn-primary btn-lg">Je m\'inscris</button></a> ');    
-                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg>Retour</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a> ');
-                       echo ('<button type="button" class="btn btn-dark btn-lg" onclick="goBack()">Retour</button>');
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg">Retour</button>/a>');
                     }   
                 }
                 }
                  ?>
             </div>
         </div>
-         
-        <script>
-            function goBack() {
-                window.history.back();
-              }              
-        </script>
            
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>

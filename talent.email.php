@@ -343,7 +343,7 @@
 
         </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait demander de partager votre talent '.$_POST['titrecarte'].'.</p><span class="mso-font-fix-tahoma">
+        </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait vous demander de partager votre talent '.$_POST['titrecarte'].'.</p><span class="mso-font-fix-tahoma">
 
         </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 
@@ -442,9 +442,6 @@
         $headers[] = 'Content-type:text/html;charset=iso-8859-1';
         $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>'; // En-têtes additionnels  
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail
+        header("location:Talent.php");
     }
 ?>
-
-<script>
-    document.location.href = window.history.go(-2);
-</script>

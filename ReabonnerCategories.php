@@ -23,7 +23,7 @@ if (isset($_POST['nomcp'])) {
         $Email = $email['Email'];
        
         $destinataire = "admincmcp@assurance-maladie.fr"; // adresse mail du destinataire 
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de créer une nouvelle catégorie"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de cr&eacute;er une nouvelle catégorie"; // sujet du mail
         $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -33,7 +33,7 @@ if (isset($_POST['nomcp'])) {
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="x-apple-disable-message-reformatting">
 <meta name="format-detection" content="telephone=no">
-<title>NotificationBesoin</title>
+<title>Nouvelle cat&eacute;gorie</title>
 
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
@@ -339,7 +339,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Un utilisateur voudrait créer une nouvelle cat&eacute;gorie</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Un utilisateur voudrait cr&eacute;er une nouvelle cat&eacute;gorie</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Nom : '.$_POST['nomcp'].' ; Description :  '.$_POST['descriptioncp'].' </p><span class="mso-font-fix-tahoma">
 

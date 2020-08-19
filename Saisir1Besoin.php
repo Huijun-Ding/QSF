@@ -452,7 +452,6 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
      $headers[] = 'From: COUP DE MAIN, COUP DE POUCE<admincmcp@assurance-maladie.fr>';
 
      
-     
         mail ($destinataire, $sujet, $message, implode("\r\n", $headers)); // on envois le mail  
         
             }

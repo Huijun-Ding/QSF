@@ -475,8 +475,6 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 
          //}  
+         header("location:MonProfil.php");
 ?>
 
-<script>
-    document.location.href = window.history.go(-3);
-</script>
