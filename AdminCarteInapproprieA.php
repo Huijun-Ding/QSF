@@ -13,7 +13,9 @@ if (isset($_POST['desactivera'])) {
    
 
 
-$CodeAC = $_POST['activera'];
+
+
+$CodeAC = $_POST['codea'];
 $URL = $_POST['url'];
 
 

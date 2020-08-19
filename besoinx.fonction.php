@@ -12,7 +12,7 @@
  ?>
     <script>
         alert("Vous avez sollicité ce besoin !");
-        window.history.back();
+        document.location.href = "Besoin.php";
     </script>
 
 

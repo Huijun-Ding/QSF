@@ -180,7 +180,7 @@
 
                         ?> 
                         </form>
-                        <button type="button" class="btn btn-secondary" onclick="goBack()">Annuler</button>
+                        <a href="Besoin.php"> <button type="button" class="btn btn-secondary">Annuler</button></a>
                 </div>    
             </div>
  
@@ -191,10 +191,6 @@
                 extraAllowedContent: 'div',
                 height: 250
               });
-              
-            function goBack() {
-                window.history.back();
-              }
         </script>
                 
         <footer>
