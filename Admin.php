@@ -964,20 +964,20 @@
 //<!--------------------------------------------------------------------------------------------------------------------------------------------->   
             echo '<div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
-
-                <form method="GET" action="AdminParametresFonction.php">
-
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' placeholder="15" name="interval"> jours </p>
-                    <button type="submit" class="btn btn-dark"> Modifier </button><br>';
-                    $query = "select * from parametres";
+                <form method="GET" action="AdminParametresFonction.php">';
+            
+                 $query = "select * from parametres";
 
                     $result = mysqli_query ($session, $query);
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {     
-                            echo '<p>Le délai actuel est  '.$ligne['Interval'].' jours</p>';                 
+                            echo '<p>Le délai actuel est de '.$ligne['Interval'].' jours</p>';                 
                         }
                     }
-                    
+
+                   echo ' <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' placeholder="15" name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button><br>';
+                   
               echo '  </form>
             </div>';
         } else {
