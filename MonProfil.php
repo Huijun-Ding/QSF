@@ -291,12 +291,10 @@ if (isset($_SESSION['email'])) {
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
-                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                        echo ('<br>');
-                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
-                        if ($besoin["ReponseB"] > 0) {
-                            echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>');
+                        echo ('<p></p><a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
+                        if ($besoin["ReponseB"] > 0) {                    
+                            echo ('<p></p><a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -377,13 +375,12 @@ if (isset($_SESSION['email'])) {
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
+                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>'); 
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                            echo ('<br>');
-                            echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
+                            echo ('<p></p><a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
                             if ($talent["ReponseT"] > 0) {
-                                echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
+                                echo ('   ');
+                                echo ('<p></p><a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
@@ -461,9 +458,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<p class="card-text">Date de publication: '.$atelier["DatePublicationA"].'</p>');
                         echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
                         echo ('<a href="AtelierX.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                        echo ('<br>');
-                        echo ('<a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>');               
-                        echo ('</div>');  
+                        echo ('<p></p><a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>'); 
                         echo ('</div></li>');       
                        }
                 } 
