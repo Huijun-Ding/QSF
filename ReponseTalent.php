@@ -151,6 +151,7 @@
           <div class="container">
                 <h1>Réponses pour mes talents</h1>         
                 <hr> 
+
                 <?php
                 require_once('Fonctions.php');
 
@@ -163,24 +164,22 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if ($ligne["VisibiliteT"] == 1) {   
+                        echo '<p>'.$ligne['Email'].'</p>'; 
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="talentoui.fonction.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
+                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
                         echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
-                        $mail = $ligne["Email"];
-                ?>    
-
-            <script>
-              var mail="<?php echo $mail;?>";
+            ?>
+            <!--<script>
+              var mail="<?php //echo $ligne['Email'];?>"; 
               function sendmail() {
                   window.location.href = "mailto:" + mail + "";   
               }
-            </script>
-  
-                <?php
-                      }
+            </script> --><?php
+                    }
                 }
-                ?>
+
+                ?>            
           </div>
         </div>
 

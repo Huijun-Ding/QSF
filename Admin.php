@@ -952,11 +952,7 @@
         </div> '; 
 //<!--------------------------------------------------------------------------------------------------------------------------------------------->   
             echo '<div id="Paramètres" class="tabcontent">
-                <h3>Paramètres</h3><hr>
-
-                <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
-                    <button type="submit" class="btn btn-dark"> Modifier </button>';
+                <h3>Paramètres</h3><hr>';
                     $query = "select p.Interval from parametres as p";
                     $result = mysqli_query ($session, $query);
                     if (mysqli_num_rows($result)>0) {
@@ -964,6 +960,9 @@
                             echo '<p>Le délai actuel est  '.$ligne['Interval'].' jours</p>';                 
                         }
                     }
+                echo '<form method="GET" action="AdminParametresFonction.php">
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button>';
                     
               echo '  </form>
             </div>';

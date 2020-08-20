@@ -165,9 +165,9 @@
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="besoinoui.fonction.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
+                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
                         echo ('<a href="besoinnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
-                        $mail = $ligne["Email"];
+                        //$mail = $ligne["Email"];
                     }
                 }
                 ?>   
@@ -175,12 +175,12 @@
           </div>
         </div>
   <hr> 
-    <script>
-      var mail="<?php echo $mail;?>";
+    <!--<script>
+      var mail="<?php //echo $mail;?>";
       function sendmail() {
           window.location.href = "mailto:" + mail + "";   
       }
-    </script>
+    </script>-->
 
         <footer>
             <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>

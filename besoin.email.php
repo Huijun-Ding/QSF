@@ -1,6 +1,16 @@
 <?php 
     require_once ('Fonctions.php');
     
+    // incrémenter sur besoins.ReponseB
+    $query = "SELECT COUNT(CodeEM) as nb from emails where Provenance = {$_SESSION['codeu']} and TypeCarte = 'besoin' and CodeCarte = {$_POST['codecarte']}";
+    $result = mysqli_query ($session, $query);
+    if ($type = mysqli_fetch_array($result)) {   
+        if ($type['nb']==0) {
+            $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
+            mysqli_query ($session, $query);
+        }
+    }    
+    
     //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd
     $req1= "SELECT * FROM `parametres` WHERE 1";
     $result1 = mysqli_query ($session, $req1);
@@ -20,10 +30,6 @@
         $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},$apprenant,'[COUP DE MAIN, COUP DE POUCE] Répondre à votre besoin {$_POST["titrecarte"]}','{$_POST['contenu_besoin']}','$dateevaluation',1,{$_POST['codecarte']},'besoin')";
         mysqli_query ($session, $sql);
     }
-    
-    // incrémenter sur besoins.ReponseB
-    $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
-    mysqli_query ($session, $query);
     
     //requête prendre l'email destinataire
     $liste = '';
