@@ -17,7 +17,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+​    
     <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <title>COUP DE MAIN, COUP DE POUCE</title>
@@ -161,8 +161,8 @@
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h1>'.$ligne["TitreB"]. '</h1>');                        
-                        echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
-                        echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
+                        echo ('<h3> Date Butoire: '.date("d/m/yy", strtotime($ligne["DateButoireB"])).'</h3>');
+                        echo ('<p> Date Publication: '.date("d/m/yy", strtotime($ligne["DatePublicationB"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 

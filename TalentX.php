@@ -17,7 +17,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+​   
     <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <title>COUP DE MAIN, COUP DE POUCE</title>
@@ -158,10 +158,10 @@
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détaille de chaque talent */
+                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque talent */
                      if ($ligne["VisibiliteT"] == 1){
                     echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
-                    //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
+                    echo ('<p> Date Publication: '.date("d/m/yy", strtotime($ligne["DatePublicationT"])).'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                     echo ('<p><strong>Type: </strong>'.$ligne["TypeT"].'</p>');                    
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  

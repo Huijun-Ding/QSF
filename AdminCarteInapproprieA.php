@@ -14,12 +14,16 @@ if (isset($_POST['desactivera'])) {
 
 
 
-$CodeAC = $_POST['activera'];
 
-if (isset($_POST['activera'])) {
-    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1 WHERE CodeA = ?");
-    mysqli_stmt_bind_param($stmt2, 'i', $CodeAC);
+$CodeAC = $_POST['codea'];
+$URL = $_POST['url'];
+
+
+if (isset($_POST['activera']) && isset($_POST['url'])) {
+    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1, URL = ? WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt2, 'si', $URL, $CodeAC);
     mysqli_stmt_execute($stmt2);
+    
 }
 
 

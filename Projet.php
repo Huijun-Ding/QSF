@@ -17,7 +17,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+​   
     <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <title>COUP DE MAIN, COUP DE POUCE</title>
@@ -181,7 +181,7 @@
 				echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
 				echo ('<div class="card-body card text-center">');
 				echo ('<h5 class="card-title">'.$ligne["TitreP"].'</h5>');
-				echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireP"].'</p>');
+				echo ('<p class="card-text">Délais souhaité: '.date("d/m/yy", strtotime($ligne["DateButoireP"])).'</p>');
 				echo ('<a href="ProjetX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
 				echo ('</div>');  
 				echo ('</div>');         

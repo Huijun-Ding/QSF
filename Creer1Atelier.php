@@ -17,7 +17,7 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+​   
     <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <title>COUP DE MAIN, COUP DE POUCE</title>
@@ -149,22 +149,22 @@
 <!--------------------------------------------------------------------------------------------------------------------------------------------->  
         <div class="jumbotron">
           <div class="container">
-			
-              <div class="row">
-                <div class="col-6">
+		
               <h1> Créer un atelier </h1><hr>
+              	
+              <div class="row">
+                <div class="col-5">
               <h4>Etapes à suivre pour créer un atelier : </h4><br>
               
-            <h5>Etape 1 : Je remplis le formulaire.
+            <h5>Etape 1 : Je remplis le formulaire. ---> </h5><br>
             
-            <h5>Etape 2 : Ma carte est en attente d'un admin pour valider. </h5><br>
+            <h5>Etape 2 : Sous réserve de validation par nos admins, votre carte d'atelier sera traitée et puis affichée dans les plus brefs délais.</h5><br>
             
-            <h5>Etape 3 : Je reçois une liste de participants la veille. </h5><br>
+            <h5>Etape 3 : Je reçois une liste de participants à la veille d'évènement. </h5><br>
 
            
-            
             </div>
-                  <div class="col-6">
+                  <div class="col-7">
             <form action="Saisir1Atelier.php" method="post">
             <?php
             require_once('Fonctions.php');
@@ -227,10 +227,7 @@
                 <label class="form-check-label" for="inlineRadio3">Pro&Perso</label>
               </div>               
             </div>
-            <div class="form-group">
-              <label for="inputEmail4">URL de l'inscription [e.x. https://www.linscription.com/...] (<span style="color:red">*</span>)</label>
-              <input type="text" name="url" class="form-control col-md-4"  id="inputEmail4" required />
-            </div>    
+               
             <div class="form-group">
               <label for="inputEmail4">En savoir plus (si vous le souhaitez, indiquez un site internet pour plus d'informations) <br> [e.x. https://fr.wikipedia.org/wiki/Yoga] </label>
               <input type="text" name="plus" class="form-control col-md-4" id="inputEmail4" />
