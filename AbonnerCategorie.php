@@ -171,7 +171,7 @@
                                 echo ('<div class="card" style="width: 12rem;">');
                                 echo ('<div class="card-header">');
                                 echo ('<center><input class="card-text" type="checkbox" id="inlineCheckbox" name="categorie[]" value="'.$ligne["CodeC"].'"></center>');
-                                echo ('<center>demande d\'ajouter une nouvelle catégorie</center>');
+                                echo ('<center><h6 title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">Demande d\'une nouvelle catégorie</h6></center>');
                                 echo ('<div class="input-group-prepend">');
                                   echo ('<span class="input-group-text" id="basic-addon1">Nom</span>');
                                 echo ('</div>');
@@ -182,7 +182,7 @@
                                   echo ('<input name="descriptioncp" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">');
                                 echo ('</div>');
                                 echo ('<div class="card-body text-center">');
-                                echo('<h6 class="card-title" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">'.$ligne["NomC"].'</h6>');
+                                echo('<h6 class="card-title" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin.">'.$ligne["NomC"].' <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/OOjs_UI_icon_info_big_progressive.svg/1200px-OOjs_UI_icon_info_big_progressive.svg.png" width="20" height="20" alt="info-bulle" title="Si vous voulez proposer une nouvelle catégorie, veuillez remplir le nom et la description de votre proposition, un mail sera envoyé à l\'admin."></h6>');
                                 echo ('</div>');
                                 echo ('</div>');      
                         } else {
