@@ -348,7 +348,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Votre talent « '.$email['TitreT'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre talent « '.$email['TitreT'].'» a été supprimé par l\'administrateur.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;"> à cause des contenus inappropriés.</p><span class="mso-font-fix-tahoma">
 
