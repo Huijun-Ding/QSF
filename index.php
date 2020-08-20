@@ -17,7 +17,6 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​    <link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <title>COUP DE MAIN, COUP DE POUCE</title>
@@ -202,7 +201,7 @@
                         echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireB"].'</p>');
+                        echo ('<p class="card-text">Délais souhaité: <br> '.date("d/m/yy", strtotime($ligne["DateButoireB"])).'</p>');
                         echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('</div>');  
                         echo ('</div></div>');   
@@ -465,7 +464,7 @@
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$ligne["TitreA"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$ligne["DatePublicationA"].'</p>');
+                            echo ('<p class="card-text">Date de publication: <br>'.date("d/m/yy", strtotime($ligne["DatePublicationA"])).'</p>');
                             echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
                             echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
                             echo ('<a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  

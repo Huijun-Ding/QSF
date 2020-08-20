@@ -152,7 +152,7 @@
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = '$T' ";
+                $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC, c.NomC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -162,8 +162,8 @@
                     if ($ligne["VisibiliteA"] == 1) {   
                         echo ('<h1>'.$ligne["TitreA"]. '</h1>');                        
                         echo ('<h3> Date  & Créneau horaire : '.$ligne["DateA"].'</h3>');
-                        echo ('<p> Date Publication : '.$ligne["DatePublicationA"].'</p>');
-                        echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
+                        echo ('<p> Date Publication : '.date("d/m/yy", strtotime($ligne["DatePublicationA"])).'</p>');
+                        echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" height="200" style="width: 20rem;"</p>');
                         echo ('<p><strong>Type d\'atelier : </strong>'.$ligne["TypeA"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionA"].'</p>'); 
                         echo ('<p><strong>Lieu d\'atelier : </strong>'.$ligne["LieuA"].'</p>');             
@@ -171,11 +171,11 @@
                         echo ('<strong>En savoir plus : </strong><a href="'.$ligne["PlusA"].'" target="_blank">'.$ligne["PlusA"].'</a>');  
                         echo ('<hr>');
                     if(isset($_SESSION['email'])){
-                       echo ('<a href="'.$ligne["URL"].'" target="_blank"><button type="button" class="btn btn-primary btn-lg">Je m\'inscris</button></a> ');    
-                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg>Retour</button></a>');
+                       echo ('<a href="'.$ligne["URL"].'" target="_blank"><button type="button" class="btn btn-primary btn-lg">Je m\'inscris</button></a>');    
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a> ');
-                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg">Retour</button>/a>');
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
                     }   
                 }
                 }

@@ -181,7 +181,7 @@
 				echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
 				echo ('<div class="card-body card text-center">');
 				echo ('<h5 class="card-title">'.$ligne["TitreP"].'</h5>');
-				echo ('<p class="card-text">Délais souhaité: '.$ligne["DateButoireP"].'</p>');
+				echo ('<p class="card-text">Délais souhaité: '.date("d/m/yy", strtotime($ligne["DateButoireP"])).'</p>');
 				echo ('<a href="ProjetX.php" class="btn btn-outline-dark">Voir la demande</a>'); 
 				echo ('</div>');  
 				echo ('</div>');         

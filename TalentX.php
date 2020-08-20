@@ -158,10 +158,10 @@
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détaille de chaque talent */
+                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque talent */
                      if ($ligne["VisibiliteT"] == 1){
                     echo ('<h1>'.$ligne["TitreT"]. '</h1><br>');
-                    //echo ('<p> Date Publication: '.$ligne["DatePublicationT"].'</p>');
+                    echo ('<p> Date Publication: '.date("d/m/yy", strtotime($ligne["DatePublicationT"])).'</p>');
                     echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                     echo ('<p><strong>Type: </strong>'.$ligne["TypeT"].'</p>');                    
                     echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionT"].'</p>');  
