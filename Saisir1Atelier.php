@@ -461,7 +461,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
     ?>
 
        <script>
-           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(Le nombre de personne doit être positif)");
+           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les informations correctement ! ");
            document.location.href = 'Creer1Atelier.php';
         </script>
         
