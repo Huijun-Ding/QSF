@@ -961,8 +961,6 @@
             echo '<div id="Paramètres" class="tabcontent">
 
                 <h3>Paramètres</h3><hr>
-
-                <h3>Paramètres</h3><hr>
                 <form method="GET" action="AdminParametresFonction.php">';
                     
                     $query = "select p.Interval from parametres as p";           
