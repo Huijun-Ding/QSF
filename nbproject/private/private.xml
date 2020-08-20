@@ -3,16 +3,63 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/MonProfil.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/talent.email.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/besoin.email.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
-=======
-            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCarteInapproprieA.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AbonnerCategorie.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Besoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/contact.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReponseTalent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MailTalent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminCategorieModification.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MonProfil.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BesoinModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoinnon.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/changemdp.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/TalentModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/index.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/BesoinX.php</file>
             <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Admin.php</file>
->>>>>>> a052779ccfbcb6b52618385fed70880ad57875b1
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Desactiver1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoinx.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminBesoinX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Saisir1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/findmdp.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Login.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/IdentificationUtilisateur.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MailBesoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/TalentX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AtelierX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoin.email.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talentoui.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/changemdp.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-talent.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-besoin.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Besoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/slide.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminTalentX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Inscription.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminAtelierX.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/DesabonnerCategories.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/findmdp.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Supprimer1Compte.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoinoui.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talentnon.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/monespace.fonction.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talent.email.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Talent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AdminUtilisateur.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ConditionGeneraleUtilisation.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/talentnon.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Creer1Talent.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-talent.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReponseBesoin.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/besoinnon.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Modifier1Atelier.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/evaluation-besoin.html.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/Projet.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/MesCategories.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/AtelierModification.php</file>
+            <file>file:/D:/UT1/Stage/2020/CPAM/xampp/htdocs/QSF/ReabonnerCategories.php</file>
         </group>
     </open-files>
 </project-private>

@@ -6,14 +6,13 @@ $Date = $_POST['date'];
 $Lieu = $_POST['lieu'];
 $Nombre = $_POST['nb'];
 $Type = $_POST['type'];   
-$URL = $_POST['url'];
 $Plus = $_POST['plus'];
 $DatePublicationA = date("yy/m/d");
 
 require_once('Fonctions.php');
 
-$stmt = mysqli_prepare($session, "INSERT INTO ateliers(TitreA,DescriptionA,DateA,LieuA,NombreA,DatePublicationA,URL,PlusA,TypeA,CodeC) VALUES(?,?,?,?,?,?,?,?,?,?)");  //insérer un nouveau besoin dans le table besoins
-mysqli_stmt_bind_param($stmt, 'ssssissssi', $Titre, $Description, $Date, $Lieu, $Nombre, $DatePublicationA, $URL, $Plus, $Type, $Categorie);
+$stmt = mysqli_prepare($session, "INSERT INTO ateliers(TitreA,DescriptionA,DateA,LieuA,NombreA,DatePublicationA,PlusA,TypeA,CodeC) VALUES(?,?,?,?,?,?,?,?,?)");  //insérer un nouvel atelier dans le table ateliers
+mysqli_stmt_bind_param($stmt, 'ssssisssi', $Titre, $Description, $Date, $Lieu, $Nombre, $DatePublicationA, $Plus, $Type, $Categorie);
 
 
 if (mysqli_stmt_execute($stmt) === true) {
@@ -462,7 +461,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
     ?>
 
        <script>
-           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les information correctement ! \n(Le nombre de personne doit être positif)");
+           alert("Désolé, votre atelier n'a pas été enregistré ! \nVeuillez saisir toutes les informations correctement ! ");
            document.location.href = 'Creer1Atelier.php';
         </script>
         

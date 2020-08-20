@@ -209,11 +209,7 @@
                         echo ('<label for="inputEmail4">Nombre de personnes maximum(<span style="color:red">*</span>)</label>');
                         echo ('<input type="text" name="nb" class="form-control col-md-4" id="inputEmail4" maxlength="50" value="'.$ligne["NombreA"].'" required>');
                         echo ('</div>');
-                        
-                        echo ('<div class="form-group">');
-                        echo ('<label for="inputEmail4">URL de l\'inscription(<span style="color:red">*</span>)</label>');
-                        echo ('<input type="text" name="url" class="form-control col-md-4" id="inputEmail4" maxlength="100" value="'.$ligne["URL"].'" required>');
-                        echo ('</div>');
+               
                         
                         echo ('<div class="form-group">');
                         echo ('<label for="inputEmail4">En savoir plus</label>');
