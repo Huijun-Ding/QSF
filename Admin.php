@@ -549,11 +549,7 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-
-                             echo ('<input type="text" name="url"/>');
-                             echo ('<button type="submit" name="activera" value="'.$ligne["CodeA"].'" title="afficher la carte" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
-
-                             echo ('</div>');
+                            echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
                     }          
