@@ -90,7 +90,7 @@
                 if (isset($_SESSION['email'])) {
                     echo ('<a href="Creer1Atelier.php"><button type="button" class="btn btn-light">Créer un nouvel atelier</button></a>');
                 } else {
-                    echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouvel atelier</button></a>');
+                    echo ('<a href="Login.php"><button type="button" class="btn btn-light">Créer un nouveau atelier</button></a>');
                 }
             }
 
@@ -106,5 +106,4 @@
                 }
                 return $randpwd;
             }
-
 ?>

@@ -14,16 +14,12 @@ if (isset($_POST['desactivera'])) {
 
 
 
+$CodeAC = $_POST['activera'];
 
-$CodeAC = $_POST['codea'];
-$URL = $_POST['url'];
-
-
-if (isset($_POST['activera']) && isset($_POST['url'])) {
-    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1, URL = ? WHERE CodeA = ?");
-    mysqli_stmt_bind_param($stmt2, 'si', $URL, $CodeAC);
+if (isset($_POST['activera'])) {
+    $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1 WHERE CodeA = ?");
+    mysqli_stmt_bind_param($stmt2, 'i', $CodeAC);
     mysqli_stmt_execute($stmt2);
-    
 }
 
 
@@ -39,7 +35,7 @@ header("Location: Admin.php");
             $Email = $email['Email'];
             
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "Votre atelier « '.{$email['TitreA']}.'» a &eacute;t&eacute; supprim&eacute; par l'administrateur"; // sujet du mail
+            $sujet = "Votre atelier « '.{$email['TitreA']}.'» a été supprimé par l'administrateur"; // sujet du mail
              $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -355,9 +351,9 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Votre atelier « '.$email['TitreA'].'» a &eacute;t&eacute; supprim&eacute; par l\'administrateur.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre atelier « '.$email['TitreA'].'» a été supprimé par l\'administrateur</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;"> &agrave; cause des contenus inappropri&eacute;s.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;"> à cause des contenus inappropriés.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 </span></div>

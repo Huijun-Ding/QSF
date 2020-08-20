@@ -1,160 +1,48 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+<head>
     
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-​   
-    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Link -->
+ <?php require "link.php"; ?>
+<!-- Link -->
 
-    <title>COUP DE MAIN, COUP DE POUCE</title>
-    <style>
-        .navbar-nav li:hover>.dropdown-menu {
-            display: block;
-        }
-    </style>
+<title>Espace administrateur</title>
+
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
-    <!--<link rel="stylesheet" type="text/css" href="evaluation.css">-->
     <script src="jquery.js"></script>
-    <!--<script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>-->
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.php">COUP DE MAIN, COUP DE POUCE</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a> 
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Besoin.php">Besoins</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="Talent.php">Talents</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="Atelier.php">Ateliers</a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="Projet.php">Projets</a>
-          </li>                
-          <li class="nav-item">
-            <a class="nav-link" href="AbonnerCategorie.php">Catégories</a>
-          </li> 
-        </ul>
-          
-          <form  method="get">
-          <?php
-            /*require_once 'Fonctions.php';
-            
-            if (empty($_SESSION['email'])){
-                echo ('<div class="btn-group" role="group" aria-label="Basic example">');
-                echo ('<button type="radio" id="tout" class="btn btn-secondary btn-sm" name="tout">Tout</button>');
-                echo ('<button type="radio" id="pro" class="btn btn-secondary btn-sm" name="pro" value="Pro">Pro</button>');   
-                echo ('<button type="radio" id="perso" class="btn btn-secondary btn-sm" name="perso" value="Perso">Perso</button>');               
-                echo ('</div>');
-            } */
-          ?>
-          </form>      
-                   
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropleft">   
-            <?php
-            require_once 'Fonctions.php';
     
-            if(isset($_SESSION['email'])){    
-                
-                $query = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
-                $result = mysqli_query ($session, $query);
-                
-                while ($ligne = mysqli_fetch_array($result)) { 
-                    if ($ligne["Reponse"] > 0) {
-                        echo ('<span class="badge badge-danger">Nouveau message</span>');                           
-                    } 
-                }    
-                    echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                    $prenom = "select PrenomU from utilisateurs where CodeU = {$usercode} ";
-                    $result = mysqli_query ($session, $prenom);
-                    while ($prenom = mysqli_fetch_array($result)) {      
-                        echo $prenom['PrenomU'];       // Afficher le prénom d'un utilisateur
-                    }
-                    echo('</a>');
-            } else {
-                echo('<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">');
-                echo "Visiteur";                   //Utilisateur qui n'a pas conncté
-                echo('</a>');
-            } 
-            ?>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <?php
-                if(isset($_SESSION['email'])){
-                    if(isset($_SESSION['role'])) {
-                        echo ('<a class="dropdown-item" href="Admin.php">Espace admin</a>');
-                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');                       
-                    } else {
-                        $req = "select SUM(b.ReponseB) + SUM(t.ReponseT) as Reponse from besoins b, saisir s, talents t, proposer p where s.CodeB = b.CodeB and t.CodeT = p.CodeT and p.CodeU = {$usercode} and s.CodeU = {$usercode} and b.VisibiliteB = 1 and t.VisibiliteT = 1";
-                        $resultat = mysqli_query ($session, $req);
+<!-- Menu -->
+ <?php require "menu.php"; ?>
+<!-- Fin Menu -->
 
-                        if ($reponse = mysqli_fetch_array($resultat)) { 
-                            if ($reponse["Reponse"] > 0) {
-                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil <span class="badge badge-danger">ici</span></a>');                           
-                            } else {
-                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                            }
-                        }
-                        echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
-                    }
-                ?>
-                <script>
-                    function Deconnexion() {
-                        alert("Déconnexion réussite !");
-                        }
 
-                     $('.navbar-nav mr-auto').find('a').each(function () {
-                        if (this.href == document.location.href || document.location.href.search(this.href) >= 0) {
-                            $(this).parent().addClass('active'); // this.className = 'active';
-                        }
-                    });
-                </script>
-                <?php
-                } else {
-                    echo ('<a class="dropdown-item" href="Login.php">Se connecter</a>');
-                    echo ('<a class="dropdown-item" href="Inscription.php">S\'inscrire</a>');
-                }
-                ?>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->   
         <div class="jumbotron">
+          
+          <div class="section-title section-title-haut-page" >
+                <h1 class="text-center">Espace administrateur</h1>
+
+</div>
           <div class="container">
               
         <?php
         if (isset($_SESSION['role'])) {
             echo '
-               <h1>Admin</h1>        <!-- Bouton pour les onglets --> 
-                <button class="tablink" onclick="openPage(\'Catégories\', this, \'orange\')" id="defaultOpen">Catégories</button>   <!-- moteur de recherche : après changer de page ?????-->   
-                <button class="tablink" onclick="openPage(\'Cartes\', this, \'orange\')" >Cartes</button>
-                <button class="tablink" onclick="openPage(\'Utilisateurs\', this, \'orange\')" >Utilisateurs</button>
-                <button class="tablink" onclick="openPage(\'Stats\', this, \'orange\')">Statistiques</button>
-                <button class="tablink" onclick="openPage(\'Bandeau\', this, \'orange\')" >Bandeau</button>
-                <button class="tablink" onclick="openPage(\'Paramètres\', this, \'orange\')">Paramètres</button>';            
+               <br><br>        <!-- Bouton pour les onglets --> 
+                <button class="tablink btn btn-dark" onclick="openPage(\'Catégories\', this, \'orange\')" id="defaultOpen">Catégories</button>&nbsp;&nbsp;   <!-- moteur de recherche : après changer de page ?????-->   
+                <button class="tablink btn btn-dark" onclick="openPage(\'Cartes\', this, \'orange\')" >Cartes</button>&nbsp;&nbsp;
+                <button class="tablink btn btn-dark" onclick="openPage(\'Utilisateurs\', this, \'orange\')" >Utilisateurs</button>&nbsp;&nbsp;
+                <button class="tablink btn btn-dark" onclick="openPage(\'Stats\', this, \'orange\')">Statistiques</button>&nbsp;&nbsp;
+                <button class="tablink btn btn-dark" onclick="openPage(\'Bandeau\', this, \'orange\')" >Bandeau</button>&nbsp;&nbsp;
+                <button class="tablink btn btn-dark" onclick="openPage(\'Paramètres\', this, \'orange\')">Paramètres</button><br><br>';            
 //<!--------------------------------------------------------------------------------------------------------------------------------------------->  
             echo '<div id="Catégories" class="tabcontent">    <!-- Onglet catégorie --> 
                   <h3>Catégories</h3><hr>
                     
-                  <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
+                  <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">⊕ Créer </button><br><br>
                     
                   <form action="AdminCategorieFonction.php" method="POST">  <!--Créer une nouvelle catégorie --> 
                   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -181,7 +69,7 @@
                             </div>                        
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                          <button type="button" class="btn " data-dismiss="modal">Fermer</button>
                           <button name="creer" type="submit" class="btn btn-primary">Créer</button>
                         </div>                     
                       </div>
@@ -218,9 +106,9 @@
                             echo ('<td><img src="'.$ligne["PhotoC"].'" alt="'.$ligne["NomC"].'" width="100" height="90"></td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');  //Modifier une catégorie
-                             echo ('<a href="AdminCategorieModification.php?t='.$ligne["CodeC"].'"><button type="button" class="btn btn-secondary"><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
+                             echo ('<a href="AdminCategorieModification.php?t='.$ligne["CodeC"].'"><button type="button" class="btn "><img src="https://png.pngtree.com/png-vector/20190927/ourlarge/pngtree-pencil-icon-png-image_1753753.jpg" alt="Modifier" width="30" height="30"></button></a>');
                              echo ('<form action="AdminCategorieFonction.php" method="POST">');  //Désactiver une catégorie                            
-                             echo ('<button type="button"  class="btn btn-secondary" data-toggle="modal" data-target="#desactiver'.$ligne["CodeC"].'"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');    
+                             echo ('<button type="button"  class="btn " data-toggle="modal" data-target="#desactiver'.$ligne["CodeC"].'"><img src="img/trash.png" alt="Désactiver" width="30" height="30"></button>');    
                                  
                              echo('<div class="modal" tabindex="-1" id="desactiver'.$ligne["CodeC"].'" role="dialog">');
                                 echo('<div class="modal-dialog" role="document">');
@@ -236,7 +124,7 @@
                                     echo('</div>');
                                     echo('<div class="modal-footer">');                               
                                       echo('<button name="desactiver" value="'.$ligne["CodeC"].'" type="submit" class="btn btn-primary">Supprimer</button>');
-                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                      echo('<button type="button" class="btn " data-dismiss="modal">Fermer</button>');
                                     echo('</div>');
                                   echo('</div>');
                                 echo('</div>');
@@ -306,8 +194,8 @@
                             echo ('<td>'.$ligne["DescriptionB"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                            
+                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="desactiverb" value="'.$ligne["CodeB"].'" class="btn "><img src="img/trash.png" alt="Désactiver" width="30" height="30"></button>');                            
                              echo ('</div>');
                             echo ('</td>');                        
                           echo ('</tr>');                     
@@ -350,8 +238,8 @@
                             echo ('<td>'.$ligne["DescriptionB"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
+                             echo ('<a href="AdminBesoinX.php?t='.$ligne["CodeB"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activerb" value="'.$ligne["CodeB"].'" class="btn "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                                                       
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -405,8 +293,8 @@
                             echo ('<td>'.$ligne["DescriptionT"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                              echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
+                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                              echo ('<button type="submit" name="desactivert" value="'.$ligne["CodeT"].'" class="btn "><img src="img/trash.png" alt="Désactiver" width="30" height="30"></button>');                 
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -448,8 +336,8 @@
                             echo ('<td>'.$ligne["DescriptionT"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                             echo ('<a href="AdminTalentX.php?t='.$ligne["CodeT"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activert" value="'.$ligne["CodeT"].'" class="btn "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -503,8 +391,8 @@
                             echo ('<td>'.$ligne["DescriptionA"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                              echo ('<button type="submit" name="desactivera" value="'.$ligne["CodeA"].'" class="btn btn-secondary"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');                 
+                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                              echo ('<button type="submit" name="desactivera" value="'.$ligne["CodeA"].'" class="btn "><img src="img/trash.png" alt="Désactiver" width="30" height="30"></button>');                 
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -531,7 +419,6 @@
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents cachés*/       
                     echo ('<thead>');
                           echo ('<tr>');
-                            echo ('<th scope="col"></th>');
                             echo ('<th scope="col">#</th>');
                             echo ('<th scope="col">Titre</th>');
                             echo ('<th scope="col">Description</th>');
@@ -542,14 +429,14 @@
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                                               
                           echo ('<tr>');
-                            echo ('<th scope="row"><input type="radio" name="codea" value="'.$ligne["CodeA"].'"/></th>');
                             echo ('<th scope="row">'.$ligne["CodeA"].'</th>');
                             echo ('<td>'.$ligne["TitreA"].'</td>');
                             echo ('<td>'.$ligne["DescriptionA"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                            echo ('</div>');
+                             echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
+                             echo ('<button type="submit" name="activera" value="'.$ligne["CodeA"].'" class="btn "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+                             echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
                     }          
@@ -557,12 +444,6 @@
                      echo ('</tbody>');
                     echo ('</table>');
                    
-                    echo ('<p>Veuillez choisir un atelier puis saisir un URL pour l\'activer</p>');
-                    
-                    
-                    echo ('<input name="url" type="text"/>');                 
-                    echo ('<button type="submit" name="activera" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
-         
                 echo ('</form>');
             echo ('</div>');
             
@@ -677,8 +558,8 @@
                             echo ('<td>'.$ligne["Email"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
-                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');                 
-                             echo ('<button type="button"  class="btn btn-secondary" data-toggle="modal" data-target="#supprimer'.$ligne["CodeU"].'"><img src="https://static.vecteezy.com/system/resources/previews/000/630/530/non_2x/trash-can-icon-symbol-illustration-vector.jpg" alt="Désactiver" width="30" height="30"></button>');    
+                             echo ('<a href="AdminUtilisateur.php?t='.$ligne["CodeU"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');                 
+                             echo ('<button type="button"  class="btn " data-toggle="modal" data-target="#supprimer'.$ligne["CodeU"].'"><img src="img/trash.png" alt="Désactiver" width="30" height="30"></button>');    
                              echo ('</div>');
                             echo ('</td>');
                             echo ('</tr>');              
@@ -697,7 +578,7 @@
                                     echo('</div>');
                                     echo('<div class="modal-footer">');                               
                                       echo('<button name="codeu" value="'.$ligne["CodeU"].'" type="submit" class="btn btn-primary">Supprimer</button>');
-                                      echo('<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>');
+                                      echo('<button type="button" class="btn " data-dismiss="modal">Fermer</button>');
                                     echo('</div>');
                                   echo('</div>');
                                 echo('</div>');
@@ -954,32 +835,29 @@
                     </div>
                     <textarea class="form-control" aria-label="With textarea" name="slide4_5"></textarea>
                 </div><br>           
-            <input type="submit" class="btn btn-dark" value="Modifier">
+            <input type="submit" class="btn btn-light" value="Modifier">
         </form>        
         </div> '; 
 //<!--------------------------------------------------------------------------------------------------------------------------------------------->   
             echo '<div id="Paramètres" class="tabcontent">
-
                 <h3>Paramètres</h3><hr>
-                <form method="GET" action="AdminParametresFonction.php">';
-                    
-                    $query = "select p.Interval from parametres as p";           
+
+                <form method="GET" action="AdminParametresFonction.php">
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
+                    <button type="submit" class="btn btn-light"> Modifier </button>';
+                    $query = "select p.Interval from parametres as p";
                     $result = mysqli_query ($session, $query);
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {     
-                            echo '<p>Le délai actuel est de '.$ligne['Interval'].' jours</p>';                 
+                            echo '<p>Le délai actuel est  '.$ligne['Interval'].' jours</p>';                 
                         }
                     }
-
-                echo '<form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
-                    <button type="submit" class="btn btn-dark"> Modifier </button>';
-
+                    
               echo '  </form>
             </div>';
         } else {
             echo '<div><center><p><br><br><br>Vous n\'avez pas le droit d\'accéder à cette page</p>';
-            echo '<a href="index.php">Retour à l\'acceuil</a></div></center>';
+            echo '<a href="index.php">Retour à l\'accueil</a></div></center>';
         }
 //<!---------------------------------------------------------------------------------------------------------------------------------------------> 
             ?>
@@ -1011,15 +889,9 @@
       </div>
     </div>
     
-        <footer>
-            <small><center><a href="contact.html.php" class="text-dark">Contact</a></center></small>
-          <p id="copyright"><em><small>copyright &#9400; COUP DE MAIN, COUP DE POUCE, CPAM Haute-Garonne, 2020. All rights reserved.</small></em></p>
-        </footer>
+<!-- footer -->
+ <?php require "footer.php"; ?>
+<!-- Fin footer -->
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
