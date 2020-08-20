@@ -3,6 +3,7 @@ require_once('Fonctions.php');
 
 $DateET = date("yy/m/d");
 
+//ajouter une évaluation talent
 $sql = "INSERT INTO evaluert(NoteT,AvisT,DateET,CodeU,CodeT) VALUES({$_POST["rating"]},'{$_POST["avis"]}','{$DateET}',{$_POST['codeu']},{$_POST['talent']})";
 mysqli_query ($session, $sql);
 ?>

@@ -159,8 +159,8 @@
                     <input type="password" id="inputPassword" name="password" value="<?php if (isset($_COOKIE['password'])) { echo $_COOKIE['password']; } ?>" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
                     <div class="checkbox mb-3">
                             <label>
-                            <?php                                                
-                            if (isset($_COOKIE['remember'])) {
+                            <?php                                              
+                            if (isset($_COOKIE['remember'])) {                  //si l'utilisateur avait coché la case se souvenir de moi  
                                 if($_COOKIE['remember'] == 1){ 
                                       echo ('<br><p><input type="checkbox" name="remember" value="1" checked> se souvenir de moi</p>'); 
                                   }elseif($_COOKIE['remember'] == ""){ 

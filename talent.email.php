@@ -18,6 +18,7 @@
         $day = $days['Interval'];
     }
 
+    //date d'aujourd'hui + le délais d'évaluation
     $dateevaluation  = date("Y-m-d",strtotime("+$day day"));
     
     $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";

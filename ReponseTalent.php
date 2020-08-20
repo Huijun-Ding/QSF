@@ -162,13 +162,13 @@
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
+                while ($ligne = mysqli_fetch_array($result)) {                    /* Afficher la liste des réponses sur ce talent */
                     if ($ligne["VisibiliteT"] == 1) {   
                         echo '<p>'.$ligne['Email'].'</p>'; 
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
-                        echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
+                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> '); // envoyer le mail pour les mettre en contact
+                        echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>'); //refusé, demande la raison
             ?>
             <!--<script>
               var mail="<?php //echo $ligne['Email'];?>"; 

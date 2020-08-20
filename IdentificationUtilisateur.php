@@ -6,7 +6,7 @@ if(isset($_POST['email'])){
     $Password = $_POST["password"];
     $RememberMe = $_POST['remember'];
     
-    // se souvenir de moi
+    // se souvenir de moi, ajouter des cookies
     if ($RememberMe == 1) {     
         setcookie('email',$Email,time()+3600);
         setcookie('password',$Password,time()+3600);
@@ -17,7 +17,7 @@ if(isset($_POST['email'])){
         setcookie('remember',$RememberMe,time()-3600);
     }    
     
-    // déterminer si c'est un admin
+    // déterminer si c'est un compte admin
     $sql = "SELECT RoleU from utilisateurs where Email = '{$Email}'";
     $result = mysqli_query ($session, $sql);
     

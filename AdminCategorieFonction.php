@@ -1,6 +1,7 @@
 <?php 
     require_once('Fonctions.php');
 
+    // créer une nouvelle catégorie
     if (isset($_POST['creer'])) {
         $NomC = $_POST['nomc'];   // récupéré les valeurs selon la méthode POST
         $DescriptionC = $_POST['descriptionc'];
@@ -11,6 +12,7 @@
         mysqli_stmt_execute($stmt1);
     }   
     
+    //Modifier une catégorie existe
     if (isset($_POST['modifier'])) {
         $NomC = $_POST['nomc'];   // récupéré les valeurs selon la méthode POST
         $DescriptionC = $_POST['descriptionc'];
@@ -30,6 +32,7 @@
         mysqli_stmt_execute($stmt4);
     }   
     
+    //Masquer une catégorie
     if (isset($_POST['desactiver'])) {
         $CodeC = $_POST['desactiver'];
 
@@ -38,7 +41,6 @@
         mysqli_stmt_execute($stmt4);
     }   
    
-    
     header("Location: Admin.php");
    
 ?>
