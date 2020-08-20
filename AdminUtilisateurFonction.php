@@ -11,7 +11,7 @@
             $Email = $email['Email'];
             
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "Votre compte a été bloqué par l'administrateur"; // sujet du mail
+            $sujet = "Votre compte a &eacute;t&eacute; bloqu&eacute; par l'administrateur"; // sujet du mail
              $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -327,9 +327,9 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Votre compte a été bloqué par l\'administrateur</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Votre compte a &eacute;t&eacute; bloqu&eacute; par l\'administrateur.</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;"> Merci pour votre compréhension.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;"> Merci pour votre compr&eacute;hension.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 </span></div>

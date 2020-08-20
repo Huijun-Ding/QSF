@@ -18,7 +18,7 @@ mysqli_query ($session, $query);
 // envoyer email au provenance et préciser la raison de refuse
 $to = $_GET['p'];
 $destinataire = "$to"; // adresse mail du destinataire
-$sujet = "[COUP DE MAIN, COUP DE POUCE] Désolé, votre demande de partage de talent a été refusée"; // sujet du mail
+$sujet = "[COUP DE MAIN, COUP DE POUCE] D&eacute;sol&eacute;, votre demande de partage de talent a &eacute;t&eacute; refus&eacute;e"; // sujet du mail
 $message = '
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -336,9 +336,9 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Nous somme en regret de vous informer que votre demande de partage de talent xxx a été refusé parce que xxx</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Nous sommes au regret de vous informer que votre demande de partage de talent a &eacute;t&eacute; refus&eacute;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous pouvez retrouver plus d\'information sur la plateforme.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Vous pouvez retrouver plus d\'informations sur la plateforme.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 </span></div>
@@ -354,39 +354,13 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 <a href="" target="_blank" style="display:inline-block; text-decoration:none;" class="fluid-on-mobile">
 <span>
 
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
-<tr>
 
-<td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
-<span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
-<font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Mon espace</a></span>
-</font>
-</span>
-</td>
-</tr>
-</table>
 
 </span>
 </a>
 <!--<![endif]-->
 <div style="display:none; mso-hide: none;">
 
-<table cellpadding="0" cellspacing="0" border="0" bgcolor="#9ab0e0" style="border-radius:3px;border-collapse:separate !important;background-color:#9ab0e0" class="fluid-on-mobile">
-<tr>
-
-<td align="center" style="padding-top:10px;padding-right:20px;padding-bottom:10px;padding-left:20px">
-<a href="" target="_blank" style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;text-decoration:none;text-align:center;">
-
-<span style="color:#ffffff !important;font-family:Lato, Helvetica Neue, Helvetica, Arial, sans-serif;font-size:18px;mso-line-height:exactly;line-height:25px;mso-text-raise:3px;">
-<font style="color:#ffffff;" class="button">
-<span><a href="https://qualif-qsf.cpam31.fr/MonProfil.php">Mon espace</a></span>
-</font>
-</span>
-</a>
-</td>
-</tr>
-</table>
 
 </div>
 </td>

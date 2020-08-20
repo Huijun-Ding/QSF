@@ -41,7 +41,7 @@
    
     // email pour répondre un besoin
     $destinataire = "$liste"; // adresse mail du destinataire   
-    $sujet = "[COUP DE MAIN, COUP DE POUCE] R&eacute;pondre à votre besoin {$_POST["titrecarte"]}"; // sujet du mail
+    $sujet = "[COUP DE MAIN, COUP DE POUCE] R&eacute;pondre &agrave; votre besoin {$_POST["titrecarte"]}"; // sujet du mail
     $message = '  
     <!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -360,7 +360,7 @@
 
     </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-    </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait r&eacute;pondre à votre besoin '.$_POST["titrecarte"].'.</p><span class="mso-font-fix-tahoma">
+    </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait r&eacute;pondre &agrave; votre besoin '.$_POST["titrecarte"].'.</p><span class="mso-font-fix-tahoma">
 
     </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 
