@@ -559,9 +559,11 @@
                     echo ('</table>');
                    
                     echo ('<p>Veuillez choisir un atelier puis saisir un URL pour l\'activer</p>');
-                    echo ('<input name="url" type="text"/>');
-                    echo ('<button type="submit" name="activera" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
                     
+                    
+                    echo ('<input name="url" type="text"/>');                 
+                    echo ('<button type="submit" name="activera" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+         
                 echo ('</form>');
             echo ('</div>');
             
