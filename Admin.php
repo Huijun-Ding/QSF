@@ -549,7 +549,10 @@
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRUptTBSZ_MvCJwuSgHbU74zhNGo2FDtMhgvA&usqp=CAU" alt="Détail" width="30" height="30"></button></a>');
-                             
+
+                             echo ('<input type="text" name="url"/>');
+                             echo ('<button type="submit" name="activera" value="'.$ligne["CodeA"].'" title="afficher la carte" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
+
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -963,9 +966,11 @@
                 <h3>Paramètres</h3><hr>
 
                 <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
-                    <button type="submit" class="btn btn-dark"> Modifier </button>';
-                    $query = "select p.Interval from parametres as p";
+
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' placeholder="15" name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button><br>';
+                    $query = "select * from parametres";
+
                     $result = mysqli_query ($session, $query);
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {     
