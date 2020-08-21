@@ -10,7 +10,11 @@
 
       </a>
 
-
+   <!-- <style>    /*effet hover sur le sous-menu ne marche plus*/
+        .dopenav li:hover>.dropdown-menu {
+            display: block;
+        }
+    </style>-->
 
       <div class="dope-menu" id="navbarSupportedContent">
 
@@ -43,6 +47,8 @@
         <ul id="nav">
           <li class="nav-item dropright">   
             <?php
+            //header('Content-type: text/html; charset=UTF-8', true);
+           
             require_once 'Fonctions.php';
     
             if(isset($_SESSION['email'])){    

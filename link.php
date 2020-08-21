@@ -25,8 +25,6 @@
 
 <link rel="stylesheet" type="text/css" href="style.css">
 
-<link rel="stylesheet" type="text/css" href="evaluation.css">
-
 <script src="https://kit.fontawesome.com/93613f5f6a.js" crossorigin="anonymous"></script>
 
 

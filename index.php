@@ -24,14 +24,10 @@ CSS
   <!--=========================================================================================================================================-->
   <?php
           require_once('slide.html.php');
-          ?><!--=========================================================================================================================================-->
+  ?><!--=========================================================================================================================================-->
   <section class="feature-section section-gap-full" id="feature-section">
     <div class="container">
 
-      gtag('config', 'UA-173955301-1');
-    </script>
-
-    <?php header('Content-type: text/html; charset=UTF-8', true); ?>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
@@ -57,53 +53,6 @@ CSS
                     ?>
         </form>
     
-
-
-
-<<<<<<< HEAD
-            if(isset($_GET['motB']) AND !empty($_GET['motB'])) {     /*Recherche par mot clé*/
-                $mot = htmlspecialchars($_GET['motB']);
-                if(isset($_SESSION['email']) and $_SESSION['type'] != NULL) {
-                    $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' and b.TypeB = '{$_SESSION['type']}' order by b.CodeB DESC";
-                } else {
-                   $query = "select b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and b.TitreB LIKE '%$mot%' order by b.CodeB DESC";
-                }
-            }
-
-            $result = mysqli_query ($session, $query);
-            if (mysqli_num_rows($result)>0) {
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                     if ($ligne["VisibiliteB"] == 1) {   
-                        if ($ligne["TypeB"] == 'Pro et Perso') {
-                            echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeB"].'</span></h5>');
-                        } elseif ($ligne["TypeB"] == 'Pro') {
-                            echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeB"].'</span></h5>');
-                        } elseif ($ligne["TypeB"] == 'Perso') {
-                            echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeB"].'</span></h5>');
-                        }                                     
-                        echo ('<div class="card" style="width: 12rem;">');                                 
-                        echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                        echo ('<div class="card-body card text-center">');
-                        echo ('<h5 class="card-title">'.$ligne["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Délais souhaité: <br> '.date("d-m-yy", strtotime($ligne["DateButoireB"])).'</p>');
-                        echo ('<a href="BesoinX.php?t='.$ligne["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                        echo ('</div>');  
-                        echo ('</div></div>');   
-                        } 
-                }
-                } else {
-                    echo('<h5> Aucun résultat</h5>');
-                } 
-             ?>
-            </div>
-           
-            <div id="page_navigation"> </div>
-         </div>
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-          <div class="container" id="talents">
-              <h1 id="titre2"><a href="Talent.php" class="badge badge-light">Talents</a></h1><br>
-            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-=======
       <div class="container" id="besoins">
         <div class="col-lg-12 header-left">
           <h1><a href="Besoin.php">Les besoins</a></h1>
@@ -119,7 +68,6 @@ CSS
         <div class="flex-parent d-flex flex-wrap justify-content-around mt-3" id="cartesB">
           <?php
                       require_once('Fonctions.php');
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
 
                       if(isset($_SESSION['email']) and ($_SESSION['type']) != NULL) {  
                           $query = "select  b.CodeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DateButoireB, b.TypeB from besoins b, categories c where b.CodeC = c.CodeC and (b.TypeB = '{$_SESSION['type']}' OR b.TypeB ='Pro et Perso') order by CodeB DESC";
@@ -200,34 +148,7 @@ CSS
                           }
                       }
 
-<<<<<<< HEAD
-            if (mysqli_num_rows($result)>0) {       
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                  if ($ligne["VisibiliteT"] == 1){ //si la carte n'a pas été caché
-                        if ($ligne["TypeT"] == 'Pro et Perso') {
-                            echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeT"].'</span></h5>');
-                        } elseif ($ligne["TypeT"] == 'Pro') {
-                            echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeT"].'</span></h5>');
-                        } elseif ($ligne["TypeT"] == 'Perso') {
-                            echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeT"].'</span></h5>');
-                        }                                  
-                    echo ('<div class="card" style="width: 12rem;">');                              
-                    echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                    echo ('<div class="card-body card text-center">');
-                    echo ('<h5 class="card-title">'.$ligne["TitreT"].'</h5>');
-                    echo ('<a href="TalentX.php?t='.$ligne["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                    echo ('</div>');  
-                    echo ('</div></div>');             
-                  }
-                }
-            } else {
-              echo('<h5> Aucun résultat</h5>');
-            }  
-            ?>
-            </div>            
-=======
                       $result = mysqli_query ($session, $query);
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
 
                       if (mysqli_num_rows($result)>0) {       
                           while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
@@ -422,9 +343,8 @@ CSS
                               }
                           }
 
-<<<<<<< HEAD
             $result = mysqli_query ($session, $query);
-            
+
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
                          if ($ligne["VisibiliteA"] == 1) {   
@@ -439,9 +359,9 @@ CSS
                             echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$ligne["TitreA"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: <br>'.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
+                            echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
                             echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
-                            echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
+                            echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
                             echo ('<p></p><a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
                             echo ('</div>');   
                             echo ('</div></div>');   
@@ -450,86 +370,6 @@ CSS
                     } else {
                         echo('<h5> Aucun résultat</h5>');
                     }                 
-             ?>
-            </div>
-           
-            <div id="page_navigation3"> </div>
-         </div>
-   
-<!--------------------------------------------------------------------------------------------------------------------------------------------->
-        <!--  <div class="container" id="projets">
-            <h1 id="titre4"><a href="Projet.php" class="badge badge-light">Projet</a></h1><br>
-            <div class="flex-parent d-flex justify-content-md-between bd-highlight mb-2">
-              <a href="Creer1Projet.php"><button type="button" class="btn btn-light">Ajouter un nouveau projet</button></a>
-              <form class="form-inline my-2 my-lg-0" class="recherche">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Entrez un mot clé" aria-label="Recherche">
-                    <button type="button" class="btn btn-outline-dark">Recherche</button>
-              </form>
-            </div>
-           
-            <div class="flex-parent d-flex flex-wrap justify-content-around mt-3">
-            <?php /*
-            require_once('Fonctions.php');
-            $query = "select p.TitreP, c.PhotoC from projet p, categories c where p.CodeC = c.CodeC order by CodeP DESC limit 5";
-            $result = mysqli_query ($session, $query);
-            if ($result == false) {
-                die("ereur requête : ". mysqli_error($session) );
-            }
-            while ($ligne = mysqli_fetch_array($result)) {                        /* Afficher les 5 talents les plus récents */
-            /*
-                echo ('<div class="card" style="width: 12rem;">');
-                echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                echo ('<div class="card-body card text-center">');
-                echo ('<h5 class="card-title">'.$ligne["TitreP"].'</h5>');
-                echo ('<a href="" class="btn btn-outline-dark">Je participe</a>'); 
-                echo ('</div>');  
-                echo ('</div>');               
-            }                */
-            ?>
-            </div>
-              
-            <nav aria-label="Page navigation example" class="page">
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1">Précédent</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Suivant</a>
-                </li>
-              </ul>
-            </nav>
-            </div>  ---->
-=======
-                      $result = mysqli_query ($session, $query);
-                      
-                              if (mysqli_num_rows($result)>0) {
-                              while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                                   if ($ligne["VisibiliteA"] == 1) {   
-                                      if ($ligne["TypeA"] == 'Pro et Perso') {
-                                          echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeA"].'</span></h5>');
-                                      } elseif ($ligne["TypeA"] == 'Pro') {
-                                          echo ('<div><h5><span class="badge badge-success">'.$ligne["TypeA"].'</span></h5>');
-                                      } elseif ($ligne["TypeA"] == 'Perso') {
-                                          echo ('<div><h5><span class="badge badge-warning">'.$ligne["TypeA"].'</span></h5>');
-                                      }                                     
-                                      echo ('<div class="card" style="width: 12rem;">');                                 
-                                      echo ('<img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="...">');   
-                                      echo ('<div class="card-body card text-center">');
-                                      echo ('<h5 class="card-title">'.$ligne["TitreA"].'</h5>');
-                                      echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
-                                      echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
-                                      echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
-                                      echo ('<a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
-                                      echo ('</div>');   
-                                      echo ('</div></div>');   
-                                      } 
-                              }
-                              } else {
-                                  echo('<h5> Aucun résultat</h5>');
-                              }                 
                        ?>
         </div>
                 <div id="page_navigation3"></div>
@@ -537,20 +377,11 @@ CSS
       </div>
     </div>
   </section>
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
 
 <!-- footer -->
  <?php require "footer.php"; ?>
 <!-- Fin footer -->
 
-<<<<<<< HEAD
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
-  </body>
-=======
+
 </body>
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
 </html>

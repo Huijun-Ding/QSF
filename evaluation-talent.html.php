@@ -4,6 +4,7 @@
     
 <!-- Link -->
  <?php require "link.php"; ?>
+<link rel="stylesheet" type="text/css" href="evaluation.css">
 <!-- Link -->
 
 <title>Evaluation talent</title>

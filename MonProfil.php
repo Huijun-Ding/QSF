@@ -19,25 +19,6 @@
  <?php require "menu.php"; ?>
 <!-- Fin Menu -->
 
-<<<<<<< HEAD
-                        if ($reponse = mysqli_fetch_array($resultat)) { 
-                            if ($reponse["Reponse"] > 0) {  //si la somme des Réponses des besoins et des talents sont supérieur à 0, affichier les badges
-                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil <span class="badge badge-danger">ici</span></a>');                           
-                            } else {
-                                echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
-                            }
-                        }
-                        echo ('<a class="dropdown-item" href="MesCategories.php">Mes catégories</a>');
-                        echo ('<a class="dropdown-item" href="Deconnecter.php" onclick="Deconnexion()">Déconnecter</a>');
-                    }
-                ?>
-                <script>
-                    function Deconnexion() {
-                        alert("Déconnexion réussite !");
-                        }
-=======
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
-
         <div class="jumbotron">
           
           <div class="section-title section-title-haut-page" >
@@ -189,19 +170,10 @@ if (isset($_SESSION['email'])) {
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($besoin["DatePublicationB"])).'</p>');
                         echo ('<p class="card-text">Délais souhaité: '.date("d-m-yy", strtotime($besoin["DateButoireB"])).'</p>');
-<<<<<<< HEAD
                         echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>');
                         echo ('<p></p><a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
                         if ($besoin["ReponseB"] > 0) {       // si il y a des réponses non traitées, affichir le button "Voir la réponse"             
                             echo ('<p></p><a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
-=======
-                        echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
-                        echo ('<br>');
-                        echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
-                        if ($besoin["ReponseB"] > 0) {
-                            echo ('<br>');                     
-                            echo ('<a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
                         }
                         echo ('</div>');  
                         echo ('</div></li>');       
@@ -284,17 +256,9 @@ if (isset($_SESSION['email'])) {
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
                             echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($talent["DatePublicationT"])).'</p>');        
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-<<<<<<< HEAD
                             echo ('<p></p><a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
                             if ($talent["ReponseT"] > 0) { // si il y a des réponses non traitées, affichir le button "Voir la réponse" 
                                 echo ('<p></p><a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
-=======
-                            echo ('<br>');
-                            echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
-                            if ($talent["ReponseT"] > 0) {
-                                echo ('<br>');
-                                echo ('<a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
                             }                            
                             echo ('</div>');  
                             echo ('</div></li>');                
@@ -370,11 +334,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$atelier["TitreA"].'</h5>');
                         echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($atelier["DatePublicationA"])).'</p>');
-<<<<<<< HEAD
-                        echo ('<p class="card-text">Date & Créneau : '.date("d-m-yy", strtotime($atelier["DateA"])).'</p>');
-=======
                         echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
                         echo ('<a href="AtelierX.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                         echo ('<br>');
                         echo ('<a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>');               
