@@ -31,7 +31,7 @@ header("Location: Admin.php");
             $Email = $email['Email'];
             
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "Votre besoin « '.{$email['TitreB']}.'» a été supprimé par l'administrateur"; // sujet du mail
+            $sujet = "Votre besoin «{$email['TitreB']}» a été supprimé par l'administrateur"; // sujet du mail
              $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 

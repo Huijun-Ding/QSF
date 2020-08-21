@@ -22,7 +22,7 @@ mysqli_query ($session, $query);
 // envoyer email au provenance et préciser la raison de refuse
 $to = $_GET['p'];
 $destinataire = "$to"; // adresse mail du destinataire
-$sujet = "[COUP DE MAIN, COUP DE POUCE] D&eacute;sol&eacute;, votre demande de partage de talent a &eacute;t&eacute; refus&eacute;e"; // sujet du mail
+$sujet = "[COUP DE MAIN, COUP DE POUCE] Désolé, votre demande de partage de talent a été refusée"; // sujet du mail
 $message = '
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

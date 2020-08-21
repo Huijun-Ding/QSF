@@ -26,7 +26,7 @@ mysqli_query ($session, $query);
     $Email = $_GET['p']; 
 
     $destinataire = "$Email"; // adresse mail du destinataire 
-    $sujet = "[COUP DE MAIN, COUP DE POUCE] Refus de besoin"; // sujet du mail
+    $sujet = "[COUP DE MAIN, COUP DE POUCE] Désolé, votre réponse de besoin a été refusé"; // sujet du mail
     $message = '<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 

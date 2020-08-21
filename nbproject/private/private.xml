@@ -11,13 +11,10 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/changemdp.fonction.php</file>
-            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/changemdp.html.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/ReponseBesoin.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/ReponseTalent.php</file>
+            <file>file:/D:/XAMPP/XAMPP_exe/htdocs/QSF/Fonctions.php</file>
         </group>
->>>>>>> b9515f072feeada8dd505e96ae02a67b630c6ff4
     </open-files>
 </project-private>

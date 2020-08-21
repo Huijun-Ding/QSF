@@ -33,7 +33,7 @@ if (mysqli_stmt_execute($stmt) === true) {
             $Email = $email['Email'];
         
         $destinataire = "$Email"; // adresse mail du destinataire
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Cr&eacute;ation d'une nouvelle carte « '.{$email['TitreT']}.'»"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Création d'une nouvelle carte «{$email['TitreT']}»"; // sujet du mail
         $message = '<!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>

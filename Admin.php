@@ -419,6 +419,7 @@
                     echo ('<table class="table table-striped">');      /* Tableau pour afficher les talents cachés*/       
                     echo ('<thead>');
                           echo ('<tr>');
+                            echo ('<th scope="col"></th>');
                             echo ('<th scope="col">#</th>');
                             echo ('<th scope="col">Titre</th>');
                             echo ('<th scope="col">Description</th>');
@@ -429,13 +430,13 @@
                     if (mysqli_num_rows($result)>0) {
                     while ($ligne = mysqli_fetch_array($result)) {                                               
                           echo ('<tr>');
+                            echo ('<th scope="row"><input type="radio" name="codea" value="'.$ligne["CodeA"].'"/></th>');
                             echo ('<th scope="row">'.$ligne["CodeA"].'</th>');
                             echo ('<td>'.$ligne["TitreA"].'</td>');
                             echo ('<td>'.$ligne["DescriptionA"].'</td>');
                             echo ('<td>');
                              echo ('<div class="btn-group mr-2" role="group" aria-label="First group">');
                              echo ('<a href="AdminAtelierX.php?t='.$ligne["CodeA"].'"><button type="button" class="btn "><img src="img/loupe.png" alt="Détail" width="30" height="30"></button></a>');
-                             echo ('<button type="submit" name="activera" value="'.$ligne["CodeA"].'" class="btn "><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
                              echo ('</div>');
                             echo ('</td>');
                           echo ('</tr>');                     
@@ -443,7 +444,9 @@
                     } 
                      echo ('</tbody>');
                     echo ('</table>');
-                   
+                    echo ('<p>Veuillez choisir un atelier puis saisir un URL pour l\'activer</p>');                                   
+                    echo ('<input name="url" type="text"/>');                 
+                    echo ('<button type="submit" name="activera" class="btn btn-secondary"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS82pYv9wgxfx27dUrgTr8zaGjZ6O3O2CONHA&usqp=CAU" alt="Activer" width="30" height="30"></button>');                    
                 echo ('</form>');
             echo ('</div>');
             
@@ -842,23 +845,27 @@
             echo '<div id="Paramètres" class="tabcontent">
                 <h3>Paramètres</h3><hr>
 
-                <form method="GET" action="AdminParametresFonction.php">
-                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
-                    <button type="submit" class="btn btn-light"> Modifier </button>';
-                    $query = "select p.Interval from parametres as p";
+                <form method="GET" action="AdminParametresFonction.php">';
+                
+                $query = "select p.Interval from parametres as p";           
                     $result = mysqli_query ($session, $query);
                     if (mysqli_num_rows($result)>0) {
                         while ($ligne = mysqli_fetch_array($result)) {     
-                            echo '<p>Le délai actuel est  '.$ligne['Interval'].' jours</p>';                 
+                            echo '<p>Le délai actuel est de '.$ligne['Interval'].' jours</p>';                 
                         }
                     }
-                    
+
+                echo '<form method="GET" action="AdminParametresFonction.php">
+                    <p>Paramétrer le délais d\'envoie de mail d’évaluation : <input type=\'number\' name="interval"> jours </p>
+                    <button type="submit" class="btn btn-dark"> Modifier </button>';
+
               echo '  </form>
             </div>';
         } else {
             echo '<div><center><p><br><br><br>Vous n\'avez pas le droit d\'accéder à cette page</p>';
-            echo '<a href="index.php">Retour à l\'accueil</a></div></center>';
+            echo '<a href="index.php">Retour à l\'acceuil</a></div></center>';
         }
+
 //<!---------------------------------------------------------------------------------------------------------------------------------------------> 
             ?>
             <script>

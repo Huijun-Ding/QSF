@@ -35,7 +35,7 @@ if(isset($_POST['email'])){                                 //Ajouter le nouveau
                 // Envoyer un mail
            
             $destinataire = "$Email"; // adresse mail du destinataire
-            $sujet = "[COUP DE MAIN, COUP DE POUCE] Confirmation de la cr&eacute;ation de compte"; // sujet du mail
+            $sujet = "[COUP DE MAIN, COUP DE POUCE] Confirmation de la création de compte"; // sujet du mail
             $message = '<!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 

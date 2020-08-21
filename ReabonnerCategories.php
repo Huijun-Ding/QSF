@@ -21,7 +21,7 @@ if (isset($_POST['nomcp'])) {
         $Email = $email['Email'];
        
         $destinataire = "admincmcp@assurance-maladie.fr"; // adresse mail du destinataire 
-        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de cr&eacute;er une nouvelle cat&eacute;gorie"; // sujet du mail
+        $sujet = "[COUP DE MAIN, COUP DE POUCE] Demande de créer une nouvelle catégorie"; // sujet du mail
         $message = '<!DOCTYPE html>
         <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
         <head>
