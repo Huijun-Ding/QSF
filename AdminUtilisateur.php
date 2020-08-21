@@ -80,8 +80,8 @@
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
-                        echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');                    
+                        echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($besoin["DatePublicationB"])).'</p>');
+                        echo ('<p class="card-text">Délais souhaité: '.date("d-m-yy", strtotime($besoin["DateButoireB"])).'</p>');                    
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }
@@ -124,7 +124,7 @@
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');                                                                               
+                            echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($talent["DatePublicationT"])).'</p>');                                                                               
                             echo ('</div>');  
                             echo ('</div></li>');                
                           } 
@@ -164,7 +164,7 @@
                             echo ('<img src="'.$atelier["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$atelier["TitreA"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$atelier["DatePublicationA"].'</p>');    
+                            echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($atelier["DatePublicationA"])).'</p>');    
                             echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
                             echo ('</div>');  
                             echo ('</div></li>');                
