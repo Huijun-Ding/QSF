@@ -114,7 +114,7 @@
                         $resultat = mysqli_query ($session, $req);
 
                         if ($reponse = mysqli_fetch_array($resultat)) { 
-                            if ($reponse["Reponse"] > 0) {
+                            if ($reponse["Reponse"] > 0) {  //si la somme des Réponses des besoins et des talents sont supérieur à 0, affichier les badges
                                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil <span class="badge badge-danger">ici</span></a>');                           
                             } else {
                                 echo ('<a class="dropdown-item" href="MonProfil.php">Mon profil</a>');
@@ -211,7 +211,7 @@ if (isset($_SESSION['email'])) {
 
                 echo '<form method="POST" action="monespace.fonction.php">';
 
-                    echo ('<p>Type d\'information affichée : </p>'); 
+                    echo ('<p>Type d\'information affichée : </p>');    //afficher le type d'utilisateur (checked)
                     if ($_SESSION['type'] == ''){
                         echo ('<div class="switch-field">');
                         echo ('<input type="radio" id="radio-three" name="switch-two" value="" checked/>');
@@ -279,7 +279,7 @@ if (isset($_SESSION['email'])) {
                  while ($besoin = mysqli_fetch_array($result)) {            
                     if (strtotime($besoin["DateButoireB"]) > strtotime(date("yy/m/d")) && $besoin["VisibiliteB"] == 1) {  
                         echo('<li class="list-inline-item">');
-                        if ($besoin["ReponseB"] > 0) {
+                        if ($besoin["ReponseB"] > 0) {  // si il y a des réponses non traitées, affichir le badge rouge
                             echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
                         }
                         echo ('<div class="card" style="width: 12rem;">');
@@ -293,7 +293,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<p class="card-text">Délais souhaité: '.date("d-m-yy", strtotime($besoin["DateButoireB"])).'</p>');
                         echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>');
                         echo ('<p></p><a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
-                        if ($besoin["ReponseB"] > 0) {                    
+                        if ($besoin["ReponseB"] > 0) {       // si il y a des réponses non traitées, affichir le button "Voir la réponse"             
                             echo ('<p></p><a href="ReponseBesoin.php?code='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                         }
                         echo ('</div>');  
@@ -363,9 +363,9 @@ if (isset($_SESSION['email'])) {
             
             if (mysqli_num_rows($result)>0) {
                     while ($talent = mysqli_fetch_array($result)) {                     
-                         if ($talent["VisibiliteT"] == 1) {  
+                         if ($talent["VisibiliteT"] == 1) {  //si la carte n'a pas été caché
                             echo('<li class="list-inline-item">');
-                            if ($talent["ReponseT"] > 0) {
+                            if ($talent["ReponseT"] > 0) {  // si il y a des réponses non traitées, affichir "nouvelle message"
                                 echo ('<span class="badge badge-danger">Nouvelle réponse</span>');                           
                             }
                             echo ('<div class="card" style="width: 12rem;">');
@@ -378,8 +378,7 @@ if (isset($_SESSION['email'])) {
                             echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($talent["DatePublicationT"])).'</p>');        
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<p></p><a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
-                            if ($talent["ReponseT"] > 0) {
-                                echo ('   ');
+                            if ($talent["ReponseT"] > 0) { // si il y a des réponses non traitées, affichir le button "Voir la réponse" 
                                 echo ('<p></p><a href="ReponseTalent.php?code='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir la réponse</a>');    //prendre les titres pour les besoins pour regrouper les réponses d'un besoin 
                             }                            
                             echo ('</div>');  

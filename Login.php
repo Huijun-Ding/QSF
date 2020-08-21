@@ -154,12 +154,22 @@
                   <center>
                     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
                     <label for="inputEmail" class="sr-only" >Email address</label>
-                    <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Votre adresse mail" required autofocus style="width:40%">
+                    <input type="email" id="inputEmail" name="email" value="<?php if (isset($_COOKIE['email'])) { echo $_COOKIE['email']; } ?>" class="form-control" placeholder="Votre adresse mail" required autofocus style="width:40%">
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
+                    <input type="password" id="inputPassword" name="password" value="<?php if (isset($_COOKIE['password'])) { echo $_COOKIE['password']; } ?>" class="form-control" placeholder="Votre mot de passe" required style="width:40%">
                     <div class="checkbox mb-3">
                             <label>
-                              <br><p><input type="checkbox" value="remember-me"> se souvenir de moi</p>
+                            <?php                                              
+                            if (isset($_COOKIE['remember'])) {                  //si l'utilisateur avait coché la case se souvenir de moi  
+                                if($_COOKIE['remember'] == 1){ 
+                                      echo ('<br><p><input type="checkbox" name="remember" value="1" checked> se souvenir de moi</p>'); 
+                                  }elseif($_COOKIE['remember'] == ""){ 
+                                      echo ('<br><p><input type="checkbox" name="remember" value="1"> se souvenir de moi</p>');      
+                                  }
+                            } else {
+                                echo ('<br><p><input type="checkbox" name="remember" value="1"> se souvenir de moi</p>');
+                            }
+                            ?> 
                               <p><a href="findmdp.html.php"> Mot de passe oublié </a></p> 
                               <p><a href="Inscription.php"> S'inscrire </a></p>            
                             </label>

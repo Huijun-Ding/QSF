@@ -4,29 +4,23 @@ require_once('Fonctions.php');
 //Désactiver une carte qui contient des contenus inappropriés
 $CodeA = $_POST['desactivera'];
 
+// désactiver la carte
 if (isset($_POST['desactivera'])) {
     $stmt1 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 0 WHERE CodeA = ?");
     mysqli_stmt_bind_param($stmt1, 'i', $CodeA);
     mysqli_stmt_execute($stmt1);
 }
 
-   
-
-
-
-
 $CodeAC = $_POST['codea'];
 $URL = $_POST['url'];
 
-
+// réactiver la carte 
 if (isset($_POST['activera']) && isset($_POST['url'])) {
     $stmt2 = mysqli_prepare($session, "UPDATE ateliers SET VisibiliteA = 1, URL = ? WHERE CodeA = ?");
     mysqli_stmt_bind_param($stmt2, 'si', $URL, $CodeAC);
     mysqli_stmt_execute($stmt2);
     
 }
-
-
 
 header("Location: Admin.php");
 

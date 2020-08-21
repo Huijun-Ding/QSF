@@ -1,17 +1,21 @@
 <?php
 require_once 'Fonctions.php';
 
+//la raison de refuse
 $raisonT = $_GET['raison_non_talent'].$_GET['autre_raison'].$_GET['datedispo'];
 
+//Compter comme une mise en relation échoué
 if (isset($raisonT)) {
     $sql = mysqli_prepare($session, "insert into compteurt (NumOuiT, NumNonT, RaisonT) VALUES(0, 1, ?)");   
     mysqli_stmt_bind_param($sql, 's', $raisonT);
     mysqli_stmt_execute($sql); 
 }
 
+//Réponse - 1, une réponse a été traité
 $req = "UPDATE talents SET ReponseT = ReponseT - 1 WHERE CodeT = {$_GET['c']}";
 mysqli_query($session, $req);
 
+//Cette réponse ne sera plus visible
 $query = "UPDATE emails SET VisibiliteE = 0 WHERE CodeCarte = {$_GET['c']} AND TypeCarte = 'talent' AND Provenance = {$_GET['p']}";
 mysqli_query ($session, $query); 
 

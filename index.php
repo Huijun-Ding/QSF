@@ -253,7 +253,7 @@
 
             if (mysqli_num_rows($result)>0) {       
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher tous les besoins par l'ordre chronologique en format carte */
-                  if ($ligne["VisibiliteT"] == 1){
+                  if ($ligne["VisibiliteT"] == 1){ //si la carte n'a pas été caché
                         if ($ligne["TypeT"] == 'Pro et Perso') {
                             echo ('<div><h5><span class="badge badge-info">'.$ligne["TypeT"].'</span></h5>');
                         } elseif ($ligne["TypeT"] == 'Pro') {

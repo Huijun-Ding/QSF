@@ -18,6 +18,7 @@
         $day = $days['Interval'];
     }
 
+    //date d'aujourd'hui + le délais d'évaluation
     $dateevaluation  = date("Y-m-d",strtotime("+$day day"));
     
     $req = "select s.CodeU from besoins as b, saisir as s where b.CodeB = {$_POST['codecarte']} and b.CodeB = s.CodeB";                         

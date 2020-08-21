@@ -15,7 +15,7 @@ if (is_unique_login($session, $mail) == false) {       //si cette adresse mail e
     mysqli_stmt_bind_param($stmt, 's', $ResetPassword); 
 
     if (mysqli_stmt_execute($stmt) == true) {   
-        // l'envoie du mail
+        // l'envoie par mail le nouveau mot de passe
             $destinataire = "$mail"; // adresse mail du destinataire
             $sujet = "[COUP DE MAIN, COUP DE POUCE] Nouveau mot de passe"; // sujet du mail
             $message = '

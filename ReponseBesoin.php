@@ -161,11 +161,11 @@
                 if ($result == false) {
                     die("ereur requête : ". mysqli_error($session) );
                 }
-                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
+                while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher la liste des réponses sur ce besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h6>'.$ligne["Sujet"]. '</h6>');                                             
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
-                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> ');
+                        echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> '); // envoyer un mail pour les mettre en contact
                         echo ('<a href="besoinnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
                         //$mail = $ligne["Email"];
                     }

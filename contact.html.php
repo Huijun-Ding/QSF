@@ -150,7 +150,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>Nous contacter</h1><hr>
-                <p>Par mail : admincmcp@assurance-maladie.fr</p>
+                <a href="mailto:admincmcp@assurance-maladie.fr"><p>Par mail : admincmcp@assurance-maladie.fr</p></a>
             </div>
         </div>
          
