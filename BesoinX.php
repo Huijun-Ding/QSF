@@ -172,9 +172,9 @@
                        echo ('<a href="besoinx.fonction.php?c='.$ligne["CodeB"].'">
                                 <input type="submit" class="btn btn-primary btn-lg" name="rejoint" value="Rejoindre à ce besoin"></input>
                               </a>');
-                       echo ('<a href="Besoin.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
+                       echo ('<a href="Besoin.php"><button type="button" class="btn btn-dark btn-lg">Retour</button></a> ');
                     } else {
-                       echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a>');
+                       echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-lg">Contacter</button></a> ');
                        echo ('<a href="Besoin.php" ><button type="button" class="btn btn-dark btn-lg">Retour</button></a>');
                     }   
                 }
