@@ -104,11 +104,7 @@
                 <input class="form-check-input" type="radio" name="type" id="inlineRadio3" value="Pro et Perso">
                 <label class="form-check-label" for="inlineRadio3">Pro&Perso</label>
               </div>               
-            </div>
-            <div class="form-group">
-              <label for="inputEmail4">URL de l'inscription [e.x. https://www.linscription.com/...] (<span style="color:red">*</span>)</label>
-              <input type="text" name="url" class="form-control col-md-4"  id="inputEmail4" required />
-            </div>    
+            </div>   
             <div class="form-group">
               <label for="inputEmail4">En savoir plus (si vous le souhaitez, indiquez un site internet pour plus d'informations) <br> [e.x. https://fr.wikipedia.org/wiki/Yoga] </label>
               <input type="text" name="plus" class="form-control col-md-4" id="inputEmail4" />

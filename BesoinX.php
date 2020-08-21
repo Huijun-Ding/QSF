@@ -48,7 +48,7 @@
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
-                        echo ('<h3> Date Butoire: '.date("d-m-yy", strtotime($ligne["DateButoireB"])).'</h3>');
+                        echo ('<p> Date Butoire: '.date("d-m-yy", strtotime($ligne["DateButoireB"])).'</p>');
                         echo ('<p> Date Publication: '.date("d-m-yy", strtotime($ligne["DatePublicationB"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..."  style="width: 35rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        

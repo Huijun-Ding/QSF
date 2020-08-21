@@ -47,9 +47,8 @@
                     die("ereur requête : ". mysqli_error($session) );
                 }
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
-                    if ($ligne["VisibiliteA"] == 1) {   
-                        echo ('<h1>'.$ligne["TitreA"]. '</h1>');                        
-                        echo ('<h3> Date  & Créneau horaire : '.$ligne["DateA"].'</h3>');
+                    if ($ligne["VisibiliteA"] == 1) {                        
+                        echo ('<p> Date  & Créneau horaire : '.$ligne["DateA"].'</p>');
                         echo ('<p> Date Publication : '.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="'.$ligne["NomC"].'" style="width: 35rem;"</p>');
                         echo ('<p><strong>Type d\'atelier : </strong>'.$ligne["TypeA"].'</p>');                        
