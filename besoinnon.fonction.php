@@ -342,7 +342,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Vous aide n\'est pas possible, pour la raison suivante.</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Nous sommes au regret de vous informer que votre aide n\'a pas été accepté. Pour la raison suivante:</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">'.$raisonB.'</p><span class="mso-font-fix-tahoma">
 

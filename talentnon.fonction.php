@@ -340,7 +340,7 @@ href="https://www.twitter.com/" target="_blank"><img width="24" border="0" heigh
 
 </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-</span><p style="padding: 0; margin: 0;">Nous sommes au regret de vous informer que votre demande de partage de talent a &eacute;t&eacute; refus&eacute;</p><span class="mso-font-fix-tahoma">
+</span><p style="padding: 0; margin: 0;">Nous sommes au regret de vous informer que votre demande de partage de talent a &eacute;t&eacute; refus&eacute; pour la raison suivante: '.$raisonT.'.</p><span class="mso-font-fix-tahoma">
 
 </span><p style="padding: 0; margin: 0;">Vous pouvez retrouver plus d\'informations sur la plateforme.</p><span class="mso-font-fix-tahoma">
 
