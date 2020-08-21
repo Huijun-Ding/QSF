@@ -47,7 +47,7 @@
                     if (strtotime($ligne["DateButoireB"]) >= strtotime(date("yy/m/d")) && $ligne["VisibiliteB"] == 1) {   
                         echo ('<h1>'.$ligne["TitreB"]. '</h1>');                        
                         echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
-                        echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
+                        echo ('<p> Date Publication: '.date("d-m-yy", strtotime($ligne["DatePublicationB"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..."  style="width: 35rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 
