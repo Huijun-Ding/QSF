@@ -39,8 +39,8 @@
                 while ($ligne = mysqli_fetch_array($result)) {                      /* Afficher le détail de chaque besoin */
 
                         echo ('<h1>'.$ligne["TitreB"]. '</h1>');                        
-                        echo ('<h3> Date Butoire: '.$ligne["DateButoireB"].'</h3>');
-                        echo ('<p> Date Publication: '.$ligne["DatePublicationB"].'</p>');
+                        echo ('<h3> Date Butoire: '.date("d-m-yy", strtotime($ligne["DateButoireB"])).'</h3>');
+                        echo ('<p> Date Publication: '.date("d-m-yy", strtotime($ligne["DatePublicationB"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." height="200" style="width: 20rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 
