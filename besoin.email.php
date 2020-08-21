@@ -1,16 +1,6 @@
 <?php 
     require_once ('Fonctions.php');
     
-    // incrémenter sur besoins.ReponseB
-    $query = "SELECT COUNT(CodeEM) as nb from emails where Provenance = {$_SESSION['codeu']} and TypeCarte = 'besoin' and CodeCarte = {$_POST['codecarte']}";
-    $result = mysqli_query ($session, $query);
-    if ($type = mysqli_fetch_array($result)) {   
-        if ($type['nb']==0) {
-            $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
-            mysqli_query ($session, $query);
-        }
-    }    
-    
     //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd
     $req1= "SELECT * FROM `parametres` WHERE 1";
     $result1 = mysqli_query ($session, $req1);
@@ -32,6 +22,10 @@
         mysqli_query ($session, $sql);
     }
     
+    // incrémenter sur besoins.ReponseB
+    $query = "UPDATE besoins SET ReponseB = ReponseB + 1 WHERE CodeB = {$_POST['codecarte']}";
+    mysqli_query ($session, $query);
+    
     //requête prendre l'email destinataire
     $liste = '';
     $req2 = "select u.Email from utilisateurs u, saisir s, besoins b where u.CodeU = s.CodeU and s.CodeB = b.CodeB and b.CodeB = {$_POST['codecarte']}";
@@ -42,7 +36,7 @@
    
     // email pour répondre un besoin
     $destinataire = "$liste"; // adresse mail du destinataire   
-    $sujet = "[COUP DE MAIN, COUP DE POUCE] R&eacute;pondre &agrave; votre besoin {$_POST["titrecarte"]}"; // sujet du mail
+    $sujet = "[COUP DE MAIN, COUP DE POUCE] R&eacute;pondre à votre besoin {$_POST["titrecarte"]}"; // sujet du mail
     $message = '  
     <!DOCTYPE html>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -361,7 +355,7 @@
 
     </span><p style="padding: 0; margin: 0;">&nbsp;</p><span class="mso-font-fix-tahoma">
 
-    </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait r&eacute;pondre &agrave; votre besoin '.$_POST["titrecarte"].'.</p><span class="mso-font-fix-tahoma">
+    </span><p style="padding: 0; margin: 0;">Il y a un collaborateur qui voudrait r&eacute;pondre à votre besoin '.$_POST["titrecarte"].'.</p><span class="mso-font-fix-tahoma">
 
     </span><p style="padding: 0; margin: 0;">Aller sur la plateforme pour voir son message.</p><span class="mso-font-fix-tahoma">
 

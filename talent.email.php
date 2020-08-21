@@ -1,16 +1,6 @@
 <?php 
     require_once ('Fonctions.php');
     
-    // incrémenter sur talent.ReponseT
-    $query = "SELECT COUNT(CodeEM) as nb from emails where Provenance = {$_SESSION['codeu']} and TypeCarte = 'talent' and CodeCarte = {$_POST['codecarte']}";
-    $result = mysqli_query ($session, $query);
-    if ($type = mysqli_fetch_array($result)) {   
-        if ($type['nb']==0) {
-            $query = "UPDATE talents SET ReponseT = ReponseT + 1 WHERE CodeT = {$_POST['codecarte']}";
-            mysqli_query ($session, $query);
-        }
-    } 
-                
     //requête pour insérer provenance, destinataire, sujet, contenu et la date d'évaluation dans la bdd    
     $req1= "SELECT * FROM `parametres` WHERE 1";
     $result1 = mysqli_query ($session, $req1);
@@ -23,6 +13,10 @@
     
     $sql = "insert into emails(Provenance,Destinataire,Sujet,Contenu,DateEvaluation,VisibiliteE,CodeCarte,TypeCarte) values({$_SESSION['codeu']},{$_POST['destinataire']},'[COUP DE MAIN, COUP DE POUCE] Demande de partager votre talent {$_POST["titrecarte"]}','{$_POST['contenu_talent']}','$dateevaluation',1,{$_POST['codecarte']},'talent')";
     mysqli_query ($session, $sql);
+    
+    // incrémenter sur talent.ReponseT
+    $query = "UPDATE talents SET ReponseT = ReponseT + 1 WHERE CodeT = {$_POST['codecarte']}";
+    mysqli_query ($session, $query);
     
     //requête prendre l'email destinataire
     $query2 = "select Email from utilisateurs where CodeU = {$_POST['destinataire']}";
