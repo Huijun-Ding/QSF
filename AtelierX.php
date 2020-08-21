@@ -40,7 +40,7 @@
                     if ($ligne["VisibiliteA"] == 1) {   
                         echo ('<h1>'.$ligne["TitreA"]. '</h1>');                        
                         echo ('<h3> Date  & Créneau horaire : '.$ligne["DateA"].'</h3>');
-                        echo ('<p> Date Publication : '.$ligne["DatePublicationA"].'</p>');
+                        echo ('<p> Date Publication : '.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..." style="width: 35rem;"</p>');
                         echo ('<p><strong>Type d\'atelier : </strong>'.$ligne["TypeA"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionA"].'</p>'); 
