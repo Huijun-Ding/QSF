@@ -21,16 +21,26 @@
 
 
         <div class="jumbotron">
-          
-          <div class="section-title section-title-haut-page" >
-                <h1 class="text-center">Atelier X</h1>
+            
+            <div class="section-title section-title-haut-page" >
 
-</div>
+            <?php
+            require_once('Fonctions.php');
+            $T = $_GET['t'];
+            $req = "select a.TitreA from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = '$T' ";
+            $resultat = mysqli_query ($session, $req);
+            while ($ligne = mysqli_fetch_array($resultat)) {  
+                echo ('<h1 class="text-center">'.$ligne["TitreA"]. '</h1>');
+            }
+            ?>
+
+          </div>
+
           <div class="container">
                <?php
                 require_once('Fonctions.php');
                 $T = $_GET['t'];
-                $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = '$T' ";
+                $query = "select a.CodeA, a.TitreA, a.DescriptionA, a.DateA, a.LieuA, a.NombreA, a.DatePublicationA, a.URL, a.PlusA, a.TypeA, a.VisibiliteA, c.PhotoC, c.NomC from ateliers a, categories c where a.CodeC = c.CodeC and a.CodeA = '$T' ";
                 $result = mysqli_query ($session, $query);
                 
                 if ($result == false) {
@@ -47,12 +57,13 @@
                         echo ('<p><strong>Lieu d\'atelier : </strong>'.$ligne["LieuA"].'</p>');             
                         echo ('<p><strong>Nombre de personnes maximum : </strong>'.$ligne["NombreA"].'</p>');  
                         echo ('<strong>En savoir plus : </strong><a href="'.$ligne["PlusA"].'" target="_blank">'.$ligne["PlusA"].'</a>');  
+                        echo ('<hr>');
                     if(isset($_SESSION['email'])){
                        echo ('<a href="'.$ligne["URL"].'" target="_blank"><button type="button" class="btn btn-primary btn-light">Je m\'inscris</button></a> ');    
-                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-light>Retour</button></a>');
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-light">Retour</button></a>');
                     } else {
                        echo ('<a href="Login.php"><button type="button" class="btn btn-primary btn-light">Contacter</button></a> ');
-                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-light">Retour</button>/a>');
+                       echo ('<a href="Atelier.php"><button type="button" class="btn btn-dark btn-light">Retour</button></a>');
                     }   
                 }
                 }

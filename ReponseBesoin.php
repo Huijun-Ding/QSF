@@ -43,7 +43,7 @@
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
                         echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> '); // envoyer un mail pour les mettre en contact
                         echo ('<a href="besoinnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>');
-                        $mail = $ligne["Email"];
+                        //$mail = $ligne["Email"];
                     }
                 }
                 ?>   

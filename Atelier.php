@@ -163,7 +163,7 @@
                             echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($ligne["DatePublicationA"])).'</p>');
                             echo ('<p class="card-text">Date & Créneau : '.$ligne["DateA"].'</p>');
                             echo ('<a href="AtelierX.php?t='.$ligne["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a><br>'); 
-                            echo ('<a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
+                            echo ('<p></p><a href="'.$ligne["URL"].'" class="btn btn-outline-dark">Je m\'inscris</a>');  
                             echo ('</div>');   
                             echo ('</div></div>');   
                             } 

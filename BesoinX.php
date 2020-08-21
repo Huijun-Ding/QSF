@@ -27,7 +27,7 @@
             <?php
             require_once('Fonctions.php');
             $T = $_GET['t'];
-            $req = "select b.CodeB, b.TypeB, b.VisibiliteB, b.TitreB, c.PhotoC, b.DatePublicationB, b.DescriptionB, b.DateButoireB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = '$T' ";
+            $req = "select b.TitreB from besoins b, categories c where b.CodeC = c.CodeC and b.CodeB = '$T' ";
             $resultat = mysqli_query ($session, $req);
             while ($ligne = mysqli_fetch_array($resultat)) {  
                 echo ('<h1 class="text-center">'.$ligne["TitreB"]. '</h1>');
@@ -53,6 +53,7 @@
                         echo ('<p><img src="'.$ligne["PhotoC"].'" class="card-img-top" alt="..."  style="width: 35rem;"</p>');
                         echo ('<p><strong>Type: </strong>'.$ligne["TypeB"].'</p>');                        
                         echo ('<p><strong>Description</strong></p><p>'.$ligne["DescriptionB"].'</p>'); 
+                        echo ('<hr>'); 
                     if(isset($_SESSION['email'])){
                        echo ('<a href="MailBesoin.php?c='.$ligne["CodeB"].'"><button type="button" class="btn btn-primary btn-light">Contacter</button></a>');
                        echo ('<a href="besoinx.fonction.php?c='.$ligne["CodeB"].'">

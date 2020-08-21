@@ -8,13 +8,13 @@ if(isset($_POST['email'])){
     
     // se souvenir de moi, ajouter des cookies
     if ($RememberMe == 1) {     
-        setcookie('email',$Email,time()+3600);
-        setcookie('password',$Password,time()+3600);
-        setcookie('remember',$RememberMe,time()+3600);
+        setcookie('email',$Email,time()+1296000);
+        setcookie('password',$Password,time()+1296000);
+        setcookie('remember',$RememberMe,time()+1296000);
     } else {
-        setcookie('email',$Email,time()-3600);
-        setcookie('password',$Password,time()-3600);
-        setcookie('remember',$RememberMe,time()-3600);
+        setcookie('email',$Email,time()-1296000);
+        setcookie('password',$Password,time()-1296000);
+        setcookie('remember',$RememberMe,time()-1296000);
     }    
     
     // déterminer si c'est un compte admin

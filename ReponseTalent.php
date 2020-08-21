@@ -43,18 +43,15 @@
                         echo ('<p>'.$ligne["Contenu"]. '</p><br>'); 
                         echo ('<a href="mailto:'.$ligne['Email'].'"><button type="button" onclick="javascript: sendmail();" class="btn btn-primary">Super, je réponds</button></a> '); // envoyer le mail pour les mettre en contact
                         echo ('<a href="talentnon.html.php?p='.$ligne['Provenance'].'&c='.$ligne['CodeCarte'].'"><button type="button" class="btn btn-secondary">Dommage, car...</button></a><hr>'); //refusé, demande la raison
-            ?>
+                      }
+                }
+                ?>
             <!--<script>
               var mail="<?php //echo $ligne['Email'];?>"; 
               function sendmail() {
                   window.location.href = "mailto:" + mail + "";   
               }
-            </script>
-  
-                <?php
-                      }
-                }
-                ?>
+            </script>-->       
           </div>
         </div>
 

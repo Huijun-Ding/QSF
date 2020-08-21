@@ -336,8 +336,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($atelier["DatePublicationA"])).'</p>');
                         echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
                         echo ('<a href="AtelierX.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
-                        echo ('<br>');
-                        echo ('<a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>');               
+                        echo ('<p></p><a href="AtelierModification.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Modifier</a>');               
                         echo ('</div>');  
                         echo ('</div></li>');       
                        }

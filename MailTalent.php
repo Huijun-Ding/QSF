@@ -59,6 +59,13 @@
                     </div>
                 </div>
               
+        <script>
+            var editor1 = CKEDITOR.replace('contenu_talent', {
+                extraAllowedContent: 'div',
+                height: 250
+              });
+        </script>             
+              
 <!-- footer -->
  <?php require "footer.php"; ?>
 <!-- Fin footer -->
