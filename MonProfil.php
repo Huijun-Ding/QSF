@@ -169,8 +169,8 @@ if (isset($_SESSION['email'])) {
                         echo ('<img src="'.$besoin["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$besoin["TitreB"].'</h5>');
-                        echo ('<p class="card-text">Date de publication: '.$besoin["DatePublicationB"].'</p>');
-                        echo ('<p class="card-text">Délais souhaité: '.$besoin["DateButoireB"].'</p>');
+                        echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($besoin["DatePublicationB"])).'</p>');
+                        echo ('<p class="card-text">Délais souhaité: '.date("d-m-yy", strtotime($besoin["DateButoireB"])).'</p>');
                         echo ('<a href="BesoinX.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Voir la demande</a>'); 
                         echo ('<br>');
                         echo ('<a href="BesoinModification.php?t='.$besoin["CodeB"].'" class="btn btn-outline-dark">Modifier</a>');
@@ -257,7 +257,7 @@ if (isset($_SESSION['email'])) {
                             echo ('<img src="'.$talent["PhotoC"].'" class="card-img-top" alt="...">');   
                             echo ('<div class="card-body card text-center">');
                             echo ('<h5 class="card-title">'.$talent["TitreT"].'</h5>');
-                            echo ('<p class="card-text">Date de publication: '.$talent["DatePublicationT"].'</p>');        
+                            echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($talent["DatePublicationT"])).'</p>');        
                             echo ('<a href="TalentX.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                             echo ('<br>');
                             echo ('<a href="TalentModification.php?t='.$talent["CodeT"].'" class="btn btn-outline-dark">Modifier</a>'); 
@@ -338,7 +338,7 @@ if (isset($_SESSION['email'])) {
                         echo ('<img src="'.$atelier["PhotoC"].'" class="card-img-top" alt="...">');   
                         echo ('<div class="card-body card text-center">');
                         echo ('<h5 class="card-title">'.$atelier["TitreA"].'</h5>');
-                        echo ('<p class="card-text">Date de publication: '.$atelier["DatePublicationA"].'</p>');
+                        echo ('<p class="card-text">Date de publication: '.date("d-m-yy", strtotime($atelier["DatePublicationA"])).'</p>');
                         echo ('<p class="card-text">Date & Créneau : '.$atelier["DateA"].'</p>');
                         echo ('<a href="AtelierX.php?t='.$atelier["CodeA"].'" class="btn btn-outline-dark">Voir le détail</a>'); 
                         echo ('<br>');
