@@ -6,7 +6,7 @@
  <?php require "link.php"; ?>
 <!-- Link -->
 
-<title>..Espace administrateur..</title>
+<title>..Espace administrateur!!  coucou</title>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="style.css">
